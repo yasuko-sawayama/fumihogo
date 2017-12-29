@@ -46,7 +46,9 @@ group :development, :test do
   gem "spring"
   gem "spring-commands-rspec"
   gem 'guard-rspec', '~> 4.6', require: false
-
+  gem 'guard-migrate', require: false
+  gem 'guard-rubocop', require: false
+  gem 'guard-spring'
   gem "factory_bot_rails"
   gem "faker"
 
@@ -94,6 +96,8 @@ group :development do
   gem 'bullet'
   gem 'rufo'
   gem 'annotate'
+
+  gem 'growl', require: false
 end
 
 group :test do

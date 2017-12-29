@@ -18,6 +18,7 @@ AllCops:
     - node_modules/**/*
     - bin/**/*
     - db/seeds.rb
+    - Guardfile
 Rails:
   Enabled: true
 
