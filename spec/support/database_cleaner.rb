@@ -1,4 +1,4 @@
-DatabaseCleaner.strategy = :truncation, {except: %w[public.schema_migrations]}
+DatabaseCleaner.strategy = :truncation, { except: %w[public.schema_migrations] }
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
@@ -7,9 +7,8 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.start
   end
 
   config.before(:each, type: :feature) do
@@ -25,7 +24,11 @@ RSpec.configure do |config|
     end
   end
 
-  config.append_after(:each) do
+  config.before do
+    DatabaseCleaner.start
+  end
+  
+  config.append_after do
     DatabaseCleaner.clean
     Capybara.reset_sessions!
   end

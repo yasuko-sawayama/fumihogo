@@ -1,2 +1,3 @@
+# トップページヘルパ
 module HomeHelper
 end
