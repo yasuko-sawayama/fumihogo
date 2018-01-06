@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        nickname: 表示名
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: 入力してください
+              taken: は既に使用されています。
+            nickname:
+              taken: は既に使用されています。
+

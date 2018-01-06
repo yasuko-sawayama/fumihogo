@@ -41,12 +41,23 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
+RSpec/ContextWording:
+  Enabled: false
+  
 # Shoulda-matcherを踏襲
 RSpec/ImplicitExpect:
   EnforcedStyle: should
 
 # Feature
 Capybara/FeatureMethods:
+  Exclude:
+    - 'spec/features/**/*'
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/features/**/*'
+
+RSpec/ExampleLength:
   Exclude:
     - 'spec/features/**/*'
 

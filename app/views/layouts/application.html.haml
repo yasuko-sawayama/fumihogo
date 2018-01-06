@@ -1,0 +1,19 @@
+!!!
+%html{lang: 'ja'}
+  = render 'layouts/shared/head'
+  %body
+    = render 'layouts/shared/nav'
+    .container
+      = render 'layouts/shared/flash'
+      - if content_for?(:title)
+        .page-header
+          %h1= yield :title
+          - if content_for?(:read)
+            %p.read= yield :read
+      %section.main.row
+        .col-xs-12.col-sm-10.col-sm-offset-1.col-lg-8.col-lg-offset-2
+          = yield
+
+      - if content_for?(:redux_store)
+        // for redux store
+        = yield :redux_store

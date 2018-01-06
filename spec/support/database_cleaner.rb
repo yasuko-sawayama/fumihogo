@@ -27,7 +27,7 @@ RSpec.configure do |config|
   config.before do
     DatabaseCleaner.start
   end
-  
+
   config.append_after do
     DatabaseCleaner.clean
     Capybara.reset_sessions!

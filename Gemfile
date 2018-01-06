@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'nokogiri'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -33,6 +34,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'haml-rails'
+# static pages in rails
+gem 'high_voltage', '~> 3.0.0'
+
+
 ########## # React Rails ##########
 gem 'react-rails'
 gem 'webpacker'
@@ -42,6 +48,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'devise-bootstrap-views'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -107,9 +114,11 @@ group :test do
   gem "capybara"
   gem "poltergeist"
   gem 'capybara-webkit'
-  # gem "selenium-webdriver"
+  gem "selenium-webdriver"
   gem 'capybara-screenshot'
   gem "chromedriver-helper"
+  # Page Object Pattern
+  gem 'site_prism'
   gem 'simplecov', :require => false
   gem "coveralls", require: false
   gem "email_spec"

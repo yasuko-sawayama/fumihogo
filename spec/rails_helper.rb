@@ -10,6 +10,8 @@ require 'devise'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
+require 'selenium-webdriver'
+require 'site_prism'
 require 'shoulda/matchers'
 require 'support/factory_bot'
 require 'simplecov'
@@ -24,6 +26,8 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.infer_spec_type_from_file_location!
+
+  config.example_status_persistence_file_path = "examples.txt"
 
   config.extend DeviseControllerMacros, type: :controller
 

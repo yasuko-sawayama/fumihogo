@@ -1,0 +1,20 @@
+%ul.nav.navbar-nav.navbar-right.account
+  - if user_signed_in?
+    %li.dropdown
+      = link_to '#', class: "dropdown-toggle", data: { toggle: 'dropdown' } do
+        -# - if current_user.profile_image
+        -#   = image_tag current_user.social_profiles.first.profile_image, size: '24x24'
+
+        = current_user.nickname
+        %span.caret
+      %ul.dropdown-menu
+        -# %li.nav-item{class: current_page?(bookmarks_path) && 'active' }
+        -#   = link_to 'ブックマーク', bookmarks_path, class: 'nav-link'
+        -#   =# link_to '作品一覧', products_path, class: 'nav-link'
+        %li.divider
+        %li.nav-item{class: current_page?(edit_user_registration_path) && 'active'}
+          = link_to 'アカウント編集', edit_user_registration_path, class: 'nav-link'
+        %li.nav-item= link_to 'ログアウト', destroy_user_session_path, :method=>'delete', class: 'nav-link'
+  - else
+    %li.nav-item= link_to 'ログイン', new_user_session_path, class: 'nav-link'
+    %li.nav-item= link_to '登録', new_user_registration_path, class: 'nav-link'
