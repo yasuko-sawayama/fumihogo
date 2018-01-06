@@ -1,0 +1,17 @@
+/*
+ *= require devise_bootstrap_views
+ *= require font-awesome
+ */
+
+@import "bootstrap-variables";
+
+@import "japanese_font";
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+// Bootstrap body padding for fixed navbar
+body { padding-top: 64px; }
+
+@import "common";
