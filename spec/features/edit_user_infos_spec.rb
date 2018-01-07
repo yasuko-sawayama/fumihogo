@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "ユーザー情報編集", type: :feature do
+RSpec.feature "\xE3\x83\xA6\xE3\x83\xBC\xE3\x82\xB6\xE3\x83\xBC\xE6\x83\x85\xE5\xA0\xB1\xE7\xB7\xA8\xE9\x9B\x86", type: :feature do
   let(:edit_page) { Edit.new }
   let(:login_page) { Login.new }
 
@@ -42,7 +42,7 @@ RSpec.feature "ユーザー情報編集", type: :feature do
       edit_page.load
       expect(page).to have_content('ユーザ編集')
       # Twitterの場合はダミーアドレスで入力しているので表示前に消す
-      expect(page.find_field("メールアドレス").value).to eq('')
+      expect(page.find_field("\xE3\x83\xA1\xE3\x83\xBC\xE3\x83\xAB\xE3\x82\xA2\xE3\x83\x89\xE3\x83\xAC\xE3\x82\xB9").value).to eq('')
 
       edit_page.edit_email('test@test.com')
 
@@ -52,7 +52,7 @@ RSpec.feature "ユーザー情報編集", type: :feature do
       current_email.click_link 'アカウント確認'
       expect(page).to have_content('アカウントを登録しました。')
       edit_page.load
-      expect(page.find_field('メールアドレス').value).to eq('test@test.com')      
+      expect(page.find_field('メールアドレス').value).to eq('test@test.com')
     end
   end
 end

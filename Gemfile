@@ -45,7 +45,7 @@ gem 'high_voltage', '~> 3.0.0'
 gem 'redcarpet', '~> 2.3.0' 
 
 ########## # React Rails ##########
-gem 'react-rails'
+gem 'react_on_rails', '10.0.2'
 gem 'webpacker'
 
 ########## Authentication ##########
@@ -143,3 +143,5 @@ group :test do
   # gem 'webmock'  
   # gem 'vcr'
 end
+
+gem 'mini_racer', platforms: :ruby
