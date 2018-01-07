@@ -122,6 +122,7 @@ end
 
 group :test do
   gem "capybara"
+  gem "capybara-email"
   gem "poltergeist"
   gem 'capybara-webkit'
   gem "selenium-webdriver"

@@ -94,7 +94,7 @@ ja:
         currently_waiting_confirmation_for_email: "%{email} の確認待ち"
         leave_blank_if_you_don_t_want_to_change_it: "空欄のままなら変更しません"
         title: "%{resource}編集"
-        unhappy: "気に入りません"
+        unhappy: "サービスから退会する："
         update: "更新"
         we_need_your_current_password_to_confirm_your_changes: "変更を反映するには現在のパスワードを入力してください"
       new:
@@ -103,7 +103,7 @@ ja:
       signed_up_but_inactive: "ログインするためには、アカウントを有効化してください。"
       signed_up_but_locked: "アカウントが凍結されているためログインできません。"
       signed_up_but_unconfirmed: "本人確認用のメールを送信しました。メール内のリンクからアカウントを有効にしてください。"
-      update_needs_confirmation: "アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。"
+      update_needs_confirmation: "アカウント情報を変更しました。登録されたメールアドレスに確認用メールを送信しています。リンクをクリックして本人確認を行って下さい。"
       updated: "アカウント情報を変更しました。"
     sessions:
       already_signed_out: "既にログアウト済みです。"
