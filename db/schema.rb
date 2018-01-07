@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180107064309) do
+ActiveRecord::Schema.define(version: 20180107155352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_products_on_title"
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
 
   create_table "social_profiles", force: :cascade do |t|
     t.bigint "user_id"
@@ -58,5 +68,6 @@ ActiveRecord::Schema.define(version: 20180107064309) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "products", "users"
   add_foreign_key "social_profiles", "users"
 end

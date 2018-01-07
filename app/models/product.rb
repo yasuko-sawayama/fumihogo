@@ -19,12 +19,6 @@
 #  fk_rails_...  (user_id => users.id)
 #
 
-FactoryBot.define do
-  factory :product do
-    user
-    title "MyString"
-    description "MyString"
-    # privacy_level 1
-    # character_count 1
-  end
+class Product < ApplicationRecord
+  belongs_to :user
 end
