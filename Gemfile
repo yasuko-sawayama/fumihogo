@@ -41,6 +41,8 @@ gem "font-awesome-rails"
 # static pages in rails
 gem 'high_voltage', '~> 3.0.0'
 
+# Markdown
+gem 'redcarpet', '~> 2.3.0' 
 
 ########## # React Rails ##########
 gem 'react-rails'
@@ -52,6 +54,11 @@ gem 'devise-i18n'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'devise-bootstrap-views'
+
+### Settings
+gem 'config'
+gem 'figaro'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

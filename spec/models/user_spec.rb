@@ -43,4 +43,121 @@ RSpec.describe User, type: :model do
   describe 'factory girl test' do
     it { expect { create(:user) }.to change(User, :count).by(1) }
   end
+
+  describe 'associations' do
+    it { should have_many(:social_profiles) }
+  end
+
+  describe '#find_for_oauth' do
+    subject(:assign_user) { User.find_for_oauth(auth) }
+
+    context 'When Twitter:' do
+      let(:auth) do
+        OmniAuth::AuthHash.new(
+          'provider' => 'twitter',
+          'uid'  => 'mock_uid_1234',
+          'info' => {
+            'name' => 'Mock User',
+            'nickname' => 'Mock User',
+            'image' => 'http://mock_image_url.com',
+            'description' => 'mock description',
+            'urls' => {
+              'twitter' => 'http://twitter.com/mock'
+            }
+          },
+          'credentials' => {
+            'token'  => 'mock_credentials_token',
+            'secret' => 'mock_credentials_secret'
+          },
+          'extra' => {
+            'raw_info' => {
+              'name' => 'Mock User',
+              'id'   => 'mock_uid_1234'
+            }
+          }
+        )
+      end
+
+      context '新規ユーザー：' do
+        it '新規ユーザーが作成されること' do
+          expect { assign_user }.to change(User, :count).by(1)
+        end
+
+        it '作成されたユーザーが返ること' do
+          user, _policy = assign_user
+          expect(user).to be_a(User)
+        end
+
+        it 'プロファイルが作成されていること' do
+          user, _policy = assign_user
+          expect(user.social_profiles.count).to eq(1)
+        end
+
+        it 'ポリシーが返ること' do
+          _user, policy = assign_user
+          expect(policy).to be_a(OAuthPolicy::Twitter)
+        end
+
+        it 'ダミーメールがセットされていること' do
+          user, policy = assign_user
+          expect(user.email).to eq(policy.email)
+        end
+
+        it 'ユーザーは認証ずみであること' do
+          user, _policy = assign_user
+          expect(user).to be_confirmed
+        end
+      end
+
+      context '既にニックネームが使用されている場合' do
+        before do
+          create(:user, nickname: 'Mock User')
+        end
+
+        it 'ニックネームに連番を付けて作成すること' do
+          user, _policy = assign_user
+          expect(user.nickname).to eq('Mock User 1')
+        end
+
+        it '二人目の連番' do
+          create(:user, nickname: 'Mock User 1')
+          user, _policy = assign_user
+          expect(user.nickname).to eq('Mock User 2')
+        end
+
+        context '5人目以上' do
+          before do
+            create(:user, nickname: 'Mock User 1')
+            create(:user, nickname: 'Mock User 2')
+            create(:user, nickname: 'Mock User 3')
+            create(:user, nickname: 'Mock User 4')
+            create(:user, nickname: 'Mock User 5')
+          end
+
+          it '流石に何かおかしいのでエラーにすること' do
+            expect { assign_user }.to raise_error(ActiveRecord::RecordInvalid)
+          end
+        end
+      end
+
+      context '既存ユーザー：' do
+        let!(:ext_user) { create(:user) }
+        let!(:social_profile) do
+          create(:social_profile,
+                 user: ext_user,
+                 uid: 'mock_uid_1234',
+                 provider: 'twitter')
+        end
+        
+        it 'ユーザーが作成されないこと' do
+          expect { assign_user }.not_to change(User, :count)
+        end
+
+        it '既存ユーザーが返ること' do
+          user, _policy = assign_user
+          expect(user).to eq(ext_user)
+        end
+      end
+    end
+  end
 end

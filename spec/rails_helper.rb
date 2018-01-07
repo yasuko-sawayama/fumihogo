@@ -30,6 +30,7 @@ RSpec.configure do |config|
   config.example_status_persistence_file_path = "examples.txt"
 
   config.extend DeviseControllerMacros, type: :controller
+  config.include RequestHelper, type: :request
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!

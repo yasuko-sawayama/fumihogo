@@ -51,3 +51,5 @@ Temporary Items
 .direnv/
 coverage
 examples.txt
+# Ignore application configuration
+/config/application.yml

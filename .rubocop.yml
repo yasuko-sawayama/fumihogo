@@ -52,6 +52,8 @@ RSpec/ImplicitExpect:
 Capybara/FeatureMethods:
   Exclude:
     - 'spec/features/**/*'
+RSpec/NestedGroups:
+  Max: 5
 
 RSpec/MultipleExpectations:
   Exclude:
@@ -69,12 +71,13 @@ Metrics/LineLength:
     - https
 
 Metrics/MethodLength:
-  Max: 13
+  Max: 15
   CountComments: false
 
-# Configuration parameters: CountComments, ExcludedMethods.
 Metrics/BlockLength:
   Max: 45
+  Exclude:
+    - 'spec/**/*'
 
 Metrics/AbcSize:
   Enabled: true

@@ -38,11 +38,22 @@
 # Twitterのみ初期実装
 # TODO: Facebook, Google（必要か…？）
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :social_profiles, dependent: :destroy
+
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :lockable
+         :lockable, :omniauthable
 
   validates :nickname, presence: true, uniqueness: true
+
+  def self.find_for_oauth(auth)
+    profile = SocialProfile.find_or_initialize_from_auth(auth)
+    policy = profile.provider_policy(auth)
+
+    OAuthUserCreator.new(profile, policy)
+      .create_new_user_from_profile if profile.user.nil?
+
+    profile.save!
+    [profile.user, policy]
+  end
 end
