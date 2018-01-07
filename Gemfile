@@ -42,7 +42,7 @@ gem "font-awesome-rails"
 gem 'high_voltage', '~> 3.0.0'
 
 # Markdown
-gem 'redcarpet', '~> 2.3.0' 
+gem 'redcarpet', '~> 2.3.0'
 
 ########## # React Rails ##########
 gem 'react_on_rails', '10.0.2'
@@ -64,6 +64,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "awesome_print"
+
+  gem "foreman", require: false
 
   ################################################################################
   gem "spring"
@@ -140,7 +142,7 @@ group :test do
   gem "autodoc"
   gem "rspec-rails"
   gem "rspec-retry"
-  # gem 'webmock'  
+  # gem 'webmock'
   # gem 'vcr'
 end
 
