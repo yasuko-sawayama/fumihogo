@@ -25,4 +25,7 @@ class Product < ApplicationRecord
   belongs_to :user
 
   enum privacy_level: %w(closed open login list)
+
+  scope :owned, ->(user) { where(user_id: user&.id) }
+  scope :restricted_login, ->(user) { user ? login.or(open) : open }
 end
