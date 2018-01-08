@@ -25,6 +25,10 @@
     "test": "jest --coverage"
   },
   "jest": {
-    "roots": ["app/javascript/"]
+    "roots": ["app/javascript/"],
+    "verbose": true,
+    "collectCoverageFrom": [
+      "**/*.{jsx}"
+    ]
   }
 }
