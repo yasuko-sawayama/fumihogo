@@ -7,9 +7,13 @@ RSpec.describe "Products", type: :request do
  }}
 
   describe "GET /products/:id" do
-    let(:product) { create(:product, title: 'テストのタイトル') }
-
     context '権限がある場合' do
+      let(:product) do
+        create(:product,
+               title: 'テストのタイトル',
+               privacy_level: Product.privacy_levels[:open])
+      end
+
       it "レスポンスが返ること" do
         get api_v1_product_path(product), headers: headers
         expect(response).to have_http_status(200)
@@ -22,12 +26,21 @@ RSpec.describe "Products", type: :request do
 
       it 'タイトルが取得できること' do
         get api_v1_product_path(product), headers: headers
-        expect(response.body).to include('テストのタイトル')
+        expect(json['product']['title']).to eq('テストのタイトル')
       end
     end
 
     context '権限がない場合' do
-      it 'リダイレクトされること'
+      let(:product) do
+        create(:product,
+               privacy_level: Product.privacy_levels[:closed])
+      end
+
+      it 'リダイレクトされること' do
+        get api_v1_product_path(product), headers: headers
+        expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to include('このページを表示する権限がありません。')
+      end
     end
   end
 end

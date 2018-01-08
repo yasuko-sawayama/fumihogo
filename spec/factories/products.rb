@@ -2,17 +2,19 @@
 #
 # Table name: products
 #
-#  id          :integer          not null, primary key
-#  title       :string
-#  user_id     :integer
-#  description :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id            :integer          not null, primary key
+#  title         :string
+#  user_id       :integer
+#  description   :text
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  privacy_level :integer          default(0)
 #
 # Indexes
 #
-#  index_products_on_title    (title)
-#  index_products_on_user_id  (user_id)
+#  index_products_on_privacy_level  (privacy_level)
+#  index_products_on_title          (title)
+#  index_products_on_user_id        (user_id)
 #
 # Foreign Keys
 #
@@ -24,7 +26,7 @@ FactoryBot.define do
     user
     title "MyString"
     description "MyString"
-    # privacy_level 1
+    privacy_level 1
     # character_count 1
   end
 end
