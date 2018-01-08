@@ -14,7 +14,10 @@
 #
 # Indexes
 #
-#  index_social_profiles_on_user_id  (user_id)
+#  index_social_profiles_on_account_name  (account_name)
+#  index_social_profiles_on_provider      (provider)
+#  index_social_profiles_on_uid           (uid)
+#  index_social_profiles_on_user_id       (user_id)
 #
 # Foreign Keys
 #

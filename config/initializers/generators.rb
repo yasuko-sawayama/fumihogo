@@ -7,4 +7,6 @@ Rails.application.config.generators do |g|
                    routing_specs: false,
                    controller_specs: false,
                    request_specs: true
+  g.helper false
+  g.assets false
 end

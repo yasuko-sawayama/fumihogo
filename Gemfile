@@ -42,7 +42,7 @@ gem "font-awesome-rails"
 gem 'high_voltage', '~> 3.0.0'
 
 # Markdown
-gem 'redcarpet', '~> 2.3.0' 
+gem 'redcarpet', '~> 2.3.0'
 
 ########## # React Rails ##########
 gem 'react_on_rails', '10.0.2'
@@ -54,6 +54,9 @@ gem 'devise-i18n'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'devise-bootstrap-views'
+
+# Authorization
+gem "pundit"
 
 ### Settings
 gem 'config'
@@ -77,7 +80,7 @@ group :development, :test do
 
   ################################################################################
   # Manage application processes
-  gem "foreman"
+  gem "foreman", require: false
   ################################################################################
   # Linters and Security
   gem "rubocop", require: false
@@ -140,7 +143,7 @@ group :test do
   gem "autodoc"
   gem "rspec-rails"
   gem "rspec-retry"
-  # gem 'webmock'  
+  # gem 'webmock'
   # gem 'vcr'
 end
 

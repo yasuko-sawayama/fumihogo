@@ -19,12 +19,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 
-FactoryBot.define do
-  factory :product do
-    user
-    title "MyString"
-    description "MyString"
-    # privacy_level 1
-    # character_count 1
-  end
+require 'rails_helper'
+
+RSpec.describe Product, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

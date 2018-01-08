@@ -27,7 +27,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -53,3 +54,4 @@ coverage
 examples.txt
 # Ignore application configuration
 /config/application.yml
+/vendor

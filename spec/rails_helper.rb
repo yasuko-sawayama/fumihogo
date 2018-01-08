@@ -15,6 +15,7 @@ require 'selenium-webdriver'
 require 'site_prism'
 require 'shoulda/matchers'
 require 'support/factory_bot'
+require "pundit/rspec"
 require 'simplecov'
 SimpleCov.start 'rails'
 SimpleCov.minimum_coverage 90
