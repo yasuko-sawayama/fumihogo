@@ -12,6 +12,8 @@
 
 
 // Bootstrap body padding for fixed navbar
-body { padding-top: 64px; }
+body { padding-top: 84px; }
 
 @import "common";
+@import "headers";
+@import "navbar";

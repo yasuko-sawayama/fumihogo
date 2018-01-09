@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 import ProductReducer from '../reducers/productReducer';
 
-const configureStore = (railsProps) => (
+const configureStore = railsProps => (
   createStore(ProductReducer, railsProps)
 );
 

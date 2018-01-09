@@ -5,6 +5,6 @@ class ProductsController < ApplicationController
   def show
     skip_authorization
 
-    @hello_world_props = { name: 'Stranger' }
+    @hello_world_props = { name: 'タイトル' }
   end
 end
