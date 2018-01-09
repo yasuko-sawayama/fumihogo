@@ -30,7 +30,8 @@ export default class Product extends React.Component {
         <hr />
         <form >
           <label htmlFor="name">
-            Say hello to:
+            Product Title
+            タイトル
           </label>
           <input
             id="name"

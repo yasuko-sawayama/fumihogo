@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
-  after_action :verify_authorized, except: :index, unless: :devise_controller?
-  after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
+  after_action :verify_authorized, except: :index, unless: :auth_skipping_controllers?
+  after_action :verify_policy_scoped, only: :index, unless: :auth_skipping_controllers?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -21,5 +21,14 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:alert] = 'このページを表示する権限がありません。'
     redirect_to(request.referer || root_path)
+  end
+
+  # Punditの検証を行わないコントローラ
+  def auth_skipping_controllers?
+    devise_controller? || high_voltage_controller?
+  end
+
+  def high_voltage_controller?
+    self.class.include?(HighVoltage::StaticPage)
   end
 end

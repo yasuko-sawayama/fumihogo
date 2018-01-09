@@ -1,4 +1,4 @@
-// Simple example of a React "smart" component
+// Single Product Container
 
 import { connect } from 'react-redux';
 import Product from '../components/Product';

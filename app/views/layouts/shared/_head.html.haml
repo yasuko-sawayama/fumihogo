@@ -9,11 +9,10 @@
   -# - else
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
 
-  -# - if content_for?(:javascript)
-  -#   = yield :javascript
-  -# - else
+  - if content_for?(:javascript)
+    = yield :javascript
+  - else
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
   = stylesheet_pack_tag 'application', media: 'all'
-  = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   = csrf_meta_tags

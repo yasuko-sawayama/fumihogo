@@ -1,0 +1,11 @@
+-# - set_meta_tags title: yield(:title)
+
+// for redux store
+- if content_for?(:redux_store)
+  = yield :redux_store
+
+// for product react page
+- content_for :javascript do
+  = javascript_pack_tag 'production-bundle', 'data-turbolinks-track': 'reload'
+
+= render template: "layouts/application" 
