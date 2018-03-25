@@ -26,7 +26,7 @@ FactoryBot.define do
     user
     title "MyString"
     description "MyString"
-    privacy_level 1
+    privacy_level :open
     # character_count 1
   end
 end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
                registrations: 'users/registrations'
              }
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show, :new]
 
   namespace :api, { format: :json } do
     namespace :v1 do

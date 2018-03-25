@@ -4,4 +4,8 @@ class ProductPolicy < ApplicationPolicy
       scope.owned(user).or(scope.restricted_login(user))
     end
   end
+
+  def create?
+    user&.persisted?
+  end
 end

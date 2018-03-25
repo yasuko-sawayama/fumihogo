@@ -46,6 +46,7 @@ RSpec.describe User, type: :model do
 
   describe 'associations' do
     it { should have_many(:social_profiles) }
+    it { should have_many(:products) }
   end
 
   describe '#find_for_oauth' do

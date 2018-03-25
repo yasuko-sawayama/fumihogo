@@ -43,4 +43,29 @@ RSpec.describe "Products", type: :request do
       end
     end
   end
+
+  describe "POST /api/v1/products" do
+    context '権限がある場合' do
+      let(:user) { create(:user) }
+
+      before { sign_in(user) }
+      subject { post '/api/v1/products', params: { product: params } }
+
+      context 'パラメーターが正しい場合' do
+        let(:params) { attributes_for(:product) }
+        
+        it '200が帰ること' do
+          subject
+          expect(response).to be_success
+        end
+
+        it '作品が1増えること' do
+          expect { subject }.to change(Product, :count).by(1)
+        end
+      end
+
+      context '不正なパラメーターの場合'
+    end
+    context '権限がない場合'
+  end
 end

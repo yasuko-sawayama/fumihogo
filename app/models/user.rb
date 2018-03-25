@@ -39,12 +39,18 @@
 # TODO: Facebook, Google（必要か…？）
 class User < ApplicationRecord
   has_many :social_profiles, dependent: :destroy
+  has_many :products, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable, :omniauthable
 
   validates :nickname, presence: true, uniqueness: true
+
+  def profile_image
+    return social_profiles.first.profile_image if social_profiles.exists?
+    nil
+  end
 
   def self.find_for_oauth(auth)
     profile = SocialProfile.find_or_initialize_from_auth(auth)

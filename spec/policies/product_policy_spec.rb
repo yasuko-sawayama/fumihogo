@@ -81,7 +81,14 @@ RSpec.describe ProductPolicy do
   # end
 
   permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it 'ログインしていれば作成できる' do
+      user = create(:user)
+      expect(subject).to permit(user, Product.new)
+    end
+
+    it 'ゲストは作成できない' do
+      expect(subject).not_to permit(User.new, Product.new)
+    end
   end
 
   permissions :update? do
