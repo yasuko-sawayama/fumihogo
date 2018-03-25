@@ -24,6 +24,8 @@
 class Product < ApplicationRecord
   belongs_to :user
 
+  validates :title, presence: true
+
   enum privacy_level: %w(closed open login list)
 
   scope :owned, ->(user) { where(user_id: user&.id) }

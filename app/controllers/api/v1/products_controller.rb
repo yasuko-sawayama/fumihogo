@@ -1,4 +1,4 @@
-class Api::V1::ProductsController < ApplicationController
+class Api::V1::ProductsController < Api::V1::ApiController
   def index
     render nothing: true, response: 200
   end
@@ -8,15 +8,14 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params) do |product|
+    product = Product.new(product_params) do |product|
       product.user = current_user
     end
 
-    authorize @product
+    authorize product
+    product.save!
 
-    if @product.save
-      render json: @product, status: :created
-    end
+    render json: product, status: :created
   end
 
   private

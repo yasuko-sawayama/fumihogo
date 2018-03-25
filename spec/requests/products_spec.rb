@@ -64,7 +64,25 @@ RSpec.describe "Products", type: :request do
         end
       end
 
-      context '不正なパラメーターの場合'
+      context '不正なパラメーターの場合' do
+        let(:params) { attributes_for(:product, title: nil) }
+
+        it '422がかえること' do
+          subject
+          expect(response.status).to eq(422)
+        end
+
+        it 'エラーメッセージ' do
+          subject
+          body = JSON.parse(response.body)
+          p body
+          expect(body["errors"].to_s).to include("を入力してください")
+        end
+
+        it '作品が増えないこと' do
+          expect { subject }.not_to change(Product, :count)
+        end
+      end
     end
     context '権限がない場合'
   end
