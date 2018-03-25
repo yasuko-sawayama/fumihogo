@@ -1,6 +1,10 @@
 # 作品のページ表示用
 class ProductsController < ApplicationController
-  def index; end
+  include ReactOnRails::Controller
+
+  def index
+    # @products = current_user.products.order(created_at: :desc).page(params[:page])
+  end
 
   def show
     skip_authorization
