@@ -6,7 +6,10 @@ Rails.application.routes.draw do
                registrations: 'users/registrations'
              }
 
-  resources :products, only: [:index, :show, :new]
+  resources :products, only: [:index, :show, :new] do
+    # for react-router
+    get ':any_action', action: :show, on: :member
+  end
 
   namespace :api, { format: :json } do
     namespace :v1 do
