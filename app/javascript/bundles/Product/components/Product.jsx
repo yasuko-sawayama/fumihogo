@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 
+import Information from './Information';
+
 /**
  * @param props - Comes from your rails view.
  */
@@ -28,15 +30,16 @@ class Product extends React.Component {
   render() {
     return (
       <div>
-        <Link to={`/${this.state.id}/edit`}>EDIT</Link>
+        <Link to={`/${this.state.id}`}>SHOW</Link>|
+        <Link to={`/${this.state.id}/edit`}>EDIT</Link>|
+        <Link to={`/${this.state.id}/information`}>INFORMATION</Link>
         <h3>
           Hello, Product
         </h3>
         <hr />
         some text { this.state.name }
-
         <Route path="/:id(\d+)/edit" component={editProduct} />
-
+        <Route path="/:id(\d+)/information" render={()=>Information(this.state.id)} />
       </div>
     );
   }
