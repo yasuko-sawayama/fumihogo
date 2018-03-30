@@ -1,5 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
 
 import configureStore from '../store/productStore';
 import ProductContainer from '../containers/ProductContainer';
@@ -9,7 +13,11 @@ import ProductContainer from '../containers/ProductContainer';
 // This code here binds your smart component to the redux store.
 const ProductApp = (props) => (
   <Provider store={configureStore(props)}>
-    <ProductContainer />
+    <Router basename="products">
+      <div>
+        <Route path="/:id(\d+)" component={ProductContainer} />
+      </div>
+    </Router>
   </Provider>
 );
 
