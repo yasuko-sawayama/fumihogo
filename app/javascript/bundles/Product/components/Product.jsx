@@ -36,6 +36,7 @@ class Product extends React.Component {
         <NavLink activeClassName="active" to={`/${this.state.id}/information`}>INFORMATION</NavLink>
         <hr />
         <Page title={this.state.name} />
+        <p>{this.state.name}</p>
         some text { this.state.name }
         <Route path="/:id(\d+)/edit" component={editProduct} />
         <Route path="/:id(\d+)/information" render={()=>Information(this.state.id)} />
