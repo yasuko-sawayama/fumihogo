@@ -1,4 +1,5 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import ProductReducer from '../reducers/productReducer';
@@ -8,7 +9,9 @@ const middleware = {};
 
 const configureStore = railsProps => (
   createStore(
-    ProductReducer,
+    combineReducers({
+      product: ProductReducer,
+    }),
     railsProps,
     composeWithDevTools(applyMiddleware(...middleware)),
   ));

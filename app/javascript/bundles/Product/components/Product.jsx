@@ -12,7 +12,7 @@ const editProduct = () => (<h1>編集</h1>);
 
 class Product extends React.Component {
   static propTypes = {
-    name: PropTypes.string.isRequired,
+    product: PropTypes.object.isRequired,
   };
 
   /**
@@ -23,7 +23,7 @@ class Product extends React.Component {
     // How to set initial state in ES6 class syntax
     // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
     this.state = {
-      name: this.props.name,
+      name: this.props.product.name,
       id: this.props.match.params.id,
     };
   }
@@ -35,9 +35,7 @@ class Product extends React.Component {
         <NavLink activeClassName="active" to={`/${this.state.id}/edit`}>EDIT</NavLink>|
         <NavLink activeClassName="active" to={`/${this.state.id}/information`}>INFORMATION</NavLink>
         <hr />
-        <Page title={this.state.name} />
-        <p>{this.state.name}</p>
-        some text { this.state.name }
+        <Route exact path="/:id(\d+)/" render={()=><Page {...this.props.product}/>} />
         <Route path="/:id(\d+)/edit" component={editProduct} />
         <Route path="/:id(\d+)/information" render={()=>Information(this.state.id)} />
       </section>

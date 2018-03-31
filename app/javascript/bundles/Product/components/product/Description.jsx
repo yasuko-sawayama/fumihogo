@@ -1,6 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const Description = () => (
+const Desc = styled.p`
+white-space: pre-line;
+`;
+
+const Description = ({
+  description,
+  about: {
+    created_at,
+    charactor_count,
+    privacy_level,
+    page_count,
+  },
+  author: { nickname, avator }
+}) => (
   <div className="row">
     <div className="col-xs-12">
       <h3>Description</h3>
@@ -9,10 +23,21 @@ const Description = () => (
       <img src="http://dummyimage.com/600x400/000/fff" className="img-responsive"/>
     </div>
     <div className="col-sm-8">
-      <p>それも翌日至極その鑑定目という気の時をしんで。よほど前で関係界はどうもその建設たましまでを及ぼすといけたをも意味帰ったなかっけれども、ちょっとにもいうなうたませ。顔でいっだ事は何でもかでも今日にいよいよましななけれ。むしろ岡田君に排斥高圧全く講演になった人この例あなたか落第</p>
+      <Desc className="description">
+        {description}
+      </Desc>
       <div className="dl-horizontal" id="about">
         <dl>
-          <dt>Date:</dt><dd>2015</dd><dt>Type:</dt><dd>Journal Paper</dd><dt>Author:</dt><dd>John Doe et al.</dd><dt>Source:</dt><dd>Journal of Prostate Cancer</dd><dt>DOI:</dt><dd>10.1000/182</dd>
+          <dt>作者:</dt>
+          <dd>{nickname}</dd>
+          <dt>公開日:</dt>
+          <dd>{created_at}</dd>
+          <dt>文字数:</dt>
+          <dd>{charactor_count}</dd>
+          <dt>ページ数:</dt>
+          <dd>{page_count}</dd>
+          <dt>公開範囲:</dt>
+          <dd>{privacy_level}</dd>
         </dl>
       </div>
     </div>

@@ -7,10 +7,14 @@ import Content from './product/Content';
 import Description from './product/Description';
 import Pager from './product/Pager';
 
-const Page = ({ title }) => (
+const Page = ({ title, description, author, about }) => (
   <section id="page">
     <Title title={title} />
-    <Description />
+    <Description
+      description={description}
+      author={author}
+      about={about}
+      />
     <TableOfContents />
     <hr />
     <Content content="aaaaa"/>
