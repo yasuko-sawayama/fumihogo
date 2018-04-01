@@ -8,36 +8,34 @@ import Description from './product/Description';
 import Pager from './product/Pager';
 import { Route } from 'react-router-dom';
 
-const Page = ({
-  id,
-  title,
-  description,
-  currentPage,
-  author,
-  about,
-  content,
-  pages,
-  pageInfo,
-  path,
-  url
-}) => {
-  const pageTitle = pages.find((page)=>{return page.id === 1}).title;
-  
-  return (
-    <section id="page" className="page">
-      <Title title={title} />
-      <Description
-        description={description}
-        author={author}
-        about={about}
-        />
-      { about.pageCount > 1 && <TableOfContents pages={pages} url={url} /> }
-      <hr />
-      <Route exact path={`${path}/`} render={()=> <Content content={content} pageTitle={pageTitle} />} />
-      <Route path={`${path}/pages/:page_id/`} render={()=> <Content content={content} pageTitle={pageTitle} />} />
-      <Pager {...pageInfo} url={url} />
-    </section>
-  );
+class Page extends React.Component {
+  static propTypes = {
+    id: PropTypes.number.isRequired,
+  }
+
+  componentWillMount() {
+    console.log("called");
+  }
+
+  render() {
+    const pageTitle = this.props.pages.find(page => (page.id === 1)).title;
+
+    return (
+      <section id="page" className="page">
+        <Title title={this.props.title} />
+        <Description
+          description={this.props.description}
+          author={this.props.author}
+          about={this.props.about}
+          />
+        { this.props.about.pageCount > 1 && <TableOfContents pages={this.props.pages} url={this.props.url} /> }
+        <hr />
+        <Route exact path={`${this.props.path}/`} render={()=> <Content content={this.props.content} pageTitle={pageTitle} />}/>
+          <Route path={`${this.props.path}/pages/:page_id/`} render={()=> <Content content={this.props.content} pageTitle={pageTitle} />} />
+            <Pager {...this.props.pageInfo} url={this.props.url} />
+      </section>
+    );
+  }
 }
 
 export default Page;

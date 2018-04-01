@@ -18,10 +18,10 @@ class ProductsController < ApplicationController
                              about: {
                                created_at: '2017/12/21',
                                charactor_count: 200,
-                               pageCount: 1,
+                               pageCount: 3,
                                privacy_level: 'public'
                              },
-                             currentPage: 1,
+                             currentPage: 0,
                              pageInfo: {
                                previousPage: nil,
                                nextPage: 2,
