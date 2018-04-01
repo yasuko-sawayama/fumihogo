@@ -26,7 +26,7 @@ const Page = ({ id,
       author={author}
       about={about}
       />
-    <TableOfContents pages={pages} url={url} />
+    { about.pageCount > 1 && <TableOfContents pages={pages} url={url} /> }
     <hr />
     <Route exact path={`${path}/`} render={()=> <Content content={content} />} />
     <Route path={`${path}/pages/:page_id/`} render={()=> <Content content={content} />} />

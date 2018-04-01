@@ -11,7 +11,7 @@ const Description = ({
     created_at,
     charactor_count,
     privacy_level,
-    page_count,
+    pageCount,
   },
   author: { nickname, avator }
 }) => (
@@ -35,7 +35,7 @@ const Description = ({
           <dt>文字数:</dt>
           <dd>{charactor_count}</dd>
           <dt>ページ数:</dt>
-          <dd>{page_count}</dd>
+          <dd>{pageCount}</dd>
           <dt>公開範囲:</dt>
           <dd>{privacy_level}</dd>
         </dl>

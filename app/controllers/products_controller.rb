@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
                              about: {
                                created_at: '2017/12/21',
                                charactor_count: 200,
-                               page_count: 1,
+                               pageCount: 2,
                                privacy_level: 'public'
                              },
                              currentPage: 1,
