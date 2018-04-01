@@ -30,9 +30,8 @@ class Page extends React.Component {
           />
         { this.props.about.pageCount > 1 && <TableOfContents pages={this.props.pages} url={this.props.url} /> }
         <hr />
-        <Route exact path={`${this.props.path}/`} render={()=> <Content content={this.props.content} pageTitle={pageTitle} />}/>
-          <Route path={`${this.props.path}/pages/:page_id/`} render={()=> <Content content={this.props.content} pageTitle={pageTitle} />} />
-            <Pager {...this.props.pageInfo} url={this.props.url} />
+       <Content content={this.props.content} pageTitle={pageTitle} />
+        <Pager {...this.props.pageInfo} url={this.props.url} />
       </section>
     );
   }
