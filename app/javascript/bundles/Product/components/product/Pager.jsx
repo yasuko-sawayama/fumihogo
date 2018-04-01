@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { join } from '../../../shared/utils/join';
 
 const Pager = ({ nextPage, previousPage, url }) => {
-  const Previous = (previousPage, url) => (
+  const Previous = ({ previousPage, url }) => console.log(previousPage) || (
     <li className="previous">
-      <Link to={`${url}/pages/${previousPage}`}>
+      <Link to={join(url, `/pages/${previousPage}`)}>
         <span aria-hidden="true" className="fa fa-backward"></span>
         　
         前のページ
@@ -13,9 +14,9 @@ const Pager = ({ nextPage, previousPage, url }) => {
     </li>
   );
 
-  const Next = (nextPage, url) => (
+  const Next = ({ nextPage, url }) => (
     <li className="next">
-      <Link to={`${url}/pages/${nextPage}`}>
+      <Link to={join(url, `/pages/${nextPage}`)}>
         次のページ
         　
         <span aria-hidden="true" className="fa fa-forward"></span>

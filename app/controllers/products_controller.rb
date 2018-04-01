@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   def show
     skip_authorization
 
-    @hello_world_props = { product: {
+    @product_props = { product: {
                              id: 1,
                              title: 'タイトル',
                              description: 'それも翌日至極その鑑定目という気の時をしんで。よほど前で関係界はどうもその建設たましまでを及ぼすといけたをも意味帰ったなかっけれども、ちょっとにもいうなうたませ。顔でいっだ事は何でもかでも今日にいよいよましななけれ。むしろ岡田君に排斥高圧全く講演になった人この例あなたか落第',
@@ -18,13 +18,13 @@ class ProductsController < ApplicationController
                              about: {
                                created_at: '2017/12/21',
                                charactor_count: 200,
-                               pageCount: 2,
+                               pageCount: 1,
                                privacy_level: 'public'
                              },
                              currentPage: 1,
                              pageInfo: {
-                               previousPage: 1,
-                               nextPage: nil
+                               previousPage: nil,
+                               nextPage: 2,
                              },
                              pages: [{
                                        title: 'ページ１',
