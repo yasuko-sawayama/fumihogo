@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
                                nextPage: 2,
                              },
                              pages: [{
-                                       title: 'ページ１',
+                                       title: '最初のぺージ1',
                                        order: 1,
                                        id: 1,
                                        api: 'http://localhost:3000/api/v1/products/1/pages/1'

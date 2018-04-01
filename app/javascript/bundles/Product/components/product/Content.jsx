@@ -8,9 +8,10 @@ font-size: 16px;
 letter-spacing: 1px;
 `;
 
-const Content = ({ content }) => (
+const Content = ({ content, pageTitle }) => (
   <div className="row">
     <div className="col-xs-12">
+      { !pageTitle.match(/^ぺージ\d+/i) && <h3>{pageTitle}</h3> }
       <Article id="content" dangerouslySetInnerHTML={{__html: content}} />
     </div>
   </div>
