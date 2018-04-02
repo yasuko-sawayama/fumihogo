@@ -30,7 +30,11 @@ class Page extends React.Component {
           />
         { this.props.about.pageCount > 1 && <TableOfContents pages={this.props.pages} url={this.props.url} /> }
         <hr />
-       <Content content={this.props.content} pageTitle={pageTitle} />
+        <Content
+          content={this.props.content}
+          pageTitle={pageTitle}
+          fetchPageContent={this.props.actions.fetchPageContent}
+          />
         <Pager {...this.props.pageInfo} url={this.props.url} />
       </section>
     );

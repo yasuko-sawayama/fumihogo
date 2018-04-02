@@ -22,7 +22,7 @@ class Content extends React.Component {
   }
   
   componentWillMount() {
-    // 初回呼ばれる・最初のページ切替時も呼ばれる
+    // this.fetchContent();
   }
   
   componentWillReceiveProps() {
@@ -31,6 +31,7 @@ class Content extends React.Component {
 
   fetchContent() {
     console.log("get content!");
+    this.props.fetchPageContent(1,1);
   }
 
   render() {

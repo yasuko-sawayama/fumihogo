@@ -23,7 +23,6 @@ class Product extends React.Component {
     // How to set initial state in ES6 class syntax
     // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
     this.state = {
-      name: this.props.product.name,
       id: this.props.match.params.id,
     };
   }
@@ -35,8 +34,8 @@ class Product extends React.Component {
         <NavLink activeClassName="active" to={`/${this.state.id}/edit`}>EDIT</NavLink>|
         <NavLink activeClassName="active" to={`/${this.state.id}/information`}>INFORMATION</NavLink>
         <hr />
-        <Route exact path="/:id(\d+)/" render={()=> <Page {...this.props.product} {...this.props.match} />} />
-        <Route path="/:id(\d+)/pages/:page_id(\d+)/" render={()=> <Page {...this.props.product} {...this.props.match} />} />
+        <Route exact path="/:id(\d+)/" render={()=> <Page {...this.props.product} {...this.props.match} actions={this.props.actions}/>} />
+          <Route path="/:id(\d+)/pages/:page_id(\d+)/" render={()=> <Page {...this.props.product} {...this.props.match} actions={this.props.actions} />} />
         <Route path="/:id(\d+)/edit" component={editProduct} />
         <Route path="/:id(\d+)/information" render={()=>Information(this.state.id)} />
       </section>
