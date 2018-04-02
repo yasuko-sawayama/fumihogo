@@ -14,14 +14,23 @@ class Content extends React.Component {
     pageTitle: PropTypes.string.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state={};
+    this.fetchContent = this.fetchContent.bind(this);
+  }
+  
   componentWillMount() {
     // 初回呼ばれる・最初のページ切替時も呼ばれる
-    console.log("called content mount");
   }
   
   componentWillReceiveProps() {
-    // 2回目以降のページ切替時呼ばれる
-    console.log("called content prop");
+    this.fetchContent();
+  }
+
+  fetchContent() {
+    console.log("get content!");
   }
 
   render() {
