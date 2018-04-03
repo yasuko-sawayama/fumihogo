@@ -2,6 +2,7 @@
 
 import {
   PAGE_CONTENT_FETCH_SUCCESS,
+  PAGE_CONTENT_FETCH_ERROR,
   PAGE_CONTENT_FETCH_REQUESTED,
   PAGE_CHANGED
 } from '../constants/productConstants';
@@ -22,6 +23,13 @@ export const fetchPageContentSuccess = response => ({
         content: response.data.page.content,
       },
     },
+  },
+});
+
+export const fetchPageContentError = error => console.log(error) || ({
+  type: PAGE_CONTENT_FETCH_ERROR,
+  payload: {
+    error,
   },
 });
 

@@ -25,12 +25,17 @@ class Content extends React.Component {
     // this.fetchContent();
   }
   
-  componentWillReceiveProps() {
-    this.fetchContent();
+  componentWillReceiveProps(nextProps) {
+    console.log('next');
+    console.log(nextProps);
+    console.log('now');
+    console.log(this.props);
+    this.fetchContent(nextProps);
   }
 
-  fetchContent() {
-    this.props.fetchPageContent(this.props.productId, this.props.pageId);
+  fetchContent(props) {
+
+    this.props.fetchPageContent(props.productId, props.pageId);
   }
 
   render() {

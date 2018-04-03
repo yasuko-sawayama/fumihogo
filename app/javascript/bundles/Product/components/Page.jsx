@@ -14,15 +14,15 @@ class Page extends React.Component {
       id: PropTypes.number.isRequired,
       currentPage: PropTypes.number.isRequired,
     }),
-    action: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
     console.log(this.props);
   }
 
-  componentWillReceiveProps() {
-    this.props.actions.changePage(this.props.match.params.pageId);
+  componentWillReceiveProps(nextProps) {
+    this.props.actions.changePage(nextProps.match.params.pageId);
   }
 
   render() {
