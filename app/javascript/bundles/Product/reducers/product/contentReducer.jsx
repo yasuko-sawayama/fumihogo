@@ -1,11 +1,9 @@
 import { PAGE_CONTENT_FETCH_SUCCESS } from '../../constants/productConstants';
 
-
 const contentReducer = (state = '', action) => {
-  console.log(action.type);
   switch (action.type) {
   case PAGE_CONTENT_FETCH_SUCCESS:
-    return 'aiueo';
+    return action.payload.product.page.content;
   default:
     return state;
   }

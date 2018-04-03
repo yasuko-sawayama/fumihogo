@@ -1,6 +1,16 @@
-import request from 'axios';
+/* eslint-disable import/prefer-default-export */
+
+import axios from 'axios';
 import ReactOnRails from 'react-on-rails';
 
-export const fetchEntities() {
-  return request
-}
+const API_ENTRY_URL = '/api/v1/';
+
+export const fetchEntities = (url, options = {}) => (
+  axios({
+    method: 'GET',
+    url: `${API_ENTRY_URL}${url}`,
+    responseType: 'json',
+    headers: ReactOnRails.authenticityHeaders(),
+    ...options,
+  })
+);

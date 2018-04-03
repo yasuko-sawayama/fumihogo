@@ -8,7 +8,7 @@
 #  description   :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  privacy_level :integer          default(0)
+#  privacy_level :integer          default("closed")
 #
 # Indexes
 #

@@ -2,13 +2,24 @@
 
 import {
   PAGE_CONTENT_FETCH_SUCCESS,
-  PAGE_CONTENT_FETCH_REQUESTED,
+  PAGE_CONTENT_FETCH_REQUESTED
 } from '../constants/productConstants';
 
-export const fetchPageContent = ({ id, pageId }) => ({
+export const fetchPageContent = (id, pageId) => ({
   type: PAGE_CONTENT_FETCH_REQUESTED,
   payload: {
-    contentId: id,
+    productId: id,
     pageId,
+  },
+});
+
+export const fetchPageContentSuccess = response => ({
+  type: PAGE_CONTENT_FETCH_SUCCESS,
+  payload: {
+    product: {
+      page: {
+        content: response.data.page.content,
+      },
+    },
   },
 });

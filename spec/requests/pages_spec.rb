@@ -23,6 +23,7 @@ RSpec.describe 'Pages', type: :request do
 
       it "レスポンスが返ること" do
         get api_v1_product_page_path(product, page), headers: headers
+        p api_v1_product_page_path(product, page)
         expect(response).to have_http_status(200)
       end
 
