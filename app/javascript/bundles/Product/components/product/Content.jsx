@@ -11,7 +11,7 @@ letter-spacing: 1px;
 class Content extends React.Component {
   static propTypes = {
     content: PropTypes.string.isRequired,
-    pageTitle: PropTypes.string.isRequired,
+    pageTitle: PropTypes.string,
   };
 
   constructor(props) {
@@ -20,29 +20,24 @@ class Content extends React.Component {
     this.state={};
     this.fetchContent = this.fetchContent.bind(this);
   }
-  
-  componentWillMount() {
-    // this.fetchContent();
-  }
-  
+    
   componentWillReceiveProps(nextProps) {
-    console.log('next');
-    console.log(nextProps);
-    console.log('now');
-    console.log(this.props);
-    this.fetchContent(nextProps);
+    if (this.props.pageId !== nextProps.pageId) {
+      console.log("fetched");
+      console.log(nextProps);
+      this.fetchContent(nextProps.url);
+    }
   }
 
-  fetchContent(props) {
-
-    this.props.fetchPageContent(props.productId, props.pageId);
+  fetchContent(url) {
+    this.props.fetchPageContent(url);
   }
 
   render() {
     return (
       <div className="row">
         <div className="col-xs-12">
-          { !this.props.pageTitle.match(/^ぺージ\d+/i) && <h3>{this.props.pageTitle}</h3> }
+          { this.props.pageTitle && <h3>{this.props.pageTitle}</h3> }
           <Article id="content" dangerouslySetInnerHTML={{__html: this.props.content}} />
         </div>
       </div>

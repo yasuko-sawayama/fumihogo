@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
                              },
                              currentPage: 1,
                              pageInfo: {
+                               pageTitle: '12345',
                                previousPage: nil,
                                nextPage: 2,
                              },
@@ -36,7 +37,7 @@ class ProductsController < ApplicationController
                                        title: 'ページ2',
                                        order: 2,
                                        id: 2,
-                                       url: 'http://localhost:3000/api/v1/products/1/pages/1'
+                                       api: 'http://localhost:3000/api/v1/products/1/pages/2'
                                      }],
                              content: <<EOC
         <p>それも翌日至極その鑑定目という気の時をしんで。よほど前で関係界はどうもその建設たましまでを及ぼすといけたをも意味帰ったなかっけれども、ちょっとにもいうなうたませ。顔でいっだ事は何でもかでも今日にいよいよましななけれ。むしろ岡田君に排斥高圧全く講演になった人この例あなたか落第がというお担任あるたならますが、ある今日は何か自分心にするて、大森さんののが主位の私に実にお相違と云って誰他を小相違を立たようにはなはだご批評が進んたうて、まあいよいよ下宿を用いうでいけた訳を飛びないた。</p>

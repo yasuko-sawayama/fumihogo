@@ -3,12 +3,12 @@
 import axios from 'axios';
 import ReactOnRails from 'react-on-rails';
 
-const API_ENTRY_URL = '/api/v1/';
+//const API_ENTRY_URL = '/api/v1/';
 
 export const fetchEntities = (url, options = {}) => (
   axios({
     method: 'GET',
-    url: `${API_ENTRY_URL}${url}`,
+    url,
     responseType: 'json',
     headers: ReactOnRails.authenticityHeaders(),
     ...options,

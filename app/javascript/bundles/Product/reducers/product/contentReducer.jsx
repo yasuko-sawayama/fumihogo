@@ -8,7 +8,7 @@ const contentReducer = (state = '', action) => {
   case PAGE_CONTENT_FETCH_SUCCESS:
     return action.payload.product.page.content;
   case PAGE_CONTENT_FETCH_ERROR:
-    return 'ページがありません。';
+    return 'ページがありません';
   default:
     return state;
   }

@@ -17,18 +17,32 @@ class Page extends React.Component {
     actions: PropTypes.object.isRequired,
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = { contentPage: this.setPage(this.props.match.params.pageId, this.props.product.pages) }
+  }
+
   componentWillMount() {
-    console.log(this.props);
+    this.props.actions.changePage(this.props.match.params.pageId);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.props.actions.changePage(nextProps.match.params.pageId);
+    if (this.props.match.params.pageId &&
+        this.props.match.params.pageId !== nextProps.match.params.pageId) {
+      this.setState({contentPage: this.setPage(nextProps.match.params.pageId, nextProps.product.pages)});
+      this.props.actions.changePage(nextProps.match.params.pageId);
+    }
+  }
+
+  setPage(pageId, pages) {
+    // Paramがない場合は常に1ページ目
+    return pages.find((page) => page.id === Number(pageId)) || pages[0];
   }
 
   render() {
-    const pageTitle = this.props.product.pages.find(page => (page.id === 1)).title;
     const productUrl = `/${this.props.product.id}/`;
-    
+
     return (
       <section id="page" className="page">
         <Title title={this.props.product.title} />
@@ -42,8 +56,9 @@ class Page extends React.Component {
         <Content
           productId={this.props.product.id}
           pageId={this.props.product.currentPage}
-          pageTitle={pageTitle}
+          pageTitle={this.props.product.pageInfo.pageTitle}
           content={this.props.product.content}
+          url={this.state.contentPage.api}
           fetchPageContent={this.props.actions.fetchPageContent}
           />
         <Pager {...this.props.product.pageInfo} url={productUrl} />
