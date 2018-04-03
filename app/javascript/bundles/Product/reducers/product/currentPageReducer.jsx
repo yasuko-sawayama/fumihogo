@@ -1,5 +1,9 @@
-const currentPageReducer = (state = 0, action) => {
+import { PAGE_CHANGED } from '../../constants/productConstants';
+
+const currentPageReducer = (state = 1, action) => {
   switch (action.type) {
+  case PAGE_CHANGED:
+    return Number(action.payload.pageId) || state;
   default:
     return state;
   }

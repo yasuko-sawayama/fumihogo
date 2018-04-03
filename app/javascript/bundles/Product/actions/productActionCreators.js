@@ -2,7 +2,8 @@
 
 import {
   PAGE_CONTENT_FETCH_SUCCESS,
-  PAGE_CONTENT_FETCH_REQUESTED
+  PAGE_CONTENT_FETCH_REQUESTED,
+  PAGE_CHANGED
 } from '../constants/productConstants';
 
 export const fetchPageContent = (id, pageId) => ({
@@ -21,5 +22,12 @@ export const fetchPageContentSuccess = response => ({
         content: response.data.page.content,
       },
     },
+  },
+});
+
+export const changePage = pageId => ({
+  type: PAGE_CHANGED,
+  payload: {
+    pageId,
   },
 });

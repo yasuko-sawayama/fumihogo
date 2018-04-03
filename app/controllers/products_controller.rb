@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
                                pageCount: 3,
                                privacy_level: 'public'
                              },
-                             currentPage: 0,
+                             currentPage: 1,
                              pageInfo: {
                                previousPage: nil,
                                nextPage: 2,

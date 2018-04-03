@@ -2,7 +2,6 @@
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router';
 
 import Product from '../components/Product';
 import * as productActions from '../actions/productActionCreators';
@@ -20,4 +19,4 @@ function mapDispatchToProps(dispatch) {
 // Don't forget to actually use connect!
 // Note that we don't export HelloWorld, but the redux "connected" version of it.
 // See https://github.com/reactjs/react-redux/blob/master/docs/api.md#examples
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Product));
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

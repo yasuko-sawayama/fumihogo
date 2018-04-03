@@ -4,3 +4,4 @@ export const PAGE_CONTENT_FETCH_REQUESTED = 'product/page/content/fetch_requeste
 export const PAGE_CONTENT_FETCH_SUCCESS = 'product/page/content/fetch_success';
 export const PAGE_CONTENT_FETCH_ERROR = 'product/page/content/fetch_error';
 
+export const PAGE_CHANGED = 'product/page/changed';

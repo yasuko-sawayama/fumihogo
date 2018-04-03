@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import PageLink from './PageLink';
 
 const TableOfContents = ({ pages, url }) => {
-  const pageLinks = pages.map((page) => (
-    <PageLink  key={page.id} {...page} url={url} />
+  const pageLinks = pages.map(page => (
+    <PageLink key={page.id} {...page} url={url} />
   ));
   
   return (
@@ -20,6 +20,7 @@ const TableOfContents = ({ pages, url }) => {
 
 TableOfContents.propTypes = {
   pages: PropTypes.array.isRequired,
+  url: PropTypes.string.isRequired,
 }
 
 export default TableOfContents;

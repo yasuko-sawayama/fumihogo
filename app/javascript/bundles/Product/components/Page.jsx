@@ -10,32 +10,43 @@ import { Route } from 'react-router-dom';
 
 class Page extends React.Component {
   static propTypes = {
-    id: PropTypes.number.isRequired,
+    product: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      currentPage: PropTypes.number.isRequired,
+    }),
+    action: PropTypes.object.isRequired,
   }
 
   componentWillMount() {
-    console.log("called");
+    console.log(this.props);
+  }
+
+  componentWillReceiveProps() {
+    this.props.actions.changePage(this.props.match.params.pageId);
   }
 
   render() {
-    const pageTitle = this.props.pages.find(page => (page.id === 1)).title;
-
+    const pageTitle = this.props.product.pages.find(page => (page.id === 1)).title;
+    const productUrl = `/${this.props.product.id}/`;
+    
     return (
       <section id="page" className="page">
-        <Title title={this.props.title} />
+        <Title title={this.props.product.title} />
         <Description
-          description={this.props.description}
-          author={this.props.author}
-          about={this.props.about}
+          description={this.props.product.description}
+          author={this.props.product.author}
+          about={this.props.product.about}
           />
-        { this.props.about.pageCount > 1 && <TableOfContents pages={this.props.pages} url={this.props.url} /> }
+        { this.props.product.about.pageCount > 1 && <TableOfContents pages={this.props.product.pages} url={productUrl} /> }
         <hr />
         <Content
-          content={this.props.content}
+          productId={this.props.product.id}
+          pageId={this.props.product.currentPage}
           pageTitle={pageTitle}
+          content={this.props.product.content}
           fetchPageContent={this.props.actions.fetchPageContent}
           />
-        <Pager {...this.props.pageInfo} url={this.props.url} />
+        <Pager {...this.props.product.pageInfo} url={productUrl} />
       </section>
     );
   }
