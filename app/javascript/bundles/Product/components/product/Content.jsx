@@ -20,11 +20,13 @@ class Content extends React.Component {
     this.state={};
     this.fetchContent = this.fetchContent.bind(this);
   }
-    
+
+  componentWillMount() {
+    this.fetchContent(this.props.url);
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.pageId !== nextProps.pageId) {
-      console.log("fetched");
-      console.log(nextProps);
       this.fetchContent(nextProps.url);
     }
   }
