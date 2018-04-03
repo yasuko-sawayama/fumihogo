@@ -21,6 +21,8 @@ export const fetchPageContentSuccess = response => ({
       page: {
         content: response.data.page.content,
         pageTitle: response.data.page.title,
+        previousPage: response.data.page.previousPage,
+        nextPage: response.data.page.nextPage,
       },
     },
   },

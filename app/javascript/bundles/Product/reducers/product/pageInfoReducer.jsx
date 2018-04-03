@@ -5,13 +5,18 @@ import {
 
 const defaultState = {
   pageTitle: '',
+  nextPage: null,
+  previousPage: null,
 };
 
 const pageInfoReducer = (state=defaultState, action) => {
   switch (action.type) {
   case PAGE_CONTENT_FETCH_SUCCESS:
+    console.log(action.payload)
     return {
       pageTitle: action.payload.product.page.pageTitle || '',
+      nextPage: action.payload.product.page.nextPage,
+      previousPage: action.payload.product.page.previousPage,
     };
 
   case PAGE_CONTENT_FETCH_ERROR:

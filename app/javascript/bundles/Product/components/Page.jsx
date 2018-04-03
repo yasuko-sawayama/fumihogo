@@ -62,7 +62,7 @@ class Page extends React.Component {
           url={this.state.contentPage.api}
           fetchPageContent={this.props.actions.fetchPageContent}
           />
-        <Pager {...this.props.product.pageInfo} url={productUrl} />
+        <Pager {...this.props.product.pageInfo} url={`/${this.props.product.id}/`} />
       </section>
     );
   }
