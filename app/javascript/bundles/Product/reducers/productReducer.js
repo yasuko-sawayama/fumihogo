@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux';
-import { HELLO_WORLD_NAME_UPDATE } from '../constants/helloWorldConstants';
+
+import {
+  PRODUCT_FETCH_SUCCESS,
+  PRODUCT_FETCH_ERROR
+} from '../constants/productConstants';
 
 import aboutReducer from './product/aboutReducer';
 import authorReducer from './product/authorReducer';
@@ -8,8 +12,14 @@ import pagesReducer from './product/pagesReducer';
 import currentPageReducer from './product/currentPageReducer';
 import pageInfoReducer from './product/pageInfoReducer';
 
-const id = (state='', action) => {
+const id = (state = '', action) => {
   switch (action.type) {
+  case PRODUCT_FETCH_SUCCESS:
+    return action.payload.product.id;
+
+  case PRODUCT_FETCH_ERROR:
+    return state;
+
   default:
     return state;
   }
@@ -17,8 +27,10 @@ const id = (state='', action) => {
 
 const title = (state = '', action) => {
   switch (action.type) {
-  case HELLO_WORLD_NAME_UPDATE:
-    return action.text;
+  case PRODUCT_FETCH_SUCCESS:
+    return action.payload.product.title;
+  case PRODUCT_FETCH_ERROR:
+    return '';
   default:
     return state;
   }
@@ -26,6 +38,10 @@ const title = (state = '', action) => {
 
 const description = (state={}, action) => {
   switch (action.type) {
+  case PRODUCT_FETCH_SUCCESS:
+    return action.payload.product.description;
+  case PRODUCT_FETCH_ERROR:
+    return 'error';
   default:
     return state;
   }

@@ -16,10 +16,18 @@ class Product extends React.Component {
   /**
    * @param props - Comes from your rails view.
    */
-  constructor(props) {
-    super(props);
-    // How to set initial state in ES6 class syntax
-    // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
+  // constructor(props) {
+  //   super(props);
+  // }
+
+  componentWillMount() {
+    this.props.actions.fetchProduct(this.props.product.id);
+  }
+
+  componentWillReceiveProps(nextProp) {
+    if(this.props.product.id !== nextProp.product.id) {
+      this.props.actions.fetchProduct(nextProp.product.id);
+    }
   }
 
   render() {

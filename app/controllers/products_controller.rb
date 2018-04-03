@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
                                created_at: '2017/12/21',
                                charactor_count: 200,
                                pageCount: 3,
-                               privacy_level: 'public'
+                               privacyLevel: 'public'
                              },
                              currentPage: 1,
                              pageInfo: {

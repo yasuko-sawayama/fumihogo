@@ -10,7 +10,7 @@ const Description = ({
   about: {
     created_at,
     charactor_count,
-    privacy_level,
+    privacyLevel,
     pageCount,
   },
   author: { nickname, avator }
@@ -37,7 +37,7 @@ const Description = ({
           <dt>ページ数:</dt>
           <dd>{pageCount}</dd>
           <dt>公開範囲:</dt>
-          <dd>{privacy_level}</dd>
+          <dd>{privacyLevel}</dd>
         </dl>
       </div>
     </div>
