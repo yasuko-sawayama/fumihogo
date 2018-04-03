@@ -6,7 +6,7 @@ import {
 } from '../constants/productConstants';
 
 export const fetchPageContent = ({ id, pageId }) => ({
-  type: PAGE_CONTENT_FETCH_SUCCESS,
+  type: PAGE_CONTENT_FETCH_REQUESTED,
   payload: {
     contentId: id,
     pageId,

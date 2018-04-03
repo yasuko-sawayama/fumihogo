@@ -24,9 +24,13 @@
 FactoryBot.define do
   factory :product do
     user
-    title "MyString"
-    description "MyString"
+    title 'MyString'
+    description 'MyString'
     privacy_level :open
     # character_count 1
+
+    after :build do |product|
+      product.pages << build(:page, product: nil)
+    end
   end
 end

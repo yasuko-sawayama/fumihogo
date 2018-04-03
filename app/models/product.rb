@@ -23,8 +23,10 @@
 
 class Product < ApplicationRecord
   belongs_to :user
+  has_many :pages
 
   validates :title, presence: true
+  validates :pages, presence: true
 
   enum privacy_level: %w(closed open login list)
 
