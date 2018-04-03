@@ -57,6 +57,7 @@ class Page extends React.Component {
           productId={this.props.product.id}
           pageId={this.props.product.currentPage}
           pageTitle={this.props.product.pageInfo.pageTitle}
+          totalPage={this.props.product.about.pageCount}
           content={this.props.product.content}
           url={this.state.contentPage.api}
           fetchPageContent={this.props.actions.fetchPageContent}

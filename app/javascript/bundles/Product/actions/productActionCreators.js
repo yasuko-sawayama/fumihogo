@@ -20,6 +20,7 @@ export const fetchPageContentSuccess = response => ({
     product: {
       page: {
         content: response.data.page.content,
+        pageTitle: response.data.page.title,
       },
     },
   },

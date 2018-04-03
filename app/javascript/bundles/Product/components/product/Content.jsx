@@ -40,8 +40,10 @@ class Content extends React.Component {
       <div className="row">
         <div className="col-xs-12">
           { this.props.pageTitle && <h3>{this.props.pageTitle}</h3> }
-          <Article id="content" dangerouslySetInnerHTML={{__html: this.props.content}} />
+          <p className="pull-right text-muted">{this.props.pageId}/{this.props.totalPage}ページ</p>
         </div>
+
+        <Article id="content" className="col-xs-12" dangerouslySetInnerHTML={{__html: this.props.content}} />
       </div>
     );
   }

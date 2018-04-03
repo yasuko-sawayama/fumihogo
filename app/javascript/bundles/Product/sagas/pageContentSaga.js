@@ -8,8 +8,6 @@ import { PAGE_CONTENT_FETCH_REQUESTED } from '../constants/productConstants';
 
 export function* fetchPageContent({ payload }) {
   try {
-    // const url = `/products/${action.payload.productId}/pages/${action.payload.pageId}/`;
-    console.log(payload);
     const url = payload.url;
     const response = yield call(fetchEntities, url);
     yield put(fetchPageContentSuccess(response));
