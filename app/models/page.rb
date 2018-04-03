@@ -28,4 +28,13 @@ class Page < ApplicationRecord
   acts_as_list scope: :product
 
   validates :content, presence: true, length: { minimum: 10 }
+  validates :title, length: { maximum: 45, allow_blank: true }
+
+  def next
+    product.pages.where("position > ?", position).first
+  end
+
+  def previous
+    product.pages.where("position < ?", position).last
+  end
 end

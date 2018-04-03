@@ -35,4 +35,15 @@ RSpec.describe Page, type: :model do
   end
 
   it { expect { create(:page) }.not_to raise_error }
+
+  describe "previous next" do
+    let(:product) { create(:product) }
+
+    before do
+      create_list(:page, 12, product: product)
+    end 
+
+    it { expect(product.pages.find_by(position: 3).previous.position).to eq(2) }
+    it { expect(product.pages.find_by(position: 5).next.position).to eq(6)}
+  end
 end
