@@ -10,8 +10,6 @@ const defaultState = {
 };
 
 const pageInfoReducer = (state=defaultState, action) => {
-  console.log(action.type)
-  console.log(action.payload)
   switch (action.type) {
   case PAGE_CONTENT_FETCH_SUCCESS:
     return {

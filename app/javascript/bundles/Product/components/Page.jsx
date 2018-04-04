@@ -6,39 +6,45 @@ import TableOfContents from './product/TableOfContents';
 import Content from './product/Content';
 import Description from './product/Description';
 import Pager from './product/Pager';
-import { Route } from 'react-router-dom';
 
 class Page extends React.Component {
-  static propTypes = {
+  static PropTypes = {
     product: PropTypes.shape({
       id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      author: PropTypes.object.isRequired,
+      about: PropTypes.string,
+      pageInfo: PropTypes.object.isRequired,
       currentPage: PropTypes.number.isRequired,
+      content: PropTypes.string.isRequired,
     }),
-    actions: PropTypes.object.isRequired,
   }
-
+  
   constructor(props) {
     super(props);
-
-    this.state = { contentPage: this.setPage(this.props.match.params.pageId, this.props.product.pages) }
   }
 
   componentWillMount() {
     this.props.actions.changePage(this.props.match.params.pageId);
+    this.fetchContent(this.props.match.params.pageId, this.props.product.pages);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.pageId &&
         this.props.match.params.pageId !== nextProps.match.params.pageId) {
-      this.setState({contentPage: this.setPage(nextProps.match.params.pageId, nextProps.product.pages)});
-      this.props.actions.changePage(nextProps.match.params.pageId);
+      this.fetchContent(nextProps.match.params.pageId, nextProps.product.pages);
+      this.props.actions.changePage(nextProps.match.params.pageId)
     }
   }
-
-  setPage(pageId, pages) {
+  
+  targetPage(pageId, pages) {
     // Paramがない場合は常に1ページ目
-    return pages.find((page) => page.id === pageId) || pages[0];
-  }
+    return pages.find((page) => page.id === Number(pageId)) || pages[0];
+  };
+
+  fetchContent(pageId, pages) {
+    this.props.actions.fetchPageContent(this.targetPage(pageId, pages).api);
+  };
 
   render() {
     const productUrl = `/${this.props.product.id}/`;
@@ -54,13 +60,10 @@ class Page extends React.Component {
         { this.props.product.about.pageCount > 1 && <TableOfContents pages={this.props.product.pages} url={productUrl} /> }
         <hr />
         <Content
-          productId={this.props.product.id}
           pageId={this.props.product.currentPage}
           pageTitle={this.props.product.pageInfo.pageTitle}
           totalPage={this.props.product.about.pageCount}
           content={this.props.product.content}
-          url={this.state.contentPage.api}
-          fetchPageContent={this.props.actions.fetchPageContent}
           />
         <Pager {...this.props.product.pageInfo} url={`/${this.props.product.id}/`} />
       </section>

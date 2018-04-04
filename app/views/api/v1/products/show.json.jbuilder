@@ -12,4 +12,6 @@ json.product do |product|
     about.pageCount @product.page_count
     about.privacyLevel @product.privacy_level
   end
+
+  json.pages @product.pages, partial: 'page', as: :page
 end

@@ -29,13 +29,13 @@ class ProductsController < ApplicationController
                              },
                              pages: [{
                                        title: '最初のぺージ1',
-                                       order: 1,
+                                       position: 1,
                                        id: 1,
                                        api: 'http://localhost:3000/api/v1/products/1/pages/1'
                                      },
                                     {
                                        title: 'ページ2',
-                                       order: 2,
+                                       position: 2,
                                        id: 2,
                                        api: 'http://localhost:3000/api/v1/products/1/pages/2'
                                      }],

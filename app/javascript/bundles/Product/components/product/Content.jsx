@@ -8,45 +8,23 @@ font-size: 16px;
 letter-spacing: 1px;
 `;
 
-class Content extends React.Component {
-  static propTypes = {
-    content: PropTypes.string.isRequired,
-    pageTitle: PropTypes.string,
-  };
+const Content = ({ pageTitle, content, pageId, totalPage }) => (
+  <div className="row">
+    <div className="col-xs-12">
+      { pageTitle && <h3>{pageTitle}</h3> }
+      <p className="pull-right text-muted">{pageId}/{totalPage}ページ</p>
+    </div>
 
-  constructor(props) {
-    super(props);
+    <Article id="content" className="col-xs-12"
+             dangerouslySetInnerHTML={{ __html: content }} />
+  </div>
+);
 
-    this.state={};
-    this.fetchContent = this.fetchContent.bind(this);
-  }
-
-  componentWillMount() {
-    this.fetchContent(this.props.url);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.pageId !== nextProps.pageId) {
-      this.fetchContent(nextProps.url);
-    }
-  }
-
-  fetchContent(url) {
-    this.props.fetchPageContent(url);
-  }
-
-  render() {
-    return (
-      <div className="row">
-        <div className="col-xs-12">
-          { this.props.pageTitle && <h3>{this.props.pageTitle}</h3> }
-          <p className="pull-right text-muted">{this.props.pageId}/{this.props.totalPage}ページ</p>
-        </div>
-
-        <Article id="content" className="col-xs-12" dangerouslySetInnerHTML={{__html: this.props.content}} />
-      </div>
-    );
-  }
-}
+Content.propTypes = ({
+  pageTitle: PropTypes.string.isRequired,
+  pageId: PropTypes.number.isRequired,
+  totalPage: PropTypes.number.isRequired,
+  content: PropTypes.string.isRequired,
+});
 
 export default Content;

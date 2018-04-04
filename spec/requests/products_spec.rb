@@ -28,6 +28,12 @@ RSpec.describe "Products", type: :request do
         get api_v1_product_path(product), headers: headers
         expect(json['product']['title']).to eq('テストのタイトル')
       end
+
+      it 'ページリストが取得できること' do
+        create_list(:page, 5, product: product)
+        get api_v1_product_path(product), headers: headers
+        expect(json['product']['pages'].length).to eq(6)
+      end
     end
 
     context '権限がない場合' do

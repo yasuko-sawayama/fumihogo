@@ -27,5 +27,6 @@ FactoryBot.define do
     product
     title 'テストタイトル'
     content Faker::Lorem.sentence
+    position 0
   end
 end

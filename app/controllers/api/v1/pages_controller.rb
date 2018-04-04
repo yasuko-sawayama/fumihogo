@@ -3,6 +3,7 @@ class Api::V1::PagesController < Api::V1::ApiController
 
   def show
     authorize @page = @product.pages.find(params[:id])
+    p @page
   end
 
   private
