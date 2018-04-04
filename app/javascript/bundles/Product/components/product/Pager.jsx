@@ -6,7 +6,7 @@ import { join } from '../../../shared/utils/join';
 const Pager = ({ previousPage, nextPage, url }) => {
   const Previous = ({ previousPage, url }) => (
     <li className="previous">
-      <Link to={join(url, `/pages/${previousPage}`)}>
+      <Link to={join(url, `/pages/${previousPage.id}`)}>
         <span aria-hidden="true" className="fa fa-backward"></span>
         　
         前のページ
@@ -16,7 +16,7 @@ const Pager = ({ previousPage, nextPage, url }) => {
 
   const Next = ({ nextPage, url }) => (
     <li className="next">
-      <Link to={join(url, `/pages/${nextPage}`)}>
+      <Link to={join(url, `/pages/${nextPage.id}`)}>
         次のページ
         　
         <span aria-hidden="true" className="fa fa-forward"></span>
@@ -33,8 +33,8 @@ const Pager = ({ previousPage, nextPage, url }) => {
 };
 
 Pager.propTypes = {
-  nextPage: PropTypes.number,
-  previousPage: PropTypes.number,
+  nextPage: PropTypes.object,
+  previousPage: PropTypes.object,
   url: PropTypes.string.isRequired,
 }
 

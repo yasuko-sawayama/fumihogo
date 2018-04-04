@@ -37,7 +37,7 @@ class Page extends React.Component {
 
   setPage(pageId, pages) {
     // Paramがない場合は常に1ページ目
-    return pages.find((page) => page.id === Number(pageId)) || pages[0];
+    return pages.find((page) => page.id === pageId) || pages[0];
   }
 
   render() {
