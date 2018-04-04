@@ -18,9 +18,11 @@ const pageInfoReducer = (state=defaultState, action) => {
       pageTitle: action.payload.product.page.pageTitle || '',
       nextPage: action.payload.product.page.nextPage ? {
         id: action.payload.product.page.nextPage.id,
+        title: action.payload.product.page.nextPage.title,
       } :  null,
       previousPage: action.payload.product.page.previousPage ? {
         id: action.payload.product.page.previousPage.id,
+        title: action.payload.product.page.previousPage.title,
       } : null,
     };
 
