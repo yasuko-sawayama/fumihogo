@@ -3,8 +3,16 @@ import PropTypes from 'prop-types';
 import { Panel } from 'react-bootstrap';
 import onClickOutside from 'react-onclickoutside';
 import FA from 'react-fontawesome';
+import styled from 'styled-components';
 
 import PageLink from './PageLink';
+
+const StyledPanel = styled(Panel)`
+margin-top: 20px;
+.panel-title {
+  cursor: pointer;
+}
+`;
 
 const tableOfContents = ({ pages, url }) => {
   const pageLinks = pages.map(page => (
@@ -20,6 +28,14 @@ const tableOfContents = ({ pages, url }) => {
   );
 };
 
+tableOfContents.propTypes = {
+  pages: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  url: PropTypes.string.isRequired,
+}
 
 class TableOfContents extends React.Component {
   constructor(props) {
@@ -49,7 +65,7 @@ class TableOfContents extends React.Component {
   render() {
     return(
       <div id="pagePanel">
-        <Panel id="collapsible-panel-example-2" expanded={this.state.open} >
+        <StyledPanel id="collapsible-panel-example-2" expanded={this.state.open} >
           <Panel.Heading>
             <Panel.Title onClick={this.togglePanel} >
               もくじ
@@ -62,7 +78,7 @@ class TableOfContents extends React.Component {
               {tableOfContents(this.props)}
             </Panel.Body>
           </Panel.Collapse>
-        </Panel>
+        </StyledPanel>
 
       </div>
     )
