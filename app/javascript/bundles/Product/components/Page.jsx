@@ -8,7 +8,7 @@ import Description from './product/Description';
 import Pager from './product/Pager';
 
 class Page extends React.Component {
-  static PropTypes = {
+  static propTypes = {
     product: PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
@@ -20,9 +20,9 @@ class Page extends React.Component {
     }),
   }
   
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentWillMount() {
     this.props.actions.changePage(this.props.match.params.pageId);

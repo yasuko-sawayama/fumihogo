@@ -4,18 +4,12 @@ import { NavLink, Route } from 'react-router-dom';
 
 import Page from './Page';
 
-/**
- * @param props - Comes from your rails view.
- */
-
 class Product extends React.Component {
   static propTypes = {
     product: PropTypes.object.isRequired,
   };
 
-  /**
-   * @param props - Comes from your rails view.
-   */
+
   // constructor(props) {
   //   super(props);
   // }
