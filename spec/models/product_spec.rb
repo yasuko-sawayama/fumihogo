@@ -32,4 +32,11 @@ RSpec.describe Product, type: :model do
   describe 'validation' do
     it { should validate_presence_of(:pages) }
   end
+
+  describe 'scope' do
+    it 'openスコープが取得できること' do
+      product = create(:product, privacy_level: :public_open)
+      expect(Product.with_privacy_level(:public_open)).to include(product)
+    end
+  end
 end

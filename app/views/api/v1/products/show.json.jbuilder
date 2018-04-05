@@ -10,8 +10,8 @@ json.product do |product|
     about.created_at @product.created_at
     about.charactor_count @product.charactor_count
     about.pageCount @product.page_count
-    about.privacyLevel @product.privacy_level
+    about.privacyLevel @product.privacy_level_text
   end
 
-  json.pages @product.pages, partial: 'page', as: :page
+  json.pages @product.pages, partial: 'api/v1/products/page', as: :page
 end

@@ -11,7 +11,7 @@ RSpec.describe "Products", type: :request do
       let(:product) do
         create(:product,
                title: 'テストのタイトル',
-               privacy_level: Product.privacy_levels[:open])
+               privacy_level: :public_open)
       end
 
       it "レスポンスが返ること" do
@@ -39,7 +39,7 @@ RSpec.describe "Products", type: :request do
     context '権限がない場合' do
       let(:product) do
         create(:product,
-               privacy_level: Product.privacy_levels[:closed])
+               privacy_level: :closed)
       end
 
       it 'リダイレクトされること' do

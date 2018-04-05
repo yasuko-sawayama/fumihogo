@@ -44,6 +44,9 @@ gem "font-awesome-rails"
 # static pages in rails
 gem 'high_voltage', '~> 3.0.0'
 
+# enum i18n
+gem 'enumerize'
+
 # Markdown
 gem 'redcarpet', '~> 2.3.0'
 
