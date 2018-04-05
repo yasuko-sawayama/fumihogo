@@ -36,7 +36,7 @@ const title = (state = '', action) => {
   }
 };
 
-const description = (state={}, action) => {
+const description = (state = {}, action) => {
   switch (action.type) {
   case PRODUCT_FETCH_SUCCESS:
     return action.payload.product.description;

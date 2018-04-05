@@ -5319,6 +5319,12 @@ react-bootstrap@^0.32.1:
     uncontrollable "^4.1.0"
     warning "^3.0.0"
 
+react-delay-render@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-delay-render/-/react-delay-render-0.1.2.tgz#f771003044a3772e8ff11084577633e34f3e9a6f"
+  dependencies:
+    prop-types "^15.6.0"
+
 react-dom@^16.2.0:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.2.0.tgz#69003178601c0ca19b709b33a83369fe6124c044"
@@ -5337,6 +5343,10 @@ react-fontawesome@^1.6.1:
 react-is@^16.3.0:
   version "16.3.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.0.tgz#f0e8bfd8c09b480dd610b8639d9ed65c13601224"
+
+react-loading@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-loading/-/react-loading-1.0.4.tgz#9bd8c78313f61796551f47e6530d8eae1b593e09"
 
 react-on-rails@^10.0.2:
   version "10.0.2"
@@ -5371,6 +5381,12 @@ react-reconciler@^0.7.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
+
+react-redux-loading-bar@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/react-redux-loading-bar/-/react-redux-loading-bar-3.1.2.tgz#7d65c7558db22115b2999e47d9f2aae962ae2c33"
+  dependencies:
+    prop-types "^15.5.6"
 
 react-redux@^5.0.6:
   version "5.0.6"
