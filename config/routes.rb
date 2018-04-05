@@ -6,7 +6,7 @@ Rails.application.routes.draw do
                registrations: 'users/registrations'
              }
 
-  resources :products, only: [:index, :show] do
+  resources :products, only: [:index, :show, :new] do
     # for react-router
     get ':any_action', action: :show, on: :member
     resources :pages, controller: 'products'

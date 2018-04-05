@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingBar from 'react-redux-loading-bar';
-import SpinerContainer from '../containers/SpinerContainer';
+import SpinerContainer from '../../shared/containers/SpinerContainer';
 import {reset} from 'redux-form';
 
 import NewForm from './newForm/NewForm';
-import Title from './product/Title';
+import Title from '../../Product/components/product/Title';
 
 class NewPage extends React.Component {
   static propTypes = {

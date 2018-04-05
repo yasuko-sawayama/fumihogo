@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { NavLink, Route } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar';
-import SpinerContainer from '../containers/SpinerContainer';
+import SpinerContainer from '../../shared/containers/SpinerContainer';
 
 import ReactLoading from 'react-loading';
 
