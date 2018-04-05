@@ -1,36 +1,40 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { NavLink, Route } from 'react-router-dom';
+
+import Page from './Page';
 
 /**
  * @param props - Comes from your rails view.
  */
 
 class Product extends React.Component {
-
   static propTypes = {
-    name: PropTypes.string.isRequired,
+    product: PropTypes.object.isRequired,
   };
 
   /**
    * @param props - Comes from your rails view.
    */
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
+  // }
 
-    // How to set initial state in ES6 class syntax
-    // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
-    this.state = { name: this.props.name };
+  componentWillMount() {
+    this.props.actions.fetchProduct(this.props.product.id);
+  }
+
+  componentWillReceiveProps(nextProp) {
+    if(this.props.product.id !== nextProp.product.id) {
+      this.props.actions.fetchProduct(nextProp.product.id);
+    }
   }
 
   render() {
     return (
-      <div>
-        <h3>
-          Hello, Product
-        </h3>
-        <hr />
-        some text { this.state.name }
-      </div>
+      <section id="product">
+        <Page {...this.props} />
+      </section>
     );
   }
 };

@@ -8,7 +8,7 @@
 #  description   :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  privacy_level :integer          default(0)
+#  privacy_level :integer          default("closed")
 #
 # Indexes
 #
@@ -23,11 +23,22 @@
 
 class Product < ApplicationRecord
   belongs_to :user
+  has_many :pages
 
   validates :title, presence: true
+  validates :pages, presence: true
 
-  enum privacy_level: %w(closed open login list)
+  enum privacy_level: %w(closed open_public login list)
 
   scope :owned, ->(user) { where(user_id: user&.id) }
-  scope :restricted_login, ->(user) { user ? login.or(open) : open }
+  scope :restricted_login, ->(user) { user ? login.or(open_public) : open_public }
+
+  # dummy
+  def charactor_count
+    900
+  end
+
+  def page_count
+    pages.count
+  end
 end
