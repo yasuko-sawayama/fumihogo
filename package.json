@@ -32,6 +32,7 @@
     "react_ujs": "^2.4.3",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
+    "redux-form": "^7.3.0",
     "redux-saga": "^0.16.0",
     "styled-components": "^3.2.5"
   },

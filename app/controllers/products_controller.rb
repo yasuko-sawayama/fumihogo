@@ -9,7 +9,10 @@ class ProductsController < ApplicationController
 
   def show
     skip_authorization
-    authorize @product = Product.find(params[:product_id] || params[:id]) if params[:id]
+
+    authorize @product =
+      Product.find(params[:product_id] || params[:id]) if params[:id] &&
+                                                          params[:id] != "new"
   end
 
   def new
