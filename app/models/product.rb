@@ -28,10 +28,10 @@ class Product < ApplicationRecord
   validates :title, presence: true
   validates :pages, presence: true
 
-  enum privacy_level: %w(closed open_public login list)
+  enum privacy_level: %w(closed public_open login list)
 
   scope :owned, ->(user) { where(user_id: user&.id) }
-  scope :restricted_login, ->(user) { user ? login.or(open_public) : open_public }
+  scope :restricted_login, ->(user) { user ? login.or(public_open) : public_open }
 
   # dummy
   def charactor_count

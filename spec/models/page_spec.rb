@@ -36,7 +36,7 @@ RSpec.describe Page, type: :model do
 
   it { expect { create(:page) }.not_to raise_error }
 
-  describe "previous next" do
+  describe 'previous next' do
     let(:product) { create(:product) }
 
     before do
@@ -44,6 +44,18 @@ RSpec.describe Page, type: :model do
     end 
 
     it { expect(product.pages.find_by(position: 3).previous.position).to eq(2) }
-    it { expect(product.pages.find_by(position: 5).next.position).to eq(6)}
+    it { expect(product.pages.find_by(position: 5).next.position).to eq(6) }
+  end
+
+  describe 'frendry_id' do
+    let(:product) { create(:product) }
+    let(:page) { build(:page, product: product) }
+
+    it 'positionをIDの代わりに使用できること' do
+      create_list(:page, 6, product: product) # Factoryで1ページ生成している
+      page.save!
+      page.move_to_bottom
+      expect(product.pages.friendly.find(8)).to eq(page)
+    end
   end
 end

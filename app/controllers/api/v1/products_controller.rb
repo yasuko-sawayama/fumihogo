@@ -1,3 +1,4 @@
+# API 作品内容に関するコントローラ
 class Api::V1::ProductsController < Api::V1::ApiController
   def index
     render nothing: true, response: 200
