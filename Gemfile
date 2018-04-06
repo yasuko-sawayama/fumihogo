@@ -68,6 +68,8 @@ gem "pundit"
 gem 'config'
 gem 'figaro'
 
+# Markdown
+gem 'redcarpet', '~> 2.3.0' 
 
 gem 'acts_as_list'
 gem 'friendly_id', '~> 5.1.0'
