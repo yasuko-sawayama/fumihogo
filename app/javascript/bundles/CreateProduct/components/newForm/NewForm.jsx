@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Field, reduxForm } from 'redux-form';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
+import FumihogoEditor from '../../../shared/components/forms/FumihogoEditor';
+
 class FormField extends React.Component {
   render() {
     // input と meta は redux-form が渡してくる props。
@@ -93,6 +95,7 @@ let NewForm = ({
              type="text"
              componentClass="textarea"
              label="本文" />
+      <FumihogoEditor />
       <hr />
 
       <div>

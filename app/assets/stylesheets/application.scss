@@ -10,7 +10,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
+@import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg';
 // Bootstrap body padding for fixed navbar
 body { padding-top: 84px; }
 
@@ -18,3 +18,4 @@ body { padding-top: 84px; }
 @import "headers";
 @import "navbar";
 @import "product";
+@import "productForm";
