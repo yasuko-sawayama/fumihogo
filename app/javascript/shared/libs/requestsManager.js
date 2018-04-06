@@ -14,3 +14,12 @@ export const fetchEntities = (url, options = {}) => (
     ...options,
   })
 );
+
+export const postEntities = (url, data, options = {}) => (
+  axios({
+    method: 'POST',
+    url,
+    data,
+    ...options,
+  })
+);

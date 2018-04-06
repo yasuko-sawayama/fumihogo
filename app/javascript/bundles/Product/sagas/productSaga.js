@@ -6,7 +6,7 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { fetchEntities } from '../../../shared/libs/requestsManager';
 import { fetchProductSuccess, fetchProductError } from '../actions/productActionCreators';
 
-import { PRODUCT_FETCH_REQUESTED, PRODUCT_API_ENTRY_POINT } from '../constants/productConstants';
+import { PRODUCT_FETCH_REQUESTED, PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
 
 export function* fetchProductInfo({ payload, }) {
   try {
