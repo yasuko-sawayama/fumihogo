@@ -6,6 +6,8 @@ import { Field, reduxForm } from 'redux-form';
 import BootstrapField from './BootstrapField';
 import EditorField from '../../../shared/components/forms/EditorField';
 
+import validate from './validate';
+
 let NewForm = ({
   pristine,
   reset,
@@ -40,11 +42,10 @@ let NewForm = ({
       <hr />
               
       <h4>本文：1ページ</h4>
-      <div className="descripotion">
+      <div className="description">
         2ページ目以降は小説投稿後に追加できます
       </div>
 
-      <hr />
 
       <Field name="pageTitle"
              component={ BootstrapField }
@@ -61,7 +62,7 @@ let NewForm = ({
         label="本文"
         />
 
-      <div>
+      <div className="buttonArea">
         <button className="btn btn-primary"
                 type="submit"
                 disabled={submitting} >
@@ -76,24 +77,6 @@ let NewForm = ({
     </form>
   );
 }
-
-const validate = values => {
-  const errors = {};
-  if (!values.title) {
-    errors.title = "タイトルを入力してください。";
-  }
-  if (!values.description) {
-    errors.description = "概要を入力して下さい。"
-  }
-  if (values.description && values.description.length > 200) {
-    errors.description = "概要は200文字以内で入力して下さい。"
-  }
-  if (values.editorText && !values.editorText.blocks[0].text) {
-    errors.editorText = "本文を入力して下さい。"
-  }
-
-  return errors;
-};
 
 export default NewForm = reduxForm({
   form: 'new_form',

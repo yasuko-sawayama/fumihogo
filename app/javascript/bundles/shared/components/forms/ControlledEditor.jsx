@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import draftToMarkdown from 'draftjs-to-markdown';
 
 class ControlledEditor extends React.Component {
   constructor(props) {
@@ -9,16 +10,16 @@ class ControlledEditor extends React.Component {
     this.state = {
       editorState: EditorState.createEmpty(),
     };
+    
+    const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
 
-    this.props.onChange(
-      convertToRaw(this.state.editorState.getCurrentContent())
-    );
+    this.props.onChange(draftToMarkdown(rawContent));
   }
 
   onEditorStateChange: Function = (editorState) => {
     const { onChange, value } = this.props;
 
-    const newValue = convertToRaw(editorState.getCurrentContent());
+    const newValue = draftToMarkdown(convertToRaw(editorState.getCurrentContent()));
 
     if (value !== newValue) {
       onChange(newValue);

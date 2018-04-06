@@ -6,6 +6,9 @@
     margin-bottom: 20px;
   }
 
+  .buttonArea {
+    margin-top: 20px;
+  }
 
   .textEditorForm {
     font-size: 16px;
@@ -19,8 +22,6 @@
     -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-
-    margin-bottom: 40px;
 
     .editorArea {
       padding: 0 10px;
