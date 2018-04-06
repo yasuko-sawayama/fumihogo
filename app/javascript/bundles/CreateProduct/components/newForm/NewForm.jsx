@@ -2,52 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Field, reduxForm } from 'redux-form';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-import FumihogoEditor from '../../../shared/components/forms/FumihogoEditor';
-
-class FormField extends React.Component {
-  render() {
-    // input と meta は redux-form が渡してくる props。
-    // type や label は Field に渡した props がそのまま渡ってくる。
-    // select や textarea に対応するために componentClass を受け取る。
-    // select の option に対応するために children も受け取る。
-    const {
-      input,
-      label,
-      type,
-      componentClass,
-      children,
-      placeholder,
-      meta: {
-        touched,
-        error,
-        warning,
-      },
-    } = this.props;
-
-    const validationState = touched && ( error && "error" ) || ( warning && "warning" ) || null;
-
-    return (
-      <FormGroup>
-        <ControlLabel>
-          {label}
-        </ControlLabel>
-
-        <FormControl
-          {...input}
-          type = {type || "text"}
-          componentClass = {componentClass || "input"}
-          placeholder={placeholder} >
-          {children}
-        </FormControl>
-
-        {touched && ( error || warning ) && <span className="text-danger">{ error || warning }</span>}
-      </FormGroup>
-    );
-  }
-}
-
+import BootstrapField from './BootstrapField';
+import EditorField from '../../../shared/components/forms/EditorField';
 
 let NewForm = ({
   pristine,
@@ -58,17 +15,18 @@ let NewForm = ({
   return (
     <form onSubmit={handleSubmit} >
       <Field name="title"
-             component={ FormField }
+             component={ BootstrapField }
              type="text"
              label="タイトル" />
+
       <Field name="description"
-             component={ FormField }
+             component={ BootstrapField }
              type="text"
              componentClass="textarea"
              label="概要（200文字以内）" />
  
       <Field name="privacy_level"
-             component={FormField}
+             component={BootstrapField}
              type="select"
              componentClass="select"
              label="公開範囲"
@@ -85,17 +43,23 @@ let NewForm = ({
         2ページ目以降は小説投稿後に追加できます。 <br />
         章タイトルはなくても作成できます。
       </div>
+
       <hr />
+
       <Field name="pageTitle"
-             component={ FormField }
+             component={ BootstrapField }
              type="text"
              label="タイトル" />
-      <Field name="content"
-             component={ FormField }
-             type="text"
-             componentClass="textarea"
-             label="本文" />
-      <FumihogoEditor />
+
+      <EditorField
+        key="field"
+        name="editorText"
+        id="inputEditorText"
+        disabled={false}
+        placeholder="Type here"
+        label="本文"
+        />
+
       <hr />
 
       <div>
@@ -125,8 +89,8 @@ const validate = values => {
   if (values.description && values.description.length > 200) {
     errors.description = "概要は200文字以内で入力して下さい。"
   }
-  if (!values.content) {
-    errors.description = "本文を入力して下さい。"
+  if (values.editorText && !values.editorText.blocks[0].text) {
+    errors.editorText = "本文を入力して下さい。"
   }
 
   return errors;

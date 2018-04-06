@@ -12,6 +12,7 @@
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 
     .editorArea {
-      padding: 10px;
+      padding: 0 10px;
+      height: 325px !important;
     }
 }
