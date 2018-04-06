@@ -15,6 +15,7 @@ class BootstrapField extends React.Component {
       componentClass,
       children,
       placeholder,
+      help,
       meta: {
         touched,
         error,
@@ -29,7 +30,8 @@ class BootstrapField extends React.Component {
         <ControlLabel>
           {label}
         </ControlLabel>
-
+        { help && <p className="help-block">{help}</p> }
+        
         <FormControl
           {...input}
           type = {type || "text"}
@@ -37,7 +39,7 @@ class BootstrapField extends React.Component {
           placeholder={placeholder} >
           {children}
         </FormControl>
-
+        
         {touched && ( error || warning ) && <span className="text-danger">{ error || warning }</span>}
       </FormGroup>
     );

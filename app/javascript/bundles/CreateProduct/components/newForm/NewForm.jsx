@@ -40,8 +40,7 @@ let NewForm = ({
               
       <h4>本文：1ページ</h4>
       <div className="descripotion">
-        2ページ目以降は小説投稿後に追加できます。 <br />
-        章タイトルはなくても作成できます。
+        2ページ目以降は小説投稿後に追加できます
       </div>
 
       <hr />
@@ -49,6 +48,7 @@ let NewForm = ({
       <Field name="pageTitle"
              component={ BootstrapField }
              type="text"
+             help="ページごとのタイトルは省略できます。"
              label="タイトル" />
 
       <EditorField
