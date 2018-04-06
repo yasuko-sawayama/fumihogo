@@ -1,4 +1,13 @@
-.textEditorForm {
+#productNewForm {
+
+  margin-bottom: 60px;
+
+  .description {
+    margin-bottom: 20px;
+  }
+
+
+  .textEditorForm {
     font-size: 16px;
     line-height: 1.428571429;
     color: #666;
@@ -11,8 +20,11 @@
     -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 
+    margin-bottom: 40px;
+
     .editorArea {
       padding: 0 10px;
       height: 325px !important;
     }
+  }
 }

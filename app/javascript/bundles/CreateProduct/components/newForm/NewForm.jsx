@@ -17,6 +17,7 @@ let NewForm = ({
       <Field name="title"
              component={ BootstrapField }
              type="text"
+             help="小説タイトルは必須です。"
              label="タイトル" />
 
       <Field name="description"
@@ -59,8 +60,6 @@ let NewForm = ({
         placeholder="Type here"
         label="本文"
         />
-
-      <hr />
 
       <div>
         <button className="btn btn-primary"

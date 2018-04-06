@@ -28,10 +28,8 @@ class NewPage extends React.Component {
           <Title title='新規作成' />
           <h3>小説の情報を入力してください。</h3>
           <p className="description">
-            小説タイトルは必須です。 <br />
             問題のあると思われる内容を投稿する時は、18歳未満の閲覧を禁止にチェックを入れて下さい。
           </p>
-          <hr />
           <NewForm onSubmit={this.submit} />
         </section>
       </div>
