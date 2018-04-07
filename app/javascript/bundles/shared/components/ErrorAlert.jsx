@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Alert, Button } from 'react-bootstrap';
+import FontAwesome from 'react-fontawesome';
 
 class ErrorAlert extends React.Component {
   constructor(props, context) {
@@ -33,10 +34,13 @@ class ErrorAlert extends React.Component {
   }
 
   render() {
-    if (this.props.message && this.state.show) {
+    if (this.props.showError && this.state.show) {
       return (
         <Alert bsStyle="danger" onDismiss={this.handleDismiss}>
-          <h4>{this.props.title}</h4>
+          <h4>
+            <FontAwesome name="exclamation-circle" size='2x'/>
+            {this.props.title}
+          </h4>
           <p>
             {this.props.message}
           </p>

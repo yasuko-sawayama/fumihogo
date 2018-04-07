@@ -4,7 +4,7 @@ import LoadingBar from 'react-redux-loading-bar';
 import SpinerContainer from '../../shared/containers/SpinerContainer';
 import {reset} from 'redux-form';
 
-import NewForm from './newForm/NewForm';
+import NewForm from './NewForm';
 import Title from '../../Product/components/product/Title';
 import ErrorAlert from '../../shared/components/ErrorAlert';
 

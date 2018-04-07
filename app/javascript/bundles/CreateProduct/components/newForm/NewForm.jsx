@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 
 import BootstrapField from './BootstrapField';
 import EditorField from '../../../shared/components/forms/EditorField';
 
-import validate from './validate';
-
-let NewForm = ({
+const newForm = ({
   pristine,
   reset,
   submitting,
@@ -27,7 +25,7 @@ let NewForm = ({
              type="text"
              componentClass="textarea"
              label="概要（200文字以内）" />
- 
+      
       <Field name="privacy_level"
              component={BootstrapField}
              type="select"
@@ -40,7 +38,7 @@ let NewForm = ({
       </Field>
 
       <hr />
-              
+      
       <h4>本文：1ページ</h4>
       <div className="description">
         2ページ目以降は小説投稿後に追加できます
@@ -78,7 +76,4 @@ let NewForm = ({
   );
 }
 
-export default NewForm = reduxForm({
-  form: 'new_form',
-  validate,
-})(NewForm);
+export default newForm;

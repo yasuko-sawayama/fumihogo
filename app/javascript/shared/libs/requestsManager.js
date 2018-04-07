@@ -20,6 +20,7 @@ export const postEntities = (url, data, options = {}) => (
     method: 'POST',
     url,
     data,
+    headers: ReactOnRails.authenticityHeaders(),
     ...options,
   })
 );
