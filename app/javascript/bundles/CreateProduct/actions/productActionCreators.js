@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 
-import { CREATE_REQUEST, CREATE_SUCCESS, CREATE_ERROR } from '../constants/createProductConstants';
+import { CREATE_REQUEST, CREATE_SUCCESS,
+         CREATE_ERROR, CLEAR_ERROR } from '../constants/createProductConstants';
 
 export const createProduct = data => ({
   type: CREATE_REQUEST,
@@ -22,5 +23,10 @@ export const postProductError = error => console.log(error) || ({
     error,
   },
 });
+
+export const clearError = () => ({
+  type: CLEAR_ERROR,
+  payload: null,
+})
   
 

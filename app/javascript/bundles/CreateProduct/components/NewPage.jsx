@@ -6,6 +6,7 @@ import {reset} from 'redux-form';
 
 import NewForm from './newForm/NewForm';
 import Title from '../../Product/components/product/Title';
+import ErrorAlert from '../../shared/components/ErrorAlert';
 
 class NewPage extends React.Component {
   static propTypes = {
@@ -27,6 +28,7 @@ class NewPage extends React.Component {
       <div>
         <header>
           <LoadingBar />
+          <ErrorAlert  { ...this.props.error } /> 
         </header>
         <section id="productNewForm">
           <SpinerContainer />

@@ -1,5 +1,6 @@
 import { takeLatest } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
+import { push } from 'react-router-redux';
 
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
@@ -14,9 +15,13 @@ export function* fetchProductInfo({ payload, }) {
     yield put(showLoading());
     const url = `${PRODUCT_API_ENTRY_POINT}/${payload.productId}/`;
     const response = yield call(fetchEntities, url);
+    yield call(redirectURL, response);
     yield put(fetchProductSuccess(response));
   } catch (error) {
-    yield put(fetchProductError(error));
+    yield [
+      put(fetchProductError(error)),
+      put(push('/'))
+    ]
   } finally {
     yield put(hideLoading());
   }

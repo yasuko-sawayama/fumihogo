@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :auth_skipping_controllers?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from ActionController::InvalidAuthenticityToken, with: :reload_to_root
 
   protect_from_forgery with: :exception
 
@@ -30,5 +31,10 @@ class ApplicationController < ActionController::Base
 
   def high_voltage_controller?
     self.class.include?(HighVoltage::StaticPage)
+  end
+
+  def reload_to_root
+    flash[:alert] = '前回のアクセスから時間が経ちすぎたかもしれません。'
+    redirect_to root_path
   end
 end
