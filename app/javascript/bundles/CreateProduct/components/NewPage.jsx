@@ -4,7 +4,6 @@ import LoadingBar from 'react-redux-loading-bar';
 import SpinerContainer from '../../shared/containers/SpinerContainer';
 import {reset} from 'redux-form';
 
-
 import NewForm from './newForm/NewForm';
 import Title from '../../Product/components/product/Title';
 
@@ -13,8 +12,14 @@ class NewPage extends React.Component {
     form: PropTypes.any.isRequired,
   }
 
+  constructor(props) {
+    super(props)
+
+    this.submit = this.submit.bind(this);
+  }
+
   submit(values) {
-    console.log(values);
+    this.props.actions.createProduct();
   }
 
   render() {
