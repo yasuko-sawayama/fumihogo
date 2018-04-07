@@ -33,6 +33,8 @@ RSpec.describe Product, type: :model do
     it { should validate_presence_of(:pages) }
   end
 
+  it { should accept_nested_attributes_for(:pages) }
+
   describe 'scope' do
     it 'openスコープが取得できること' do
       product = create(:product, privacy_level: :public_open)

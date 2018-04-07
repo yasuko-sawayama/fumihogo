@@ -11,7 +11,7 @@ RSpec.describe 'Pages', type: :request do
       let(:product) do
         create(:product,
                title: 'テストのタイトル',
-               privacy_level: Product.privacy_levels[:open])
+               privacy_level: :open)
       end
 
       let(:page) do

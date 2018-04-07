@@ -30,6 +30,8 @@ class Product < ApplicationRecord
   validates :title, presence: true
   validates :pages, presence: true
 
+  accepts_nested_attributes_for :pages
+
   enumerize :privacy_level,
             in: { closed: 0,
                   public_open: 1,

@@ -52,7 +52,7 @@ RSpec.describe Page, type: :model do
     let(:page) { build(:page, product: product) }
 
     it 'positionをIDの代わりに使用できること' do
-      create_list(:page, 6, product: product) # Factoryで1ページ生成している
+      create_list(:page, 7, product: product) # Factoryで1ページ生成している
       page.save!
       page.move_to_bottom
       expect(product.pages.friendly.find(8)).to eq(page)

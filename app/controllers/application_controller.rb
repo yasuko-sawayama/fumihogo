@@ -16,13 +16,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
 
-  private
-
   def user_not_authorized
     flash[:alert] = 'このページを表示する権限がありません。'
     redirect_to(request.referer || root_path)
   end
 
+  private
+  
   # Punditの検証を行わないコントローラ
   def auth_skipping_controllers?
     devise_controller? || high_voltage_controller?
