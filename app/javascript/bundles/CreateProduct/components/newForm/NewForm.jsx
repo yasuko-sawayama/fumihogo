@@ -53,7 +53,7 @@ const newForm = ({
 
       <EditorField
         key="field"
-        name="editorText"
+        name="content"
         id="inputEditorText"
         disabled={false}
         placeholder="Type here"
