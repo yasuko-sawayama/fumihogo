@@ -10,24 +10,27 @@
 #  character_count :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  slug            :string
 #
 # Indexes
 #
 #  index_pages_on_position    (position)
 #  index_pages_on_product_id  (product_id)
+#  index_pages_on_slug        (slug) UNIQUE
 #  index_pages_on_title       (title)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (product_id => products.id)
 #
+
 class Page < ApplicationRecord
   extend FriendlyId
 
-  belongs_to :product
+  belongs_to :product, inverse_of: :pages
 
-  acts_as_list scope: :product
-  friendly_id :position
+  acts_as_list scope: :product, top_of_list: 1
+  friendly_id :position, use: [:scoped, :finders], scope: :product
 
   validates :content, presence: true, length: { minimum: 10 }
   validates :title, length: { maximum: 45, allow_blank: true }
@@ -38,6 +41,12 @@ class Page < ApplicationRecord
 
   def previous
     product.pages.where('position < ?', position).last
+  end
+
+  private
+
+  def should_generate_new_friendly_id?
+    position_changed? || super
   end
 end
 

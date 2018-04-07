@@ -33,6 +33,8 @@ RSpec.describe Product, type: :model do
     it { should validate_presence_of(:pages) }
   end
 
+  it { expect { create(:product) }.to change(Product, :count).by(1) }
+
   it { should accept_nested_attributes_for(:pages) }
 
   describe 'scope' do

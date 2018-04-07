@@ -15,7 +15,6 @@ export function* fetchProductInfo({ payload, }) {
     yield put(showLoading());
     const url = `${PRODUCT_API_ENTRY_POINT}/${payload.productId}/`;
     const response = yield call(fetchEntities, url);
-    yield call(redirectURL, response);
     yield put(fetchProductSuccess(response));
   } catch (error) {
     yield [

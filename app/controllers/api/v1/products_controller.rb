@@ -9,14 +9,14 @@ class Api::V1::ProductsController < Api::V1::ApiController
   end
 
   def create
-    product = Product.new(product_params) do |product|
+    @product = Product.new(product_params) do |product|
       product.user = current_user
     end
 
-    authorize product
-    product.save!
+    authorize @product
+    @product.save!
 
-    render json: product, status: :created
+    render json: @product, status: :created
   end
 
   private

@@ -13,16 +13,19 @@ class Page extends React.Component {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       author: PropTypes.object.isRequired,
-      about: PropTypes.string,
+      about: PropTypes.shape({
+        pageCount: PropTypes.number.isRequired,
+      }).isRequired,
       pageInfo: PropTypes.object.isRequired,
       currentPage: PropTypes.number.isRequired,
       content: PropTypes.string.isRequired,
     }),
   }
   
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    console.log(props)
+  }
 
   componentWillMount() {
     this.props.actions.changePage(this.props.match.params.pageId);

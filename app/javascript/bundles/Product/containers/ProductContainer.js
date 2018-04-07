@@ -7,7 +7,7 @@ import Product from '../components/Product';
 import * as productActions from '../actions/productActionCreators';
 
 // Which part of the Redux global state does our component want to receive as props?
-const mapStateToProps = state => ({
+const mapStateToProps = state => console.log(state.product) || ({
   product: state.product,
   railsContent: state.railsContext,
 });

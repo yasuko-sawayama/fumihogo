@@ -13,8 +13,8 @@ const aboutReducer = (state = {}, action) => {
       privacyLevel: action.payload.product.about.privacyLevel,
     };
 
-  case PRODUCT_FETCH_ERROR:
-    return {};
+  // case PRODUCT_FETCH_ERROR:
+  //   return {};
 
   default:
     return state;

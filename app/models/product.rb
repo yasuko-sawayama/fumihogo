@@ -25,7 +25,9 @@ class Product < ApplicationRecord
   extend Enumerize
 
   belongs_to :user
-  has_many :pages, dependent: :destroy
+  has_many :pages, -> { order(position: :asc) },
+           dependent: :destroy,
+           inverse_of: :product
 
   validates :title, presence: true
   validates :pages, presence: true

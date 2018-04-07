@@ -29,8 +29,8 @@ FactoryBot.define do
     privacy_level :public_open
     # character_count 1
 
-    after :build do |product|
-      product.pages << build(:page, product: nil)
+    after(:build) do |product|
+      product.pages << build(:page, product: product)
     end
   end
 end

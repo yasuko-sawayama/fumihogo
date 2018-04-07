@@ -64,12 +64,12 @@ RSpec.describe "Products", type: :request do
 
       context 'パラメーターが正しい場合' do
         let(:product_params) do
-          attributes_for(:product).merge(pages_attributes: [attributes_for(:page, product: nil)])
+          attributes_for(:product).merge(pages_attributes: [attributes_for(:page)])
         end
         
         it '200が帰ること' do
           subject
-          expect(response).to be_success
+          expect(response.status).to eq(201)
         end
 
         it '作品が1増えること' do
@@ -95,7 +95,6 @@ RSpec.describe "Products", type: :request do
         it 'エラーメッセージ' do
           subject
           body = JSON.parse(response.body)
-          p body
           expect(body["errors"].to_s).to include('を入力してください')
         end
 

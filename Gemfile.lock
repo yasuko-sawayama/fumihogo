@@ -184,7 +184,7 @@ GEM
     foreman (0.84.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
-    friendly_id (5.1.0)
+    friendly_id (5.2.3)
       activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -231,7 +231,7 @@ GEM
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
     htmlentities (4.3.4)
-    i18n (0.9.1)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
     interception (0.5)
@@ -272,7 +272,7 @@ GEM
     mini_portile2 (2.3.0)
     mini_racer (0.1.12)
       libv8 (~> 5.9)
-    minitest (5.11.1)
+    minitest (5.11.3)
     multi_json (1.12.2)
     nenv (0.3.0)
     nio4r (2.2.0)
@@ -464,7 +464,7 @@ GEM
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.2)
       execjs (>= 0.3.0, < 3)
@@ -522,7 +522,7 @@ DEPENDENCIES
   figaro
   font-awesome-rails
   foreman
-  friendly_id (~> 5.1.0)
+  friendly_id (~> 5.2.3)
   growl
   guard-migrate
   guard-rspec (~> 4.6)

@@ -11,7 +11,7 @@ RSpec.describe 'Pages', type: :request do
       let(:product) do
         create(:product,
                title: 'テストのタイトル',
-               privacy_level: :open)
+               privacy_level: :public_open)
       end
 
       let(:page) do
@@ -37,7 +37,7 @@ RSpec.describe 'Pages', type: :request do
         p json
         expect(json['page']['product']['title']).to eq('テストのタイトル')
         expect(json['page']['title']).to eq('テストのページタイトル')
-        expect(json['page']['content']).to eq('本文ですよ本文ですよ本文ですよ本文ですよ')
+        expect(json['page']['content']).to eq("<p>本文ですよ本文ですよ本文ですよ本文ですよ</p>\n")
       end
     end
 

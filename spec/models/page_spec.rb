@@ -10,11 +10,13 @@
 #  character_count :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  slug            :string
 #
 # Indexes
 #
 #  index_pages_on_position    (position)
 #  index_pages_on_product_id  (product_id)
+#  index_pages_on_slug        (slug) UNIQUE
 #  index_pages_on_title       (title)
 #
 # Foreign Keys
@@ -42,20 +44,24 @@ RSpec.describe Page, type: :model do
     before do
       create_list(:page, 12, product: product)
     end 
-
+    
     it { expect(product.pages.find_by(position: 3).previous.position).to eq(2) }
     it { expect(product.pages.find_by(position: 5).next.position).to eq(6) }
   end
 
   describe 'frendry_id' do
-    let(:product) { create(:product) }
-    let(:page) { build(:page, product: product) }
+    let!(:product) { create(:product) }
+    let!(:page) { build(:page, product: product) }
 
     it 'positionをIDの代わりに使用できること' do
-      create_list(:page, 7, product: product) # Factoryで1ページ生成している
+      create_list(:page, 10, product: product)
       page.save!
-      page.move_to_bottom
-      expect(product.pages.friendly.find(8)).to eq(page)
+      page.insert_at(3)
+      page.save!
+      # friendly.findを使うとIDまたはpositionで検索されるため、
+      # find_by_friendly_idを使用してpositionのみを検索対象とする
+      # optionに:findersを指定すること
+      expect(product.pages.find_by_friendly_id(3)).to eq(page)
     end
   end
 end
