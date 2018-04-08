@@ -37,6 +37,10 @@ RSpec.configure do |config|
 
   config.extend DeviseControllerMacros, type: :controller
   config.include RequestHelper, type: :request
+  config.order = "random"
+  # Include path helpers
+  config.include Rails.application.routes.url_helpers
+  config.include Capybara::DSL
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
