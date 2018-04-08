@@ -27,7 +27,7 @@ class BootstrapField extends React.Component {
 
     return (
       <FormGroup>
-        <ControlLabel>
+        <ControlLabel htmlFor={input.name}>
           {label}
         </ControlLabel>
         { help && <p className="help-block">{help}</p> }

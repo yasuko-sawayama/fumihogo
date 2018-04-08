@@ -1,18 +1,13 @@
 module LoginHelper
-  # def login_admin
-  #   before(:each) do
-  #     @request.env["devise.mapping"] = Devise.mappings[:admin]
-  #     admin = FactoryGirl.create(:admin)
-  #     # sign_in(scope, resource) if admin is nested in user at factory.
-  #     sign_in :user, admin
-  #   end
-  # end
-
   def login_user
-    before(:each) do
-      @request.env["devise.mapping"] = Devise.mappings[:user]
-      user = FactoryBot.create(:user)
-      sign_in user
-    end
+    password = SecureRandom.hex(8)
+    user = FactoryBot.create(:user, password: password, password_confirmation: password)
+
+    visit new_user_session_path
+    fill_in 'メールアドレス', with: user.email
+    fill_in 'パスワード', with: password
+    click_button 'ログイン'
+
+    expect(page).to have_content('ログインしました')
   end
 end
