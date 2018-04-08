@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { Field } from 'redux-form';
 
 import BootstrapField from './BootstrapField';
-import EditorField from '../../../shared/components/forms/EditorField';
+
+import PageForm from './PageForm';
 
 const newForm = ({
   pristine,
@@ -14,51 +15,34 @@ const newForm = ({
 }) => {
   return (
     <form onSubmit={handleSubmit} >
-      <Field name="title"
-             component={ BootstrapField }
-             type="text"
-             help="小説タイトルは必須です。"
-             label="タイトル" />
+      <div id="productInfo">
+        <Field name="title"
+               component={ BootstrapField }
+               type="text"
+               help="小説タイトルは必須です。"
+               label="タイトル" />
 
-      <Field name="description"
-             component={ BootstrapField }
-             type="text"
-             componentClass="textarea"
-             label="概要（200文字以内）" />
-      
-      <Field name="privacy_level"
-             component={BootstrapField}
-             type="select"
-             componentClass="select"
-             label="公開範囲"
-             >
-        <option value="public_open">公開</option>
-        <option value="login">ログイン限定公開</option>
-        <option value="closed">非公開</option>
-      </Field>
-
-      <hr />
-      
-      <h4>本文：1ページ</h4>
-      <div className="description">
-        2ページ目以降は小説投稿後に追加できます
+        <Field name="description"
+               component={ BootstrapField }
+               type="text"
+               componentClass="textarea"
+               label="概要（200文字以内）" />
+        
+        <Field name="privacy_level"
+               component={BootstrapField}
+               type="select"
+               componentClass="select"
+               label="公開範囲"
+               >
+          <option value="public_open">公開</option>
+          <option value="login">ログイン限定公開</option>
+          <option value="closed">非公開</option>
+        </Field>
       </div>
 
+      <hr />
 
-      <Field name="pageTitle"
-             component={ BootstrapField }
-             type="text"
-             help="ページごとのタイトルは省略できます。"
-             label="タイトル" />
-
-      <EditorField
-        key="field"
-        name="content"
-        id="inputEditorText"
-        disabled={false}
-        placeholder="Type here"
-        label="本文"
-        />
+      <PageForm />
 
       <div className="buttonArea">
         <button className="btn btn-primary"
