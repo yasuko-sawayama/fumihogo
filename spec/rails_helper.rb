@@ -38,6 +38,7 @@ RSpec.configure do |config|
   config.extend DeviseControllerMacros, type: :controller
   config.include RequestHelper, type: :request
   config.include LoginHelper, type: :feature
+  config.include FeaturesHelper, type: :feature
 
   config.order = "random"
   # Include path helpers

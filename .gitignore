@@ -48,7 +48,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-
+.envrc
 .direnv/
 coverage
 examples.txt
@@ -56,3 +56,8 @@ examples.txt
 /config/application.yml
 /vendor
 .tern-port
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity

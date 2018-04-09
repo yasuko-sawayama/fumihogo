@@ -14,9 +14,12 @@ class Api::V1::ProductsController < Api::V1::ApiController
     end
 
     authorize @product
-    @product.save!
 
-    render json: @product, status: :created
+    if @product.save
+      render json: @product, status: :created
+    else
+      render json: @error, statue: :unprocessable_entity
+    end
   end
 
   private
