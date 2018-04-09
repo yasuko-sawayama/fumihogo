@@ -10,13 +10,11 @@
 #  character_count :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  slug            :string
 #
 # Indexes
 #
 #  index_pages_on_position    (position)
 #  index_pages_on_product_id  (product_id)
-#  index_pages_on_slug        (slug) UNIQUE
 #  index_pages_on_title       (title)
 #
 # Foreign Keys
@@ -30,7 +28,9 @@ class Page < ApplicationRecord
   belongs_to :product, inverse_of: :pages
 
   acts_as_list scope: :product, top_of_list: 1
-  friendly_id :position, use: [:scoped, :finders], scope: :product
+  friendly_id :position, use: [:scoped, :finders],
+              scope: :product,
+              slug_column: :position
 
   validates :content, presence: true, length: { minimum: 10 }
   validates :title, length: { maximum: 45, allow_blank: true }
