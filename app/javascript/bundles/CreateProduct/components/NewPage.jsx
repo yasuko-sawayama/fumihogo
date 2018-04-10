@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingBar from 'react-redux-loading-bar';
 import SpinerContainer from '../../shared/containers/SpinerContainer';
+import SuccessDialog from './SuccessDialog';
 import {reset} from 'redux-form';
 
 import NewForm from './NewForm';
@@ -33,6 +34,7 @@ class NewPage extends React.Component {
         </header>
         <section id="productNewForm">
           <SpinerContainer />
+          <SuccessDialog {...this.props.product} />
           <Title title='新規作成' />
           <h3>小説の情報を入力してください。</h3>
           <p className="description">

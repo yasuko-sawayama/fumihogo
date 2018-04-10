@@ -5,7 +5,7 @@ const productReducer = (state = {}, action) => {
   case CREATE_SUCCESS:
     return action.payload.product;
   default:
-    return {};
+    return state;
   }
 };
 
