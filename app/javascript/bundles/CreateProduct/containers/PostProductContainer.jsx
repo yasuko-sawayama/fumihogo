@@ -12,6 +12,7 @@ import getProductAttributes from '../libs/getProductAttributes';
 const mapStateToProps = state => ({
   form: state.form,
   productAttributes: getProductAttributes(state),
+  product: state.product,
   error: state.errorMessage,
   loadingBar: state.loadingBar,
   railsContext: state.railsContext,

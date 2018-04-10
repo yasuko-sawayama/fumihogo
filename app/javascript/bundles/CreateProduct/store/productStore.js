@@ -5,7 +5,7 @@ import { reducer as formReducer } from 'redux-form';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import ProductReducer from '../reducers/productReducer';
+import productReducer from '../reducers/productReducer';
 import errorReducer from '../reducers/errorReducer';
 
 import productSaga from '../sagas/saga';
@@ -18,6 +18,7 @@ const configureStore = railsProps => {
   const store = createStore(
     combineReducers({
       form: formReducer,
+      product: productReducer,
       errorMessage: errorReducer,
       loadingBar: loadingBarReducer,
     }),

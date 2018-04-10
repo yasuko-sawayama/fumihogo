@@ -1,21 +1,13 @@
-import { combineReducers } from 'redux';
+import { CREATE_SUCCESS } from '../constants/createProductConstants';
 
-// dummy for placeholder
-const id = (state = '', action) => {
+const productReducer = (state = {}, action) => {
   switch (action.type) {
-  case PRODUCT_FETCH_SUCCESS:
-    return action.payload.product.id;
-
-  case PRODUCT_FETCH_ERROR:
-    return state;
-
+  case CREATE_SUCCESS:
+    return action.payload.product;
   default:
-    return state;
+    return {};
   }
 };
 
-const ProductReducer = combineReducers({
-  id,
-});
 
-export default ProductReducer;
+export default productReducer;

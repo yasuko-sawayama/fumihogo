@@ -13,7 +13,7 @@ export const createProduct = data => ({
 export const postProductSuccess = response => ({
   type: CREATE_SUCCESS,
   payload: {
-    product: response.data.product,
+    product: response.data,
   },
 });
 
