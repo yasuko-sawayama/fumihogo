@@ -3,6 +3,7 @@ import React from "react";
 import ControlledEditor from "./ControlledEditor";
 
 const WrapperEditor = props => {
+  console.log(props);
   const {
     placeholder,
     input: { onChange, value },

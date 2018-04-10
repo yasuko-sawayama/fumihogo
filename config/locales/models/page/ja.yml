@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      page: ページ
+    attributes:
+      page:
+        title: タイトル
+        content: 本文
+        charactor_count: 文字数

@@ -20,7 +20,7 @@ const PageForm = () => (
 
       <EditorField
         key="field"
-        name="content"
+        name="editorText"
         id="inputEditorText"
         disabled={false}
         placeholder="Type here"

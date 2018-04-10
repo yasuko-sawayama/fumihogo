@@ -5,6 +5,9 @@ ja:
     attributes:
       product:
         title: タイトル
+        description: 概要
+        privacy_level: 公開範囲
+        pages: ページ
   enumerize:
     product:
       privacy_level:

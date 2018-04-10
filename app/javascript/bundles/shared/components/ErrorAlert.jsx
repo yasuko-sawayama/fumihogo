@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import { Alert, Button } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 
+import ErrorList from './errors/ErrorList';
+
 class ErrorAlert extends React.Component {
   constructor(props, context) {
     super(props, context);
-
     this.handleDismiss = this.handleDismiss.bind(this);
     this.handleShow = this.handleShow.bind(this);
 
@@ -44,6 +45,7 @@ class ErrorAlert extends React.Component {
           <p>
             {this.props.message}
           </p>
+          {this.props.dataErrors && <ErrorList errors={this.props.dataErrors} />}
         </Alert>
       );
     } else {

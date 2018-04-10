@@ -18,7 +18,8 @@ class Api::V1::ProductsController < Api::V1::ApiController
     if @product.save
       render json: @product, status: :created
     else
-      render json: @error, statue: :unprocessable_entity
+      p @product.errors.full_messages
+      render json: @product.errors.full_messages, status: :unprocessable_entity
     end
   end
 

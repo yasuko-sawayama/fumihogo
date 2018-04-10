@@ -7,10 +7,13 @@ const validate = values => {
   //   errors.description = "概要を入力して下さい。"
   // }
   if (values.description && values.description.length > 200) {
-    errors.description = "概要は200文字以内で入力して下さい。"
+    errors.description = "概要は200文字以内で入力して下さい。";
   }
   if (!values.editorText) {
-    errors.editorText = "本文を入力して下さい。"
+    errors.editorText = "本文を入力して下さい。";
+  }
+  if (values.editorText && values.editorText.length) {
+    errors.editorText = "本文の長さは10文字以上にしてください。";
   }
 
   return errors;

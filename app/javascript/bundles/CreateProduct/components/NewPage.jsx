@@ -20,7 +20,7 @@ class NewPage extends React.Component {
   }
 
   submit(values) {
-    console.log(this.props.productAttributes);
+
     this.props.actions.createProduct(this.props.productAttributes);
   }
 

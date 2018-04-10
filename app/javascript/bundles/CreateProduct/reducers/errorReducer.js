@@ -11,13 +11,14 @@ const errorReducer = (state = null, { type, payload } ) => {
         title: '権限がありません。',
         message: 'ログアウトしている場合はログインしてください。'
       });
-    case 400:
+    case 422:
       return ({
         showError: true,
-        status: 400,
+        status: 422,
         title: 'データを確認してください。',
-        message: '投稿しようとしている小説のデータが正しくありません。修正してもう一度投稿してください。'
-      });     
+        message: '投稿しようとしている小説のデータが正しくありません。修正してもう一度投稿してください。',
+        dataErrors: payload.error.response.data,
+      });
     default:
       return ({
         showError: true,

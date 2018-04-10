@@ -18,12 +18,10 @@ export function* postProduct({ payload, }) {
     const response = yield call(postEntities, url, payload.data);
     yield put(postProductSuccess(response));
   } catch (error) {
-    console.log(error.response);
     if (error.response.status === 401) {
       yield all([
         put(postProductError(error)),
-        //デバッグ中とめとく
-        // put(redirectToRoot())
+        put(redirectToRoot())
       ]);
     } else  {
       yield put(postProductError(error));
