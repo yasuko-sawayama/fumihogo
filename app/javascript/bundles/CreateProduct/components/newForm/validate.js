@@ -12,7 +12,7 @@ const validate = values => {
   if (!values.editorText) {
     errors.editorText = "本文を入力して下さい。";
   }
-  if (values.editorText && values.editorText.length) {
+  if (values.editorText && values.editorText.length < 10) {
     errors.editorText = "本文の長さは10文字以上にしてください。";
   }
 

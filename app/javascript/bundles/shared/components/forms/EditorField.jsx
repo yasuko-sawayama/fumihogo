@@ -8,7 +8,7 @@ const EditorField = props => {
   return (
     <FormGroup>
       { props.label && <ControlLabel>{props.label}</ControlLabel> }
-      <Field {...props} component={WrappedEditor} />
+      <Field {...props} type="text" component={WrappedEditor} />
     </FormGroup>
   );
 }

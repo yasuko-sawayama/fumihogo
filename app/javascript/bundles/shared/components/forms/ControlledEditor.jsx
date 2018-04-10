@@ -7,31 +7,57 @@ import draftToMarkdown from 'draftjs-to-markdown';
 class ControlledEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      editorState: EditorState.createEmpty(),
-    };
+
+    const { value } = props;
+    if (!value) {
+      this.state = {
+        editorState: EditorState.createEmpty()
+      };
+    } else {
+      this.state = {
+        editorState: EditorState.createWithContent(
+          ContentState.createFromBlockArray(
+            convertFromMarkdown(value)
+          )
+        )
+      }
+    }
+    
+
     
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
 
+    this.handleMyContentChange = this.handleMyContentChange.bind(this);
+    
     this.props.onChange(draftToMarkdown(rawContent));
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { value } = nextProps;
+    this.handleMyContentChange(value, this.state.editorState)
+  }
+
   onEditorStateChange: Function = (editorState) => {
+    const newValue = draftToMarkdown(convertToRaw(editorState.getCurrentContent()));
+    this.handleMyContentChange(newValue, editorState);
+  };
+
+  handleChange(editorState) {
+	this.setState({editorState});
+  }
+
+  handleMyContentChange(newValue, editorState) {
     const { onChange, value } = this.props;
 
-    const newValue = draftToMarkdown(convertToRaw(editorState.getCurrentContent()));
-
-    if (value !== newValue) {
+    if(!newValue) {
+      editorState = EditorState.createEmpty();
+    } else if (value !== newValue) {
       onChange(newValue);
     }
     
     this.setState({
       editorState,
     });
-  };
-
-  handleChange(editorState) {
-	this.setState({editorState});
   }
 
 
