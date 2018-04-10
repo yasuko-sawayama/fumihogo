@@ -9,7 +9,7 @@ export default (state) => ({
     privacy_level: selector(state, 'privacy_level'),
     pages_attributes: [{
       title: selector(state, 'pageTitle'),
-      content: selector(state, 'content'),
+      content: selector(state, 'editorText'),
     }]
   }
 });
