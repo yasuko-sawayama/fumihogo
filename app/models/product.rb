@@ -40,7 +40,8 @@ class Product < ApplicationRecord
                   login: 2,
                   list: 3 },
             predicate: true,
-            scope: true
+            scope: true,
+            default: :public_open
 
   scope :owned, ->(user) { where(user_id: user&.id) }
 
