@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Desc = styled.p`
@@ -13,14 +14,18 @@ const Description = ({
     privacyLevel,
     pageCount,
   },
-  author: { nickname, avator }
+  author: {
+    id,
+    nickname,
+    avator
+  },
 }) => (
   <div className="row">
     <div className="col-xs-12">
       <h3>Description</h3>
     </div>
     <div className="col-sm-4">
-      <img src="http://dummyimage.com/600x400/000/fff" className="img-responsive"/>
+      <img src="http://dummyimage.com/600x400/000/fff" className="img-responsive" alt="カバー"/>
     </div>
     <div className="col-sm-8">
       <Desc className="description">
@@ -43,5 +48,19 @@ const Description = ({
     </div>
   </div>
 );
+
+Description.propTypes = {
+  description: PropTypes.string.isRequired,
+  about: PropTypes.shape({
+    created_at: PropTypes.string.isRequired,
+    charactor_count: PropTypes.number.isRequired,
+    privacyLevel: PropTypes.string.isRequired,
+    pageCount: PropTypes.number.isRequired,
+  }).isRequired,
+  author: PropTypes.shape({
+    nickname: PropTypes.string,
+    avator: PropTypes.string,
+  }),
+};
 
 export default Description;
