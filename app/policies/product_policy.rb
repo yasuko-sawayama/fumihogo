@@ -8,8 +8,4 @@ class ProductPolicy < ApplicationPolicy
   def create?
     user&.persisted?
   end
-
-  def show?
-    true
-  end
 end

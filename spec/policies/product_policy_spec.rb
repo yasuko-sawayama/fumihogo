@@ -12,7 +12,7 @@ RSpec.describe ProductPolicy do
 
     let!(:closed) { create(:product, privacy_level: :closed) }
     let!(:login) { create(:product, privacy_level: :login) }
-    let!(:open) { create(:product, privacy_level: :open) }
+    let!(:open) { create(:product, privacy_level: :public_open) }
 
     context '作者：' do
       let(:user) { create(:user) }
@@ -27,7 +27,7 @@ RSpec.describe ProductPolicy do
 
       let!(:my_open) { create(:product,
                               user: user,
-                              privacy_level: :open) }
+                              privacy_level: :public_open) }
 
       it '非公開作品を含む' do
         expect(resolved_scope).to include(my_closed)

@@ -1,7 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 import createSagaMiddleware from 'redux-saga';
+import { reducer as formReducer } from 'redux-form';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 
@@ -20,6 +22,8 @@ const configureStore = railsProps => {
     combineReducers({
       product: ProductReducer,
       router: routerReducer,
+      form: formReducer,
+      loadingBar: loadingBarReducer,
     }),
     railsProps,
     composeWithDevTools(applyMiddleware(...middleware)),

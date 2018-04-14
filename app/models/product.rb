@@ -22,16 +22,36 @@
 #
 
 class Product < ApplicationRecord
+  extend Enumerize
+
   belongs_to :user
-  has_many :pages
+  has_many :pages, -> { order(position: :asc) },
+           dependent: :destroy,
+           inverse_of: :product
 
   validates :title, presence: true
   validates :pages, presence: true
 
-  enum privacy_level: %w(closed open_public login list)
+  accepts_nested_attributes_for :pages
+
+  enumerize :privacy_level,
+            in: { closed: 0,
+                  public_open: 1,
+                  login: 2,
+                  list: 3 },
+            predicate: true,
+            scope: true
 
   scope :owned, ->(user) { where(user_id: user&.id) }
-  scope :restricted_login, ->(user) { user ? login.or(open_public) : open_public }
+
+  scope :restricted_login, ->(user) do
+    if user
+      with_privacy_level(:login)
+        .or(with_privacy_level(:public_open))
+    else
+      with_privacy_level(:public_open)
+    end
+  end
 
   # dummy
   def charactor_count

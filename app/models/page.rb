@@ -23,18 +23,30 @@
 #
 
 class Page < ApplicationRecord
-  belongs_to :product
+  extend FriendlyId
 
-  acts_as_list scope: :product
+  belongs_to :product, inverse_of: :pages
+
+  acts_as_list scope: :product, top_of_list: 1
+  friendly_id :position, use: [:scoped, :finders],
+              scope: :product,
+              slug_column: :position
 
   validates :content, presence: true, length: { minimum: 10 }
   validates :title, length: { maximum: 45, allow_blank: true }
 
   def next
-    product.pages.where("position > ?", position).first
+    product.pages.where('position > ?', position).first
   end
 
   def previous
-    product.pages.where("position < ?", position).last
+    product.pages.where('position < ?', position).last
+  end
+
+  private
+
+  def should_generate_new_friendly_id?
+    position_changed? || super
   end
 end
+
