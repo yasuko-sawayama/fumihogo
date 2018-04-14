@@ -11,7 +11,7 @@ RSpec.describe "Products", type: :request do
       let(:product) do
         create(:product,
                title: 'テストのタイトル',
-               privacy_level: Product.privacy_levels[:open])
+               privacy_level: :public_open)
       end
 
       it "レスポンスが返ること" do
@@ -28,44 +28,64 @@ RSpec.describe "Products", type: :request do
         get api_v1_product_path(product), headers: headers
         expect(json['product']['title']).to eq('テストのタイトル')
       end
+
+      it 'ページリストが取得できること' do
+        create_list(:page, 5, product: product)
+        get api_v1_product_path(product), headers: headers
+        expect(json['product']['pages'].length).to eq(6)
+      end
     end
 
     context '権限がない場合' do
       let(:product) do
         create(:product,
-               privacy_level: Product.privacy_levels[:closed])
+               privacy_level: :closed)
       end
 
-      it 'リダイレクトされること' do
+      it '401がかえること' do
         get api_v1_product_path(product), headers: headers
-        expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to include('このページを表示する権限がありません。')
+        expect(response).to have_http_status(401)
+      end
+
+      it 'エラーメッセージがかえること' do
+        get api_v1_product_path(product), headers: headers
+        expect(json['errors']['auth']).to eq('権限がありません。')
       end
     end
   end
 
   describe "POST /api/v1/products" do
+    subject { post '/api/v1/products', params: { product: product_params } }
+
     context '権限がある場合' do
       let(:user) { create(:user) }
 
       before { sign_in(user) }
-      subject { post '/api/v1/products', params: { product: params } }
 
       context 'パラメーターが正しい場合' do
-        let(:params) { attributes_for(:product) }
+        let(:product_params) do
+          attributes_for(:product).merge(pages_attributes: [attributes_for(:page)])
+        end
         
         it '200が帰ること' do
           subject
-          expect(response).to be_success
+          expect(response.status).to eq(201)
         end
 
         it '作品が1増えること' do
           expect { subject }.to change(Product, :count).by(1)
         end
+
+        it '最初のページが作成されていること' do
+          subject
+          expect(
+            Product.find_by(title: product_params[:title]).pages.count
+          ).to eq(1)
+        end
       end
 
       context '不正なパラメーターの場合' do
-        let(:params) { attributes_for(:product, title: nil) }
+        let(:product_params) { attributes_for(:product, title: nil) }
 
         it '422がかえること' do
           subject
@@ -75,8 +95,7 @@ RSpec.describe "Products", type: :request do
         it 'エラーメッセージ' do
           subject
           body = JSON.parse(response.body)
-          p body
-          expect(body["errors"].to_s).to include("を入力してください")
+          expect(body["errors"].to_s).to include('を入力してください')
         end
 
         it '作品が増えないこと' do
@@ -84,6 +103,27 @@ RSpec.describe "Products", type: :request do
         end
       end
     end
-    context '権限がない場合'
+
+    context '権限がない場合' do
+      let(:product_params) do
+        attributes_for(:product).merge(pages_attributes: [attributes_for(:page, product: nil)])
+      end
+
+      it '401がかえること' do
+        subject
+        expect(response).to have_http_status(401)
+      end
+
+      it '作品が増えないこと' do
+        expect { subject }.not_to change(Product, :count)
+      end
+
+      it 'エラーメッセージ' do
+        subject
+        body = JSON.parse(response.body)
+        p body
+        expect(body['errors']['auth']).to match('権限がありません')
+      end
+    end
   end
 end

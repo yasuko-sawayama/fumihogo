@@ -1,0 +1,24 @@
+import {
+  PRODUCT_FETCH_SUCCESS,
+  PRODUCT_FETCH_ERROR
+} from '../../constants/productConstants';
+
+const aboutReducer = (state = {}, action) => {
+  switch (action.type) {
+  case PRODUCT_FETCH_SUCCESS:
+    return {
+      created_at: action.payload.product.about.created_at,
+      charactor_count: action.payload.product.about.charactor_count,
+      pageCount: action.payload.product.about.pageCount,
+      privacyLevel: action.payload.product.about.privacyLevel,
+    };
+
+  // case PRODUCT_FETCH_ERROR:
+  //   return {};
+
+  default:
+    return state;
+  }
+};
+
+export default aboutReducer;

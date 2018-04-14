@@ -10,7 +10,8 @@ class ProductsController < ApplicationController
   def show
     skip_authorization
 
-    @hello_world_props = { name: 'タイトル' }
+    authorize @product = Product.find(params[:product_id] ||
+                                      params[:id]) if params[:id]
   end
 
   def new

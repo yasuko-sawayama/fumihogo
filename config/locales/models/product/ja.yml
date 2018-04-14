@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      product: 作品
+    attributes:
+      product:
+        title: タイトル
+        description: 概要
+        privacy_level: 公開範囲
+        pages: ページ
+  enumerize:
+    product:
+      privacy_level:
+        closed: 非公開
+        public_open: 全体公開
+        login: ログイン限定公開
+        list: リスト限定公開
+        
+        
