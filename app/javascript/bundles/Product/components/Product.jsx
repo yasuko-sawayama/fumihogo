@@ -10,7 +10,6 @@ import About from './product/About';
 import Page from './product/Page';
 import NewPage from './product/NewPage'
 
-
 class Product extends React.Component {
   static propTypes = {
     product: PropTypes.any.isRequired,

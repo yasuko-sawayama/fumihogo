@@ -18,16 +18,15 @@ export const postPage = (values, { id, }) => ({
   },
 });
 
-export const postPageSucces = page => ({
+export const postPageSuccess = response => console.log(response) || ({
   type: PAGE_POST_SUCCESS,
   payload: {
-    product: {
-      page,
-    },
+    message: 'ページを追加しました。',
+    style: 'success',
   },
 });
 
-export const postPageError = errors => ({
+export const postPageError = errors => console.log(errors) || ({
   type: PAGE_POST_ERROR,
   payload: {
     errors,

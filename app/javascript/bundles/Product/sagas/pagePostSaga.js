@@ -17,6 +17,7 @@ export function* postPage({ payload, }) {
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.productId}/pages/`;
     const response = yield call(postEntities, url, payload.data);
     yield put(postPageSuccess(response));
+    console.log(response);
   } catch (error) {
     yield [
       put(postPageError(error)),
