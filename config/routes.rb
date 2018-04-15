@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   namespace :api, { format: :json } do
     namespace :v1 do
       resources :products do
-        resources :pages, only: [:show]
+        resources :pages, only: [:show, :create]
       end
     end
   end

@@ -8,4 +8,12 @@ class PagePolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def update?
+    create?
+  end
+
+  def create?
+    record.product.user == user
+  end
 end

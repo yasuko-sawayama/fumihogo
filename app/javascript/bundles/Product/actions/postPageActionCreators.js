@@ -10,7 +10,10 @@ import {
 export const postPage = (values, { id, }) => ({
   type: PAGE_POST_REQUESTED,
   payload: {
-    data: values,
+    data: {
+      title: values.pageTitle,
+      content: values.content,
+    },
     productId: id,
   },
 });
