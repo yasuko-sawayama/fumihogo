@@ -1,5 +1,4 @@
-import { takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { takeLatest, call, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 import { showLoading, hideLoading } from 'react-redux-loading-bar';

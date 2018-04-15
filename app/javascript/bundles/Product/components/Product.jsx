@@ -8,6 +8,8 @@ import ReactLoading from 'react-loading';
 import SpinerContainer from '../../shared/containers/SpinerContainer';
 import About from './product/About';
 import Page from './product/Page';
+import NewPage from './product/NewPage'
+
 
 class Product extends React.Component {
   static propTypes = {
@@ -32,10 +34,10 @@ class Product extends React.Component {
           <SpinerContainer />
           <About {...this.props} />
           <hr />
-            <Route path={`${this.props.match.url}/pages/news/`}
-                   render={ props => <Page {...props}
-                                             product={this.props.product}
-                                           actions={this.props.actions} /> }
+            <Route path={`${this.props.match.url}/pages/new/`}
+                   render={ props => <NewPage {...props}
+                                                product={this.props.product}
+                                              actions={this.props.actions} /> }
                    />
             <Route path={`${this.props.match.url}/pages/:pageId(\\d+)/`}
                    render={ props => <Page {...props}

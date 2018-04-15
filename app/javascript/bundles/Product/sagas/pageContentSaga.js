@@ -1,6 +1,4 @@
-import { takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
-
+import { takeLatest, call, put } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { fetchEntities } from '../../../shared/libs/requestsManager';

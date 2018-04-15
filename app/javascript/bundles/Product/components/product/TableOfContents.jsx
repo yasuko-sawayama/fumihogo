@@ -63,9 +63,9 @@ class TableOfContents extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div id="pagePanel">
-        <StyledPanel id="collapsible-panel-example-2" expanded={this.state.open} >
+        <StyledPanel id="tableOfContents">
           <Panel.Heading>
             <Panel.Title onClick={this.togglePanel} >
               もくじ
@@ -81,7 +81,7 @@ class TableOfContents extends React.Component {
         </StyledPanel>
 
       </div>
-    )
+    );
   }
 }
 
