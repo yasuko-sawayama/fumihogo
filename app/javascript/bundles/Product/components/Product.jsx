@@ -34,17 +34,18 @@ class Product extends React.Component {
           <SpinerContainer />
           <About {...this.props} />
           <hr />
+          { this.props.product.auth.update && 
             <Route path={`${this.props.match.url}/pages/new/`}
                    render={ props => <NewPage {...props}
                                                 product={this.props.product}
                                               actions={this.props.actions} /> }
-                   />
-            <Route path={`${this.props.match.url}/pages/:pageId(\\d+)/`}
+              /> }
+           <Route path={`${this.props.match.url}/pages/:pageId(\\d+)/`}
                    render={ props => <Page {...props}
                                              product={this.props.product}
                                            actions={this.props.actions} /> }
                    />
-              <Route exact path={`${this.props.match.url}/`}
+           <Route exact path={`${this.props.match.url}/`}
                      render={ props => <Page {...props}
                                                product={this.props.product}
                                              actions={this.props.actions} />}
