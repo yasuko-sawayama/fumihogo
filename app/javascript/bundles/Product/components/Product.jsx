@@ -32,7 +32,21 @@ class Product extends React.Component {
           <SpinerContainer />
           <About {...this.props} />
           <hr />
-          <Page {...this.props} />
+            <Route path={`${this.props.match.url}/pages/news/`}
+                   render={ props => <Page {...props}
+                                             product={this.props.product}
+                                           actions={this.props.actions} /> }
+                   />
+            <Route path={`${this.props.match.url}/pages/:pageId(\\d+)/`}
+                   render={ props => <Page {...props}
+                                             product={this.props.product}
+                                           actions={this.props.actions} /> }
+                   />
+              <Route exact path={`${this.props.match.url}/`}
+                     render={ props => <Page {...props}
+                                               product={this.props.product}
+                                             actions={this.props.actions} />}
+                />
         </section>
       </div>
     );

@@ -20,8 +20,7 @@ const ProductApp = props => (
         <NavLink activeClassName="active" to={`/${props.product.id}/information`}>INFORMATION</NavLink>
         <hr />
         <Route path="/:id(\d+)/information" render={()=>information(props.product.id)} />
-        <Route exact path="/:id/pages/:pageId/" component={ProductContainer} />
-        <Route exact path="/:id/" component={ProductContainer} />
+        <Route path="/:id(\d+)" component={ProductContainer} />
       </div>
     </ConnectedRouter>
   </Provider>

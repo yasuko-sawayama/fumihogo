@@ -13,15 +13,20 @@ class Page extends React.Component {
     }),
   }
 
+  constructor(props) {
+    super(props)
+
+    this.fetchContent = this.fetchContent.bind(this);
+    this.targetPage = this.targetPage.bind(this);
+  }
+
   componentWillMount() {
     this.props.actions.changePage(this.props.match.params.pageId);
     this.fetchContent(this.props.match.params.pageId, this.props.product.pages);
   }
 
   componentWillReceiveProps(nextProps) {
-    const { pageId } = this.props.match.params;
-    
-    if ( pageId && pageId !== nextProps.match.params.pageId) {
+    if ( this.props.match.params.pageId !== nextProps.match.params.pageId) {
       this.fetchContent(nextProps.match.params.pageId, nextProps.product.pages);
       this.props.actions.changePage(nextProps.match.params.pageId)
     }
