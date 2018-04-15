@@ -12,7 +12,6 @@ import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants'
 
 export function* postPage({ payload, }) {
   try {
-    console.log(payload);
     yield put(showLoading());
 //    yield put(clearError());
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.productId}/pages/`;

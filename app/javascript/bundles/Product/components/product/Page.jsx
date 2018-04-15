@@ -7,6 +7,7 @@ import Pager from './Pager';
 class Page extends React.Component {
   static propTypes = {
     product: PropTypes.shape({
+      id: PropTypes.number.isRequired,
       pageInfo: PropTypes.object.isRequired,
       currentPage: PropTypes.number.isRequired,
       content: PropTypes.string.isRequired,
@@ -33,7 +34,7 @@ class Page extends React.Component {
   };
 
   fetchContent(pageId, pages) {
-    this.props.actions.fetchPageContent(this.targetPage(pageId, pages).api);
+    this.props.actions.fetchPageContent(this.props.product.id, this.targetPage(pageId, pages).id);
   };
 
   render() {
