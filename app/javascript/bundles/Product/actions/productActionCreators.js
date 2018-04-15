@@ -5,6 +5,7 @@ import {
 
 export * from './fetchPageContentActionCreators';
 export * from './fetchProductActionCreators';
+export * from './postPageActionCreators';
 
 export const changePage = pageId => ({
   type: PAGE_CHANGED,

@@ -39,9 +39,9 @@ class Product < ApplicationRecord
                   public_open: 1,
                   login: 2,
                   list: 3 },
+            default: :public_open,
             predicate: true,
-            scope: true,
-            default: :public_open
+            scope: true
 
   scope :owned, ->(user) { where(user_id: user&.id) }
 

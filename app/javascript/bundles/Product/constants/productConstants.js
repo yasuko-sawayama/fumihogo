@@ -9,3 +9,9 @@ export const PRODUCT_FETCH_SUCCESS = 'product/fetch_success';
 export const PRODUCT_FETCH_ERROR = 'product/fetch_error';
 
 export const PAGE_CHANGED = 'product/page/changed';
+
+export const CLEAR_ERROR = 'product/clear_error';
+
+export const PAGE_POST_REQUESTED = 'product/page/post_requested';
+export const PAGE_POST_SUCCESS = 'product/page/post_success';
+export const PAGE_POST_ERROR = 'product/page/post_error';
