@@ -26,7 +26,7 @@ RSpec.feature '作品を作成する', type: :feature do
     sleep 3
     expect(Product.find_by(title: '最新のタイトル')).not_to be_nil
     expect(page).to have_content('新しい小説を作成しました')
-    expect(page).to have_css('h1', text: '最新のタイトル')
+    expect(page).to have_css('h2', text: '最新のタイトル')
   end
 
   scenario '作品の投稿に失敗するとエラーメッセージが表示される', :js

@@ -92,7 +92,25 @@ RSpec.describe ProductPolicy do
   end
 
   permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    describe 'ログインしている' do
+      let(:user) { create(:user) }
+      
+      it '自分の作品は変更できる' do
+        my_product = build(:product, user: user)
+        expect(subject).to permit(user, my_product)
+      end
+
+      it '他人の作品は変更できない' do
+        other_product = build(:product)
+        expect(subject).not_to permit(user, other_product)
+      end
+    end
+
+    it 'ゲストは変更できない' do
+      user = User.new
+      product = build(:product)
+      expect(subject).not_to permit(user, product)
+    end
   end
 
   permissions :destroy? do
