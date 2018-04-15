@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FontAwesome from 'react-fontawesome';
+import { Row, Col, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import styled from 'styled-components';
 
 import Title from './Title';
 import TableOfContents from './TableOfContents';
 import Description from './Description';
 
 const productUrl = id => `/${id}/`;
+
+const ButtonCol = styled(Col)`
+padding-top: 20px;
+`;
 
 const About = ({
   product: {
@@ -23,8 +31,20 @@ const About = ({
       description={description}
       author={author}
       about={about}
-    />
-    { about.pageCount > 1 && <TableOfContents pages={pages} url={productUrl(id)} /> }
+      />
+    <Row>
+      <div className="col-sm-10">
+        { about.pageCount > 1 && <TableOfContents pages={pages} url={productUrl(id)} /> }
+      </div>
+      <ButtonCol sm={2}>
+        <LinkContainer to={`${productUrl(id)}pages/new`} >
+          <Button bsStyle="primary">
+            <FontAwesome name="plus-square"/>
+            ページ追加
+          </Button>
+        </LinkContainer>
+      </ButtonCol>
+    </Row>
   </section>
 );
 
