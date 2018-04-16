@@ -10,6 +10,7 @@ import SpinerContainer from '../../shared/containers/SpinerContainer';
 import About from './edit/About';
 import Page from './product/Page';
 import NewPage from './product/NewPage'
+import InfoAlert from '../../shared/components/InfoAlert';
 
 class Edit extends React.Component {
   static propTypes = {
@@ -32,6 +33,9 @@ class Edit extends React.Component {
         <LoadingBar />
         <section id="product">
           <SpinerContainer />
+          <InfoAlert
+            message="各項目をクリックすると変更できます."
+           />
           <About {...this.props} />
           <hr />
           { this.props.product.auth.update && 
