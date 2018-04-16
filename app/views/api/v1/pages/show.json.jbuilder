@@ -4,7 +4,10 @@ json.page do |json|
   json.previousPage @page.previous
   json.nextPage @page.next
   
-  json.product do
+  json.product do |product|
     json.extract! @product, :id, :title
+    product.about do |about|
+      about.pageCount @product.page_count
+    end
   end
 end

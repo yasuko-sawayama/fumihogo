@@ -8,7 +8,7 @@ const aboutReducer = (state = {}, action) => {
   case PRODUCT_FETCH_SUCCESS:
     return {
       created_at: action.payload.product.about.created_at,
-      charactor_count: action.payload.product.about.charactor_count,
+      character_count: action.payload.product.about.character_count,
       pageCount: action.payload.product.about.pageCount,
       privacyLevel: action.payload.product.about.privacyLevel,
     };

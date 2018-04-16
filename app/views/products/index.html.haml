@@ -9,14 +9,10 @@
       %span.glyphicon.glyphicon-plus
       新規作成
 
--# .row
--#   .col-md-10.col-md-offset-1
--#     - if @products.empty?
--#       %p 作品がありません
--#     = render partial: 'shared/product', collection: @products
+.row
+  .col-md-10.col-md-offset-1
+    - if @products.empty?
+      %p 作品がありません
+    = render @products
 
--#     = paginate @products
-%h1 Products#index
-%p Find me in app/views/products/index.html.haml
-
-= render partial: 'product', collection: @products
+    = paginate @products

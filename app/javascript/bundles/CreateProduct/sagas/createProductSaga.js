@@ -1,14 +1,11 @@
-import { takeLatest } from 'redux-saga';
-import { call, put, all } from 'redux-saga/effects';
-import { SubmissionError } from 'redux-form'
-
+import { takeEvery, call, put, all } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { postEntities } from '../../../shared/libs/requestsManager';
 import { postProductSuccess, postProductError, clearError } from '../actions/productActionCreators';
 import { redirectToRoot } from '../../../shared/libs/redirects';
 import { CREATE_REQUEST } from '../constants/createProductConstants';
-import { PRODUCT_API_ENTRY_POINT} from '../../shared/constants/commonConstants';
+import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
 
 export function* postProduct({ payload, }) {
   try {
@@ -23,7 +20,7 @@ export function* postProduct({ payload, }) {
         put(postProductError(error)),
         put(redirectToRoot())
       ]);
-    } else  {
+    } else {
       yield put(postProductError(error));
     }
   } finally {
@@ -32,5 +29,5 @@ export function* postProduct({ payload, }) {
 }
 
 export default function* watchCreateProduct() {
-  yield takeLatest(CREATE_REQUEST, postProduct);
+  yield takeEvery(CREATE_REQUEST, postProduct);
 }

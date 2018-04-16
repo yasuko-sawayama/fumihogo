@@ -4,16 +4,16 @@ import { Field } from 'redux-form';
 import BootstrapField from './BootstrapField';
 import EditorField from './EditorField';
 
-const description = () => (
+const Notice = () => (
   <div className="description">
     2ページ目以降は小説投稿後に追加できます
   </div>
 );
 
-const PageForm = ({ id, pageCount }) => (
+const PageForm = ({ id=null, pageCount=0 }) => (
     <div id="pageInfo">
-      <h4>本文：{pageCount < 1 ? 1 : pageCount + 1}ページ</h4>
-      { pageCount < 1 && description }
+      <h4>本文：{ pageCount + 1 }ページ</h4>
+      { pageCount < 1 && <Notice /> }
       <Field name="pageTitle"
              component={ BootstrapField }
              type="text"
@@ -23,7 +23,7 @@ const PageForm = ({ id, pageCount }) => (
 
       <EditorField
         key="field"
-        name="editorText"
+        name="content"
         id="inputEditorText"
         disabled={false}
         placeholder="Type here"

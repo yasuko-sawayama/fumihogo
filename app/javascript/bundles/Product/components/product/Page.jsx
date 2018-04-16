@@ -1,30 +1,17 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import Title from './product/Title';
-import TableOfContents from './product/TableOfContents';
-import Content from './product/Content';
-import Description from './product/Description';
-import Pager from './product/Pager';
+import Content from './Content';
+import Pager from './Pager';
 
 class Page extends React.Component {
   static propTypes = {
     product: PropTypes.shape({
       id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      author: PropTypes.object.isRequired,
-      about: PropTypes.shape({
-        pageCount: PropTypes.number.isRequired,
-      }).isRequired,
       pageInfo: PropTypes.object.isRequired,
       currentPage: PropTypes.number.isRequired,
       content: PropTypes.string.isRequired,
     }),
-  }
-  
-  constructor(props) {
-    super(props);
-
   }
 
   componentWillMount() {
@@ -33,8 +20,9 @@ class Page extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.pageId &&
-        this.props.match.params.pageId !== nextProps.match.params.pageId) {
+    const { pageId } = this.props.match.params;
+    
+    if ( pageId && pageId !== nextProps.match.params.pageId) {
       this.fetchContent(nextProps.match.params.pageId, nextProps.product.pages);
       this.props.actions.changePage(nextProps.match.params.pageId)
     }
@@ -46,22 +34,12 @@ class Page extends React.Component {
   };
 
   fetchContent(pageId, pages) {
-    this.props.actions.fetchPageContent(this.targetPage(pageId, pages).api);
+    this.props.actions.fetchPageContent(this.props.product.id, this.targetPage(pageId, pages).id);
   };
 
   render() {
-    const productUrl = `/${this.props.product.id}/`;
-
     return (
       <section id="page" className="page">
-        <Title title={this.props.product.title} />
-        <Description
-          description={this.props.product.description}
-          author={this.props.product.author}
-          about={this.props.product.about}
-          />
-        { this.props.product.about.pageCount > 1 && <TableOfContents pages={this.props.product.pages} url={productUrl} /> }
-        <hr />
         <Content
           pageId={this.props.product.currentPage}
           pageTitle={this.props.product.pageInfo.pageTitle}

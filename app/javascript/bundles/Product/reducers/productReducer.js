@@ -5,6 +5,7 @@ import {
   PRODUCT_FETCH_ERROR
 } from '../constants/productConstants';
 
+import authReducer from './product/authReducer';
 import aboutReducer from './product/aboutReducer';
 import authorReducer from './product/authorReducer';
 import contentReducer from './product/contentReducer';
@@ -51,6 +52,7 @@ const ProductReducer = combineReducers({
   id,
   title,
   description,
+  auth: authReducer,
   author: authorReducer,
   about: aboutReducer,
   content: contentReducer,

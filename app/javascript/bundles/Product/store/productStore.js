@@ -8,6 +8,7 @@ import { reducer as formReducer } from 'redux-form';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import ProductReducer from '../reducers/productReducer';
+import alertReducer from '../reducers/alertReducer';
 import productSaga from '../sagas/saga';
 
 export const history = createHistory({ basename: '/products', });
@@ -20,6 +21,7 @@ const middleware = [reduxRouterMiddleware, sagaMiddleware];
 const configureStore = railsProps => {
   const store = createStore(
     combineReducers({
+      alert: alertReducer,
       product: ProductReducer,
       router: routerReducer,
       form: formReducer,
