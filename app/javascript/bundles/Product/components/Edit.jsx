@@ -29,15 +29,29 @@ class Edit extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     const {
       values,
+      dirty,
+      reset,
       handleSubmit,
       pristine,
       submitting
     } = this.props;
 
     const { id } = this.props.product;
+    const SubmitButton = () => (
+      <div>
+        <Button bsStyle="primary"
+                type="submit"
+                disabled={pristine || submitting} >
+          変更を保存
+        </Button>
+        {' '}
+        <button type="button" disabled={pristine || submitting} onClick={reset} className="btn btn-default">
+          キャンセル
+        </button>
+      </div>
+    );
     
     return (
       <div>
@@ -48,13 +62,7 @@ class Edit extends React.Component {
             message="各項目をクリックすると変更できます."
             />
           <form onSubmit={handleSubmit((values) => this.props.actions.updateProduct(values, { id }))} >
-
-            <Button bsStyle="primary"
-                    type="submit"
-                    disabled={pristine || submitting} >
-              変更を保存
-            </Button>
-
+            <SubmitButton />
           <About {...this.props} />
           <hr />
           { this.props.product.auth.update && 

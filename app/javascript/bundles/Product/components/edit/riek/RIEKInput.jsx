@@ -26,6 +26,10 @@ class RIEKInput extends React.Component {
   //   this.onSubmit();
   // }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ text: nextProps.input.value });
+  }
+
   changeState(value) {
     this.setState({ text: value });
   }
