@@ -22,6 +22,8 @@ const ProductApp = props => (
         <Route path="/:id(\d+)/information" render={()=>information(props.product.id)} />
         <Route path="/:id(\d+)/pages/" component={ProductContainer} />
         <Route exact path="/:id(\d+)/" component={ProductContainer} />
+        // Indexからリンクで移動するとparamが含まれない模様（理由不明...）
+        <Route exact path="/" component={ProductContainer} />
       </div>
     </ConnectedRouter>
   </Provider>
