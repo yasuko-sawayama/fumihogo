@@ -7,9 +7,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'nokogiri'
-gem 'kaminari'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
@@ -20,8 +17,7 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'mini_racer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -31,15 +27,14 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem "font-awesome-rails"
+gem 'nokogiri'
+
+# pagenate
+gem 'kaminari'
 
 # static pages in rails
 gem 'high_voltage', '~> 3.0.0'
@@ -49,6 +44,9 @@ gem 'enumerize'
 
 # Markdown
 gem 'redcarpet', '~> 2.3.0'
+
+# character count up
+gem 'counter_culture'
 
 ########## # React Rails ##########
 gem 'react_on_rails', '10.0.2'
@@ -155,4 +153,3 @@ group :test do
   # gem 'vcr'
 end
 
-gem 'mini_racer', platforms: :ruby

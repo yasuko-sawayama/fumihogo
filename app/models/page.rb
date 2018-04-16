@@ -10,11 +10,13 @@
 #  character_count :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  slug            :string
 #
 # Indexes
 #
 #  index_pages_on_position    (position)
 #  index_pages_on_product_id  (product_id)
+#  index_pages_on_slug        (slug) UNIQUE
 #  index_pages_on_title       (title)
 #
 # Foreign Keys
@@ -25,12 +27,20 @@
 class Page < ApplicationRecord
   extend FriendlyId
 
+  # page count
+  counter_culture :product, column_name: "character_count",
+  delta_column: 'character_count', touch: true
+
   belongs_to :product, inverse_of: :pages
 
   acts_as_list scope: :product, top_of_list: 1
+
+  # products/:product_id/page/:positionでアクセスする
   friendly_id :position, use: [:scoped, :finders],
               scope: :product,
               slug_column: :position
+
+  before_save :update_character_count
 
   validates :content, presence: true, length: { in: 10...30_000 }
   validates :title, length: { maximum: 45, allow_blank: true }
@@ -51,6 +61,15 @@ class Page < ApplicationRecord
 
   def should_generate_new_friendly_id?
     position_changed? || super
+  end
+
+  def update_character_count
+    self.character_count = count_character
+  end
+
+  def count_character
+    #TODO: markdownの記号を除く
+    content.length
   end
 end
 
