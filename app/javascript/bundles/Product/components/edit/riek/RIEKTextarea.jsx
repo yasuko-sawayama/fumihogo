@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RIEInput } from 'riek';
+import { RIETextArea } from 'riek';
 
-class RIEKInput extends React.Component {
+class RIEKTextarea extends React.Component {
   static propTypes = {
     input: PropTypes.any.isRequired,
-    size: PropTypes.number,
     className: PropTypes.string,
   }
 
@@ -21,11 +20,6 @@ class RIEKInput extends React.Component {
     // this.submit = this.submit.bind(this);
   }
 
-  // submit() {
-  //   console.log("submitted");
-  //   this.onSubmit();
-  // }
-
   componentWillReceiveProps(nextProps) {
     this.setState({ text: nextProps.input.value });
   }
@@ -33,27 +27,25 @@ class RIEKInput extends React.Component {
   changeState(value) {
     this.setState({ text: value });
   }
-  
+
   changeCallback(newState) {
     const { [this.props.input.name]: value } = newState;
+
     this.changeState(value);
     this.props.input.onChange(value);
   }
 
   render() {
-    const {input, size=20, className="", ...props} = this.props
-    return (
-      <RIEInput
-        propName={input.name}
-
-        value={this.state.text}
+    const {input, className="", rows=3, cols=50, ...props} = this.props
+    return(
+      <RIETextArea
+        value={input.value}
         change={this.changeCallback}
-        editProps={{ size }}
-        classEditing="form-control"
+        propName={input.name}
         className={className}
-        />
-    )
+        editProps={{rows, cols}}/>
+    );
   }
 }
 
-export default RIEKInput;
+export default RIEKTextarea;
