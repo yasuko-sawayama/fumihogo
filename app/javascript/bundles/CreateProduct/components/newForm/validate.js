@@ -12,13 +12,13 @@ const validate = values => {
   if (values.pageTitle && values.pageTitle.length > 45) {
     errors.pageTitle = "章タイトルの長さは45文字以下にしてください。"
   }
-  if (!values.editorText) {
-    errors.editorText = "本文を入力して下さい。";
+  if (!values.content) {
+    errors.content = "本文を入力して下さい。";
   }
-  if (values.editorText && values.editorText.length < 10) {
-    errors.editorText = "本文の長さは10文字以上にしてください。";
+  if (values.content && values.content.length < 10) {
+    errors.content = "本文の長さは10文字以上にしてください。";
   }
-  if (values.editorText && values.editorText.length >= 30000) {
+  if (values.content && values.content.length >= 30000) {
     errors.editorText = "本文の長さは3万字以下にしてください。";
   }
 
