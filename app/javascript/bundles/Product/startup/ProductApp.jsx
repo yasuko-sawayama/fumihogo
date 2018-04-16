@@ -11,6 +11,8 @@ import ProductContainer from '../containers/ProductContainer';
 const information = (props) =><h1>Information:{props}</h1>;
 
 // route /products
+// Indexからリンクで移動するとparamが含まれないためルートパスを追記
+        
 const ProductApp = props => (
   <Provider store={configureStore(props)}>
     <ConnectedRouter history={history}>
@@ -22,7 +24,6 @@ const ProductApp = props => (
         <Route path="/:id(\d+)/information" render={()=>information(props.product.id)} />
         <Route path="/:id(\d+)/pages/" component={ProductContainer} />
         <Route exact path="/:id(\d+)/" component={ProductContainer} />
-        // Indexからリンクで移動するとparamが含まれない模様（理由不明...）
         <Route exact path="/" component={ProductContainer} />
       </div>
     </ConnectedRouter>
