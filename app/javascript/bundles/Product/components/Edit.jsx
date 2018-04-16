@@ -7,7 +7,7 @@ import ReactLoading from 'react-loading';
 import {Field} from 'redux-form';
 
 import SpinerContainer from '../../shared/containers/SpinerContainer';
-import About from './product/About';
+import About from './edit/About';
 import Page from './product/Page';
 import NewPage from './product/NewPage'
 
