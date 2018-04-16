@@ -43,6 +43,10 @@ class Page < ApplicationRecord
     product.pages.where('position < ?', position).last
   end
 
+  def formatted_title
+    title.blank? ? "ページ#{position}" : title
+  end
+
   private
 
   def should_generate_new_friendly_id?
