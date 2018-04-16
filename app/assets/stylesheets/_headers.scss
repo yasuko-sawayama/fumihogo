@@ -16,9 +16,13 @@
 		}
 	}
 
-	.read {
+    .read {
 		margin-left: 20px;
 		margin-bottom: -3px;
+
+        &+.twitter-btn {
+          margin-top: -30px;
+        }
 	}
 }
 
