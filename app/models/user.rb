@@ -62,4 +62,15 @@ class User < ApplicationRecord
     profile.save!
     [profile.user, policy]
   end
+  def twitter?
+    social_profiles.exists?(provider: 'twitter')
+  end
+
+  def twitter_uid
+    social_profiles.find_by(provider: 'twitter')&.uid
+  end
+
+  def sns_url
+    social_profiles.order(provider: :desc).first.url || "#"
+  end
 end
