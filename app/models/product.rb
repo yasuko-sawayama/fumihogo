@@ -55,11 +55,6 @@ class Product < ApplicationRecord
     end
   end
 
-  # dummy
-  def charactor_count
-    900
-  end
-
   def page_count
     pages.count
   end

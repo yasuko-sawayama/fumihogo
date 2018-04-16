@@ -13,7 +13,7 @@ json.product do |product|
 
   json.about do |about|
     about.created_at @product.created_at
-    about.charactor_count @product.charactor_count
+    about.character_count @product.character_count
     about.pageCount @product.page_count
     about.privacyLevel @product.privacy_level_text
   end

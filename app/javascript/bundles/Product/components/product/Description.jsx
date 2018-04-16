@@ -7,10 +7,10 @@ white-space: pre-line;
 `;
 
 const Description = ({
-  description,
+  description='',
   about: {
     created_at,
-    charactor_count,
+    character_count,
     privacyLevel,
     pageCount,
   },
@@ -38,7 +38,7 @@ const Description = ({
           <dt>公開日:</dt>
           <dd>{created_at}</dd>
           <dt>文字数:</dt>
-          <dd>{charactor_count}</dd>
+          <dd>{character_count}</dd>
           <dt>ページ数:</dt>
           <dd>{pageCount}</dd>
           <dt>公開範囲:</dt>
@@ -53,7 +53,7 @@ Description.propTypes = {
   description: PropTypes.string,
   about: PropTypes.shape({
     created_at: PropTypes.string.isRequired,
-    charactor_count: PropTypes.number.isRequired,
+    character_count: PropTypes.number.isRequired,
     privacyLevel: PropTypes.string.isRequired,
     pageCount: PropTypes.number.isRequired,
   }).isRequired,
