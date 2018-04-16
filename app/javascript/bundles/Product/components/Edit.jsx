@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { NavLink, Route } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar';
 import ReactLoading from 'react-loading';
+import {Field} from 'redux-form';
 
 import SpinerContainer from '../../shared/containers/SpinerContainer';
 import About from './product/About';
