@@ -15,6 +15,20 @@ const ButtonCol = styled(Col)`
 padding-top: 20px;
 `;
 
+const AddButton = ({ id }) => (
+  <ButtonCol sm={2}>
+    <LinkContainer
+      to={`${productUrl(id)}pages/new`}
+      activeClassName="hidden"
+      >
+      <Button bsStyle="primary">
+        <FontAwesome name="plus-square"/>
+        ページ追加
+      </Button>
+    </LinkContainer>
+  </ButtonCol>
+);
+
 const About = ({
   product: {
     id,
@@ -23,6 +37,7 @@ const About = ({
     author,
     about,
     pages,
+    auth,
   },
 }) => (
   <section id="about">
@@ -36,14 +51,7 @@ const About = ({
       <div className="col-sm-10">
         { about.pageCount > 1 && <TableOfContents pages={pages} url={productUrl(id)} /> }
       </div>
-      <ButtonCol sm={2}>
-        <LinkContainer to={`${productUrl(id)}pages/new`} >
-          <Button bsStyle="primary">
-            <FontAwesome name="plus-square"/>
-            ページ追加
-          </Button>
-        </LinkContainer>
-      </ButtonCol>
+      { auth.update && <AddButton id={id}/> }
     </Row>
   </section>
 );

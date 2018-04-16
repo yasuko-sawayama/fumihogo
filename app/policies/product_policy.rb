@@ -8,4 +8,8 @@ class ProductPolicy < ApplicationPolicy
   def create?
     user&.persisted?
   end
+
+  def update?
+    user == record.user
+  end
 end

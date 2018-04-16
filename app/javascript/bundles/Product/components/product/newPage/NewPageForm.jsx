@@ -1,27 +1,26 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Field } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 import PageForm from '../../../../shared/components/forms/PageForm';
 import validate from './validate';
 
-const NewPageForm = ({
-  pristine,
-  reset,
-  submitting,
-  handleSubmit,
-  id,
-  currentPage,
-  about: { pageCount }
-}) => (
-  <div>
-    <form onSubmit={handleSubmit} >
+const NewPageForm = props => {
+  const {
+    pristine,
+    reset,
+    submitting,
+    handleSubmit,
+    id,
+    currentPage,
+    about: { pageCount },
+    submitPage,
+  } = props;
+  return (
+    <form onSubmit={handleSubmit((values) => submitPage(values, { id }))} >
       <PageForm id={id} pageCount={pageCount} />
-    </form>
-
-    <div className="buttonArea">
+      <div className="buttonArea">
         <button className="btn btn-primary"
                 type="submit"
                 disabled={submitting} >
@@ -33,8 +32,9 @@ const NewPageForm = ({
           入力をクリア
         </button>
       </div>
-  </div>
-);
+    </form>
+  );
+}
 
 NewPageForm.propTypes = ({
   id: PropTypes.number.isRequired,

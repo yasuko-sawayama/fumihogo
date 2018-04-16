@@ -50,7 +50,7 @@ const Description = ({
 );
 
 Description.propTypes = {
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   about: PropTypes.shape({
     created_at: PropTypes.string.isRequired,
     charactor_count: PropTypes.number.isRequired,

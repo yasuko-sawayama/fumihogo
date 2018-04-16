@@ -1,22 +1,8 @@
 import React from 'react';
-import { Jumbotron, Button, Alert } from 'react-bootstrap';
-import styled from 'styled-components';
+import { Button, Alert } from 'react-bootstrap';
 
 import DisplayGrayWrapper from '../../shared/components/DisplayGrayWrapper';
-
-const Dialog = styled(Jumbotron)`
-    background: #fff;
-    top: 100px;
-    left: 50%;
-    top: 50%;
-    position: fixed;
-    width: 80%;
-    height: 300px;
-    margin: -150px 0 0 -40%;
-p {
-font-size: 14px;
-}
-`;
+import Dialog from '../../shared/components/Dialog';
 
 export default ({ title, description, id }) => {
   const url = `/products/${id}`

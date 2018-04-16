@@ -32,7 +32,7 @@ class Page < ApplicationRecord
               scope: :product,
               slug_column: :position
 
-  validates :content, presence: true, length: { minimum: 10 }
+  validates :content, presence: true, length: { in: 10...30_000 }
   validates :title, length: { maximum: 45, allow_blank: true }
 
   def next
