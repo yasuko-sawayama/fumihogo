@@ -95,7 +95,7 @@ RSpec.describe "Products", type: :request do
         it 'エラーメッセージ' do
           subject
           body = JSON.parse(response.body)
-          expect(body["errors"].to_s).to include('を入力してください')
+          expect(body.to_s).to include('を入力してください')
         end
 
         it '作品が増えないこと' do

@@ -10,11 +10,13 @@
 #  character_count :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  slug            :string
 #
 # Indexes
 #
 #  index_pages_on_position    (position)
 #  index_pages_on_product_id  (product_id)
+#  index_pages_on_slug        (slug) UNIQUE
 #  index_pages_on_title       (title)
 #
 # Foreign Keys
@@ -60,6 +62,45 @@ RSpec.describe Page, type: :model do
       # find_by_friendly_idを使用してpositionのみを検索対象とする
       # optionに:findersを指定すること
       expect(product.pages.find_by_friendly_id(3)).to eq(page)
+    end
+  end
+
+  describe "文字数をキャッシュする" do
+    let(:page) { create(:page, content: Faker::Lorem.characters(10)) }
+
+    it '文字数が記録されること' do
+      expect(page.reload.character_count).to eq(10)
+    end
+    it '更新時に変更されること' do
+      page.update(content: Faker::Lorem.characters(20))
+      expect(page.reload.character_count).to eq(20)
+    end
+  end
+  
+  describe "productのcharacter countをアップデートする" do
+    let!(:product) { create(:product) }
+    let(:page)  { build(:page, product: product) }
+
+    it "ページを追加するとカウントアップすること" do
+      page.content = Faker::Lorem.characters(30)
+      expect { page.save! }.to change { product.reload.character_count }.by(30)
+    end
+
+    context "既にページがある場合" do
+      it "合計数が記録されること" do
+        product.pages.destroy_all
+        product.pages.create(content: Faker::Lorem.characters(40))
+        product.pages.create(content: Faker::Lorem.characters(20))
+        expect(product.reload.character_count).to eq(60)
+      end
+    end
+
+    it "ページ数を変更するとカウントアップすること" do
+      product.pages.destroy_all
+      page = product.pages.create(content: Faker::Lorem.characters(40))
+      page.update(content: Faker::Lorem.characters(23))
+
+      expect(product.reload.character_count).to eq(23)
     end
   end
 end

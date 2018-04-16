@@ -6,10 +6,11 @@ import {
   PAGE_CONTENT_FETCH_REQUESTED,
 } from '../constants/productConstants';
 
-export const fetchPageContent = url => ({
+export const fetchPageContent = (productId, id) => ({
   type: PAGE_CONTENT_FETCH_REQUESTED,
   payload: {
-    url,
+    productId,
+    id,
   },
 });
 

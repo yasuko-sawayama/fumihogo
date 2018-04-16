@@ -1,0 +1,27 @@
+.product-item.with-icon.media
+  .media-left
+    = link_to product do
+      %i.fa.fa-book
+  .media-body
+    .media-heading
+      %h3.title= link_to product.title, product
+      
+      %h4.sub-title= product.description&.truncate(100)
+    .description
+      .post-meta
+        %p
+          #{product.privacy_level}
+          |
+          文字数：#{product.character_count}
+          |
+          ページ数：#{product.pages.count}
+        %p
+          #{l product.created_at}
+      - if product.user.twitter?
+        = link_to product.user.sns_url, class: 'link-with-icon' do
+          %i.fa.fa-external-link
+          = product.user.nickname
+      - else
+        = product.user.nickname
+        
+

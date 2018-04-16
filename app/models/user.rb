@@ -38,12 +38,16 @@
 # Twitterのみ初期実装
 # TODO: Facebook, Google（必要か…？）
 class User < ApplicationRecord
+  extend FriendlyId
+
   has_many :social_profiles, dependent: :destroy
   has_many :products, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable, :omniauthable
+
+  friendly_id :nickname
 
   validates :nickname, presence: true, uniqueness: true
 
@@ -61,5 +65,17 @@ class User < ApplicationRecord
 
     profile.save!
     [profile.user, policy]
+  end
+  
+  def twitter?
+    social_profiles.exists?(provider: 'twitter')
+  end
+
+  def twitter_uid
+    social_profiles.find_by(provider: 'twitter')&.uid
+  end
+
+  def sns_url
+    social_profiles.order(provider: :desc).first.url || "#"
   end
 end

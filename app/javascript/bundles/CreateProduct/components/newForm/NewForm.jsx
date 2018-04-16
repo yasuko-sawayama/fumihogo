@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Field } from 'redux-form';
 
-import BootstrapField from './BootstrapField';
+import BootstrapField from '../../../shared/components/forms/BootstrapField';
 
-import PageForm from './PageForm';
+import PageForm from '../../../shared/components/forms/PageForm';
 
 const newForm = ({
   pristine,

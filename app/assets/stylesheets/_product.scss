@@ -3,3 +3,103 @@
 #product {
   position: relative;
 }
+
+// index
+.product-item.with-icon {
+	border-bottom: 1px solid #dedede;
+
+	.media-left {
+		i {
+			background-color: #fff;
+			color: #bbb;
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			font-size: 20px;
+			text-align: center;
+			vertical-align: middle;
+			border: 1px solid #bbb;
+			line-height: 42px;
+			display: block;
+			transition: all .25s ease;
+		}
+	}
+
+	.media-body {
+		padding-left: 20px;
+
+		.media-heading {
+			> h3 {
+				margin-top: 0;
+				a {
+					color: #636363;
+					margin-bottom: 20px;
+					font-weight: 700;
+				}
+			}
+
+			>h4 {
+				font-weight: normal;
+			}
+		}
+		.description {
+			margin-bottom: 20px;
+		}
+
+		.post-meta {
+			color: $gray-light;
+			font-size: 14px;
+			margin-top: 0;
+			margin-bottom: 20px;
+			> a {
+				text-decoration: none;
+				color: $gray-dark;
+				&:hover,
+				&:focus {
+					color: $brand-primary;
+					text-decoration: underline;
+				}
+			}
+
+			p {
+				margin: 0;
+			}
+		}
+	}
+}
+
+
+// header
+.page-header {
+	.read > p{
+		margin-bottom: 0;
+	}
+}
+
+// 情報バー
+#product-info {
+	width: 280px;
+
+	dl {
+		
+		dt {
+			width: 90px;
+		}
+
+		dd {
+			margin-left: 110px;
+		}
+	}
+}
+
+// 本文
+article.content {
+	line-height: 1.8;
+	color: #111;
+	letter-spacing: 1px;
+	padding: 60px 10px 4em;
+	font-size: 16px;
+	@media (max-width: $screen-xs-max) {
+		font-size: 15px;
+	}
+}

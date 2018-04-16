@@ -23,8 +23,6 @@ class ControlledEditor extends React.Component {
       }
     }
     
-
-    
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
 
     this.handleMyContentChange = this.handleMyContentChange.bind(this);
