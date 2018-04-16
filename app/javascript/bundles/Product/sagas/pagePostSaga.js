@@ -15,7 +15,6 @@ export function* postPage({ payload, }) {
 //    yield put(clearError());
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.productId}/pages/`;
     const response = yield call(postEntities, url, payload.data);
-    console.log(response)
     yield [
       put(postPageSuccess(response)),
       put(push(`/${response.data.product_id}/pages/${response.data.position}`)) // friendry_id使っているのでpositionを使う

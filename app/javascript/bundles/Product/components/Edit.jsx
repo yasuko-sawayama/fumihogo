@@ -5,6 +5,7 @@ import { NavLink, Route } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar';
 import ReactLoading from 'react-loading';
 import {Field} from 'redux-form';
+import { Button } from 'react-bootstrap'
 
 import SpinerContainer from '../../shared/containers/SpinerContainer';
 import About from './edit/About';
@@ -28,6 +29,16 @@ class Edit extends React.Component {
   }
 
   render() {
+    console.log(this.props)
+    const {
+      values,
+      handleSubmit,
+      pristine,
+      submitting
+    } = this.props;
+
+    const { id } = this.props.product;
+    
     return (
       <div>
         <LoadingBar />
@@ -35,7 +46,15 @@ class Edit extends React.Component {
           <SpinerContainer />
           <InfoAlert
             message="各項目をクリックすると変更できます."
-           />
+            />
+          <form onSubmit={handleSubmit((values) => this.props.actions.updateProduct(values, { id }))} >
+
+            <Button bsStyle="primary"
+                    type="submit"
+                    disabled={pristine || submitting} >
+              変更を保存
+            </Button>
+
           <About {...this.props} />
           <hr />
           { this.props.product.auth.update && 
@@ -53,7 +72,8 @@ class Edit extends React.Component {
                      render={ props => <Page {...props}
                                                product={this.props.product}
                                              actions={this.props.actions} />}
-                />
+             />
+          </form>
         </section>
       </div>
     );

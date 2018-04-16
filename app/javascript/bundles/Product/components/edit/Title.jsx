@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import RIEKInput from './riek/RIEKInput';
 
-const Title = () => (
+const Title = updateProduct => (
   <div className="page-header">
     <h1 className="title">
       <Field

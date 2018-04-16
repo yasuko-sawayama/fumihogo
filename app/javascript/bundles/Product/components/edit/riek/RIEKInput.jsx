@@ -13,25 +13,28 @@ class RIEKInput extends React.Component {
     super(props)
 
     this.state = {
-      title: props.input.value
+      text: props.input.value
     };
 
     this.changeCallback = this.changeCallback.bind(this);
     this.changeState = this.changeState.bind(this);
-    this.submit = this.submit.bind(this);
+    // this.submit = this.submit.bind(this);
   }
 
-  submit() {
-    console.log("submitted");
-  }
+  // submit() {
+  //   console.log("submitted");
+  //   this.onSubmit();
+  // }
 
-  changeState(newState) {
-    this.setState(newState);
+  changeState(value) {
+    this.setState({ text: value });
   }
   
   changeCallback(newState) {
-    this.changeState(newState);
-    this.props.input.onChange(newState);
+    const { [this.props.input.name]: value } = newState;
+    console.log(value);
+    this.changeState(value);
+    this.props.input.onChange(value);
   }
 
   render() {
@@ -39,11 +42,10 @@ class RIEKInput extends React.Component {
     return (
       <RIEInput
         propName={input.name}
-        name={input.name}
-        value={this.state.title}
+
+        value={this.state.text}
         change={this.changeCallback}
         editProps={{ size }}
-        afterFinish={this.submit}
         classEditing="form-control"
         className={className}
         />

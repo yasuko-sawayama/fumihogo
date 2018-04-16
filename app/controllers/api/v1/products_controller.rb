@@ -1,12 +1,12 @@
 # API 作品内容に関するコントローラ
 class Api::V1::ProductsController < Api::V1::ApiController
+  before_action :set_product, only: [:show, :update, :destroy]
+
   def index
     render nothing: true, response: 200
   end
 
-  def show
-    authorize @product = Product.find(params[:id])
-  end
+  def show; end
 
   def create
     @product = Product.new(product_params) do |product|
@@ -23,6 +23,14 @@ class Api::V1::ProductsController < Api::V1::ApiController
     end
   end
 
+  def update
+    if @product.update(product_params)
+      render :show, status: :ok
+    else
+      render json: @product.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def product_params
@@ -30,5 +38,9 @@ class Api::V1::ProductsController < Api::V1::ApiController
       :title, :description, :privacy_level,
       pages_attributes: [:id, :title, :position,
                          :content])
+  end
+
+  def set_product
+    authorize @product = Product.find(params[:id])
   end
 end
