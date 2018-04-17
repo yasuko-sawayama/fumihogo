@@ -10,7 +10,7 @@ import { Button } from 'react-bootstrap'
 import SpinerContainer from '../../shared/containers/SpinerContainer';
 import About from './edit/About';
 import Page from './product/Page';
-import NewPage from './product/NewPage'
+import NewPage from './edit/NewPage'
 import InfoAlert from '../../shared/components/InfoAlert';
 
 class Edit extends React.Component {
