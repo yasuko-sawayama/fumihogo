@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Field } from 'redux-form';
 
-import RIEKTextarea from './riek/RIEKTextarea';
+import RIEKTextarea from '../../../shared/components/forms/riek/RIEKTextarea';
 
 const Desc = styled.div`
 white-space: pre-line;

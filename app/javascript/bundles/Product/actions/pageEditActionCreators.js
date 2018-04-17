@@ -1,13 +1,28 @@
 /* eslint-disable import/prefer-default-export */
 
-import { UPDATE_PAGE_REQUEST } from '../constants/pageEditConstants';
+import {
+  PAGE_UPDATE_REQUESTED,
+  PAGE_UPDATE_SUCCESS,
+  PAGE_UPDATE_ERROR
+} from '../constants/pageEditConstants';
 
-export const updatePage = (data, id, pageId) => ({
-  type: UPDATE_PAGE_REQUEST,
+export const updatePage = (data) => console.log(data) || ({
+  type: PAGE_UPDATE_REQUESTED,
   payload: {
     data,
-    id,
-    pageId,
   },
+});
+
+export const updatePageSuccess = response => ({
+  type: PAGE_UPDATE_SUCCESS,
+  payload: {
+    message: 'ページを更新しました。',
+    style: 'success',
+  },
+});
+
+export const updatePageError = errors => console.log(errors) || ({
+  type: PAGE_UPDATE_ERROR,
+  payload: { errors },
 });
 

@@ -12,13 +12,14 @@ const PageEditForm = props => {
     reset,
     submitting,
     handleSubmit,
+    actions,
     product: {
       id,
       currentPage,
     },
   } = props;
   return (
-    <form onSubmit={handleSubmit} >
+    <form onSubmit={handleSubmit(values =>actions.updatePage(values))}>
       <EditPageForm id={id} pageId={currentPage} />
       <div className="buttonArea">
         <button className="btn btn-primary"

@@ -9,6 +9,7 @@ class ControlledEditor extends React.Component {
     super(props);
 
     const { value, productId=null, pageId=null, } = props;
+
     let editorState = this.createState(value);
 
     this.state = {
@@ -24,12 +25,13 @@ class ControlledEditor extends React.Component {
     this.props.onChange(draftToMarkdown(rawContent));
   }
 
+
   componentWillReceiveProps(nextProps) {
     const { value, productId, pageId } = nextProps;
-    if (productId === this.state.productId && pageId === this.state.pageId) {
-      // ページ移動がなければそのまま更新
-      this.handleMyContentChange(value, this.state.editorState);
-    } else {
+
+    if (productId !== this.state.productId ||
+        pageId !== this.state.pageId ||
+        (!this.state.editorState.getCurrentContent().hasText() && value)) {
       // ページ移動していればStateを作り直す
       this.setState({
         editorState: this.createState(value),
@@ -52,8 +54,6 @@ class ControlledEditor extends React.Component {
     if (!value) {
       return EditorState.createEmpty();
     } else {
-      console.log(value)
-      console.log(markdownToDraft(value));
       return EditorState.createWithContent(
         convertFromRaw(markdownToDraft(value))
       )
@@ -62,7 +62,6 @@ class ControlledEditor extends React.Component {
 
   handleMyContentChange(newValue, editorState) {
     const { onChange, value } = this.props;
-
     if(!newValue) {
       editorState = EditorState.createEmpty();
     } else if (value !== newValue) {

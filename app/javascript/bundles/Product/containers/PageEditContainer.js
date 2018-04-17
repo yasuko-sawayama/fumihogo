@@ -8,15 +8,12 @@ import EditPage from '../components/edit/EditPage';
 import * as editActions from '../actions/pageEditActionCreators';
 import * as productActions from '../actions/productActionCreators';
 
-const initialValues = product => ({
-  id: product.id,
-  pageId: product.currentPage,
-  content: product.content,
-  title: product.pageInfo.pageTitle,
-});
-
+// contentはマウント後にfetchしてくるのでここではなし
 const mapStateToProps = state => ({
-  initialValues: initialValues(state.product),
+  initialValues: {
+    id: state.product.id,
+    pageId: state.product.currentPage,
+  },
   product: state.product,
 });
 

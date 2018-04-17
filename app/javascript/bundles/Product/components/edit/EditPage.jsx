@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 import PageEditForm from './PageForm';
+import Pager from '../product/Pager';
 
 class EditPage extends React.Component {
   // static propTypes = {
@@ -50,6 +51,7 @@ class EditPage extends React.Component {
     return (
       <section id="pageEdit" className="page">
         <PageEditForm {...this.props} />
+        <Pager {...this.props.product.pageInfo} url={`/${this.props.product.id}/`} />
       </section>
     )
   }
