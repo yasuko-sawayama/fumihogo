@@ -25,6 +25,9 @@ export const updatePageSuccess = response => ({
 
 export const updatePageError = errors => console.log(errors) || ({
   type: PAGE_UPDATE_ERROR,
-  payload: { errors },
+  payload: {
+    message: 'ページの更新に失敗しました。',
+    style: 'danger',
+  },
 });
 
