@@ -50,8 +50,7 @@ const newForm = ({
                 disabled={submitting} >
           新しい小説を作成する
         </button>
-        
-        {'　'}
+
         <button type="button" disabled={pristine || submitting} onClick={reset} className="btn btn-default">
           入力をクリア
         </button>

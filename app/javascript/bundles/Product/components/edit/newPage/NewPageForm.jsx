@@ -26,8 +26,7 @@ const NewPageForm = props => {
                 disabled={submitting} >
           ページを追加する
         </button>
-        
-        {'　'}
+
         <button type="button" disabled={pristine || submitting} onClick={reset} className="btn btn-default">
           入力をクリア
         </button>
