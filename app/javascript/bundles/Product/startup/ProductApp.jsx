@@ -8,7 +8,6 @@ import configureStore, { history } from '../store/productStore';
 import MessageContainer from '../containers/MessageContainer';
 import ProductContainer from '../containers/ProductContainer';
 import EditContainer from '../containers/EditContainer'
-// import TestForm from './TestForm';
 
 const information = (props) =><h1>Information:{props}</h1>;
 

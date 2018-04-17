@@ -63,7 +63,8 @@ class Edit extends React.Component {
             />
           <form onSubmit={handleSubmit((values) => this.props.actions.updateProduct(values, { id }))} >
             <SubmitButton />
-          <About {...this.props} />
+            <About {...this.props} />
+          </form>
           <hr />
           <Switch>
             <Route path={`/${id}/pages/new/`}
@@ -77,7 +78,6 @@ class Edit extends React.Component {
                                            actions={this.props.actions} /> }
                    />
           </Switch>
-          </form>
         </section>
       </div>
     );

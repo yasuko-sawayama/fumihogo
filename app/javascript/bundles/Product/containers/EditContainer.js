@@ -23,10 +23,9 @@ const initialValues = product => ({
 });
 
 
-// Which part of the Redux global state does our component want to receive as props?
+// FormはReduxFormに任せる
 const mapStateToProps = state => ({
   initialValues: initialValues(state.product),
-  form: state.form,
   product: state.product,
   railsContent: state.railsContext,
 });
@@ -36,7 +35,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 let EditForm = reduxForm({
-  from: 'edit_product',
+  form: 'edit_product',
 })(Edit);
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditForm);
