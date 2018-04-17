@@ -10,7 +10,6 @@ import getProductAttributes from '../libs/getProductAttributes';
 
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = state => ({
-  form: state.form,
   productAttributes: getProductAttributes(state),
   product: state.product,
   error: state.errorMessage,
