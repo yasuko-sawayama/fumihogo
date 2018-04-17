@@ -10,6 +10,7 @@
 #  updated_at      :datetime         not null
 #  privacy_level   :integer          default("closed")
 #  character_count :integer          default(0), not null
+#  cover_image     :string
 #
 # Indexes
 #

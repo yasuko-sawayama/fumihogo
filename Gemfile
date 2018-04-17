@@ -48,6 +48,10 @@ gem 'redcarpet', '~> 2.3.0'
 # character count up
 gem 'counter_culture'
 
+# image uploader
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+
 ########## # React Rails ##########
 gem 'react_on_rails', '10.0.2'
 gem 'webpacker'

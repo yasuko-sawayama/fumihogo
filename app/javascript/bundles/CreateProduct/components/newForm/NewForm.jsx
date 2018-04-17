@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Field } from 'redux-form';
 
 import BootstrapField from '../../../shared/components/forms/BootstrapField';
+import DropZoneInput from '../../../shared/components/forms/DropZoneInput';
 
 import PageForm from '../../../shared/components/forms/PageForm';
 
@@ -27,7 +28,10 @@ const newForm = ({
                type="text"
                componentClass="textarea"
                label="概要（200文字以内）" />
-        
+        <Field
+            name="cover_image"
+            component={DropZoneInput}
+          />
         <Field name="privacy_level"
                component={BootstrapField}
                type="select"

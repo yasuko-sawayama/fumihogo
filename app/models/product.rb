@@ -10,6 +10,7 @@
 #  updated_at      :datetime         not null
 #  privacy_level   :integer          default("closed")
 #  character_count :integer          default(0), not null
+#  cover_image     :string
 #
 # Indexes
 #
@@ -32,6 +33,8 @@ class Product < ApplicationRecord
 
   validates :title, presence: true
   validates :pages, presence: true
+
+  mount_uploader :cover_image, CoverImageUploader
 
   accepts_nested_attributes_for :pages
 

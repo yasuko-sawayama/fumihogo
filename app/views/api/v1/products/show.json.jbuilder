@@ -1,5 +1,5 @@
 json.product do |product|
-  json.extract! @product, :id, :title, :description
+  json.extract! @product, :id, :title, :description, :cover_image_url
 
   json.auth do |auth|
     auth.update policy(@product).update?

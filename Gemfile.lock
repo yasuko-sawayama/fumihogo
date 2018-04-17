@@ -95,6 +95,10 @@ GEM
     capybara-webkit (1.15.0)
       capybara (>= 2.3, < 4.0)
       json
+    carrierwave (1.2.2)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (1.2.0)
@@ -282,6 +286,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.8.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     mini_racer (0.1.15)
@@ -529,6 +534,7 @@ DEPENDENCIES
   capybara-email
   capybara-screenshot
   capybara-webkit
+  carrierwave (~> 1.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
   config
@@ -558,6 +564,7 @@ DEPENDENCIES
   launchy
   letter_opener
   listen (>= 3.0.5, < 3.2)
+  mini_magick
   mini_racer
   nokogiri
   omniauth

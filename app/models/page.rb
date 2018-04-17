@@ -10,13 +10,11 @@
 #  character_count :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  slug            :string
 #
 # Indexes
 #
 #  index_pages_on_position    (position)
 #  index_pages_on_product_id  (product_id)
-#  index_pages_on_slug        (slug) UNIQUE
 #  index_pages_on_title       (title)
 #
 # Foreign Keys

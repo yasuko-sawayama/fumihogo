@@ -7,6 +7,7 @@ export default (state) => ({
     title: selector(state, 'title'),
     description: selector(state, 'description'),
     privacy_level: selector(state, 'privacy_level'),
+    cover_image: selector(state, 'cover_image'),
     pages_attributes: [{
       title: selector(state, 'pageTitle'),
       content: selector(state, 'content'),
