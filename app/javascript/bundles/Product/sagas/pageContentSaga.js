@@ -1,5 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import { change } from 'redux-form';
 
 import { fetchEntities } from '../../../shared/libs/requestsManager';
 import { fetchPageContentSuccess, fetchPageContentError } from '../actions/productActionCreators';
@@ -12,7 +13,12 @@ export function* fetchPageContent({ payload }) {
     yield put(showLoading('content'));
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.productId}/pages/${payload.id}`;
     const response = yield call(fetchEntities, url);
-    yield put(fetchPageContentSuccess(response));
+
+    yield [
+      put(fetchPageContentSuccess(response)),
+      put(change('edit_page', 'content', response.data.page.content)),
+      put(change('edit_page', 'title', response.data.page.title))
+    ];
   } catch (error) {
     yield put(fetchPageContentError(error));
   } finally {

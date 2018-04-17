@@ -105,7 +105,7 @@ group :development, :test do
   gem "pry-rails"
   gem "pry-rescue"
   gem "pry-stack_explorer"
-
+  gem 'pry-remote'
   ################################################################################
   # Color console output
   gem "rainbow"

@@ -16,7 +16,7 @@ margin-top: 20px;
 
 const tableOfContents = ({ pages, url }) => {
   const pageLinks = pages.map(page => (
-    <PageLink key={page.position} {...page} url={url} />
+    <PageLink key={page.id} {...page} url={url} />
   ));
   
   return (

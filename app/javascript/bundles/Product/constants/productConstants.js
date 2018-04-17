@@ -15,3 +15,7 @@ export const CLEAR_ERROR = 'product/clear_error';
 export const PAGE_POST_REQUESTED = 'product/page/post_requested';
 export const PAGE_POST_SUCCESS = 'product/page/post_success';
 export const PAGE_POST_ERROR = 'product/page/post_error';
+
+export const PRODUCT_UPDATE_REQUESTED = 'product/update_requested';
+export const PRODUCT_UPDATE_SUCCESS = 'product/update_success';
+export const PRODUCT_UPDATE_ERROR = 'product/update_error';

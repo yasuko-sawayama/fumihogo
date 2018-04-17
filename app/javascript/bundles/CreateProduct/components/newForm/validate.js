@@ -18,8 +18,8 @@ const validate = values => {
   if (values.content && values.content.length < 10) {
     errors.content = "本文の長さは10文字以上にしてください。";
   }
-  if (values.content && values.content.length >= 30000) {
-    errors.editorText = "本文の長さは3万字以下にしてください。";
+  if (values.content && values.content.length > 30000) {
+    errors.content = "本文の長さは3万字以下にしてください。";
   }
 
   return errors;

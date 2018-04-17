@@ -6,11 +6,8 @@ class MessageAlert extends React.Component {
   constructor(props, context) {
     super(props, context);
 
+    props.actions.showMessage();
     this.handleDismiss = this.handleDismiss.bind(this);
-
-    this.state = {
-      show: true
-    };
   }
 
   static propTypes = {
@@ -19,12 +16,12 @@ class MessageAlert extends React.Component {
   }
 
   handleDismiss() {
-    this.setState({ show: false });
+    this.props.actions.dismissMessage();
   }
-
+  
   render() {
 
-    if ( this.props.message && this.state.show ) {
+    if ( this.props.message && this.props.show ) {
       return (
         <Alert bsStyle={this.props.style} onDismiss={this.handleDismiss} >
           <p>{this.props.message}</p>

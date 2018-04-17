@@ -8,6 +8,8 @@ const WrapperEditor = props => {
     input: { onChange, value },
     disabled,
     id,
+    productId,
+    pageId,
     meta: {
       touched,
       error,
@@ -23,6 +25,8 @@ const WrapperEditor = props => {
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        productId={productId}
+        pageId={pageId}
         />
       {touched && ( error || warning ) && <span className="text-danger">{ error || warning }</span>}
     </div>

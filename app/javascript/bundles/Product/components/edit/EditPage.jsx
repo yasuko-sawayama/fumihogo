@@ -1,18 +1,20 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import Content from './Content';
-import Pager from './Pager';
+import PageEditForm from './PageEditForm';
+import Pager from '../product/Pager';
 
-class Page extends React.Component {
-  static propTypes = {
-    product: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      pageInfo: PropTypes.object.isRequired,
-      currentPage: PropTypes.number.isRequired,
-      content: PropTypes.string.isRequired,
-    }),
-  }
+class EditPage extends React.Component {
+  // static propTypes = {
+  //   actions: PropTypes.arrayOf(
+  //     changePage: PropTypes.func.isRequired,
+  //   ).isRequired,
+  //   match: PropTypes.shape({
+  //     params: PropTypes.shape({
+  //       pageId: PropTypes.number.isRequired,
+  //     }),
+  //   }),
+  // }
 
   constructor(props) {
     super(props);
@@ -34,7 +36,7 @@ class Page extends React.Component {
       this.props.actions.changePage(nextProps.match.params.pageId)
     }
   }
-  
+
   targetPage(pageId, pages) {
     // Paramがない場合は常に1ページ目
     return pages.find((page) => page.id === Number(pageId)) || pages[0];
@@ -42,21 +44,17 @@ class Page extends React.Component {
 
   fetchContent(pageId, pages) {
     this.props.actions.fetchPageContent(this.props.product.id, this.targetPage(pageId, pages).id);
+    this.props.change('content', this.props.product.content)
   };
 
-  render() {
+  render () {
     return (
-      <section id="page" className="page">
-        <Content
-          pageId={this.props.product.currentPage}
-          pageTitle={this.props.product.pageInfo.pageTitle}
-          totalPage={this.props.product.about.pageCount}
-          content={this.props.product.content}
-          />
+      <section id="pageEdit" className="page">
+        <PageEditForm {...this.props} />
         <Pager {...this.props.product.pageInfo} url={`/${this.props.product.id}/`} />
       </section>
-    );
+    )
   }
 }
 
-export default Page;
+export default EditPage;

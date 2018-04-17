@@ -24,3 +24,13 @@ export const postEntities = (url, data, options = {}) => (
     ...options,
   })
 );
+
+export const updateEntities = (url, data, options = {}) => console.log(data) || (
+  axios({
+    method: 'PATCH',
+    url,
+    data,
+    headers: ReactOnRails.authenticityHeaders(),
+    ...options,
+  })
+);

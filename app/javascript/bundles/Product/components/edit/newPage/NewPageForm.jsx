@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Field, reduxForm } from 'redux-form';
 
 import PageForm from '../../../../shared/components/forms/PageForm';
@@ -26,8 +25,7 @@ const NewPageForm = props => {
                 disabled={submitting} >
           ページを追加する
         </button>
-        
-        {'　'}
+
         <button type="button" disabled={pristine || submitting} onClick={reset} className="btn btn-default">
           入力をクリア
         </button>
