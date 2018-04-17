@@ -1,18 +1,1 @@
-= content_for :title do
-  - if current_user.profile_image
-    = image_tag current_user.profile_image, size: '40x40'
-  #{current_user.nickname}さんの作品一覧
-
-- if current_user
-  %section.control.pull-right
-    = link_to new_product_path, class: 'btn btn-primary' do
-      %span.glyphicon.glyphicon-plus
-      新規作成
-
-.row
-  .col-md-10.col-md-offset-1
-    - if @products.empty?
-      %p 作品がありません
-    = render @products
-
-    = paginate @products
+= render 'shared/product_index', user: current_user
