@@ -11,7 +11,7 @@
   }
 }
 
-.textEditorForm {
+.textEditorForm, .pageEditor {
   font-size: 16px;
   line-height: 1.428571429;
   color: #666;
@@ -27,6 +27,14 @@
   .editorArea {
     padding: 0 10px;
     height: 325px !important;
+  }
+}
+
+// 編集ページでは枠線なし
+#pageEdit {
+  .textEditorForm {
+    border: none !important;
+    box-shadow: none !important;
   }
 }
 

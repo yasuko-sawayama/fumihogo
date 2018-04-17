@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import PageEditForm from './PageForm';
+import PageEditForm from './PageEditForm';
 import Pager from '../product/Pager';
 
 class EditPage extends React.Component {

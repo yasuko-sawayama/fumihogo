@@ -12,16 +12,21 @@ class ControlledEditor extends React.Component {
 
     let editorState = this.createState(value);
 
+    const pageEdit = pageId ? true : false;
+    
     this.state = {
       editorState,
       productId,
       pageId,
+      pageEdit,
+      readOnly: { pageEdit },
     }
     
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
 
     this.handleMyContentChange = this.handleMyContentChange.bind(this);
-    
+    this.onDoubleClick = this.onDoubleClick.bind(this);
+    this.onBlur = this.onBlur.bind(this);
     this.props.onChange(draftToMarkdown(rawContent));
   }
 
@@ -40,6 +45,12 @@ class ControlledEditor extends React.Component {
       });
     }
   }
+
+  onDoubleClick() {
+    console.log("test")
+    this.setState({readOnly: false});
+  }
+  onBlur() { this.setState({readOnly: true}); }
 
   onEditorStateChange: Function = (editorState) => {
     const newValue = draftToMarkdown(convertToRaw(editorState.getCurrentContent()));
@@ -76,21 +87,29 @@ class ControlledEditor extends React.Component {
 
   render() {
     const { editorState } = this.state;
-    
+
     return(
-      <Editor
-        editorState={editorState}
-        wrapperClassName="textEditorForm"
-        editorClassName="editorArea"
-        toolbar={{
-          options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'colorPicker', 'link',  'emoji', 'history'],
-          list: { inDropdown: true },
-          textAlign: { inDropdown: true },
-          link: { inDropdown: true },
-          history: { inDropdown: true }
-        }}
-        onEditorStateChange={this.onEditorStateChange}
-        />
+      <div
+        className={this.state.readOnly ? null : "pageEditor"}
+        onDoubleClick={this.onDoubleClick}
+        onBlur={this.onBlur}
+        >
+        <Editor
+          editorState={editorState}
+          wrapperClassName="textEditorForm"
+          editorClassName="editorArea"
+          toolbarOnFocus={ this.state.pageEdit }
+          toolbar={{
+            options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'colorPicker', 'link',  'emoji', 'history'],
+            list: { inDropdown: true },
+            textAlign: { inDropdown: true },
+            link: { inDropdown: true },
+            history: { inDropdown: true }
+          }}
+          onEditorStateChange={this.onEditorStateChange}
+          readOnly={this.state.readOnly}
+          />
+      </div>
     );
   }
 }

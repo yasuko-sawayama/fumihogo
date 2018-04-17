@@ -6,10 +6,12 @@ import {
   PAGE_UPDATE_ERROR
 } from '../constants/pageEditConstants';
 
-export const updatePage = (data) => console.log(data) || ({
+export const updatePage = (data, id, pageId) => ({
   type: PAGE_UPDATE_REQUESTED,
   payload: {
     data,
+    id,
+    pageId,
   },
 });
 

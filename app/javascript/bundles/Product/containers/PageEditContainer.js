@@ -11,8 +11,7 @@ import * as productActions from '../actions/productActionCreators';
 // contentはマウント後にfetchしてくるのでここではなし
 const mapStateToProps = state => ({
   initialValues: {
-    id: state.product.id,
-    pageId: state.product.currentPage,
+
   },
   product: state.product,
 });
