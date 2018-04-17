@@ -25,7 +25,6 @@ class Product extends React.Component {
   }
 
   render() {
-    const { match: {params: id=this.props.product.id}} =  this.props;
     return (
       <div>
         <LoadingBar />
@@ -33,7 +32,7 @@ class Product extends React.Component {
           <SpinerContainer />
           <About {...this.props} />
           <hr />
-          <Route path={`/${id}/:pages?/:pageId?/`}
+          <Route path={`/${this.props.product.id}/:pages?/:pageId?/`}
                  render={ props => <Page {...props}
                                            product={this.props.product}
                                          actions={this.props.actions} /> }

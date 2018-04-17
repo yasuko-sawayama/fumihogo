@@ -1,26 +1,20 @@
 import React from 'react';
 
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
-import draftToMarkdown from 'draftjs-to-markdown';
+import { EditorState, convertToRaw, convertFromRaw, ContentState } from 'draft-js';
+import { draftToMarkdown, markdownToDraft } from 'markdown-draft-js';
 
 class ControlledEditor extends React.Component {
   constructor(props) {
     super(props);
 
-    const { value } = props;
-    if (!value) {
-      this.state = {
-        editorState: EditorState.createEmpty()
-      };
-    } else {
-      this.state = {
-        editorState: EditorState.createWithContent(
-          ContentState.createFromBlockArray(
-            convertFromMarkdown(value)
-          )
-        )
-      }
+    const { value, productId=null, pageId=null, } = props;
+    let editorState = this.createState(value);
+
+    this.state = {
+      editorState,
+      productId,
+      pageId,
     }
     
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
@@ -31,8 +25,18 @@ class ControlledEditor extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { value } = nextProps;
-    this.handleMyContentChange(value, this.state.editorState)
+    const { value, productId, pageId } = nextProps;
+    if (productId === this.state.productId && pageId === this.state.pageId) {
+      // ページ移動がなければそのまま更新
+      this.handleMyContentChange(value, this.state.editorState);
+    } else {
+      // ページ移動していればStateを作り直す
+      this.setState({
+        editorState: this.createState(value),
+        productId,
+        pageId,
+      });
+    }
   }
 
   onEditorStateChange: Function = (editorState) => {
@@ -42,6 +46,18 @@ class ControlledEditor extends React.Component {
 
   handleChange(editorState) {
 	this.setState({editorState});
+  }
+
+  createState(value) {
+    if (!value) {
+      return EditorState.createEmpty();
+    } else {
+      console.log(value)
+      console.log(markdownToDraft(value));
+      return EditorState.createWithContent(
+        convertFromRaw(markdownToDraft(value))
+      )
+    }
   }
 
   handleMyContentChange(newValue, editorState) {

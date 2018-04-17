@@ -12,6 +12,7 @@ import About from './edit/About';
 import Page from './product/Page';
 import NewPage from './edit/NewPage'
 import InfoAlert from '../../shared/components/InfoAlert';
+import PageEditContainer from '../containers/PageEditContainer';
 
 class Edit extends React.Component {
   static propTypes = {
@@ -73,9 +74,7 @@ class Edit extends React.Component {
                                               actions={this.props.actions} /> }
               />
            <Route path={`/${id}/:pages?/:pageId(\\d+)?/`}
-                   render={ props => <Page {...props}
-                                             product={this.props.product}
-                                           actions={this.props.actions} /> }
+                  component={PageEditContainer}
                    />
           </Switch>
         </section>
