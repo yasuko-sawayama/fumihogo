@@ -35,19 +35,33 @@ class RIEKInput extends React.Component {
   }
 
   render() {
-    const {input, size=20, className="", ...props} = this.props
-    return (
-      <RIEInput
-        propName={input.name}
+    const {
+      input,
+      size=20,
+      className="",
+      meta: {
+        touched,
+        error,
+        warning,
+      },
+      ...props
+    } = this.props
 
-        value={this.state.text || "　　　　　"}
-        change={this.changeCallback}
-        editProps={{
-          size,
-        }}
-        classEditing="form-control"
-        className={className}
-        />
+    return (
+      <span>
+        <RIEInput
+          propName={input.name}
+
+          value={this.state.text || "　　　　　"}
+          change={this.changeCallback}
+          editProps={{
+            size,
+          }}
+          classEditing="form-control"
+          className={className}
+          />
+        {touched && ( error || warning ) && <p className="text-danger">{ error || warning }</p>}
+      </span>
     )
   }
 }
