@@ -8,6 +8,8 @@ import EditPage from '../components/edit/EditPage';
 import * as editActions from '../actions/pageEditActionCreators';
 import * as productActions from '../actions/productActionCreators';
 
+import validate from '../../shared/utils/validatePage';
+
 // contentはマウント後にfetchしてくるのでここではなし
 const mapStateToProps = state => ({
   initialValues: {
@@ -22,6 +24,7 @@ function mapDispatchToProps(dispatch) {
 
 const PageForm = reduxForm({
   form: 'edit_page',
+  validate,
 })(EditPage);
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageForm);
