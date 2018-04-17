@@ -8,7 +8,7 @@ export * from './fetchProductActionCreators';
 export * from './postPageActionCreators';
 export * from './alertActionCreators';
 
-export const changePage = pageId => ({
+export const changePage = (pageId = 1) => ({
   type: PAGE_CHANGED,
   payload: {
     pageId,

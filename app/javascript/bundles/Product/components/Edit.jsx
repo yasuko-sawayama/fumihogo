@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar';
 import ReactLoading from 'react-loading';
 import {Field} from 'redux-form';
@@ -65,22 +65,18 @@ class Edit extends React.Component {
             <SubmitButton />
           <About {...this.props} />
           <hr />
-          { this.props.product.auth.update && 
-            <Route path={`${this.props.match.url}/new/`}
+          <Switch>
+            <Route path={`/${id}/pages/new/`}
                    render={ props => <NewPage {...props}
                                                 product={this.props.product}
                                               actions={this.props.actions} /> }
-              /> }
-           <Route path={`${this.props.match.url}/:pageId(\\d+)/`}
+              />
+           <Route path={`/${id}/:pages?/:pageId(\\d+)?/`}
                    render={ props => <Page {...props}
                                              product={this.props.product}
                                            actions={this.props.actions} /> }
                    />
-           <Route exact path={`${this.props.match.url}/`}
-                     render={ props => <Page {...props}
-                                               product={this.props.product}
-                                             actions={this.props.actions} />}
-             />
+          </Switch>
           </form>
         </section>
       </div>
