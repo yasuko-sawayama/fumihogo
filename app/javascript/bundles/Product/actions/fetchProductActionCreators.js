@@ -16,6 +16,7 @@ export const fetchProductSuccess = response => ({
   type: PRODUCT_FETCH_SUCCESS,
   payload: {
     product: response.data.product,
+    pages: response.data.product.pages,
   },
 });
 

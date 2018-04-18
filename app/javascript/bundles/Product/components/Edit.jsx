@@ -6,6 +6,8 @@ import LoadingBar from 'react-redux-loading-bar';
 import ReactLoading from 'react-loading';
 import {Field} from 'redux-form';
 import { Button } from 'react-bootstrap'
+import FontAwesome from 'react-fontawesome';
+import styled from 'styled-components';
 
 import SpinerContainer from '../../shared/containers/SpinerContainer';
 import About from './edit/About';
@@ -14,10 +16,18 @@ import NewPage from './edit/NewPage'
 import InfoAlert from '../../shared/components/InfoAlert';
 import PageEditContainer from '../containers/PageEditContainer';
 
+import { pageDestroy } from '../actions/pageDestroyActionCreators';
+
 class Edit extends React.Component {
   static propTypes = {
     product: PropTypes.any.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.handleDestroy = this.handleDestroy.bind(this);
+  }
 
   componentWillMount() {
     this.props.actions.fetchProduct(this.props.product.id);
@@ -27,6 +37,10 @@ class Edit extends React.Component {
     if(this.props.product.id !== nextProp.product.id) {
       this.props.actions.fetchProduct(nextProp.product.id);
     }
+  }
+
+  handleDestroy() {
+    this.props.actions.pageDestroy(this.props.product.id, this.props.product.currentPage);
   }
 
   render() {
@@ -40,6 +54,13 @@ class Edit extends React.Component {
     } = this.props;
 
     const { id } = this.props.product;
+
+    const TrashButton = styled(Button)`
+.fa {
+margin: 0;
+}
+`;
+    
     const SubmitButton = () => (
       <div>
         <Button bsStyle="primary"
@@ -51,6 +72,9 @@ class Edit extends React.Component {
         <button type="button" disabled={pristine || submitting} onClick={reset} className="btn btn-default">
           キャンセル
         </button>
+        <TrashButton bsStyle="default" onClick={this.handleDestroy} className="pull-right">
+          <FontAwesome name="trash" />
+        </TrashButton>
       </div>
     );
     

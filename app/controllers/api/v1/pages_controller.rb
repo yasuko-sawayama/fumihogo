@@ -26,8 +26,12 @@ class Api::V1::PagesController < Api::V1::ApiController
   end
 
   def destroy
-    @page.destroy
-    render head: :ok
+    if @page.destroy
+      render head: :ok
+    else
+      render json: @page.errors.full_messages,
+             status: :unprocessable_entity
+    end
   end
 
   private

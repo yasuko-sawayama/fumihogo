@@ -42,6 +42,7 @@ class Page < ApplicationRecord
               slug_column: :position
 
   before_save :update_character_count
+  before_destroy :check_for_last_page
 
   validates :content, presence: true, length: { in: 10...30_000 }
   validates :title, length: { maximum: 45, allow_blank: true }
@@ -71,6 +72,13 @@ class Page < ApplicationRecord
   def count_character
     #TODO: markdownの記号を除く
     content.length
+  end
+
+  def check_for_last_page
+    if product.pages.count == 1
+      errors.add :base, '最後のページは削除できません。'
+      throw(:abort)
+    end
   end
 end
 
