@@ -9,11 +9,15 @@ class PagePolicy < ApplicationPolicy
     true
   end
 
+  def create?
+    record.product.user == user
+  end
+
   def update?
     create?
   end
 
-  def create?
-    record.product.user == user
+  def destroy?
+    create?
   end
 end

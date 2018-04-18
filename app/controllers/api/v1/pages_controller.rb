@@ -25,6 +25,11 @@ class Api::V1::PagesController < Api::V1::ApiController
     end
   end
 
+  def destroy
+    @page.destroy
+    render head: :ok
+  end
+
   private
 
   def set_product
