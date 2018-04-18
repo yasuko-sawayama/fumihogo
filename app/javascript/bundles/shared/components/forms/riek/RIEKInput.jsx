@@ -18,6 +18,7 @@ class RIEKInput extends React.Component {
 
     this.changeCallback = this.changeCallback.bind(this);
     this.changeState = this.changeState.bind(this);
+    this.handleOnFocus = this.handleOnFocus.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,7 +35,7 @@ class RIEKInput extends React.Component {
     this.props.input.onChange(value);
   }
 
-  render() {
+   render() {
     const {
       input,
       size=20,

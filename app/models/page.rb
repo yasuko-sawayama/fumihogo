@@ -34,6 +34,7 @@ class Page < ApplicationRecord
   belongs_to :product, inverse_of: :pages
 
   acts_as_list scope: :product, top_of_list: 1
+  strip_attributes only: :title, regex: /[[:blank:]]+$/
 
   # products/:product_id/page/:positionでアクセスする
   friendly_id :position, use: [:scoped, :finders],

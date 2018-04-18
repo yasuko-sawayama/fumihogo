@@ -21,7 +21,6 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-
 class Product < ApplicationRecord
   extend Enumerize
 
@@ -32,6 +31,8 @@ class Product < ApplicationRecord
 
   validates :title, presence: true
   validates :pages, presence: true
+
+  strip_attributes only: :title, regex: /[[:blank:]]+$/
 
   accepts_nested_attributes_for :pages
 

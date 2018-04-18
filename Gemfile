@@ -33,6 +33,8 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem "font-awesome-rails"
 gem 'nokogiri'
 
+gem "strip_attributes"
+
 # pagenate
 gem 'kaminari'
 

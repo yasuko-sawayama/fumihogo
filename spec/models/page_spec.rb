@@ -38,6 +38,23 @@ RSpec.describe Page, type: :model do
 
   it { expect { create(:page) }.not_to raise_error }
 
+  describe 'trim_title' do
+    let(:page) { build(:page, title: space_title) }
+    before { page.validate }
+
+    describe '全角トリムできること' do
+      let(:space_title) { '　　　タイトル　　　' }
+
+      it { expect(page.title).to eq('タイトル') }
+    end
+
+    describe '全角半角トリムできること' do
+      let(:space_title) { '   　 タイ  ト　ル　　　 ' }
+
+      it { expect(page.title).to eq('タイ  ト　ル') }
+    end
+  end
+
   describe 'previous next' do
     let(:product) { create(:product) }
 
