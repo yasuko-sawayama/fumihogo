@@ -1,0 +1,11 @@
+## Customize the test machine
+machine:
+  timezone:
+    Asia/Tokyo # Set the timezone
+
+dependencies:
+  override:
+    - yarn
+test:
+  override:
+    - yarn test
