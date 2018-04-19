@@ -55,8 +55,13 @@
     "regenerator-runtime": "^0.11.1",
     "webpack-dev-server": "2.11.2"
   },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ]
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "postinstall": "yarn install"
   },
   "jest": {
     "roots": [
