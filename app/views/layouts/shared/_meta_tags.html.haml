@@ -2,9 +2,9 @@
 %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}
 %meta{content: "width=device-width, initial-scale=1", name: "viewport"}
 
--# -if content_for?(:allow_robots?) and yield :allow_lobots?
--#   - set_meta_tags  index: true, follow: true
--# - else
--#   - set_meta_tags noindex: true, nofollow: true
+-if content_for?(:allow_robots?) and yield :allow_lobots?
+  - set_meta_tags  index: true, follow: true
+- else
+  - set_meta_tags noindex: true, nofollow: true
 
-=# display_meta_tags default_meta_tags
+= display_meta_tags default_meta_tags

@@ -1,0 +1,8 @@
+site:
+  name: ふみほご
+  twitter: '@sawayama_yasuko'
+  meta:
+    ogp:
+      type: article
+product:
+  show_page_comment_count: 8
