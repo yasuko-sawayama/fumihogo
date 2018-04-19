@@ -20,7 +20,7 @@ RSpec.feature "\xE3\x83\xA6\xE3\x83\xBC\xE3\x82\xB6\xE3\x83\xBC\xE6\x83\x85\xE5\
 
     scenario 'メールアドレスを変更する' do
       edit_page.load
-      expect(page).to have_content('ユーザ編集')
+      expect(page).to have_content('ログイン情報の変更')
       expect(page.find_field('メールアドレス').value).to eq(user.email)
 
       edit_page.edit_email('aiueo@test.com')
@@ -40,7 +40,7 @@ RSpec.feature "\xE3\x83\xA6\xE3\x83\xBC\xE3\x82\xB6\xE3\x83\xBC\xE6\x83\x85\xE5\
 
     scenario 'Twitter連携で作成したユーザーのメールを登録する' do
       edit_page.load
-      expect(page).to have_content('ユーザ編集')
+      expect(page).to have_content('ログイン情報の変更')
       # Twitterの場合はダミーアドレスで入力しているので表示前に消す
       expect(page.find_field("\xE3\x83\xA1\xE3\x83\xBC\xE3\x83\xAB\xE3\x82\xA2\xE3\x83\x89\xE3\x83\xAC\xE3\x82\xB9").value).to eq('')
 

@@ -28,7 +28,7 @@ class Page < ApplicationRecord
   extend FriendlyId
 
   # page count
-  counter_culture :product, column_name: "character_count",
+  counter_culture :product, column_name: 'character_count',
   delta_column: 'character_count', touch: true
 
   belongs_to :product, inverse_of: :pages
@@ -71,14 +71,14 @@ class Page < ApplicationRecord
 
   def count_character
     #TODO: markdownの記号を除く
-    content.length
+    content.blank? ? 0 : content.length
   end
 
   def check_for_last_page
-    if product.pages.count == 1
-      errors.add :base, '最後のページは削除できません。'
-      throw(:abort)
-    end
+    return if product.pages.count > 1
+
+    errors.add :base, '最後のページは削除できません。'
+    throw(:abort)
   end
 end
 
