@@ -2,6 +2,8 @@
 machine:
   timezone:
     Asia/Tokyo # Set the timezone
+  node:
+    version: 9.2.1
 
 dependencies:
   override:
