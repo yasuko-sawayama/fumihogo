@@ -3,5 +3,6 @@
     = link_to 'Home', root_path
   %li
     = link_to ' About', page_path('about')
-  %li.nav-item{class: current_page?(products_path) && 'active' }
-    = link_to '作品一覧', products_path, class: 'nav-link'
+  - if current_user
+    %li.nav-item{class: current_page?(products_path) && 'active' }
+      = link_to '作品一覧', products_path, class: 'nav-link'
