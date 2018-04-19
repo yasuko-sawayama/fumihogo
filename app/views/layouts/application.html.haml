@@ -5,11 +5,15 @@
     = render 'layouts/shared/nav'
     .container
       = render 'layouts/shared/flash'
-      - if content_for?(:title)
+      - if content_for?(:page_title)
+        = yield(:page_title)
+      - elsif content_for?(:title)
         .page-header
           %h1= yield :title
           - if content_for?(:read)
             %p.read= yield :read
+
+    
       %section.main.row
         .col-xs-12.col-md-10.col-md-offset-1
           = yield

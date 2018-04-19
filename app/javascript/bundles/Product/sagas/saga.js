@@ -3,6 +3,7 @@ import watchFetchingProduct from './productSaga';
 import watchPostPage from './pagePostSaga';
 import watchUpdateProduct from './productUpdateSaga';
 import watchUpdatePage from './pageUpdateSaga';
+import watchDestroyPage from './pageDestroySaga';
 
 export default function* productSaga() {
   yield [
@@ -10,6 +11,7 @@ export default function* productSaga() {
     watchFetchingProduct(),
     watchPostPage(),
     watchUpdateProduct(),
-    watchUpdatePage()
+    watchUpdatePage(),
+    watchDestroyPage()
   ];
 }

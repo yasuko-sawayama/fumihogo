@@ -34,3 +34,12 @@ export const updateEntities = (url, data, options = {}) => console.log(data) || 
     ...options,
   })
 );
+
+export const deleteEntity = (url, options = {}) => (
+  axios({
+    method: 'DELETE',
+    url,
+    headers: ReactOnRails.authenticityHeaders(),
+    ...options,
+  })
+)

@@ -19,7 +19,7 @@ class ControlledEditor extends React.Component {
       productId,
       pageId,
       pageEdit,
-      readOnly: { pageEdit },
+      readOnly: pageEdit,
     }
     
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
@@ -47,7 +47,6 @@ class ControlledEditor extends React.Component {
   }
 
   onDoubleClick() {
-    console.log("test")
     this.setState({readOnly: false});
   }
   onBlur() { this.setState({readOnly: true}); }
