@@ -5,7 +5,6 @@ Rails.application.routes.draw do
                omniauth_callbacks: 'users/omniauth_callbacks',
                registrations: 'users/registrations'
              }
-  resources :users, only: [:show]
 
   resources :products, except: [:update, :edit, :create] do
     # for react-router
@@ -14,6 +13,9 @@ Rails.application.routes.draw do
       get :new, action: :show   # React Routerに委譲
     end
   end
+
+  get '/:id', to: 'users#show'  # https://domain.com/nicknameでユーザーページ
+  resources :users, only: [:show]
 
   namespace :api, { format: :json } do
     namespace :v1 do

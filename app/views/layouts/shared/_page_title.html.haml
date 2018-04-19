@@ -1,0 +1,16 @@
+- content_for(:page_title) do
+  .page-header
+    - if content_for?(:control)
+      = yield :control
+    %h1
+      - if content_for?(:title)
+        = yield :title
+      - else
+        作品ページ
+
+
+    - if content_for?(:read)
+      %p.read
+        = yield :read
+
+
