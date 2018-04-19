@@ -27,6 +27,7 @@ class OAuthUserCreator
     User.find_or_initialize_by(email: policy.email) do |user|
       user.password = Devise.friendly_token[0, 20]
       user.nickname = policy.nickname
+      user.description = policy.description
       user.confirmed_at = Time.zone.now
     end
   end
