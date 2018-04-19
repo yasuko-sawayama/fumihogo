@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Field } from 'redux-form';
+import { TwitterShareButton, TwitterIcon } from 'react-share';
 
 import RIEKTextarea from '../../../shared/components/forms/riek/RIEKTextarea';
+
+const url = location.href;
 
 const Desc = styled.div`
 white-space: pre-line;
@@ -11,6 +14,7 @@ margin-bottom: 15px;
 `;
 
 const Description = ({
+  title,
   description='',
   about: {
     created_at,
@@ -19,7 +23,6 @@ const Description = ({
     pageCount,
   },
   author: {
-    id,
     nickname,
     avator
   },
@@ -65,6 +68,11 @@ const Description = ({
             </Field>
           </dd>
         </dl>
+      </div>
+      <div className="pull-right">
+        <TwitterShareButton url={url} title={`${title} を共有する`} >
+          <TwitterIcon size={32} round={true} />
+        </TwitterShareButton>
       </div>
     </div>
   </div>

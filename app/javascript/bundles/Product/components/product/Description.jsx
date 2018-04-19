@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { TwitterShareButton, TwitterIcon } from 'react-share';
 
+const url = location.href;
+
 const Desc = styled.p`
 white-space: pre-line;
 `;
-
-const url = location.href;
 
 // TODO: 画像
 const Description = ({
