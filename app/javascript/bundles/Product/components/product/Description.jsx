@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { TwitterShareButton, TwitterIcon } from 'react-share';
 
 const Desc = styled.p`
 white-space: pre-line;
 `;
 
+const url = location.href;
+
 // TODO: 画像
 const Description = ({
+  id,
+  title,
   description='',
   about: {
     created_at,
@@ -16,7 +21,6 @@ const Description = ({
     pageCount,
   },
   author: {
-    id,
     nickname,
     avator
   },
@@ -46,6 +50,11 @@ const Description = ({
           <dt>公開範囲:</dt>
           <dd>{privacyLevel}</dd>
         </dl>
+      </div>
+      <div className="pull-right">
+        <TwitterShareButton url={url} title={`${title} を共有する`} >
+          <TwitterIcon size={32} round={true} />
+        </TwitterShareButton>
       </div>
     </div>
   </div>
