@@ -14,8 +14,10 @@ Rails.application.routes.draw do
     end
   end
 
+  # User
   get '/:id', to: 'users#show'  # https://domain.com/nicknameでユーザーページ
-  resources :users, only: [:show]
+  get '/user/edit', to: 'users#edit'
+  resources :users, only: [:show, :update]
 
   namespace :api, { format: :json } do
     namespace :v1 do

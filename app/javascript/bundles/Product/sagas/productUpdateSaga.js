@@ -12,7 +12,6 @@ export function* updateProduct({ payload, }) {
     yield put(showLoading());
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.id}/`;
     const response = yield call(updateEntities, url, payload.data);
-    console.log(response);
     yield put(updateProductSuccess(response));
   } catch (error) {
     yield put(updateProductError(error));

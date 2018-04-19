@@ -23,6 +23,7 @@
 #  nickname               :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  description            :text
 #
 # Indexes
 #
@@ -54,6 +55,11 @@ class User < ApplicationRecord
   def profile_image
     return social_profiles.first.profile_image if social_profiles.exists?
     nil
+  end
+
+  # 編集実装するまで一旦social_profileに委譲
+  def description
+    social_profiles.first.description
   end
 
   def self.find_for_oauth(auth)
