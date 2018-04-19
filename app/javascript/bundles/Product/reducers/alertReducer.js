@@ -2,7 +2,7 @@ import { SHOW_MESSAGE, DISMISS_MESSAGE } from '../constants/alertConstants';
 import { PAGE_POST_REQUESTED, PAGE_POST_SUCCESS, PAGE_POST_ERROR } from '../constants/productConstants';
 import {
   PAGE_UPDATE_REQUESTED, PAGE_UPDATE_SUCCESS, PAGE_UPDATE_ERROR,
-  PAGE_DESTROY_REQUESTED, PAGE_DESTROY_SUCCESS, PAGE_DESTORY_ERROR,
+  PAGE_DESTROY_REQUESTED, PAGE_DESTROY_SUCCESS, PAGE_DESTORY_ERROR
 } from '../constants/pageEditConstants';
 
 const alertReducer = (state=null, action) => {
@@ -25,7 +25,7 @@ const alertReducer = (state=null, action) => {
         style: 'danger',
       };
     };
-    
+
     return {
       show: true,
       message: action.payload.message,
@@ -36,7 +36,7 @@ const alertReducer = (state=null, action) => {
   case DISMISS_MESSAGE:
   case PAGE_POST_REQUESTED:
   case PAGE_UPDATE_REQUESTED:
-  case PAGE_POST_REQUESTED:
+  case PAGE_DESTROY_REQUESTED:
     return {
       show: false,
     };

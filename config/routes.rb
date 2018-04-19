@@ -7,7 +7,7 @@ Rails.application.routes.draw do
              }
   resources :users, only: [:show]
 
-  resources :products, only: [:index, :show, :new] do
+  resources :products, except: [:update, :edit, :create] do
     # for react-router
     get ':any_action', action: :show, on: :member
     resources :pages, except: :new, controller: 'products' do
