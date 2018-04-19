@@ -1,7 +1,8 @@
 # トップページ
 class HomeController < ApplicationController
+  include DeviseHelper
   def index
     skip_policy_scope
-    # skip_authorization
+
   end
 end

@@ -5,8 +5,36 @@
   小説の下書きをしたり人に見てもらったりするツールです。
 %p
   今のところアルファ版以下です。
+
+- if ENV['HEROKU_ENV'] == 'STAGING'
+  %h3.bg-danger
+    ここはテスト環境です！
+  %p.text-danger
+    テスト環境のデータは定期的に削除します。
+
+  %p
+    = link_to '本番環境はこちら', 'https://fumihogo.herokuapp.com/'
 %p
   %br
+- if user_signed_in?
+  %p
+    = link_to new_product_path, class: 'btn btn-primary' do
+      %i.fa.fa-pencil
+      新しい小説を書き始める
+  %p
+    = link_to '小説一覧へ', products_path, class: 'btn btn-default'
+- else
+  %section#login
+    = render '/shared/main_login_form'
+
+%section#whatsnew
+  %h3 ChangeLog
+  %dl
+    %dt 2017.4.17
+    %dd React on Railsで書き直し
+
+%hr
+
 %p
   ご意見その他はこちら: &nbsp
   = mail_to 'yasuko@say.topaz.ne.jp'
@@ -16,8 +44,3 @@
   = link_to 'https://github.com/yasuko-sawayama/' do
     %i.fa.fa-github
 
-%section#whatsnew
-  %h3 ChangeLog
-  %dl
-    %dt 2017.4.17
-    %dd React on Railsで書き直し
