@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature '作品を作成する', type: :feature do
   before { login_user }
 
-  xscenario 'sendkeysが動かないので一旦保留  初めて作品を投稿する', :js do
+  scenario 'sendkeysが動かないので一旦保留  初めて作品を投稿する', :js do
     click_link '新しい小説を書く'
 
     # 最初はコンパイルが走るので長めに取る

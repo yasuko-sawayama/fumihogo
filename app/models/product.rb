@@ -59,4 +59,9 @@ class Product < ApplicationRecord
   def page_count
     pages.count
   end
+
+  # TODO
+  def allow_robots?
+    false
+  end
 end

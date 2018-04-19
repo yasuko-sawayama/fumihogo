@@ -68,6 +68,9 @@ gem "pundit"
 gem 'config'
 gem 'figaro'
 
+#SEO
+gem 'meta-tags'
+
 gem 'acts_as_list'
 gem 'friendly_id', '~> 5.2.3'
 
