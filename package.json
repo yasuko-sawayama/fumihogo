@@ -61,7 +61,6 @@
   ],
   "scripts": {
     "test": "jest --coverage",
-    "postinstall": "yarn install"
   },
   "jest": {
     "roots": [
