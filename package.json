@@ -58,7 +58,7 @@
   "cacheDirectories": [
     "node_modules",
     "client/node_modules"
-  ]
+  ],
   "scripts": {
     "test": "jest --coverage",
     "postinstall": "yarn install"
