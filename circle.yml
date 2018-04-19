@@ -67,7 +67,10 @@ jobs:
       # Run rspec in parallel
       - type: shell
         command: |
-          bundle exec rspec
+          bundle exec rspec --format progress \
+                            --format RspecJunitFormatter \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress
       # Save test results for timing analysis
       - store_test_results:
           path: test_results
