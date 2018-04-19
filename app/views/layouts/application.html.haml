@@ -1,7 +1,7 @@
 !!!
 %html{lang: 'ja'}
   = render 'layouts/shared/head'
-  %body
+  %body{class: controller_name}
     = render 'layouts/shared/nav'
     .container
       = render 'layouts/shared/flash'

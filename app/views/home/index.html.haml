@@ -1,0 +1,23 @@
+- content_for :title do
+  ふみほご
+
+%p
+  小説の下書きをしたり人に見てもらったりするツールです。
+%p
+  今のところアルファ版以下です。
+%p
+  %br
+%p
+  ご意見その他はこちら: &nbsp
+  = mail_to 'yasuko@say.topaz.ne.jp'
+.links
+  = link_to 'https://twitter.com/sawayama_yasuko' do
+    %i.fa.fa-twitter
+  = link_to 'https://github.com/yasuko-sawayama/' do
+    %i.fa.fa-github
+
+%section#whatsnew
+  %h3 ChangeLog
+  %dl
+    %dt 2017.4.17
+    %dd React on Railsで書き直し
