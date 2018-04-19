@@ -413,6 +413,8 @@ GEM
     rspec-retry (0.5.7)
       rspec-core (> 3.3)
     rspec-support (3.7.1)
+    rspec_junit_formatter (0.3.0)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.54.0)
       parallel (~> 1.10)
       parser (>= 2.5)
@@ -585,6 +587,7 @@ DEPENDENCIES
   redcarpet (~> 2.3.0)
   rspec-rails
   rspec-retry
+  rspec_junit_formatter
   rubocop
   rubocop-rspec
   ruby-lint
