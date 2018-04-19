@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   end
 
   # User
-  get '/:id', to: 'users#show'  # https://domain.com/nicknameでユーザーページ
   get '/user/edit', to: 'users#edit'
   resources :users, only: [:show, :update]
 

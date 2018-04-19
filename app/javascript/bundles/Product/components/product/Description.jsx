@@ -6,6 +6,7 @@ const Desc = styled.p`
 white-space: pre-line;
 `;
 
+// TODO: 画像
 const Description = ({
   description='',
   about: {
@@ -24,17 +25,18 @@ const Description = ({
     <div className="col-xs-12">
       <h3>Description</h3>
     </div>
-    <div className="col-sm-4">
-      <img src="http://dummyimage.com/600x400/000/fff" className="img-responsive" alt="カバー"/>
-    </div>
-    <div className="col-sm-8">
+    <div className="col-sm-12">
       <Desc className="description">
         {description}
       </Desc>
       <div className="dl-horizontal" id="about">
         <dl>
           <dt>作者:</dt>
-          <dd>{nickname}</dd>
+          <dd>
+            <a href={`/users/${nickname}`}>
+              {nickname}
+            </a>
+          </dd>
           <dt>公開日:</dt>
           <dd>{created_at}</dd>
           <dt>文字数:</dt>

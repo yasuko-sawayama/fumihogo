@@ -29,7 +29,7 @@ const Description = ({
       <h3>Description</h3>
     </div>
     <div className="col-sm-4">
-      <img src="http://dummyimage.com/600x400/000/fff" className="img-responsive" alt="カバー"/>
+      画像アップローダ予定
     </div>
     <div className="col-sm-8">
       <Desc>
