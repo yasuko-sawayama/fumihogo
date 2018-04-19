@@ -23,6 +23,7 @@
 #  nickname               :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  description            :text
 #
 # Indexes
 #
@@ -104,6 +105,11 @@ RSpec.describe User, type: :model do
           expect(user.email).to eq(policy.email)
         end
 
+        it '自己紹介が設定されていること' do
+          user, policy = assign_user
+          expect(user.description).to eq('mock description')
+        end
+
         it 'ユーザーは認証ずみであること' do
           user, _policy = assign_user
           expect(user).to be_confirmed
@@ -158,7 +164,21 @@ RSpec.describe User, type: :model do
           user, _policy = assign_user
           expect(user).to eq(ext_user)
         end
+
+        it 'descriptionが更新されていること' do
+          user, _policy = assign_user
+          expect(user.description).to eq('mock description')
+        end
       end
+    end
+  end
+
+  describe '#destroy' do
+    it 'social_profileｓが削除されること' do
+      user = create(:user)
+      create(:social_profile, user: user)
+
+      expect { user.destroy }.to change(SocialProfile, :count).by(-1)
     end
   end
 end

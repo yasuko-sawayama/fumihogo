@@ -11,6 +11,7 @@
 #  url           :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  description   :text
 #
 # Indexes
 #
@@ -35,11 +36,15 @@ class SocialProfile < ApplicationRecord
     profile = find_or_initialize_by(uid: auth.uid, provider: auth.provider)
     policy = profile.provider_policy(auth)
 
+    update_propaties(profile, policy)
+    profile
+  end
+
+  def self.update_propaties(profile, policy)
     profile.account_name = policy.name
     profile.url = policy.url
     profile.profile_image = policy.image_url
-
-    profile
+    profile.description = policy.description
   end
 
   def provider_policy(auth)

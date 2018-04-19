@@ -19,10 +19,16 @@ export const updateProductSuccess = response => ({
   type: PRODUCT_UPDATE_SUCCESS,
   payload: {
     product: response.data,
+    message: '作品情報を更新しました。',
+    style: 'success',
   },
 });
 
 export const updateProductError = error => console.log(error) || ({
   type: PRODUCT_UPDATE_ERROR,
-  payload: { error, },
+  payload: {
+    error,
+    message: '作品情報の更新に失敗しました。',
+    style: 'danger',
+  },
 });
