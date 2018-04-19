@@ -5,6 +5,7 @@
 -if content_for?(:allow_robots?) and yield :allow_lobots?
   - set_meta_tags  index: true, follow: true
 - else
-  - set_meta_tags noindex: true, nofollow: true
+  - set_meta_tags noindex: 'googlebot'
+  - set_meta_tags nofollow: 'googlebot'
 
 = display_meta_tags default_meta_tags
