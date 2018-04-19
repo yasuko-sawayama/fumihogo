@@ -71,10 +71,10 @@ jobs:
       - type: shell
         command: |
           bundle exec rspec --profile 10 \
-                            --format RspecJunitFormatter \
+                            --format document \
                             --out test_results/rspec.xml \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-                            --format progress \
+                            --format progress
       # Save test results for timing analysis
       - store_test_results:
           path: test_results
