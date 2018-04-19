@@ -18,7 +18,7 @@ require 'support/factory_bot'
 require "pundit/rspec"
 require 'simplecov'
 SimpleCov.start 'rails'
-SimpleCov.minimum_coverage 60
+SimpleCov.minimum_coverage 55
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
