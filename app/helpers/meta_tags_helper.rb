@@ -2,7 +2,7 @@ module MetaTagsHelper
   def default_meta_tags
     {
       site: Settings.site.name,
-      title: @product.title,
+      title: @product&.title || 'ふみほご',
       description: '小説の下書きをしたりするサイトです。', 
       # keywords:         デフォルトページキーワード
       reverse: true,
