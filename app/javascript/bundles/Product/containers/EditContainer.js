@@ -7,6 +7,7 @@ import { reduxForm } from 'redux-form';
 import Edit from '../components/Edit';
 import * as productActions from '../actions/productActionCreators';
 import * as editActions from '../actions/productEditActionCreators';
+import * as deletePageActions from '../actions/pageDestroyActionCreators';
 
 const getKeyByValue = (object, value) => Object.keys(object).find(key => object[key] === value);
 
@@ -31,7 +32,16 @@ const mapStateToProps = state => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators({ ...productActions, ...editActions }, dispatch), };
+  return {
+    actions: bindActionCreators(
+      {
+        ...productActions,
+        ...editActions,
+        ...deletePageActions,
+      },
+      dispatch
+    ),
+  };
 }
 
 let EditForm = reduxForm({

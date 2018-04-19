@@ -120,4 +120,19 @@ RSpec.describe Page, type: :model do
       expect(product.reload.character_count).to eq(23)
     end
   end
+
+  describe '最後のページは削除できない' do
+    let(:product) { create(:product) }
+    let!(:page) { create(:page, product: product) }
+
+    it '二ページ以上あるときは削除できること' do
+      expect { page.destroy }.to change { product.reload.pages.count }.by(-1)
+    end
+
+    it '一ページだけのときは削除できないこと' do
+      product.pages.delete_all
+      last_page = create(:page, product: product)
+      expect { last_page.destroy }.not_to change { product.reload.pages.count }
+    end
+  end
 end
