@@ -18,22 +18,29 @@ const PageEditForm = props => {
       currentPage,
       about: {
         impressionCount,
-      }
+      },
     },
   } = props;
   return (
     <div className="row">
-      <form onSubmit={handleSubmit(values =>actions.updatePage(values, id, currentPage))}>
+      <form onSubmit={handleSubmit(values => actions.updatePage(values, id, currentPage))}>
         <p className="pull-right">閲覧数: {impressionCount}</p>
         <EditPageForm id={id} pageId={currentPage} />
         <div className="buttonArea col-sm-5">
-          <button className="btn btn-primary"
-                  type="submit"
-                  disabled={submitting} >
+          <button
+            className="btn btn-primary"
+            type="submit"
+            disabled={submitting}
+          >
             更新する
           </button>
 
-          <button type="button" disabled={pristine || submitting} onClick={reset} className="btn btn-default">
+          <button
+            type="button"
+            disabled={pristine || submitting}
+            onClick={reset}
+            className="btn btn-default"
+          >
             キャンセル
           </button>
         </div>
@@ -45,10 +52,6 @@ const PageEditForm = props => {
       </form>
     </div>
   );
-}
-
-PageEditForm.propTypes = {
-  impressionCount: PropTypes.number.isRequired,
-}
+};
 
 export default PageEditForm;
