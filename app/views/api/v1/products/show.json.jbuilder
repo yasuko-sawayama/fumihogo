@@ -16,6 +16,7 @@ json.product do |product|
     about.character_count @product.character_count
     about.pageCount @product.page_count
     about.privacyLevel @product.privacy_level_text
+    about.imporessionCount 400
   end
 
   json.pages @product.pages, partial: 'api/v1/products/page', as: :page

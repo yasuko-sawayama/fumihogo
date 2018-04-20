@@ -3,7 +3,11 @@ class Api::V1::PagesController < Api::V1::ApiController
   before_action :set_product
   before_action :set_page
 
-  def show; end
+  def show
+    impressionist @page,
+                  nil,
+                  unique: [:impressionable_type, :impressionable_id, :session_hash]
+  end
 
   def create
     authorize @page = @product.pages.new(page_params)

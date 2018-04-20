@@ -38,6 +38,12 @@ RSpec.describe 'Pages', type: :request do
         expect(json['page']['title']).to eq('テストのページタイトル')
         expect(json['page']['content']).to eq("<p>本文ですよ本文ですよ本文ですよ本文ですよ</p>\n")
       end
+
+      it '閲覧履歴がカウントされること' do
+        expect do
+          get api_v1_product_page_path(product, page), headers: headers
+        end.to change { page.reload.impressionist_count }.by(1)
+      end
     end
 
     context '権限がない場合' do

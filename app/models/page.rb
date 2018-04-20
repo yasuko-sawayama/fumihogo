@@ -2,15 +2,16 @@
 #
 # Table name: pages
 #
-#  id              :integer          not null, primary key
-#  title           :string
-#  position        :integer
-#  content         :text
-#  product_id      :integer
-#  character_count :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  slug            :string
+#  id                :integer          not null, primary key
+#  title             :string
+#  position          :integer
+#  content           :text
+#  product_id        :integer
+#  character_count   :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  slug              :string
+#  impressions_count :integer          default(0), not null
 #
 # Indexes
 #
@@ -29,7 +30,11 @@ class Page < ApplicationRecord
 
   # page count
   counter_culture :product, column_name: 'character_count',
-  delta_column: 'character_count', touch: true
+                   delta_column: 'character_count', touch: true
+
+  # access count
+  is_impressionable counter_cache: true,
+                    unique: :session_hash
 
   belongs_to :product, inverse_of: :pages
 
