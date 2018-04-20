@@ -21,6 +21,7 @@ const Description = ({
     character_count,
     privacyLevel,
     pageCount,
+    impressionCount,
   },
   author: {
     nickname,
