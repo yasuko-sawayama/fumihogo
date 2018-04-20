@@ -13,9 +13,8 @@ const defaultState = {
 const pageInfoReducer = (state=defaultState, action) => {
   switch (action.type) {
   case PAGE_CONTENT_FETCH_SUCCESS:
-    console.log(action.payload)
     return {
-      pageTitle: action.payload.product.page.pageTitle || '',
+      pageTitle: action.payload.product.page.title || '',
       impressionCount: action.payload.product.page.impressionCount,
       nextPage: action.payload.product.page.nextPage ? {
         id: action.payload.product.page.nextPage.position,

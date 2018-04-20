@@ -1,7 +1,7 @@
 # API ページ内容に関するコントローラ
 class Api::V1::PagesController < Api::V1::ApiController
   before_action :set_product
-  before_action :set_page
+  before_action :set_page, except: [:create]
 
   def show
     impressionist @product,

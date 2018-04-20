@@ -18,7 +18,7 @@ export const postPage = (values, { id, }) => ({
   },
 });
 
-export const postPageSuccess = response => console.log(response) || ({
+export const postPageSuccess = response => ({
   type: PAGE_POST_SUCCESS,
   payload: {
     message: 'ページを追加しました。',
@@ -26,14 +26,16 @@ export const postPageSuccess = response => console.log(response) || ({
   },
 });
 
-export const postPageError = errors => console.log(errors) || ({
+export const postPageError = error => console.log(error) || ({
   type: PAGE_POST_ERROR,
   payload: {
-    errors,
+    error,
+    message: 'ページの新規作成に失敗しました。',
+    style: 'danger',
   },
 });
 
 export const clearError = () => ({
   type: CLEAR_ERROR,
   payload: null,
-})
+});

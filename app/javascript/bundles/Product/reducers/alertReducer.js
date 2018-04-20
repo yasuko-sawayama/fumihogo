@@ -21,7 +21,6 @@ const alertReducer = (state=null, action) => {
   case PAGE_POST_SUCCESS:
   case PAGE_UPDATE_SUCCESS:
   case PAGE_DESTROY_SUCCESS:
-    console.log(action)
     return {
       show: true,
       message: action.payload.message,
@@ -35,7 +34,7 @@ const alertReducer = (state=null, action) => {
       return {
         show: true,
         message: action.payload.message,
-        style: action.payload.style,
+        style: action.payload.style || 'danger',
         error: action.payload.error,
       };
     }
