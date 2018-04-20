@@ -8,14 +8,22 @@ json.page do |json|
   
   json.content policy(@page).update? ? @page.content : markdown(@page.content)
 
-  json.previousPage do |previous|
-    previous.id @page.previous&.friendly_id
-    previous.title @page.previous&.title
+  if @page.previous
+    json.previousPage do |previous|
+      previous.id @page.previous&.friendly_id
+      previous.title @page.previous&.title
+    end
+  else
+    json.previousPage nil
   end
 
-  json.nextPage do |nextPage|
-    nextPage.id @page.next&.friendly_id
-    nextPage.title @page.next&.title
+  if @page.next
+    json.nextPage do |nextPage|
+      nextPage.id @page.next&.friendly_id
+      nextPage.title @page.next&.title
+    end
+  else
+    json.nextPage nil
   end
 
   json.impressionCount @page.impressionist_count
