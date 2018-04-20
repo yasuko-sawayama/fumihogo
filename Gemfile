@@ -33,6 +33,10 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem "font-awesome-rails"
 gem 'nokogiri'
 
+# for access log
+gem 'impressionist'
+
+# for strip title blank
 gem "strip_attributes"
 
 # pagenate

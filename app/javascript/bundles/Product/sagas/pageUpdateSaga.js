@@ -12,7 +12,7 @@ export function* updatePage({ payload, }) {
   try {
     yield put(showLoading());
     //    yield put(clearError());
-    console.log(payload)
+
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.id}/pages/${payload.pageId}`;
     const response = yield call(updateEntities, url, payload.data);
     yield put(updatePageSuccess(response));

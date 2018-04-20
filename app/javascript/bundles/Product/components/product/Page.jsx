@@ -8,7 +8,9 @@ class Page extends React.Component {
   static propTypes = {
     product: PropTypes.shape({
       id: PropTypes.number.isRequired,
-      pageInfo: PropTypes.object.isRequired,
+      pageInfo: PropTypes.shape({
+        impressionCount: PropTypes.number.isRequired,
+      }).isRequired,
       currentPage: PropTypes.number.isRequired,
       content: PropTypes.string.isRequired,
     }),
@@ -54,6 +56,8 @@ class Page extends React.Component {
           pageTitle={this.props.product.pageInfo.pageTitle}
           totalPage={this.props.product.about.pageCount}
           content={this.props.product.content}
+          impressionCount={this.props.product.pageInfo.impressionCount}
+          page
           />
         <Pager {...this.props.product.pageInfo} url={`/${this.props.product.id}/`} />
       </section>

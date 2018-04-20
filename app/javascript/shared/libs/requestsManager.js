@@ -25,7 +25,7 @@ export const postEntities = (url, data, options = {}) => (
   })
 );
 
-export const updateEntities = (url, data, options = {}) => console.log(data) || (
+export const updateEntities = (url, data, options = {}) => (
   axios({
     method: 'PATCH',
     url,

@@ -2,14 +2,15 @@
 #
 # Table name: products
 #
-#  id              :integer          not null, primary key
-#  title           :string
-#  user_id         :integer
-#  description     :text
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  privacy_level   :integer          default("closed")
-#  character_count :integer          default(0), not null
+#  id                :integer          not null, primary key
+#  title             :string
+#  user_id           :integer
+#  description       :text
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  privacy_level     :integer          default("closed")
+#  character_count   :integer          default(0), not null
+#  impressions_count :integer
 #
 # Indexes
 #
@@ -21,8 +22,13 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
+
 class Product < ApplicationRecord
   extend Enumerize
+
+  # access count
+  is_impressionable counter_cache: true,
+                    unique: :session_hash
 
   belongs_to :user
   has_many :pages, -> { order(position: :asc) },
