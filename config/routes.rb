@@ -25,4 +25,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # For Admin Fumihogo
+  devise_for :admins
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end
