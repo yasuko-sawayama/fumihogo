@@ -37,6 +37,11 @@ class Product extends React.Component {
                                            product={this.props.product}
                                          actions={this.props.actions} /> }
             />
+          <Route path='/'
+                 render={ props => <Page {...props}
+                                           product={this.props.product}
+                                         actions={this.props.actions} /> }
+            />
         </section>
       </div>
     );

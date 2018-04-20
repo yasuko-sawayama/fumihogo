@@ -100,6 +100,7 @@ margin: 0;
            <Route path={`/${id}/:pages?/:pageId(\\d+)?/`}
                   component={PageEditContainer}
                    />
+           <Route path='/' component={PageEditContainer} />
           </Switch>
         </section>
       </div>
