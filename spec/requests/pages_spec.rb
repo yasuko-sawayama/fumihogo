@@ -35,7 +35,7 @@ RSpec.describe 'Pages', type: :request do
         get api_v1_product_page_path(product, page), headers: headers
 
         expect(json['page']['product']['title']).to eq('テストのタイトル')
-        expect(json['page']['title']).to eq('テストのページタイトル')
+        expect(json['page']['pageTitle']).to eq('テストのページタイトル')
         expect(json['page']['content']).to eq("<p>本文ですよ本文ですよ本文ですよ本文ですよ</p>\n")
       end
 

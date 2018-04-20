@@ -24,7 +24,7 @@ const alertReducer = (state=null, action) => {
     return {
       show: true,
       message: action.payload.message,
-      style: action.payload.style,
+      style: action.payload.style || 'success',
     }
   case PRODUCT_UPDATE_ERROR:
   case PAGE_POST_ERROR:
@@ -33,13 +33,11 @@ const alertReducer = (state=null, action) => {
     if (action.payload.error && action.payload.error.response.status !== 500) {
       return {
         show: true,
+        error: action.payload.error,
         message: action.payload.message,
         style: action.payload.style || 'danger',
-        error: action.payload.error,
       };
     }
-
-    console.log(error)
 
     return {
       show: true,
