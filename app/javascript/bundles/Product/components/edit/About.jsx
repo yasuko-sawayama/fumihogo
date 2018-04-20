@@ -43,10 +43,10 @@ const About = ({
   <section id="about">
     <Title title={title} />
     <Description
-       title={title}
-       description={description}
-       author={author}
-       about={about}
+      title={title}
+      description={description}
+      author={author}
+      about={about}
       />
     <Row>
       <div className="col-sm-10">

@@ -8,7 +8,7 @@ json.page do |json|
   json.content policy(@page).update? ? @page.content : markdown(@page.content)
   json.previousPage @page.previous
   json.nextPage @page.next
-  json.impressionCount @page.impressions_count
+  json.impressionCount @page.impressionist_count
   
   json.product do |product|
     json.extract! @product, :id, :title

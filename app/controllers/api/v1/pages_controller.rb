@@ -4,6 +4,9 @@ class Api::V1::PagesController < Api::V1::ApiController
   before_action :set_page
 
   def show
+    impressionist @product,
+                  nil,
+                  unique: [:impressionable_id, :session_hash]
     impressionist @page,
                   nil,
                   unique: [:impressionable_type, :impressionable_id, :session_hash]

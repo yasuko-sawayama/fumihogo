@@ -53,6 +53,8 @@ const Description = ({
           <dd>{character_count}</dd>
           <dt>ページ数:</dt>
           <dd>{pageCount}</dd>
+          <dt>閲覧数:</dt>
+          <dd>{impressionCount}</dd>
           <dt>公開範囲:</dt>
           <dd>
             <Field name="privacy_level"
@@ -85,6 +87,7 @@ Description.propTypes = {
     character_count: PropTypes.number.isRequired,
     privacyLevel: PropTypes.string.isRequired,
     pageCount: PropTypes.number.isRequired,
+    impressionCount: PropTypes.number.isRequired,
   }).isRequired,
   author: PropTypes.shape({
     nickname: PropTypes.string,

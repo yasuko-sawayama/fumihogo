@@ -44,6 +44,12 @@ RSpec.describe 'Pages', type: :request do
           get api_v1_product_page_path(product, page), headers: headers
         end.to change { page.reload.impressionist_count }.by(1)
       end
+
+      it '作品の閲覧履歴がカウントされること' do
+        expect do
+          get api_v1_product_page_path(product, page), headers: headers
+        end.to change { product.reload.impressionist_count }.by(1)
+      end
     end
 
     context '権限がない場合' do
