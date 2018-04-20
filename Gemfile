@@ -78,6 +78,9 @@ gem 'meta-tags'
 gem 'acts_as_list'
 gem 'friendly_id', '~> 5.2.3'
 
+# admin
+gem 'rails_admin', '~> 1.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
