@@ -4,7 +4,7 @@ RSpec.describe ApplicationController do
   describe 'Punditの検証をスキップするページ' do
 
     it 'デバイス関連はスキップする' do
-      controller = User::OmniauthCallbacksController.new
+      controller = Users::OmniauthCallbacksController.new
       expect(controller.send(:auth_skipping_controllers?)).to be_truthy
     end
 

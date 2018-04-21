@@ -48,6 +48,11 @@ RSpec.describe User, type: :model do
   describe 'associations' do
     it { should have_many(:social_profiles) }
     it { should have_many(:products) }
+    it { should have_many(:member_permissions).inverse_of(:member) }
+    it do
+      should have_many(:added_permissions_lists)
+               .class_name('PermissionsList').through(:member_permissions)
+    end
   end
 
   describe '#find_for_oauth' do

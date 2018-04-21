@@ -2,15 +2,16 @@
 #
 # Table name: pages
 #
-#  id              :integer          not null, primary key
-#  title           :string
-#  position        :integer
-#  content         :text
-#  product_id      :integer
-#  character_count :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  slug            :string
+#  id                :integer          not null, primary key
+#  title             :string
+#  position          :integer
+#  content           :text
+#  product_id        :integer
+#  character_count   :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  slug              :string
+#  impressions_count :integer          default(0), not null
 #
 # Indexes
 #

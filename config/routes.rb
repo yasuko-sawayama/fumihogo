@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       resources :products do
         resources :pages, only: [:show, :create, :update, :destroy]
       end
+
+      get :current_user_info, controller: :users
     end
   end
 end

@@ -61,6 +61,12 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'devise-bootstrap-views'
 
+### SNS Client
+gem 'twitter'
+
+# Decorator Model
+gem 'draper'
+
 # Authorization
 gem "pundit"
 
@@ -155,7 +161,7 @@ group :test do
   gem "rspec-rails"
   gem "rspec-retry"
   gem "rspec_junit_formatter"
-  # gem 'webmock'
-  # gem 'vcr'
+  gem 'webmock'
+  gem 'vcr'
 end
 

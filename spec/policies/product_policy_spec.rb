@@ -75,10 +75,74 @@ RSpec.describe ProductPolicy do
     end
   end
 
-  # Scope準拠のため省略
-  # permissions :show? do
-  #   pending "add some examples to (or delete) #{__FILE__}"
-  # end
+  permissions :show? do
+    let(:creator) { create(:user) }
+    let(:other) { create(:user) }
+    let(:guest) { build(:user) }
+
+    let(:closed) { create(:product, user: creator, privacy_level: :closed) }
+    let(:open) { create(:product, user: creator, privacy_level: :public_open) }
+    let(:login) { create(:product, user: creator, privacy_level: :login) }
+    # let(:restricted) { build(:product, user: creator, restricted: true, privacy_level: :open) }
+
+    it "作成者は自分の作品が閲覧できること" do
+
+      expect(subject).to permit(creator, closed)
+      expect(subject).to permit(creator, open)
+      expect(subject).to permit(creator, login)
+      
+      # expect(subject).to permit(creator, restricted)
+    end
+
+    it "全体公開作品はログインしていなくても閲覧できること" do
+      expect(subject).to permit(User.new, open)
+      expect(subject).to permit(other, open)
+    end
+
+    it "ログイン公開作品はログインしたユーザーのみ閲覧できること" do
+      expect(subject).not_to permit(guest, login)
+      expect(subject).to permit(other, login)
+    end
+
+    # it "18才以上のみ閲覧可の作品はログインしたユーザーのみ閲覧できること" do
+    #   expect(subject).not_to permit(guest, restricted)
+    #   expect(subject).to permit(user, restricted)
+    # end
+
+
+    describe "リスト限定" do
+      let(:my_list) { create(:permissions_list, user: creator, twitter_list_id: 853249524558581761) }
+      let(:list) { create(:product, user: creator,
+                          privacy_level: :list, permissions_list: my_list) }
+      let(:member) { create(:user) }
+
+      before do
+        # リスト追加済みユーザーのUIDを返す
+        allow(member).to receive(:twitter_uid).and_return('83561601')
+      end
+
+      it "作者本人は閲覧できること" do
+        expect(subject).to permit(creator, list)
+      end
+
+      it "リストに含まれているユーザーのみ閲覧できること" do
+        expect(subject).to permit(member, list)
+        expect(subject).not_to permit(other, list)
+      end
+
+      it "ログインしていないユーザーは閲覧できないこと" do
+        expect(subject).not_to permit(guest, list)
+      end
+    end
+
+    it "非公開作品は作者以外閲覧できないこと" do
+      expect(subject).not_to permit(guest, closed)
+      expect(subject).not_to permit(user, closed)
+    end
+
+    #TODO
+    # it 'ユーザー限定公開作品は設定されたユーザーのみ閲覧できること'
+  end
 
   permissions :create? do
     it 'ログインしていれば作成できる' do
