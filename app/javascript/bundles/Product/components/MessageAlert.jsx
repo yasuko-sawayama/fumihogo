@@ -21,14 +21,18 @@ class MessageAlert extends React.Component {
   }
   
   render() {
-    const ErrorMessages = ({ response: { data }}) =>       console.log(data) || (
+    const errorList = data => (
+      <ul className="col-xs-10 col-sm-11">
+        { data.map(cons => <li key={cons}>{cons}</li>) }
+      </ul>
+    );
+    
+    const ErrorMessages = ({ response: { data }}) => console.log(data) || (
       <div className="row">
         <div className="col-xs-2 col-sm-1">
           <FontAwesome name="exclamation-triangle" size='3x'/>
         </div>
-        <ul className="col-xs-10 col-sm-11">
-          { data.map(cons => <li key={cons}>{cons}</li>) }
-        </ul>
+        { Array.isArray(data) ? errorList(data) : <p>{data.errors}</p> }
       </div>
     )
     

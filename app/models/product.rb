@@ -30,6 +30,10 @@
 class Product < ApplicationRecord
   extend Enumerize
 
+  # access count
+  is_impressionable counter_cache: true,
+                    unique: :session_hash
+
   belongs_to :user
   belongs_to :permissions_list, optional: true
   has_many :pages, -> { order(position: :asc) },

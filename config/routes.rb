@@ -27,4 +27,8 @@ Rails.application.routes.draw do
       get :current_user_info, controller: :users
     end
   end
+
+  # For Admin Fumihogo
+  devise_for :admins
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end

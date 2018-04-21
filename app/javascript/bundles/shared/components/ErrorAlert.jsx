@@ -26,7 +26,7 @@ class ErrorAlert extends React.Component {
   }
 
   handleDismiss() {
-    console.log("dissmiss");
+
     this.setState({ show: false });
   }
 

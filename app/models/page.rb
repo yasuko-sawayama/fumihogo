@@ -30,7 +30,11 @@ class Page < ApplicationRecord
 
   # page count
   counter_culture :product, column_name: 'character_count',
-  delta_column: 'character_count', touch: true
+                   delta_column: 'character_count', touch: true
+
+  # access count
+  is_impressionable counter_cache: true,
+                    unique: :session_hash
 
   belongs_to :product, inverse_of: :pages
 
