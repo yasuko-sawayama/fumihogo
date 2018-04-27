@@ -81,6 +81,7 @@ class User < ApplicationRecord
       .create_new_user_from_profile if profile.user.nil?
 
     profile.save!
+
     [profile.user, policy]
   end
   

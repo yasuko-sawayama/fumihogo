@@ -45,10 +45,20 @@ class SocialProfile < ApplicationRecord
     profile.url = policy.url
     profile.profile_image = policy.image_url
     profile.description = policy.description
+    update_list(profile, policy) if policy.instance_of?(OAuthPolicy::Twitter)
   end
 
   def provider_policy(auth)
     class_name = provider.to_s.classify
     "OAuthPolicy::#{class_name}".constantize.new(auth)
+  end
+
+  def self.update_list(profile, policy)
+    factory = PermissionListFactory.new(profile.user,
+                              access_token: policy.credentials['token'],
+                              access_secret: policy.credentials['secret'])
+    Timeout::timeout(120) do
+      factory.fetch_lists_from_twitter
+    end
   end
 end

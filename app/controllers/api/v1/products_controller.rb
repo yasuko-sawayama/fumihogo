@@ -38,7 +38,7 @@ class Api::V1::ProductsController < Api::V1::ApiController
 
   def product_params
     params.require(:product).permit(
-      :title, :description, :privacy_level,
+      :title, :description, :privacy_level, :permissions_list_id,
       pages_attributes: [:id, :title, :position,
                          :content])
   end

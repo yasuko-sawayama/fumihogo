@@ -12,6 +12,7 @@ const aboutReducer = (state = {}, action) => {
       pageCount: action.payload.product.about.pageCount,
       privacyLevel: action.payload.product.about.privacyLevel,
       impressionCount: action.payload.product.about.impressionCount,
+      permissionsList: action.payload.product.about.permissionsList,
     };
 
   // case PRODUCT_FETCH_ERROR:

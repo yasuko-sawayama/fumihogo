@@ -7,6 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import productReducer from '../reducers/productReducer';
 import errorReducer from '../reducers/errorReducer';
+import currentUserReducer from '../../shared/reducers/currentUserReducer';
 
 import productSaga from '../sagas/saga';
 
@@ -17,6 +18,7 @@ const middleware = [sagaMiddleware];
 const configureStore = railsProps => {
   const store = createStore(
     combineReducers({
+      currentUser: currentUserReducer,
       form: formReducer,
       product: productReducer,
       errorMessage: errorReducer,

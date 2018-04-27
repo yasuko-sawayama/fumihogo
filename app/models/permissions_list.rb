@@ -32,6 +32,9 @@ class PermissionsList < ApplicationRecord
 
   validates :twitter_list_id, presence: true
 
+  scope :old_lists, -> { where(arel_table[:updated_at].lt 3.hours.ago) }
+  scope :from_twitter, -> { where.not(twitter_list_id: nil) }
+
   def add_member_from_twitter(member_info)
     new_member = User.find_from_twitter_info(member_info)
     if new_member == user || new_member.blank?

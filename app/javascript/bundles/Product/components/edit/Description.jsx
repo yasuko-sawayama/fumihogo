@@ -67,6 +67,7 @@ const Description = ({
                    >
               <option value="public_open">公開</option>
               <option value="login">ログイン限定公開</option>
+              <option value="list">リスト限定公開</option>
               <option value="closed">非公開</option>
             </Field>
           </dd>
