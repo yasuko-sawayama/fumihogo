@@ -2,4 +2,6 @@
 class OAuthPolicy::Base
   attr_reader :provider, :uid, :name, :nickname, :email, :url, :image_url,
               :description, :other, :credentials, :raw_info
+
+  def after_initialize; end
 end

@@ -3,10 +3,12 @@
 import { CREATE_REQUEST, CREATE_SUCCESS,
          CREATE_ERROR, CLEAR_ERROR } from '../constants/createProductConstants';
 
-export const createProduct = data => ({
+import getProductAttributes from '../libs/getProductAttributes';
+
+export const createProduct = data => console.log(getProductAttributes(data)) || ({
   type: CREATE_REQUEST,
   payload: {
-    data,
+    data: getProductAttributes(data)
   },
 });
 

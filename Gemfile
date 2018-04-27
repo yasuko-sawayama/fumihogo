@@ -33,6 +33,10 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem "font-awesome-rails"
 gem 'nokogiri'
 
+# for access log
+gem 'impressionist'
+
+# for strip title blank
 gem "strip_attributes"
 
 # pagenate
@@ -61,6 +65,12 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'devise-bootstrap-views'
 
+### SNS Client
+gem 'twitter'
+
+# Decorator Model
+gem 'draper'
+
 # Authorization
 gem "pundit"
 
@@ -73,6 +83,9 @@ gem 'meta-tags'
 
 gem 'acts_as_list'
 gem 'friendly_id', '~> 5.2.3'
+
+# admin
+gem 'rails_admin', '~> 1.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -155,7 +168,7 @@ group :test do
   gem "rspec-rails"
   gem "rspec-retry"
   gem "rspec_junit_formatter"
-  # gem 'webmock'
-  # gem 'vcr'
+  gem 'webmock'
+  gem 'vcr'
 end
 

@@ -12,6 +12,7 @@ const newForm = ({
   reset,
   submitting,
   handleSubmit,
+  currentUser,
 }) => {
   return (
     <form onSubmit={handleSubmit} >
@@ -36,7 +37,17 @@ const newForm = ({
                >
           <option value="public_open">公開</option>
           <option value="login">ログイン限定公開</option>
+          <option value="list">リスト限定公開</option>
           <option value="closed">非公開</option>
+        </Field>
+
+        <Field name="permissions_list"
+               component={BootstrapField}
+               type="select"
+               componentClass="select"
+               label="閲覧を許可するリスト"
+               >
+          {currentUser.permissions_lists.map(list => <option value={list.id} key={list.id}>{list.name}</option>)}
         </Field>
       </div>
 

@@ -16,6 +16,13 @@ json.product do |product|
     about.character_count @product.character_count
     about.pageCount @product.page_count
     about.privacyLevel @product.privacy_level_text
+    if @product.privacy_level.list?
+      about.permissionsList do |list|
+        list.id @product.permissions_list.id
+        list.name @product.permissions_list.name
+      end
+    end
+    about.impressionCount @product.impressionist_count
   end
 
   json.pages @product.pages, partial: 'api/v1/products/page', as: :page

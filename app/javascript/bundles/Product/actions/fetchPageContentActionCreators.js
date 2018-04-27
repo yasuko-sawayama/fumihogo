@@ -18,12 +18,7 @@ export const fetchPageContentSuccess = response => ({
   type: PAGE_CONTENT_FETCH_SUCCESS,
   payload: {
     product: {
-      page: {
-        content: response.data.page.content,
-        pageTitle: response.data.page.title,
-        previousPage: response.data.page.previousPage,
-        nextPage: response.data.page.nextPage,
-      },
+      page: { ...response.data.page },
     },
   },
 });

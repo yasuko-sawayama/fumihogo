@@ -65,3 +65,6 @@ yarn-debug.log*
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
+
+# 一旦VCRの中身はignore
+spec/vcr/

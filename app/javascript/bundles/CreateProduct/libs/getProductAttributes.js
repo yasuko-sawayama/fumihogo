@@ -1,16 +1,28 @@
-import { getFormValues } from 'redux-form';
-import { formValueSelector } from 'redux-form' // ES6
-const selector = formValueSelector('new_form');
-
-export default (state) => ({
+const getProductAttributes = values => ({
   product: {
-    title: selector(state, 'title'),
-    description: selector(state, 'description'),
-    privacy_level: selector(state, 'privacy_level'),
+    title: values.title,
+    description: values.description,
+    privacy_level: values.privacy_level,
+    permissions_list_id: values.privacy_level === 'list' ? values.permissions_list : null,
     pages_attributes: [{
-      title: selector(state, 'pageTitle'),
-      content: selector(state, 'content'),
+      title: values.pageTitle,
+      content: values.content,
     }],
-  },
+  }
 });
+
+export default getProductAttributes;
+
+// export default (state) => ({
+//   product: {
+//     title: selector(state, 'title'),
+//     description: selector(state, 'description'),
+//     privacy_level: selector(state, 'privacy_level'),
+//     permissions_list_id:selector(state, 'permissions_list'),
+//     pages_attributes: [{
+//       title: selector(state, 'pageTitle'),
+//       content: selector(state, 'content'),
+//     }],
+//   },
+// });
 

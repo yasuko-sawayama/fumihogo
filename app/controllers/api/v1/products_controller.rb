@@ -1,12 +1,16 @@
 # API 作品内容に関するコントローラ
 class Api::V1::ProductsController < Api::V1::ApiController
-  before_action :set_product, only: [:show, :update, :destroy]
+  before_action :set_product, only: [:show, :update]
 
   def index
     render nothing: true, response: 200
   end
 
-  def show; end
+  def show
+    impressionist @product,
+                  nil,
+                  unique: [:impressionable_id, :session_hash]
+  end
 
   def create
     @product = Product.new(product_params) do |product|
@@ -34,7 +38,7 @@ class Api::V1::ProductsController < Api::V1::ApiController
 
   def product_params
     params.require(:product).permit(
-      :title, :description, :privacy_level,
+      :title, :description, :privacy_level, :permissions_list_id,
       pages_attributes: [:id, :title, :position,
                          :content])
   end

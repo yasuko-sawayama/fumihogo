@@ -35,8 +35,20 @@ RSpec.describe 'Pages', type: :request do
         get api_v1_product_page_path(product, page), headers: headers
 
         expect(json['page']['product']['title']).to eq('テストのタイトル')
-        expect(json['page']['title']).to eq('テストのページタイトル')
+        expect(json['page']['pageTitle']).to eq('テストのページタイトル')
         expect(json['page']['content']).to eq("<p>本文ですよ本文ですよ本文ですよ本文ですよ</p>\n")
+      end
+
+      it '閲覧履歴がカウントされること' do
+        expect do
+          get api_v1_product_page_path(product, page), headers: headers
+        end.to change { page.reload.impressionist_count }.by(1)
+      end
+
+      it '作品の閲覧履歴がカウントされること' do
+        expect do
+          get api_v1_product_page_path(product, page), headers: headers
+        end.to change { product.reload.impressionist_count }.by(1)
       end
     end
 

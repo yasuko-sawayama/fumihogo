@@ -43,6 +43,17 @@ class User < ApplicationRecord
 
   has_many :social_profiles, dependent: :destroy
   has_many :products, dependent: :destroy
+  # 閲覧許可リスト
+  has_many :permissions_lists, dependent: :destroy
+  has_many :member_permissions,
+           dependent: :nullify,
+           inverse_of: :member,
+           foreign_key: 'user_id'
+  has_many :added_permissions_lists,
+           dependent: :nullify,
+           through: :member_permissions,
+           class_name: 'PermissionsList',
+           source: :permissions_list
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -59,7 +70,7 @@ class User < ApplicationRecord
 
   # 編集実装するまで一旦social_profileに委譲
   def description
-    social_profiles.first.description
+    social_profiles.first&.description
   end
 
   def self.find_for_oauth(auth)
@@ -70,6 +81,7 @@ class User < ApplicationRecord
       .create_new_user_from_profile if profile.user.nil?
 
     profile.save!
+
     [profile.user, policy]
   end
   

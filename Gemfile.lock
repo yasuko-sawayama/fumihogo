@@ -29,6 +29,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.1.6)
       activesupport (= 5.1.6)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (5.1.6)
       activemodel (= 5.1.6)
       activesupport (= 5.1.6)
@@ -71,6 +75,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     brakeman (4.2.1)
+    buftok (0.2.0)
     builder (3.2.3)
     bullet (5.7.5)
       activesupport (>= 3.0.0)
@@ -125,6 +130,8 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     crass (1.0.4)
     database_cleaner (1.6.2)
     debug_inspector (0.0.3)
@@ -142,6 +149,12 @@ GEM
     docile (1.3.0)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
+    draper (3.0.1)
+      actionpack (~> 5.0)
+      activemodel (~> 5.0)
+      activemodel-serializers-xml (~> 1.0)
+      activesupport (~> 5.0)
+      request_store (~> 1.0)
     dry-configurable (0.7.0)
       concurrent-ruby (~> 1.0)
     dry-container (0.6.0)
@@ -175,6 +188,7 @@ GEM
       mail (~> 2.7)
     enumerize (2.2.2)
       activesupport (>= 3.2)
+    equalizer (0.0.11)
     erubi (1.7.1)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -232,6 +246,7 @@ GEM
       haml (>= 4.0.6, < 6.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
+    hashdiff (0.3.7)
     hashie (3.5.7)
     high_voltage (3.0.0)
     html2haml (2.2.0)
@@ -240,16 +255,31 @@ GEM
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
     htmlentities (4.3.4)
+    http (3.0.0)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (>= 2.0.0.pre.pre2, < 3)
+      http_parser.rb (~> 0.6.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    http-form_data (2.1.0)
+    http_parser.rb (0.6.0)
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.1)
+      nokogiri (~> 1)
     inflecto (0.0.2)
     interception (0.5)
     io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jquery-rails (4.3.3)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.5)
+      railties (>= 3.2.16)
     json (2.1.0)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -278,6 +308,8 @@ GEM
     lumberjack (1.0.13)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     meta-tags (2.9.0)
       actionpack (>= 3.2.0, < 5.3)
     method_source (0.9.0)
@@ -290,7 +322,10 @@ GEM
       libv8 (~> 6.3)
     minitest (5.11.3)
     multi_json (1.13.1)
+    multipart-post (2.0.0)
+    naught (1.1.0)
     nenv (0.3.0)
+    nested_form (0.3.2)
     netrc (0.11.0)
     nio4r (2.3.0)
     nokogiri (1.8.2)
@@ -345,6 +380,9 @@ GEM
     rack (2.0.4)
     rack-mini-profiler (1.0.0)
       rack (>= 1.2.0)
+    rack-pjax (1.0.0)
+      nokogiri (~> 1.5)
+      rack (>= 1.1)
     rack-proxy (0.6.4)
       rack
     rack-test (1.0.0)
@@ -366,6 +404,19 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails_admin (1.3.0)
+      builder (~> 3.1)
+      coffee-rails (~> 4.0)
+      font-awesome-rails (>= 3.0, < 5)
+      haml (>= 4.0, < 6)
+      jquery-rails (>= 3.0, < 5)
+      jquery-ui-rails (~> 5.0)
+      kaminari (>= 0.14, < 2.0)
+      nested_form (~> 0.3)
+      rack-pjax (>= 0.7)
+      rails (>= 4.0, < 6)
+      remotipart (~> 1.3)
+      sass-rails (>= 4.0, < 6)
     railties (5.1.6)
       actionpack (= 5.1.6)
       activesupport (= 5.1.6)
@@ -385,6 +436,9 @@ GEM
       rails (>= 3.2)
       rainbow (~> 2.2)
     redcarpet (2.3.0)
+    remotipart (1.4.0)
+    request_store (1.4.1)
+      rack (>= 1.4)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -435,6 +489,7 @@ GEM
       sexp_processor (~> 4.9)
     rubyzip (1.2.1)
     rufo (0.3.0)
+    safe_yaml (1.0.4)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -456,6 +511,7 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
+    simple_oauth (0.3.1)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -492,6 +548,17 @@ GEM
     turbolinks (5.1.0)
       turbolinks-source (~> 5.1)
     turbolinks-source (5.1.0)
+    twitter (6.2.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.11)
+      http (~> 3.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
+      memoizable (~> 0.4.0)
+      multipart-post (~> 2.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.8)
@@ -501,6 +568,7 @@ GEM
     unf_ext (0.0.7.5)
     unicode-display_width (1.3.0)
     uniform_notifier (1.11.0)
+    vcr (4.0.0)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -508,6 +576,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webmock (3.3.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     webpacker (3.4.3)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
@@ -547,6 +619,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   devise-i18n
+  draper
   email_spec
   enumerize
   factory_bot_rails
@@ -562,6 +635,7 @@ DEPENDENCIES
   guard-spring
   haml-rails
   high_voltage (~> 3.0.0)
+  impressionist
   jbuilder (~> 2.5)
   kaminari
   launchy
@@ -585,6 +659,7 @@ DEPENDENCIES
   pundit
   rack-mini-profiler
   rails (~> 5.1.4)
+  rails_admin (~> 1.3)
   rainbow
   react_on_rails (= 10.0.2)
   redcarpet (~> 2.3.0)
@@ -607,8 +682,11 @@ DEPENDENCIES
   strip_attributes
   timecop
   turbolinks (~> 5)
+  twitter
   uglifier (>= 1.3.0)
+  vcr
   web-console (>= 3.3.0)
+  webmock
   webpacker
 
 RUBY VERSION

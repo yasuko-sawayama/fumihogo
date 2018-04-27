@@ -14,23 +14,12 @@ class NewPage extends React.Component {
     form: PropTypes.any.isRequired,
   }
 
-  constructor(props) {
-    super(props)
-
-    this.submit = this.submit.bind(this);
-  }
-
-  submit(values) {
-
-    this.props.actions.createProduct(this.props.productAttributes);
-  }
-
   render() {
     return(
       <div>
         <header>
           <LoadingBar />
-          <ErrorAlert  { ...this.props.error } /> 
+          <ErrorAlert { ...this.props.error } /> 
         </header>
         <section id="productNewForm">
           <SpinerContainer />
@@ -40,7 +29,7 @@ class NewPage extends React.Component {
           <p className="description">
             問題のあると思われる内容を投稿する時は、18歳未満の閲覧を禁止にチェックを入れて下さい。
           </p>
-          <NewForm onSubmit={this.submit} />
+          <NewForm onSubmit={this.props.actions.createProduct} />
         </section>
       </div>
     );

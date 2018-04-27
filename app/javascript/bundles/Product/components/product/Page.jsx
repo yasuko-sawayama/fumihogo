@@ -8,7 +8,9 @@ class Page extends React.Component {
   static propTypes = {
     product: PropTypes.shape({
       id: PropTypes.number.isRequired,
-      pageInfo: PropTypes.object.isRequired,
+      pageInfo: PropTypes.shape({
+        impressionCount: PropTypes.number.isRequired,
+      }).isRequired,
       currentPage: PropTypes.number.isRequired,
       content: PropTypes.string.isRequired,
     }),
@@ -16,7 +18,7 @@ class Page extends React.Component {
 
   constructor(props) {
     super(props);
-
+    console.log("called");
     this.targetPage = this.targetPage.bind(this);
     this.fetchContent = this.fetchContent.bind(this);
   }
@@ -28,7 +30,8 @@ class Page extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { pageId } = this.props.match.params;
-    
+    console.log(pageId);
+    console.log("called");
     if ( pageId && pageId !== nextProps.match.params.pageId) {
       this.fetchContent(nextProps.match.params.pageId, nextProps.product.pages);
       this.props.actions.changePage(nextProps.match.params.pageId)
@@ -37,6 +40,7 @@ class Page extends React.Component {
   
   targetPage(pageId, pages) {
     // Paramがない場合は常に1ページ目
+    if (!pageId) { return pages[0] }
     return pages.find((page) => page.id === Number(pageId)) || pages[0];
   };
 
@@ -52,6 +56,8 @@ class Page extends React.Component {
           pageTitle={this.props.product.pageInfo.pageTitle}
           totalPage={this.props.product.about.pageCount}
           content={this.props.product.content}
+          impressionCount={this.props.product.pageInfo.impressionCount}
+          page
           />
         <Pager {...this.props.product.pageInfo} url={`/${this.props.product.id}/`} />
       </section>
