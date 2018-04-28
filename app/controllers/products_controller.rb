@@ -2,6 +2,7 @@
 class ProductsController < ApplicationController
   include ReactOnRails::Controller
 
+  before_action :authenticate_user!, except: [:show]
   before_action :set_product, only: [:show, :destroy]
 
   def index
