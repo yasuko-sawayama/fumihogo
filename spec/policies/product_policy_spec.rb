@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProductPolicy do
+RSpec.describe ProductPolicy, vcr: true do
 
   subject { described_class }
 
@@ -134,10 +134,11 @@ RSpec.describe ProductPolicy do
         expect(subject).not_to permit(guest, list)
       end
     end
+    let(:member) { create(:user) }
 
     it "非公開作品は作者以外閲覧できないこと" do
       expect(subject).not_to permit(guest, closed)
-      expect(subject).not_to permit(user, closed)
+      expect(subject).not_to permit(member, closed)
     end
 
     #TODO

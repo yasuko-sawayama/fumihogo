@@ -21,7 +21,7 @@
 
 require 'rails_helper'
 
-RSpec.describe PermissionsList, type: :model do
+RSpec.describe PermissionsList, type: :model, vcr: true do
   describe 'associations' do
     it { should belong_to(:user) }
     it { should have_many(:member_permissions) }

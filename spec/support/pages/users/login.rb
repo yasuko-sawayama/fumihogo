@@ -1,4 +1,20 @@
+require 'rails_helper'
+require 'rspec/mocks'
+
 class Login < SitePrism::Page
+  include ::RSpec::Mocks::ExampleMethods
+
+  def initialize
+    ::RSpec::Mocks.setup
+    super
+  end
+
+  def self.finalize
+    proc { ::RSpec::Mocks.verify }
+  ensure
+    proc { ::RSpec::Mocks.teardown }
+  end
+
   set_url '/users/sign_in'
 
   element :email, "input[name='user[email]']"
@@ -15,12 +31,24 @@ class Login < SitePrism::Page
   def login_with_twitter!(twitter_name: nil)
     load
     set_omniauth_twitter_mock(twitter_name: twitter_name)
+    set_twitter_client_mock
     click_on 'Twitterでログインする'
   end
 
   def logout
     visit '/'
     click_on 'ログアウト'
+  end
+
+  def set_twitter_client_mock
+    client = double(:twitter_client)
+    list = double(:list)
+
+    allow(list).to receive(:id).and_return(1)
+    allow(list).to receive(:name).and_return('test_name')
+    
+    allow(client).to receive(:user_lists).and_return([list])
+    allow(TwitterClient).to receive(:new).and_return(client)
   end
 
   private
@@ -51,4 +79,5 @@ class Login < SitePrism::Page
         }
       )
   end
+
 end

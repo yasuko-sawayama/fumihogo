@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe 'Users', type: :request do
+RSpec.describe 'Users', type: :request, vcr: true do
   let(:headers) {{
                    "CONTENT_TYPE" => "application/json",
                    "ACCEPT" => "application/json"
@@ -12,6 +12,7 @@ RSpec.describe 'Users', type: :request do
       let(:user) { create(:user) }
       before do
         allow(user).to receive(:twitter_uid).and_return(52043701)
+        set_twitter_client_mock
         sign_in user
         get api_v1_current_user_info_url, headers: headers
       end
@@ -19,7 +20,7 @@ RSpec.describe 'Users', type: :request do
       it { expect(response).to have_http_status(200) }
 
       it 'ツイッターリストが取得できること' do
-        expect(response.body).to match(/ぷらいべったー/)
+          expect(response.body).to match(/test_name/)
       end
     end
 
