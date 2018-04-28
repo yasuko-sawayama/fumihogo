@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/lists/list.json
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - TwitterRubyGem/6.2.0
+      Authorization:
+      - OAuth oauth_consumer_key="4igJ8eA3x8ulzhT9B5fj2tQYu", oauth_nonce="9739acaa72e2a5bd98ddc4d95b98cffe",
+        oauth_signature="pNsfRuM3Aoj5psgnnjipC9WSFbY%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1524922784", oauth_token="52043701-2evxg41crJk8JGszUvt8RB6oCsaehCNFlgAN5ouix",
+        oauth_version="1.0"
+      Connection:
+      - close
+      Host:
+      - api.twitter.com
+  response:
+    status:
+      code: 429
+      message: Too Many Requests
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '56'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sat, 28 Apr 2018 13:39:44 GMT
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A152492278463418424; Expires=Mon, 27 Apr 2020 13:39:44 GMT; Path=/;
+        Domain=.twitter.com
+      - personalization_id="v1_qKgwl2MsTL/R+QB59egt4Q=="; Expires=Mon, 27 Apr 2020
+        13:39:44 GMT; Path=/; Domain=.twitter.com
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Connection-Hash:
+      - 87f06eddfeb17cee2c48ff97c7e1c2fe
+      X-Rate-Limit-Limit:
+      - '15'
+      X-Rate-Limit-Remaining:
+      - '0'
+      X-Rate-Limit-Reset:
+      - '1524922801'
+      X-Response-Time:
+      - '106'
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"message":"Rate limit exceeded","code":88}]}'
+    http_version: 
+  recorded_at: Sat, 28 Apr 2018 13:39:44 GMT
+recorded_with: VCR 4.0.0

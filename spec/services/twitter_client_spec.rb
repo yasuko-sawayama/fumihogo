@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe TwitterClient, vcr: false do
+RSpec.describe TwitterClient, vcr: true do
   let(:twitter) { TwitterClient.new }
 
   it 'TwitterのリストをID検索できること' do

@@ -36,6 +36,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.infer_spec_type_from_file_location!
+  config.treat_symbols_as_metadata_keys_with_true_values = true
 
   config.example_status_persistence_file_path = "examples.txt"
 

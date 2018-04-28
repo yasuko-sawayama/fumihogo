@@ -1,0 +1,250 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/account/verify_credentials.json?skip_status=true
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - TwitterRubyGem/6.2.0
+      Authorization:
+      - OAuth oauth_consumer_key="4igJ8eA3x8ulzhT9B5fj2tQYu", oauth_nonce="2b23c8742e23f9cff13e80e2b52ace2a",
+        oauth_signature="Czlx6p0epW%2Bj8UiEOQb6i3%2BTwr4%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1524921818", oauth_token="52043701-2evxg41crJk8JGszUvt8RB6oCsaehCNFlgAN5ouix",
+        oauth_version="1.0"
+      Connection:
+      - close
+      Host:
+      - api.twitter.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Connection:
+      - close
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '2065'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sat, 28 Apr 2018 13:23:39 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Sat, 28 Apr 2018 13:23:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A152492181902288893; Expires=Mon, 27 Apr 2020 13:23:39 GMT; Path=/;
+        Domain=.twitter.com
+      - lang=ja; Path=/
+      - personalization_id="v1_tq15POl31p2pxB6Hp4eQgg=="; Expires=Mon, 27 Apr 2020
+        13:23:39 GMT; Path=/; Domain=.twitter.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read
+      X-Connection-Hash:
+      - 24992b8819d8344d6880db2c237f4744
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '75'
+      X-Rate-Limit-Remaining:
+      - '57'
+      X-Rate-Limit-Reset:
+      - '1524921898'
+      X-Response-Time:
+      - '121'
+      X-Transaction:
+      - 006c12a6001e33ad
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      - BouncerExempt
+      X-Xss-Protection:
+      - 1; mode=block; report=https://twitter.com/i/xss_report
+    body:
+      encoding: UTF-8
+      string: '{"id":52043701,"id_str":"52043701","name":"\u84b2\u7530\u304f\u3093||\u3084\u3059\u30535\/3\u897f\uff12\uff3125a","screen_name":"sawayama_yasuko","location":"","description":"\u6700\u8fd1\u30ab\u30aa\u30b9\u5316\u304c\u3044\u3061\u3058\u308b\u3057\u3044\u3067\u3059\u304c\u3001\u57fa\u672c\u7684\u306b\u3053\u308c\u306f\u8150\u5973\u5b50\u30a2\u30ab\u30a6\u30f3\u30c8\u3067\u3059\u3002\u207018\u6b73\u672a\u6e80\u3068\u30b9\u30d1\u30e0\u696d\u8005\u306f\u30d6\u30ed\u30c3\u30af\u3057\u307e\u3059\u3093
+        https:\/\/t.co\/BWBsVgCfrB","url":"https:\/\/t.co\/V4jvmSLrBM","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/V4jvmSLrBM","expanded_url":"http:\/\/say.topaz.ne.jp\/","display_url":"say.topaz.ne.jp","indices":[0,23]}]},"description":{"urls":[{"url":"https:\/\/t.co\/BWBsVgCfrB","expanded_url":"http:\/\/www.pixiv.net\/member.php?id=2459937","display_url":"pixiv.net\/member.php?id=\u2026","indices":[57,80]}]}},"protected":false,"followers_count":508,"friends_count":429,"listed_count":40,"created_at":"Mon
+        Jun 29 12:40:26 +0000 2009","favourites_count":3665,"utc_offset":32400,"time_zone":"Tokyo","geo_enabled":true,"verified":false,"statuses_count":167808,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":true,"profile_background_color":"EDECE9","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme3\/bg.gif","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme3\/bg.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/1664938249\/sawayama_yasuko_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/1664938249\/sawayama_yasuko_normal.jpg","profile_link_color":"088253","profile_sidebar_border_color":"D3D2CF","profile_sidebar_fill_color":"E3E2DE","profile_text_color":"634047","profile_use_background_image":true,"has_extended_profile":true,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+    http_version: 
+  recorded_at: Sat, 28 Apr 2018 13:23:39 GMT
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/lists/show.json?list_id=818095242884714497&owner_id=52043701
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - TwitterRubyGem/6.2.0
+      Authorization:
+      - OAuth oauth_consumer_key="4igJ8eA3x8ulzhT9B5fj2tQYu", oauth_nonce="d1ca52090134b08b858892b06e7516d3",
+        oauth_signature="ElZ%2Bc6v7JO%2BMreZZh%2F0ASCvII2I%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1524921819", oauth_token="52043701-2evxg41crJk8JGszUvt8RB6oCsaehCNFlgAN5ouix",
+        oauth_version="1.0"
+      Connection:
+      - close
+      Host:
+      - api.twitter.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Connection:
+      - close
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '2405'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sat, 28 Apr 2018 13:23:39 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Sat, 28 Apr 2018 13:23:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A152492181936471575; Expires=Mon, 27 Apr 2020 13:23:39 GMT; Path=/;
+        Domain=.twitter.com
+      - lang=ja; Path=/
+      - personalization_id="v1_uZMLcsxGzbNuJkGl8jjQwA=="; Expires=Mon, 27 Apr 2020
+        13:23:39 GMT; Path=/; Domain=.twitter.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read
+      X-Connection-Hash:
+      - fa21b1f8eabdb68d8a2e6dcfdcbc8b77
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '75'
+      X-Rate-Limit-Remaining:
+      - '57'
+      X-Rate-Limit-Reset:
+      - '1524921898'
+      X-Response-Time:
+      - '147'
+      X-Transaction:
+      - '001009a0008e3615'
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block; report=https://twitter.com/i/xss_report
+    body:
+      encoding: UTF-8
+      string: '{"id":818095242884714497,"id_str":"818095242884714497","name":"\u3077\u3089\u3044\u3079\u3063\u305f\u30fc","uri":"\/sawayama_yasuko\/lists\/list","subscriber_count":0,"member_count":32,"mode":"public","description":"","slug":"list","full_name":"@sawayama_yasuko\/list","created_at":"Sun
+        Jan 08 14:01:20 +0000 2017","following":true,"user":{"id":52043701,"id_str":"52043701","name":"\u84b2\u7530\u304f\u3093||\u3084\u3059\u30535\/3\u897f\uff12\uff3125a","screen_name":"sawayama_yasuko","location":"","description":"\u6700\u8fd1\u30ab\u30aa\u30b9\u5316\u304c\u3044\u3061\u3058\u308b\u3057\u3044\u3067\u3059\u304c\u3001\u57fa\u672c\u7684\u306b\u3053\u308c\u306f\u8150\u5973\u5b50\u30a2\u30ab\u30a6\u30f3\u30c8\u3067\u3059\u3002\u207018\u6b73\u672a\u6e80\u3068\u30b9\u30d1\u30e0\u696d\u8005\u306f\u30d6\u30ed\u30c3\u30af\u3057\u307e\u3059\u3093
+        https:\/\/t.co\/BWBsVgCfrB","url":"https:\/\/t.co\/V4jvmSLrBM","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/V4jvmSLrBM","expanded_url":"http:\/\/say.topaz.ne.jp\/","display_url":"say.topaz.ne.jp","indices":[0,23]}]},"description":{"urls":[{"url":"https:\/\/t.co\/BWBsVgCfrB","expanded_url":"http:\/\/www.pixiv.net\/member.php?id=2459937","display_url":"pixiv.net\/member.php?id=\u2026","indices":[57,80]}]}},"protected":false,"followers_count":508,"friends_count":429,"listed_count":40,"created_at":"Mon
+        Jun 29 12:40:26 +0000 2009","favourites_count":3665,"utc_offset":32400,"time_zone":"Tokyo","geo_enabled":true,"verified":false,"statuses_count":167808,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":true,"profile_background_color":"EDECE9","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme3\/bg.gif","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme3\/bg.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/1664938249\/sawayama_yasuko_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/1664938249\/sawayama_yasuko_normal.jpg","profile_link_color":"088253","profile_sidebar_border_color":"D3D2CF","profile_sidebar_fill_color":"E3E2DE","profile_text_color":"634047","profile_use_background_image":true,"has_extended_profile":true,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}}'
+    http_version: 
+  recorded_at: Sat, 28 Apr 2018 13:23:39 GMT
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/lists/members/show.json?list_id=818095242884714497&owner_id=52043701&screen_name=83561601
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - TwitterRubyGem/6.2.0
+      Authorization:
+      - OAuth oauth_consumer_key="4igJ8eA3x8ulzhT9B5fj2tQYu", oauth_nonce="f115c0ad11cb070d54cd9be184d38898",
+        oauth_signature="S5qMoUHhDzpV3ra2suLyOxEpxAQ%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1524921819", oauth_token="52043701-2evxg41crJk8JGszUvt8RB6oCsaehCNFlgAN5ouix",
+        oauth_version="1.0"
+      Connection:
+      - close
+      Host:
+      - api.twitter.com
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Connection:
+      - close
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '86'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sat, 28 Apr 2018 13:23:39 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Sat, 28 Apr 2018 13:23:39 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A152492181979052233; Expires=Mon, 27 Apr 2020 13:23:39 GMT; Path=/;
+        Domain=.twitter.com
+      - lang=ja; Path=/
+      - personalization_id="v1_1bAbqXjE3v6UPKHqSHzXmQ=="; Expires=Mon, 27 Apr 2020
+        13:23:39 GMT; Path=/; Domain=.twitter.com
+      Status:
+      - 404 Not Found
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read
+      X-Connection-Hash:
+      - 3c15fd546f688e8d1368891d9288afdd
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '15'
+      X-Rate-Limit-Remaining:
+      - '2'
+      X-Rate-Limit-Reset:
+      - '1524921899'
+      X-Response-Time:
+      - '145'
+      X-Transaction:
+      - 00c0975d000fcaf7
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block; report=https://twitter.com/i/xss_report
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"code":109,"message":"The specified user is not a member
+        of this list."}]}'
+    http_version: 
+  recorded_at: Sat, 28 Apr 2018 13:23:39 GMT
+recorded_with: VCR 4.0.0
