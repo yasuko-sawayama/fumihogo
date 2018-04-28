@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProductPolicy do
+RSpec.describe ProductPolicy, :vcr do
 
   subject { described_class }
 
