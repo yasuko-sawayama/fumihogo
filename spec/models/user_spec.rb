@@ -85,6 +85,10 @@ RSpec.describe User, type: :model do
         )
       end
 
+      before do |example|
+        set_twitter_client_mock unless example.metadata[:skip_twitter_client]
+      end
+
       context '新規ユーザー：' do
         it '新規ユーザーが作成されること' do
           expect { assign_user }.to change(User, :count).by(1)
@@ -146,7 +150,7 @@ RSpec.describe User, type: :model do
             create(:user, nickname: 'Mock User 5')
           end
 
-          it '流石に何かおかしいのでエラーにすること' do
+          it '流石に何かおかしいのでエラーにすること', skip_twitter_client: true do
             expect { assign_user }.to raise_error(ActiveRecord::RecordInvalid)
           end
         end

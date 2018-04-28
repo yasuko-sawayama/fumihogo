@@ -81,6 +81,7 @@ class User < ApplicationRecord
       .create_new_user_from_profile if profile.user.nil?
 
     profile.save!
+    update_list(profile, policy) if policy.instance_of?(OAuthPolicy::Twitter)
 
     [profile.user, policy]
   end
@@ -95,5 +96,14 @@ class User < ApplicationRecord
 
   def sns_url
     social_profiles.order(provider: :desc).first.url || "#"
+  end
+
+  def self.update_list(profile, policy)
+    factory = PermissionListFactory.new(profile.user,
+                                        access_token: policy.credentials['token'],
+                                        access_secret: policy.credentials['secret'])
+    Timeout::timeout(120) do
+      factory.fetch_lists_from_twitter
+    end
   end
 end

@@ -43,7 +43,8 @@ RSpec.configure do |config|
   config.include RequestHelper, type: :request
   config.include LoginHelper, type: :feature
   config.include FeaturesHelper, type: :feature
-
+  config.include TwitterClientHelper
+  
   config.order = "random"
   # Include path helpers
   config.include Rails.application.routes.url_helpers

@@ -1,6 +1,6 @@
 class PermissionListFactory
   attr_accessor :access_token, :access_secret
-  attr_reader :client
+  attr_reader :client, :user
   
   def initialize(user, params = {})
     @user = user
@@ -13,7 +13,7 @@ class PermissionListFactory
   end
 
   def fetch_lists_from_twitter
-    raise 'Invalid User.' unless @user.twitter?
+    raise 'Invalid User.' unless user.twitter?
 
     client.user_lists.each do |list|
       add_or_fetch_list(list)
