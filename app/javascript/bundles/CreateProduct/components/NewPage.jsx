@@ -29,7 +29,10 @@ class NewPage extends React.Component {
           <p className="description">
             問題のあると思われる内容を投稿する時は、18歳未満の閲覧を禁止にチェックを入れて下さい。
           </p>
-          <NewForm onSubmit={this.props.actions.createProduct} />
+          <NewForm
+             onSubmit={this.props.actions.createProduct}
+             productAttributes={this.props.productAttributes}
+             />
         </section>
       </div>
     );

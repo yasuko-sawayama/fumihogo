@@ -4,7 +4,7 @@ import { Button, Alert } from 'react-bootstrap';
 import DisplayGrayWrapper from '../../shared/components/DisplayGrayWrapper';
 import Dialog from '../../shared/components/Dialog';
 
-export default ({ title, description, id }) => {
+const SuccessDialog = ({ title, description, id }) => {
   const url = `/products/${id}`
   return id ? (
     <DisplayGrayWrapper>
@@ -26,4 +26,6 @@ export default ({ title, description, id }) => {
       </div>
     </DisplayGrayWrapper>
   ) : false ;
-}
+};
+
+export default SuccessDialog;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import validate from './newForm/validate';
 import newForm from './newForm/newForm';
+import getProductAttributes from '../libs/getProductAttributes';
 
 const NewForm = reduxForm({
   form: 'new_form',
@@ -11,5 +12,6 @@ const NewForm = reduxForm({
 
 export default connect(state => ({
   currentUser: state.currentUser,
+  productAttributes: getProductAttributes(state),
 }))(NewForm);
 

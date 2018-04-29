@@ -20,7 +20,7 @@ class Api::V1::ProductsController < Api::V1::ApiController
     authorize @product
 
     if @product.save
-      render json: @product, status: :created
+      render :show, status: :created
     else
       render json: @product.errors.full_messages, status: :unprocessable_entity
     end
