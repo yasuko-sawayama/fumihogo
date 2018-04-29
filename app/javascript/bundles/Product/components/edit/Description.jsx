@@ -69,7 +69,6 @@ const Description = ({
               component={PrivacyLevelSelector}
               className="form-control input-sm"
               label={null}
-              help="非公開の作品は自分だけが見ることができます。"
               currentUser={currentUser}
               />
             <Field
