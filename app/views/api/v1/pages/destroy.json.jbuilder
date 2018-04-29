@@ -1,3 +1,3 @@
 json.id @product.id
 
-json.pages @product.pages, partial: 'api/v1/products/page', as: :page
+json.pages @product.pages, partial: 'shared/json/page', as: :page, locals: { product: @product }
