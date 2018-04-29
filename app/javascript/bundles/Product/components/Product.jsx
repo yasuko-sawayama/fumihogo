@@ -11,6 +11,7 @@ import Page from './product/Page';
 
 class Product extends React.Component {
   static propTypes = {
+    currentUser: PropTypes.any.isRequired,
     product: PropTypes.any.isRequired,
   };
 
@@ -34,12 +35,14 @@ class Product extends React.Component {
           <hr />
           <Route path={`/${this.props.product.id}/:pages?/:pageId?/`}
                  render={ props => <Page {...props}
+                                           currentUser={this.props.currentUser}
                                            product={this.props.product}
                                          actions={this.props.actions} /> }
             />
           <Route path='/'
                  render={ props => <Page {...props}
                                            product={this.props.product}
+                                           currentUser={this.props.currentUser}
                                          actions={this.props.actions} /> }
             />
         </section>

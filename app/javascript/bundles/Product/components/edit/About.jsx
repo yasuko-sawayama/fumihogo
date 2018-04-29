@@ -30,6 +30,8 @@ const AddButton = ({ id }) => (
 );
 
 const About = ({
+  currentUser,
+  editAttributes,
   product: {
     id,
     title,
@@ -43,6 +45,8 @@ const About = ({
   <section id="about">
     <Title title={title} />
     <Description
+      currentUser={currentUser}
+      editAttributes={editAttributes}
       title={title}
       description={description}
       author={author}
@@ -58,6 +62,9 @@ const About = ({
 );
 
 About.propTypes = {
+  currentUser: PropTypes.shape({
+    permissions_list: PropTypes.array,
+  }).isRequired,
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

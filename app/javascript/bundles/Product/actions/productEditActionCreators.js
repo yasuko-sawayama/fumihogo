@@ -18,7 +18,7 @@ export const updateProduct = (data, { id, }) => ({
 export const updateProductSuccess = response => ({
   type: PRODUCT_UPDATE_SUCCESS,
   payload: {
-    product: response.data,
+    product: response.data.product,
     message: '作品情報を更新しました。',
     style: 'success',
   },

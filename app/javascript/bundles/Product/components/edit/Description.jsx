@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Field } from 'redux-form';
 import { TwitterShareButton, TwitterIcon } from 'react-share';
 
+import PermissionsListSelector from '../../../shared/components/forms/PermissionsListSelector';
+import PrivacyLevelSelector from '../../../shared/components/forms/PrivacyLevelSelector';
 import RIEKTextarea from '../../../shared/components/forms/riek/RIEKTextarea';
 
 const url = location.href;
@@ -14,6 +16,10 @@ margin-bottom: 15px;
 `;
 
 const Description = ({
+  currentUser,
+  editAttributes: {
+    updatedPrivacyLevel,
+  },
   title,
   description='',
   about: {
@@ -58,18 +64,21 @@ const Description = ({
           <dd>{impressionCount}</dd>
           <dt>公開範囲:</dt>
           <dd>
-            <Field name="privacy_level"
-                   component="select"
-                   type="select"
-                   className="form-control input-sm"
-                   label={null}
-                   help="非公開の作品は自分だけが見ることができます。"
-                   >
-              <option value="public_open">公開</option>
-              <option value="login">ログイン限定公開</option>
-              <option value="list">リスト限定公開</option>
-              <option value="closed">非公開</option>
-            </Field>
+            <Field
+              name="privacy_level"
+              component={PrivacyLevelSelector}
+              className="form-control input-sm"
+              label={null}
+              help="非公開の作品は自分だけが見ることができます。"
+              currentUser={currentUser}
+              />
+            <Field
+              name="permissions_list_id"
+              component={PermissionsListSelector}
+              label="閲覧を許可するリスト"
+              currentUser={currentUser}
+              privacyLevel={updatedPrivacyLevel}
+              />
           </dd>
         </dl>
       </div>
@@ -83,6 +92,7 @@ const Description = ({
 );
 
 Description.propTypes = {
+  currentUser: PropTypes.any.isRequired,
   description: PropTypes.string,
   about: PropTypes.shape({
     created_at: PropTypes.string.isRequired,

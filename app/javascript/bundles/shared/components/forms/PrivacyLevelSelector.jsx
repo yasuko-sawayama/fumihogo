@@ -1,8 +1,12 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
 class PrivacyLevelSelector extends React.Component {
+  static propTypes = {
+    currentUser: PropTypes.any.isRequired,
+  }
+
   constructor(props) {
     super(props);
 

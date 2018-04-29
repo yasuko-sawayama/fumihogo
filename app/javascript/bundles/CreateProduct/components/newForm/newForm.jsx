@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
 import BootstrapField from '../../../shared/components/forms/BootstrapField';
-import PermissionsListSelector from './PermissionsListSelector';
-import PrivacyLevelSelector from './PrivacyLevelSelector';
+import PermissionsListSelector from '../../../shared/components/forms/PermissionsListSelector';
+import PrivacyLevelSelector from '../../../shared/components/forms/PrivacyLevelSelector';
 import PageForm from '../../../shared/components/forms/PageForm';
 
 class newForm extends React.Component {

@@ -20,6 +20,7 @@ import { pageDestroy } from '../actions/pageDestroyActionCreators';
 
 class Edit extends React.Component {
   static propTypes = {
+    currentUser: PropTypes.any.isRequired,
     product: PropTypes.any.isRequired,
   };
 
@@ -50,7 +51,7 @@ class Edit extends React.Component {
       reset,
       handleSubmit,
       pristine,
-      submitting
+      submitting,
     } = this.props;
 
     const { id } = this.props.product;
@@ -86,7 +87,7 @@ margin: 0;
           <InfoAlert
             message="各項目をクリックすると変更できます."
             />
-          <form onSubmit={handleSubmit((values) => this.props.actions.updateProduct(values, { id }))} >
+          <form onSubmit={handleSubmit((values) => console.log(values) || this.props.actions.updateProduct(values, { id }))} >
             <SubmitButton />
             <About {...this.props} />
           </form>
@@ -94,6 +95,7 @@ margin: 0;
           <Switch>
             <Route path={`/${id}/pages/new/`}
                    render={ props => <NewPage {...props}
+                                                currentUser={this.props.currentUser}
                                                 product={this.props.product}
                                               actions={this.props.actions} /> }
               />

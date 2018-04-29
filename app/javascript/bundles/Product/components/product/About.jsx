@@ -30,6 +30,7 @@ const AddButton = ({ id }) => (
 );
 
 const About = ({
+  currentUser,
   product: {
     id,
     title,
@@ -43,6 +44,7 @@ const About = ({
   <section id="about">
     <Title title={title} />
     <Description
+      currentUser={currentUser}
       title={title}
       description={description}
       author={author}

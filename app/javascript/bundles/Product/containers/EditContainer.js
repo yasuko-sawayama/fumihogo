@@ -3,31 +3,38 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reduxForm } from 'redux-form';
+import { formValueSelector } from 'redux-form';
 
 import Edit from '../components/Edit';
 import * as productActions from '../actions/productActionCreators';
 import * as editActions from '../actions/productEditActionCreators';
 import * as deletePageActions from '../actions/pageDestroyActionCreators';
 
-const getKeyByValue = (object, value) => Object.keys(object).find(key => object[key] === value);
+// const getKeyByValue = (object, value) => Object.keys(object).find(key => object[key] === value); // 
+const selector = formValueSelector('edit_product');
 
-const PRIVACY_LEVEL = {
-  public_open: "公開",
-  login: "ログイン限定公開",
-  closed: "非公開"
-}
+// const PRIVACY_LEVEL = {
+//   public_open: "公開",
+//   login: "ログイン限定公開",
+//   closed: "非公開"
+// }
 
 const initialValues = product => ({
   title: product.title,
   description: product.description,
-  privacy_level: getKeyByValue(PRIVACY_LEVEL, product.about.privacyLevel),
+  privacy_level: product.info.privacy_level,
+  permissions_list_id: product.info.permissions_list_id,
 });
 
 
 // FormはReduxFormに任せる
 const mapStateToProps = state => ({
   initialValues: initialValues(state.product),
+  currentUser: state.currentUser,
   product: state.product,
+  editAttributes: {
+    updatedPrivacyLevel: selector(state, 'privacy_level'),
+  },
   railsContent: state.railsContext,
 });
 

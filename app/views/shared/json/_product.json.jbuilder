@@ -1,6 +1,10 @@
 
 json.extract! product, :id, :title, :description
 
+json.info do |info|
+  json.extract! product, :id, :privacy_level, :permissions_list_id
+end
+
 json.auth do |auth|
   auth.update policy(product).update?
   auth.show policy(product).show?
