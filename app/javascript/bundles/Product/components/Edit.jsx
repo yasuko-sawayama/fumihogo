@@ -109,7 +109,7 @@ margin: 0;
                                                 product={this.props.product}
                                               actions={this.props.actions} /> }
               />
-           <Route path={`/${id}/:pages?/:pageId(\\d+)?/`}
+           <Route path={`/${id}/pages/:pageId(\\d+)?/`}
                   component={PageEditContainer}
                    />
            <Route path='/' component={PageEditContainer} />

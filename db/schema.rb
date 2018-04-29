@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421083428) do
+ActiveRecord::Schema.define(version: 20180429134946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,11 +87,9 @@ ActiveRecord::Schema.define(version: 20180421083428) do
     t.integer "character_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "slug"
     t.integer "impressions_count", default: 0, null: false
     t.index ["position"], name: "index_pages_on_position"
     t.index ["product_id"], name: "index_pages_on_product_id"
-    t.index ["slug"], name: "index_pages_on_slug", unique: true
     t.index ["title"], name: "index_pages_on_title"
   end
 
@@ -111,10 +109,11 @@ ActiveRecord::Schema.define(version: 20180421083428) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "privacy_level", default: 0
+    t.integer "privacy_level", default: 1
     t.integer "character_count", default: 0, null: false
     t.integer "impressions_count"
     t.bigint "permissions_list_id"
+    t.boolean "restricted", default: false
     t.index ["permissions_list_id"], name: "index_products_on_permissions_list_id"
     t.index ["privacy_level"], name: "index_products_on_privacy_level"
     t.index ["title"], name: "index_products_on_title"

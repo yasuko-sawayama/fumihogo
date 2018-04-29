@@ -144,6 +144,9 @@ group :development do
   gem 'rufo'
   gem 'annotate'
 
+  # db integration
+  gem 'seed-fu', '~> 2.3'
+
   gem 'growl', require: false
 end
 

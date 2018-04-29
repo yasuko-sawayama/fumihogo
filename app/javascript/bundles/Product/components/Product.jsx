@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar';
 import ReactLoading from 'react-loading';
 
@@ -33,18 +33,20 @@ class Product extends React.Component {
           <SpinerContainer />
           <About {...this.props} />
           <hr />
-          <Route path={`/${this.props.product.id}/:pages?/:pageId?/`}
-                 render={ props => <Page {...props}
-                                           currentUser={this.props.currentUser}
-                                           product={this.props.product}
-                                         actions={this.props.actions} /> }
+          <Switch>
+            <Route path={`/${this.props.product.id}/pages/:pageId/`}
+                   render={ props => <Page {...props}
+                                             currentUser={this.props.currentUser}
+                                             product={this.props.product}
+                                           actions={this.props.actions} /> }
+              />
+              <Route path='/'
+                     render={ props => <Page {...props}
+                                               product={this.props.product}
+                                               currentUser={this.props.currentUser}
+                                             actions={this.props.actions} /> }
             />
-          <Route path='/'
-                 render={ props => <Page {...props}
-                                           product={this.props.product}
-                                           currentUser={this.props.currentUser}
-                                         actions={this.props.actions} /> }
-            />
+          </Switch>
         </section>
       </div>
     );

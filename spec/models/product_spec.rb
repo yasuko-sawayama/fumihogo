@@ -8,10 +8,11 @@
 #  description         :text
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
-#  privacy_level       :integer          default("closed")
+#  privacy_level       :integer          default("public_open")
 #  character_count     :integer          default(0), not null
 #  impressions_count   :integer
 #  permissions_list_id :integer
+#  restricted          :boolean          default(FALSE)
 #
 # Indexes
 #

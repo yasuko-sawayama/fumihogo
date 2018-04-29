@@ -39,12 +39,12 @@ class EditPage extends React.Component {
 
   targetPage(pageId, pages) {
     // Paramがない場合は常に1ページ目
-    return pages.find((page) => page.id === Number(pageId)) || pages[0];
+    return pageId || pages[0].id;
   };
 
   fetchContent(pageId, pages) {
     this.props.change('content', this.props.product.content)
-    this.props.actions.fetchPageContent(this.props.product.id, this.targetPage(pageId, pages).id);
+    this.props.actions.fetchPageContent(this.props.product.id, this.targetPage(pageId, pages));
   };
 
   render () {

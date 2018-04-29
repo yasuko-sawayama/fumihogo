@@ -1,5 +1,5 @@
 json.page do |json|
-  json.extract! @page, :id
+  json.id @page.friendly_id
   json.pageTitle @page.title
 
   json.auth do |auth|

@@ -68,3 +68,8 @@ config/environments/*.local.yml
 
 # 一旦VCRの中身はignore
 # spec/vcr/
+db/fixtures/
+/impressions.csv
+/latest.dump
+/latest.dump.1
+/local.dump
