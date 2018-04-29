@@ -10,11 +10,11 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user
+    user == record&.user
   end
 
   def destroy?
-    user == record.user
+    user == record&.user
   end
 
   # リスト許可があるのでScopeとは別途定義
@@ -36,6 +36,6 @@ class ProductPolicy < ApplicationPolicy
   private
 
   def self_product?
-    user && user.id == record.user.id
+    user && user.id == record&.user&.id
   end
 end

@@ -16,6 +16,7 @@ const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 
 const configureStore = railsProps => {
+  console.log(railsProps)
   const store = createStore(
     combineReducers({
       currentUser: currentUserReducer,
