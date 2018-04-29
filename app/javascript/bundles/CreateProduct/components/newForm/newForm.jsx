@@ -5,9 +5,24 @@ import { Field } from 'redux-form';
 
 import BootstrapField from '../../../shared/components/forms/BootstrapField';
 import PermissionsListSelector from './PermissionsListSelector';
+import PrivacyLevelSelector from './PrivacyLevelSelector';
 import PageForm from '../../../shared/components/forms/PageForm';
 
 class newForm extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillUpdate(nextProps) {
+    const { dispatch, change,
+            currentUser: { permissions_lists, }, } = this.props;
+    const { productAttributes: { product: { privacy_level, permissions_list_id } }} = nextProps;
+
+    if (privacy_level === 'list' && !permissions_list_id) {
+      dispatch(change('permissions_list', permissions_lists[0].id));
+    }
+  }
+
   render() {
     const {
       pristine,
@@ -37,17 +52,12 @@ class newForm extends React.Component {
           
           <Field
              name="privacy_level"
-             component={BootstrapField}
+             component={PrivacyLevelSelector}
              type="select"
              componentClass="select"
-             label="公開範囲"
-             handleChange={this.handleChange}
-                 >
-            <option value="public_open">公開</option>
-            <option value="login">ログイン限定公開</option>
-            <option value="list">リスト限定公開</option>
-            <option value="closed">非公開</option>
-          </Field>
+            label="公開範囲"
+            currentUser={currentUser}
+            />
 
           <Field
              name="permissions_list"
@@ -55,8 +65,7 @@ class newForm extends React.Component {
              label="閲覧を許可するリスト"
              privacyLevel={productAttributes.product.privacy_level}
              currentUser={currentUser}
-             >
-          </Field>
+             />
         </div>
 
         <hr />
