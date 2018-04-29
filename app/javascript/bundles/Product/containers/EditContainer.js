@@ -34,6 +34,7 @@ const mapStateToProps = state => ({
   product: state.product,
   editAttributes: {
     updatedPrivacyLevel: selector(state, 'privacy_level'),
+    permission_list_id: selector(state, 'permission_list_id'),
   },
   railsContent: state.railsContext,
 });

@@ -40,6 +40,16 @@ class Edit extends React.Component {
     }
   }
 
+  componentWillUpdate(nextProps) {
+    const { dispatch, change,
+            currentUser: { permissions_lists, }, } = this.props;
+    const { editAttributes: { updatedPrivacyLevel, permissions_list_id } } = nextProps;
+
+    if (updatedPrivacyLevel === 'list' && !permissions_list_id) {
+      dispatch(change('permissions_list_id', permissions_lists[0].id));
+    }
+  }
+
   handleDestroy() {
     this.props.actions.pageDestroy(this.props.product.id, this.props.product.currentPage);
   }
