@@ -18,7 +18,7 @@ class Page extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log("called");
+
     this.targetPage = this.targetPage.bind(this);
     this.fetchContent = this.fetchContent.bind(this);
   }
@@ -30,8 +30,8 @@ class Page extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { pageId } = this.props.match.params;
-    console.log(pageId);
-    console.log("called");
+
+
     if ( pageId && pageId !== nextProps.match.params.pageId) {
       this.fetchContent(nextProps.match.params.pageId, nextProps.product.pages);
       this.props.actions.changePage(nextProps.match.params.pageId)
