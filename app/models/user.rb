@@ -42,7 +42,7 @@ class User < ApplicationRecord
   extend FriendlyId
 
   has_many :social_profiles, dependent: :destroy
-  has_many :products, dependent: :destroy
+  has_many :products, -> { order(created_at: :desc) },  dependent: :destroy
   # 閲覧許可リスト
   has_many :permissions_lists, dependent: :destroy
   has_many :member_permissions,

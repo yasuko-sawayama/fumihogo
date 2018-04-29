@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :destroy]
 
   def index
-    @products = policy_scope(current_user.products).order(created_at: :desc).page(params[:page])
+    @products = policy_scope(current_user.products).page(params[:page])
   end
 
   def show; end
