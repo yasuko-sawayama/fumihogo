@@ -56,6 +56,7 @@ class PrivacyLevelSelector extends React.Component {
           <option value="closed">非公開</option>
         </FormControl>
         { input.value === 'closed' &&<p className="help-block">非公開の作品は自分だけが見ることができます。</p>  }
+        { input.value === 'list' &&<p className="text-info">リストに追加されているユーザーだけが作品を見ることができます。</p>  }
         { help && <p className="help-block">{help}</p> }
         
         {touched && ( error || warning ) && <span className="text-danger">{ error || warning }</span>}
