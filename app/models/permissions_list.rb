@@ -45,6 +45,7 @@ class PermissionsList < ApplicationRecord
   end
 
   def allow?(member)
+    return false unless member.twitter?
     client = TwitterClient.new
     client.list_member?(list_id: twitter_list_id, user: member)
   end
