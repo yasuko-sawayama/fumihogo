@@ -7,6 +7,9 @@ class TwitterClient
 
     @user = user
     @client = connect_twitter
+
+    # @rate_limits = Twitter::REST::Request.new(@client, :get, '/1.1/application/rate_limit_status.json').perform
+
   end
 
   def user_lists
@@ -21,8 +24,7 @@ class TwitterClient
   end
 
   def list_member?(list_id: nil, user: nil)
-    list = client.list(list_id)
-    client.list_member?(list, user&.twitter_uid || '_')
+    client.list_member?(list_id, user&.twitter_uid || '_')
   rescue Twitter::Error::NotFound
     false
   end

@@ -54,6 +54,7 @@ RSpec.describe PermissionsList, type: :model, vcr: true do
 
     describe 'twitter_uidがある場合' do
       before { allow(user).to receive(:twitter_uid).and_return('83561601') }
+      before { allow(user).to receive(:twitter?).and_return(true) }
 
       describe 'リストに含まれる場合' do
         let(:list) { create(:permissions_list, twitter_list_id: 853249524558581761) }
@@ -70,7 +71,7 @@ RSpec.describe PermissionsList, type: :model, vcr: true do
 
     describe 'twitterユーザーではない場合' do
       let(:list) { create(:permissions_list, twitter_list_id: 853249524558581761) }
-      before { allow(user).to receive(:twitter_uid).and_return(nil) }
+      before { allow(user).to receive(:twitter?).and_return(false) }
 
       it { is_expected.to be_falsy }
     end

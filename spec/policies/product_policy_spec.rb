@@ -115,10 +115,14 @@ RSpec.describe ProductPolicy, vcr: true do
       let(:list) { create(:product, user: creator,
                           privacy_level: :list, permissions_list: my_list) }
       let(:member) { create(:user) }
+      let(:not_twitter) { create(:user) }
 
       before do
         # リスト追加済みユーザーのUIDを返す
         allow(member).to receive(:twitter_uid).and_return('83561601')
+        allow(member).to receive(:twitter?).and_return(true)
+
+        allow(not_twitter).to receive(:twitter?).and_return(false)
       end
 
       it "作者本人は閲覧できること" do
@@ -128,6 +132,11 @@ RSpec.describe ProductPolicy, vcr: true do
       it "リストに含まれているユーザーのみ閲覧できること" do
         expect(subject).to permit(member, list)
         expect(subject).not_to permit(other, list)
+      end
+
+      # TODO: そのうちユーザー追加・オリジナルリストで対応する
+      it 'Twitter登録でないユーザーは閲覧できないこと' do
+        expect(subject).not_to permit(not_twitter, list)
       end
 
       it "ログインしていないユーザーは閲覧できないこと" do
