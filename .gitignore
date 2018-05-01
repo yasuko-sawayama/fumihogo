@@ -73,3 +73,4 @@ db/fixtures/
 /latest.dump
 /latest.dump.1
 /local.dump
+/latest.dump*
