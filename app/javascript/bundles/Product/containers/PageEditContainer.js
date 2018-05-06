@@ -19,7 +19,7 @@ const mapStateToProps = state => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators({ ...editActions, ...productActions, }, dispatch), };
+  return { actions: bindActionCreators({ ...editActions, ...productActions }, dispatch) };
 }
 
 const PageForm = reduxForm({

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import PageEditForm from './PageEditForm';
@@ -30,9 +30,9 @@ class EditPage extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { pageId } = this.props.match.params;
-    
-    if ( pageId && pageId !== nextProps.match.params.pageId) {
-      this.props.actions.changePage(nextProps.match.params.pageId)
+
+    if (pageId && pageId !== nextProps.match.params.pageId) {
+      this.props.actions.changePage(nextProps.match.params.pageId);
       this.fetchContent(nextProps.match.params.pageId, nextProps.product.pages);
     }
   }
@@ -40,20 +40,20 @@ class EditPage extends React.Component {
   targetPage(pageId, pages) {
     // Paramがない場合は常に1ページ目
     return pageId || pages[0].id;
-  };
+  }
 
   fetchContent(pageId, pages) {
-    this.props.change('content', this.props.product.content)
+    this.props.change('content', this.props.product.content);
     this.props.actions.fetchPageContent(this.props.product.id, this.targetPage(pageId, pages));
-  };
+  }
 
-  render () {
+  render() {
     return (
       <section id="pageEdit" className="page">
         <PageEditForm {...this.props} />
         <Pager {...this.props.product.pageInfo} url={`/${this.props.product.id}/`} />
       </section>
-    )
+    );
   }
 }
 

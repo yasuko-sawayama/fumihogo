@@ -1,6 +1,6 @@
 import {
   PAGE_CONTENT_FETCH_SUCCESS,
-  PAGE_CONTENT_FETCH_ERROR
+  PAGE_CONTENT_FETCH_ERROR,
 } from '../../constants/productConstants';
 
 const defaultState = {
@@ -12,18 +12,18 @@ const defaultState = {
 
 const pageInfoReducer = (state = defaultState, action) => {
   switch (action.type) {
-  case PAGE_CONTENT_FETCH_SUCCESS:
-    return {
-      ...action.payload.product.page,
-    };
+    case PAGE_CONTENT_FETCH_SUCCESS:
+      return {
+        ...action.payload.product.page,
+      };
 
-  case PAGE_CONTENT_FETCH_ERROR:
-    return {
-      pageTitle: '',
-    };
+    case PAGE_CONTENT_FETCH_ERROR:
+      return {
+        pageTitle: '',
+      };
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 

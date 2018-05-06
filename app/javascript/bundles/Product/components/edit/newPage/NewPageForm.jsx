@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import PageForm from '../../../../shared/components/forms/PageForm';
 import validate from './validate';
 
-const NewPageForm = props => {
+const NewPageForm = (props) => {
   const {
     pristine,
     reset,
@@ -17,12 +17,14 @@ const NewPageForm = props => {
     submitPage,
   } = props;
   return (
-    <form onSubmit={handleSubmit((values) => submitPage(values, { id }))} >
+    <form onSubmit={handleSubmit(values => submitPage(values, { id }))} >
       <PageForm id={id} pageCount={pageCount} />
       <div className="buttonArea">
-        <button className="btn btn-primary"
-                type="submit"
-                disabled={submitting} >
+        <button
+          className="btn btn-primary"
+          type="submit"
+          disabled={submitting}
+        >
           ページを追加する
         </button>
 
@@ -32,12 +34,12 @@ const NewPageForm = props => {
       </div>
     </form>
   );
-}
+};
 
 NewPageForm.propTypes = ({
   id: PropTypes.number.isRequired,
   pageCount: PropTypes.number,
-})
+});
 
 export default reduxForm({
   form: 'new_page_form',

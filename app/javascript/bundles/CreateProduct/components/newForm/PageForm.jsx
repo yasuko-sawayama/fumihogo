@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
-import BootstrapField from './BootstrapField';
-import EditorField from './EditorField';
+import BootstrapField from '../../../shared/components/forms/BootstrapField';
+import EditorField from '../../../shared/components/forms/EditorField';
 
 const description = () => (
   <div className="description">
@@ -10,26 +11,31 @@ const description = () => (
   </div>
 );
 
-const PageForm = ({ id, pageCount }) => (
-    <div id="pageInfo">
-      <h4>本文：{pageCount < 1 ? 1 : pageCount + 1}ページ</h4>
-      { pageCount < 1 && description }
-      <Field name="pageTitle"
-             component={ BootstrapField }
-             type="text"
-             help="ページごとのタイトルは省略できます。"
-             label="タイトル"
-           />
+const PageForm = ({ pageCount }) => (
+  <div id="pageInfo">
+    <h4>本文：{pageCount < 1 ? 1 : pageCount + 1}ページ</h4>
+    { pageCount < 1 && description }
+    <Field
+      name="pageTitle"
+      component={BootstrapField}
+      type="text"
+      help="ページごとのタイトルは省略できます。"
+      label="タイトル"
+    />
 
-      <EditorField
-        key="field"
-        name="editorText"
-        id="inputEditorText"
-        disabled={false}
-        placeholder="Type here"
-        label="本文"
-      />
-    </div>
+    <EditorField
+      key="field"
+      name="editorText"
+      id="inputEditorText"
+      disabled={false}
+      placeholder="Type here"
+      label="本文"
+    />
+  </div>
 );
+
+PageForm.propTypes = {
+  pageCount: PropTypes.number.isRequired,
+};
 
 export default PageForm;

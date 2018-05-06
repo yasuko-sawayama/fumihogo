@@ -10,7 +10,7 @@ import * as productActions from '../actions/productActionCreators';
 import * as editActions from '../actions/productEditActionCreators';
 import * as deletePageActions from '../actions/pageDestroyActionCreators';
 
-// const getKeyByValue = (object, value) => Object.keys(object).find(key => object[key] === value); // 
+// const getKeyByValue = (object, value) => Object.keys(object).find(key => object[key] === value); //
 const selector = formValueSelector('edit_product');
 
 // const PRIVACY_LEVEL = {
@@ -47,12 +47,12 @@ function mapDispatchToProps(dispatch) {
         ...editActions,
         ...deletePageActions,
       },
-      dispatch
+      dispatch,
     ),
   };
 }
 
-let EditForm = reduxForm({
+const EditForm = reduxForm({
   form: 'edit_product',
 })(Edit);
 

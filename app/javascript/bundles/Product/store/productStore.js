@@ -12,14 +12,14 @@ import ProductReducer from '../reducers/productReducer';
 import alertReducer from '../reducers/alertReducer';
 import productSaga from '../sagas/saga';
 
-export const history = createHistory({ basename: '/products', });
+export const history = createHistory({ basename: '/products' });
 
 const reduxRouterMiddleware = routerMiddleware(history);
 const sagaMiddleware = createSagaMiddleware();
 
 const middleware = [reduxRouterMiddleware, sagaMiddleware];
 
-const configureStore = railsProps => {
+const configureStore = (railsProps) => {
   const store = createStore(
     combineReducers({
       currentUser: currentUserReducer,

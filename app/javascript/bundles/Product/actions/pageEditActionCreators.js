@@ -3,7 +3,7 @@
 import {
   PAGE_UPDATE_REQUESTED,
   PAGE_UPDATE_SUCCESS,
-  PAGE_UPDATE_ERROR
+  PAGE_UPDATE_ERROR,
 } from '../constants/pageEditConstants';
 
 export const updatePage = (data, id, pageId) => ({

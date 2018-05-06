@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const Title = ({ title }) => (
@@ -9,6 +9,6 @@ const Title = ({ title }) => (
 
 Title.propTypes = {
   title: PropTypes.string,
-}
+};
 
 export default Title;

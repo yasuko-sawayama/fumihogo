@@ -1,7 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import {
-  PAGE_CHANGED
-} from '../constants/productConstants';
+import { PAGE_CHANGED } from '../constants/productConstants';
 
 export * from './fetchPageContentActionCreators';
 export * from './fetchProductActionCreators';
@@ -14,5 +12,4 @@ export const changePage = (pageId = 1) => ({
     pageId,
   },
 });
-
 

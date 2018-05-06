@@ -8,20 +8,20 @@ class ControlledEditor extends React.Component {
   constructor(props) {
     super(props);
 
-    const { value, productId=null, pageId=null, } = props;
+    const { value, productId = null, pageId = null } = props;
 
-    let editorState = this.createState(value);
+    const editorState = this.createState(value);
 
-    const pageEdit = pageId ? true : false;
-    
+    const pageEdit = !!pageId;
+
     this.state = {
       editorState,
       productId,
       pageId,
       pageEdit,
       readOnly: pageEdit,
-    }
-    
+    };
+
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
 
     this.handleMyContentChange = this.handleMyContentChange.bind(this);
@@ -47,9 +47,9 @@ class ControlledEditor extends React.Component {
   }
 
   onDoubleClick() {
-    this.setState({readOnly: false});
+    this.setState({ readOnly: false });
   }
-  onBlur() { this.setState({readOnly: true}); }
+  onBlur() { this.setState({ readOnly: true }); }
 
   onEditorStateChange: Function = (editorState) => {
     const newValue = draftToMarkdown(convertToRaw(editorState.getCurrentContent()));
@@ -57,27 +57,24 @@ class ControlledEditor extends React.Component {
   };
 
   handleChange(editorState) {
-	this.setState({editorState});
+    this.setState({ editorState });
   }
 
   createState(value) {
     if (!value) {
       return EditorState.createEmpty();
-    } else {
-      return EditorState.createWithContent(
-        convertFromRaw(markdownToDraft(value))
-      )
     }
+    return EditorState.createWithContent(convertFromRaw(markdownToDraft(value)));
   }
 
   handleMyContentChange(newValue, editorState) {
     const { onChange, value } = this.props;
-    if(!newValue) {
+    if (!newValue) {
       editorState = EditorState.createEmpty();
     } else if (value !== newValue) {
       onChange(newValue);
     }
-    
+
     this.setState({
       editorState,
     });
@@ -87,27 +84,27 @@ class ControlledEditor extends React.Component {
   render() {
     const { editorState } = this.state;
 
-    return(
+    return (
       <div
-        className={this.state.readOnly ? null : "pageEditor"}
+        className={this.state.readOnly ? null : 'pageEditor'}
         onDoubleClick={this.onDoubleClick}
         onBlur={this.onBlur}
-        >
+      >
         <Editor
           editorState={editorState}
           wrapperClassName="textEditorForm"
           editorClassName="editorArea"
-          toolbarOnFocus={ this.state.pageEdit }
+          toolbarOnFocus={this.state.pageEdit}
           toolbar={{
-            options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'colorPicker', 'link',  'emoji', 'history'],
+            options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'colorPicker', 'link', 'emoji', 'history'],
             list: { inDropdown: true },
             textAlign: { inDropdown: true },
             link: { inDropdown: true },
-            history: { inDropdown: true }
+            history: { inDropdown: true },
           }}
           onEditorStateChange={this.onEditorStateChange}
           readOnly={this.state.readOnly}
-          />
+        />
       </div>
     );
   }

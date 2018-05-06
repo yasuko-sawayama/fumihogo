@@ -11,7 +11,9 @@ const StyledLink = styled(NavLink).attrs('active')`
 }
 `;
 
-const PageLink = ({ id, api, position, title, url }) => (
+const PageLink = ({
+  id, api, position, title, url,
+}) => (
   <li>
     <StyledLink activeClassName="active" to={join(url, `/pages/${id}`)}>
       {position}.{' '}

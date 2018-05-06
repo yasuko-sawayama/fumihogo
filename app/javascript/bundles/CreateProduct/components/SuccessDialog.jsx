@@ -5,7 +5,7 @@ import DisplayGrayWrapper from '../../shared/components/DisplayGrayWrapper';
 import Dialog from '../../shared/components/Dialog';
 
 const SuccessDialog = ({ title, description, id }) => {
-  const url = `/products/${id}`
+  const url = `/products/${id}`;
   return id ? (
     <DisplayGrayWrapper>
       <div className="container">
@@ -25,7 +25,7 @@ const SuccessDialog = ({ title, description, id }) => {
         </Dialog>
       </div>
     </DisplayGrayWrapper>
-  ) : false ;
+  ) : false;
 };
 
 export default SuccessDialog;

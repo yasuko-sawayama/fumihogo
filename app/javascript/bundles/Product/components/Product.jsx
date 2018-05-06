@@ -20,7 +20,7 @@ class Product extends React.Component {
   }
 
   componentWillReceiveProps(nextProp) {
-    if(this.props.product.id !== nextProp.product.id) {
+    if (this.props.product.id !== nextProp.product.id) {
       this.props.actions.fetchProduct(nextProp.product.id);
     }
   }
@@ -34,23 +34,29 @@ class Product extends React.Component {
           <About {...this.props} />
           <hr />
           <Switch>
-            <Route path={`/${this.props.product.id}/pages/:pageId/`}
-                   render={ props => <Page {...props}
-                                             currentUser={this.props.currentUser}
-                                             product={this.props.product}
-                                           actions={this.props.actions} /> }
-              />
-              <Route path='/'
-                     render={ props => <Page {...props}
-                                               product={this.props.product}
-                                               currentUser={this.props.currentUser}
-                                             actions={this.props.actions} /> }
+            <Route
+              path={`/${this.props.product.id}/pages/:pageId/`}
+              render={props => (<Page
+                {...props}
+                currentUser={this.props.currentUser}
+                product={this.props.product}
+                actions={this.props.actions}
+              />)}
+            />
+            <Route
+              path="/"
+              render={props => (<Page
+                {...props}
+                product={this.props.product}
+                currentUser={this.props.currentUser}
+                actions={this.props.actions}
+              />)}
             />
           </Switch>
         </section>
       </div>
     );
   }
-};
+}
 
 export default Product;

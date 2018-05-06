@@ -6,7 +6,7 @@ import { Field } from 'redux-form';
 import EditPageForm from '../../../shared/components/forms/EditPageForm';
 // import validate from './validate';
 
-const PageEditForm = props => {
+const PageEditForm = (props) => {
   const {
     pristine,
     reset,

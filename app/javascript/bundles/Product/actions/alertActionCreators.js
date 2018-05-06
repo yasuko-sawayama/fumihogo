@@ -2,7 +2,7 @@
 
 import { SHOW_MESSAGE, DISMISS_MESSAGE } from '../constants/alertConstants';
 
-export const showMessage = (style, message) => ({
+export const showMessage = (style, _message) => ({
   type: SHOW_MESSAGE,
 });
 

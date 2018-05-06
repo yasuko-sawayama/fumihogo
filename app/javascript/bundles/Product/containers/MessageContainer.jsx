@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(alertActions, dispatch)};
+  return { actions: bindActionCreators(alertActions, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageAlert);

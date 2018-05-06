@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import {
   PRODUCT_FETCH_SUCCESS,
   PRODUCT_FETCH_ERROR,
-  PRODUCT_UPDATE_SUCCESS
+  PRODUCT_UPDATE_SUCCESS,
 } from '../constants/productConstants';
 
 import infoReducer from './product/infoReducer';
@@ -17,38 +17,38 @@ import pageInfoReducer from './product/pageInfoReducer';
 
 const id = (state = '', action) => {
   switch (action.type) {
-  case PRODUCT_FETCH_SUCCESS:
-    return action.payload.product.id;
+    case PRODUCT_FETCH_SUCCESS:
+      return action.payload.product.id;
 
-  case PRODUCT_FETCH_ERROR:
-    return state;
+    case PRODUCT_FETCH_ERROR:
+      return state;
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 
 const title = (state = '', action) => {
   switch (action.type) {
-  case PRODUCT_FETCH_SUCCESS:
-  case PRODUCT_UPDATE_SUCCESS:
-    return action.payload.product.title;
-  case PRODUCT_FETCH_ERROR:
-    return '';
-  default:
-    return state;
+    case PRODUCT_FETCH_SUCCESS:
+    case PRODUCT_UPDATE_SUCCESS:
+      return action.payload.product.title;
+    case PRODUCT_FETCH_ERROR:
+      return '';
+    default:
+      return state;
   }
 };
 
 const description = (state = {}, action) => {
   switch (action.type) {
-  case PRODUCT_FETCH_SUCCESS:
-  case PRODUCT_UPDATE_SUCCESS:
-    return action.payload.product.description;
-  case PRODUCT_FETCH_ERROR:
-    return 'error';
-  default:
-    return state;
+    case PRODUCT_FETCH_SUCCESS:
+    case PRODUCT_UPDATE_SUCCESS:
+      return action.payload.product.description;
+    case PRODUCT_FETCH_ERROR:
+      return 'error';
+    default:
+      return state;
   }
 };
 

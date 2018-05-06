@@ -7,7 +7,7 @@ import {
   CLEAR_ERROR,
 } from '../constants/productConstants';
 
-export const postPage = (values, { id, }) => ({
+export const postPage = (values, { id }) => ({
   type: PAGE_POST_REQUESTED,
   payload: {
     data: {

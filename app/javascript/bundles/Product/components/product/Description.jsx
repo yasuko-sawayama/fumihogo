@@ -13,7 +13,7 @@ white-space: pre-line;
 const Description = ({
   id,
   title,
-  description='',
+  description = '',
   about: {
     created_at,
     character_count,
@@ -23,7 +23,7 @@ const Description = ({
   },
   author: {
     nickname,
-    avator
+    avator,
   },
 }) => (
   <div className="row">
@@ -56,7 +56,7 @@ const Description = ({
       </div>
       <div className="pull-right">
         <TwitterShareButton url={url} title={`${title} を共有する`} >
-          <TwitterIcon size={32} round={true} />
+          <TwitterIcon size={32} round />
         </TwitterShareButton>
       </div>
     </div>

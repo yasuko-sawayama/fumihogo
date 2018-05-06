@@ -17,7 +17,7 @@ export function* fetchPageContent({ payload }) {
     yield [
       put(fetchPageContentSuccess(response)),
       put(change('edit_page', 'content', response.data.page.content)),
-      put(change('edit_page', 'title', response.data.page.title))
+      put(change('edit_page', 'title', response.data.page.title)),
     ];
   } catch (error) {
     yield put(fetchPageContentError(error));

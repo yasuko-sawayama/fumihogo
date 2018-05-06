@@ -10,7 +10,7 @@ border: solid red 1px;
 const EditorComponent = () => (
   <Editor
     wrapperStyle={<WrapperStyleObject />}
-    />
+  />
 );
 
 export default EditorComponent;

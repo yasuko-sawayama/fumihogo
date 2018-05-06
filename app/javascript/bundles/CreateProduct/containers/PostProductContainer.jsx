@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(productActions, dispatch), };
+  return { actions: bindActionCreators(productActions, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewPage);

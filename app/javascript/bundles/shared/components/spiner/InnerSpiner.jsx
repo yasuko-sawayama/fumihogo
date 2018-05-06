@@ -16,4 +16,4 @@ class InnerSpiner extends React.Component {
   }
 }
 
-export default ReactDelayRender({ delay: 600, })(InnerSpiner);
+export default ReactDelayRender({ delay: 600 })(InnerSpiner);

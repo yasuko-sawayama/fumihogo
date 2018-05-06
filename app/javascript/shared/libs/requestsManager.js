@@ -3,7 +3,7 @@
 import axios from 'axios';
 import ReactOnRails from 'react-on-rails';
 
-//const API_ENTRY_URL = '/api/v1/';
+// const API_ENTRY_URL = '/api/v1/';
 
 export const fetchEntities = (url, options = {}) => (
   axios({
@@ -42,4 +42,4 @@ export const deleteEntity = (url, options = {}) => (
     headers: ReactOnRails.authenticityHeaders(),
     ...options,
   })
-)
+);

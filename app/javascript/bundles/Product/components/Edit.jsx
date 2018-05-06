@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar';
 import ReactLoading from 'react-loading';
-import {Field} from 'redux-form';
-import { Button } from 'react-bootstrap'
+import { Field } from 'redux-form';
+import { Button } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 import styled from 'styled-components';
 
 import SpinerContainer from '../../shared/containers/SpinerContainer';
 import About from './edit/About';
 import Page from './product/Page';
-import NewPage from './edit/NewPage'
+import NewPage from './edit/NewPage';
 import InfoAlert from '../../shared/components/InfoAlert';
 import PageEditContainer from '../containers/PageEditContainer';
 
@@ -35,14 +35,16 @@ class Edit extends React.Component {
   }
 
   componentWillReceiveProps(nextProp) {
-    if(this.props.product.id !== nextProp.product.id) {
+    if (this.props.product.id !== nextProp.product.id) {
       this.props.actions.fetchProduct(nextProp.product.id);
     }
   }
 
   componentWillUpdate(nextProps) {
-    const { dispatch, change,
-            currentUser: { permissions_lists, }, } = this.props;
+    const {
+      dispatch, change,
+      currentUser: { permissions_lists },
+    } = this.props;
     const { editAttributes: { updatedPrivacyLevel, permissions_list_id } } = nextProps;
 
     if (updatedPrivacyLevel === 'list' && !permissions_list_id) {
@@ -71,12 +73,14 @@ class Edit extends React.Component {
 margin: 0;
 }
 `;
-    
+
     const SubmitButton = () => (
       <div>
-        <Button bsStyle="primary"
-                type="submit"
-                disabled={pristine || submitting} >
+        <Button
+          bsStyle="primary"
+          type="submit"
+          disabled={pristine || submitting}
+        >
           変更を保存
         </Button>
         {' '}
@@ -88,7 +92,7 @@ margin: 0;
         </TrashButton>
       </div>
     );
-    
+
     return (
       <div>
         <LoadingBar />
@@ -96,28 +100,32 @@ margin: 0;
           <SpinerContainer />
           <InfoAlert
             message="各項目をクリックすると変更できます."
-            />
-          <form onSubmit={handleSubmit((values) => console.log(values) || this.props.actions.updateProduct(values, { id }))} >
+          />
+          <form onSubmit={handleSubmit(values => console.log(values) || this.props.actions.updateProduct(values, { id }))} >
             <SubmitButton />
             <About {...this.props} />
           </form>
           <hr />
           <Switch>
-            <Route path={`/${id}/pages/new/`}
-                   render={ props => <NewPage {...props}
-                                                currentUser={this.props.currentUser}
-                                                product={this.props.product}
-                                              actions={this.props.actions} /> }
-              />
-           <Route path={`/${id}/pages/:pageId(\\d+)?/`}
-                  component={PageEditContainer}
-                   />
-           <Route path='/' component={PageEditContainer} />
+            <Route
+              path={`/${id}/pages/new/`}
+              render={props => (<NewPage
+                {...props}
+                currentUser={this.props.currentUser}
+                product={this.props.product}
+                actions={this.props.actions}
+              />)}
+            />
+            <Route
+              path={`/${id}/pages/:pageId(\\d+)?/`}
+              component={PageEditContainer}
+            />
+            <Route path="/" component={PageEditContainer} />
           </Switch>
         </section>
       </div>
     );
   }
-};
+}
 
 export default Edit;

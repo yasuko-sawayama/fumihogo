@@ -8,7 +8,7 @@ describe('Product Component', () => {
     const params = {
       name: 'testTitle',
       match: {
-        params: { id: 1, },
+        params: { id: 1 },
       },
     };
 

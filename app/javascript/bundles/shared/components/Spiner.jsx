@@ -10,11 +10,11 @@ class Spiner extends React.Component {
     }),
   }
 
-  render() {    
+  render() {
     return (
       this.props.loading.content > 0 && <InnerSpiner />
     );
   }
-};
+}
 
 export default Spiner;

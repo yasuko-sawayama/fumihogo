@@ -21,7 +21,7 @@ const Description = ({
     updatedPrivacyLevel,
   },
   title,
-  description='',
+  description = '',
   about: {
     created_at,
     character_count,
@@ -31,7 +31,7 @@ const Description = ({
   },
   author: {
     nickname,
-    avator
+    avator,
   },
 }) => (
   <div className="row">
@@ -48,7 +48,7 @@ const Description = ({
           component={RIEKTextarea}
           className="description"
           rows={5}
-          />
+        />
       </Desc>
       <div className="dl-horizontal" id="about">
         <dl>
@@ -70,20 +70,20 @@ const Description = ({
               className="form-control input-sm"
               label={null}
               currentUser={currentUser}
-              />
+            />
             <Field
               name="permissions_list_id"
               component={PermissionsListSelector}
               label="閲覧を許可するリスト"
               currentUser={currentUser}
               privacyLevel={updatedPrivacyLevel}
-              />
+            />
           </dd>
         </dl>
       </div>
       <div className="pull-right">
-        <TwitterShareButton url={url} title={`${title} を共有する`} >
-          <TwitterIcon size={32} round={true} />
+        <TwitterShareButton url={url} title={`${title}`} >
+          <TwitterIcon size={32} round />
         </TwitterShareButton>
       </div>
     </div>

@@ -3,7 +3,7 @@
 import {
   PAGE_DESTROY_REQUESTED,
   PAGE_DESTROY_SUCCESS,
-  PAGE_DESTORY_ERROR
+  PAGE_DESTORY_ERROR,
 } from '../constants/pageEditConstants';
 
 export const pageDestroy = (productId, pageId) => ({

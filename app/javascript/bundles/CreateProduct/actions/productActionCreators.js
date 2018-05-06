@@ -10,7 +10,7 @@ import getProductAttributes from '../libs/getProductAttributes';
 export const createProduct = data => ({
   type: CREATE_REQUEST,
   payload: {
-    data: getProductAttributes(data)
+    data: getProductAttributes(data),
   },
 });
 
@@ -31,6 +31,5 @@ export const postProductError = error => ({
 export const clearError = () => ({
   type: CLEAR_ERROR,
   payload: null,
-})
-  
+});
 

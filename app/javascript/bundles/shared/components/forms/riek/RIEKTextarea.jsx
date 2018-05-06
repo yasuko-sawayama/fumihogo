@@ -9,10 +9,10 @@ class RIEKTextarea extends React.Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      text: props.input.value
+      text: props.input.value,
     };
 
     this.changeCallback = this.changeCallback.bind(this);
@@ -36,14 +36,17 @@ class RIEKTextarea extends React.Component {
   }
 
   render() {
-    const {input, className="", rows=3, cols=50, ...props} = this.props
-    return(
+    const {
+      input, className = '', rows = 3, cols = 50, ...props
+    } = this.props;
+    return (
       <RIETextArea
         value={input.value}
         change={this.changeCallback}
         propName={input.name}
         className={className}
-        editProps={{rows, cols}}/>
+        editProps={{ rows, cols }}
+      />
     );
   }
 }

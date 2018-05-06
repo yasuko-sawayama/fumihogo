@@ -15,7 +15,7 @@ class PrivacyLevelSelector extends React.Component {
 
   handleChange(event) {
     const { input: { value } } = this.props;
-    this.props.input.onChange(event)
+    this.props.input.onChange(event);
 
     // this.props.handleChange();
   }
@@ -34,32 +34,32 @@ class PrivacyLevelSelector extends React.Component {
       },
     } = this.props;
 
-    const Label = ({name, label}) => (
+    const Label = ({ name, label }) => (
       <ControlLabel htmlFor={name}>
-          {label}
+        {label}
       </ControlLabel>
     );
-    
+
     return (
       <FormGroup>
         { label && <Label {...input} label={label} /> }
 
         <FormControl
           {...input}
-          type = "select"
-           componentClass = "select"
-          onChange={ e => this.handleChange(e) }
-           >
+          type="select"
+          componentClass="select"
+          onChange={e => this.handleChange(e)}
+        >
           <option value="public_open">公開</option>
           <option value="login">ログイン限定公開</option>
           { currentUser.permissions_lists && <option value="list">リスト限定公開</option> }
           <option value="closed">非公開</option>
         </FormControl>
-        { input.value === 'closed' &&<p className="help-block">非公開の作品は自分だけが見ることができます。</p>  }
-        { input.value === 'list' &&<p className="text-info">リストに追加されているユーザーだけが作品を見ることができます。</p>  }
+        { input.value === 'closed' && <p className="help-block">非公開の作品は自分だけが見ることができます。</p> }
+        { input.value === 'list' && <p className="text-info">リストに追加されているユーザーだけが作品を見ることができます。</p> }
         { help && <p className="help-block">{help}</p> }
-        
-        {touched && ( error || warning ) && <span className="text-danger">{ error || warning }</span>}
+
+        {touched && (error || warning) && <span className="text-danger">{ error || warning }</span>}
       </FormGroup>
     );
   }
