@@ -46,7 +46,6 @@ const About = ({
     <Description
       currentUser={currentUser}
       title={title}
-      pageTitle={}
       description={description}
       author={author}
       about={about}
