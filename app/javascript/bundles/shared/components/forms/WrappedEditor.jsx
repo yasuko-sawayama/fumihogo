@@ -5,7 +5,7 @@ import ControlledEditor from './ControlledEditor';
 const WrapperEditor = (props) => {
   const {
     placeholder,
-    input: { onChange, value },
+    input: { onChange, value, },
     disabled,
     id,
     productId,

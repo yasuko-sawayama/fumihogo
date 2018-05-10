@@ -15,7 +15,7 @@ const ButtonCol = styled(Col)`
 padding-top: 20px;
 `;
 
-const AddButton = ({ id }) => (
+const AddButton = ({ id, }) => (
   <ButtonCol sm={2}>
     <LinkContainer
       to={`${productUrl(id)}pages/new`}

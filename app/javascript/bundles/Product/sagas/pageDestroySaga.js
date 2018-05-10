@@ -8,14 +8,14 @@ import { pageDestroySuccess, pageDestroyError } from '../actions/pageDestroyActi
 import { PAGE_DESTROY_REQUESTED } from '../constants/pageEditConstants';
 import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
 
-export function* destroyPage({ payload }) {
+export function* destroyPage({ payload, }) {
   try {
     yield put(showLoading('content'));
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.id}/pages/${payload.pageId}`;
     const response = yield call(deleteEntity, url);
     yield [
       put(pageDestroySuccess(response)),
-      put(push(`/${payload.id}/`)),
+      put(push(`/${payload.id}/`))
     ];
   } catch (error) {
     yield put(pageDestroyError(error));

@@ -10,7 +10,7 @@ const Notice = () => (
   </div>
 );
 
-const PageForm = ({ id = null, pageCount = 0 }) => (
+const PageForm = ({ id = null, pageCount = 0, }) => (
   <div id="pageInfo">
     <h4>本文：{ pageCount + 1 }ページ</h4>
     { pageCount < 1 && <Notice /> }

@@ -11,7 +11,7 @@ const description = () => (
   </div>
 );
 
-const PageForm = ({ pageCount }) => (
+const PageForm = ({ pageCount, }) => (
   <div id="pageInfo">
     <h4>本文：{pageCount < 1 ? 1 : pageCount + 1}ページ</h4>
     { pageCount < 1 && description }

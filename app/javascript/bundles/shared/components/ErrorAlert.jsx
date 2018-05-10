@@ -17,7 +17,7 @@ class ErrorAlert extends React.Component {
   }
 
   componentWillReceiveProps = () => {
-    this.setState({ show: true });
+    this.setState({ show: true, });
   }
 
   componentDidUpdate = () => {
@@ -26,11 +26,11 @@ class ErrorAlert extends React.Component {
   }
 
   handleDismiss() {
-    this.setState({ show: false });
+    this.setState({ show: false, });
   }
 
   handleShow() {
-    this.setState({ show: true });
+    this.setState({ show: true, });
   }
 
   render() {

@@ -12,6 +12,6 @@ export default function* productSaga() {
     watchPostPage(),
     watchUpdateProduct(),
     watchUpdatePage(),
-    watchDestroyPage(),
+    watchDestroyPage()
   ];
 }

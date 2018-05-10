@@ -29,7 +29,7 @@ class EditPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { pageId } = this.props.match.params;
+    const { pageId, } = this.props.match.params;
 
     if (pageId && pageId !== nextProps.match.params.pageId) {
       this.props.actions.changePage(nextProps.match.params.pageId);

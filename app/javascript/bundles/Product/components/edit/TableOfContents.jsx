@@ -14,7 +14,7 @@ margin-top: 20px;
 }
 `;
 
-const tableOfContents = ({ pages, url }) => {
+const tableOfContents = ({ pages, url, }) => {
   const pageLinks = pages.map(page => (
     <PageLink key={page.id} {...page} url={url} />
   ));
@@ -50,7 +50,7 @@ class TableOfContents extends React.Component {
 
   // react-onclickoutside用設定
   handleClickOutside() {
-    this.setState({ open: false, allowIcon: 'toggle-down' });
+    this.setState({ open: false, allowIcon: 'toggle-down', });
   }
 
   togglePanel() {

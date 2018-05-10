@@ -14,7 +14,7 @@ class InfoAlert extends React.Component {
   }
 
   componentWillReceiveProps = () => {
-    this.setState({ show: true });
+    this.setState({ show: true, });
   }
 
   componentDidUpdate = () => {
@@ -23,7 +23,7 @@ class InfoAlert extends React.Component {
   }
 
   handleDismiss() {
-    this.setState({ show: false });
+    this.setState({ show: false, });
   }
 
   render() {

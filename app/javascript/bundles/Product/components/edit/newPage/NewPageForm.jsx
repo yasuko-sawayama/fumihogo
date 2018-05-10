@@ -13,11 +13,11 @@ const NewPageForm = (props) => {
     handleSubmit,
     id,
     currentPage,
-    about: { pageCount },
+    about: { pageCount, },
     submitPage,
   } = props;
   return (
-    <form onSubmit={handleSubmit(values => submitPage(values, { id }))} >
+    <form onSubmit={handleSubmit(values => submitPage(values, { id, }))} >
       <PageForm id={id} pageCount={pageCount} />
       <div className="buttonArea">
         <button

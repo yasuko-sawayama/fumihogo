@@ -27,7 +27,7 @@ const Content = ({
     <Article
       id="content"
       className="col-xs-12"
-      dangerouslySetInnerHTML={{ __html: content }}
+      dangerouslySetInnerHTML={{ __html: content, }}
     />
   </div>
 );

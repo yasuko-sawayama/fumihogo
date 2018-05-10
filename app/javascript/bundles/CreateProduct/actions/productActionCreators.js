@@ -2,7 +2,7 @@
 
 import {
   CREATE_REQUEST, CREATE_SUCCESS,
-  CREATE_ERROR, CLEAR_ERROR,
+  CREATE_ERROR, CLEAR_ERROR
 } from '../constants/createProductConstants';
 
 import getProductAttributes from '../libs/getProductAttributes';

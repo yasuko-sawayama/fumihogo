@@ -21,15 +21,15 @@ class RIEKInput extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ text: nextProps.input.value });
+    this.setState({ text: nextProps.input.value, });
   }
 
   changeState(value) {
-    this.setState({ text: value });
+    this.setState({ text: value, });
   }
 
   changeCallback(newState) {
-    const { [this.props.input.name]: value } = newState;
+    const { [this.props.input.name]: value, } = newState;
     this.changeState(value);
     this.props.input.onChange(value);
   }

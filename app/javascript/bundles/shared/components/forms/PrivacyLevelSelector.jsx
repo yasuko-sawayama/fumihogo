@@ -14,7 +14,7 @@ class PrivacyLevelSelector extends React.Component {
   }
 
   handleChange(event) {
-    const { input: { value } } = this.props;
+    const { input: { value, }, } = this.props;
     this.props.input.onChange(event);
 
     // this.props.handleChange();
@@ -34,7 +34,7 @@ class PrivacyLevelSelector extends React.Component {
       },
     } = this.props;
 
-    const Label = ({ name, label }) => (
+    const Label = ({ name, label, }) => (
       <ControlLabel htmlFor={name}>
         {label}
       </ControlLabel>

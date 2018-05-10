@@ -16,7 +16,7 @@ font-size: 14px;
 }
 `;
 
-export default ({ children }) => (
+export default ({ children, }) => (
   <Dialog>
     {children}
   </Dialog>

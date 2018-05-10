@@ -7,7 +7,7 @@ margin-top: 10px;
 font-weight: bold;
 `;
 
-const ErrorList = ({ errors }) => (
+const ErrorList = ({ errors, }) => (
   <ErrList>
     { errors.map((error, index) => <li key={index}>{error}</li>) }
   </ErrList>

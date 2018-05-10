@@ -15,7 +15,6 @@ class newForm extends React.Component {
     dispatch: PropTypes.func.isRequired,
     change: PropTypes.func.isRequired,
     currentUser: PropTypes.shape.isRequired,
-    pristine: PropTypes.boolean.isRequired,
     reset: PropTypes.func.isRequired,
     submitting: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -25,9 +24,9 @@ class newForm extends React.Component {
   componentWillUpdate(nextProps) {
     const {
       dispatch, change,
-      currentUser: { permissions_lists },
+      currentUser: { permissions_lists, },
     } = this.props;
-    const { productAttributes: { product: { privacy_level, permissions_list_id } } } = nextProps;
+    const { productAttributes: { product: { privacy_level, permissions_list_id, }, }, } = nextProps;
 
     if (privacy_level === 'list' && !permissions_list_id) {
       dispatch(change('permissions_list', permissions_lists[0].id));
