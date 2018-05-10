@@ -10,8 +10,8 @@ export const pageDestroy = (productId, pageId) => ({
   type: PAGE_DESTROY_REQUESTED,
   payload: {
     id: productId,
-    pageId,
-  },
+    pageId
+  }
 });
 
 export const pageDestroySuccess = response => ({
@@ -19,8 +19,8 @@ export const pageDestroySuccess = response => ({
   payload: {
     pages: response.data.pages,
     message: 'ページを削除しました。',
-    style: 'warning',
-  },
+    style: 'warning'
+  }
 });
 
 export const pageDestroyError = error => console.log(error.response) || ({
@@ -28,6 +28,6 @@ export const pageDestroyError = error => console.log(error.response) || ({
   payload: {
     error,
     message: 'エラーがあります。',
-    style: 'danger',
-  },
+    style: 'danger'
+  }
 });

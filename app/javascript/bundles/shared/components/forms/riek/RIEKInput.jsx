@@ -6,14 +6,14 @@ class RIEKInput extends React.Component {
   static propTypes = {
     input: PropTypes.any.isRequired,
     size: PropTypes.number,
-    className: PropTypes.string,
+    className: PropTypes.string
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      text: props.input.value,
+      text: props.input.value
     };
 
     this.changeCallback = this.changeCallback.bind(this);
@@ -21,15 +21,15 @@ class RIEKInput extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ text: nextProps.input.value, });
+    this.setState({ text: nextProps.input.value });
   }
 
   changeState(value) {
-    this.setState({ text: value, });
+    this.setState({ text: value });
   }
 
   changeCallback(newState) {
-    const { [this.props.input.name]: value, } = newState;
+    const { [this.props.input.name]: value } = newState;
     this.changeState(value);
     this.props.input.onChange(value);
   }
@@ -42,7 +42,7 @@ class RIEKInput extends React.Component {
       meta: {
         touched,
         error,
-        warning,
+        warning
       },
       ...props
     } = this.props;
@@ -55,7 +55,7 @@ class RIEKInput extends React.Component {
           value={this.state.text || '　　　　　'}
           change={this.changeCallback}
           editProps={{
-            size,
+            size
           }}
           classEditing="form-control"
           className={className}

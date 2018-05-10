@@ -11,7 +11,7 @@ import ErrorAlert from '../../shared/components/ErrorAlert';
 
 class NewPage extends React.Component {
   static propTypes = {
-    form: PropTypes.any.isRequired,
+    form: PropTypes.any.isRequired
   }
 
   render() {

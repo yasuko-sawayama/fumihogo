@@ -8,7 +8,7 @@ class ControlledEditor extends React.Component {
   constructor(props) {
     super(props);
 
-    const { value, productId = null, pageId = null, } = props;
+    const { value, productId = null, pageId = null } = props;
 
     const editorState = this.createState(value);
 
@@ -19,7 +19,7 @@ class ControlledEditor extends React.Component {
       productId,
       pageId,
       pageEdit,
-      readOnly: pageEdit,
+      readOnly: pageEdit
     };
 
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
@@ -32,7 +32,7 @@ class ControlledEditor extends React.Component {
 
 
   componentWillReceiveProps(nextProps) {
-    const { value, productId, pageId, } = nextProps;
+    const { value, productId, pageId } = nextProps;
 
     if (productId !== this.state.productId ||
         pageId !== this.state.pageId ||
@@ -41,15 +41,15 @@ class ControlledEditor extends React.Component {
       this.setState({
         editorState: this.createState(value),
         productId,
-        pageId,
+        pageId
       });
     }
   }
 
   onDoubleClick() {
-    this.setState({ readOnly: false, });
+    this.setState({ readOnly: false });
   }
-  onBlur() { this.setState({ readOnly: true, }); }
+  onBlur() { this.setState({ readOnly: true }); }
 
   onEditorStateChange: Function = (editorState) => {
     const newValue = draftToMarkdown(convertToRaw(editorState.getCurrentContent()));
@@ -57,7 +57,7 @@ class ControlledEditor extends React.Component {
   };
 
   handleChange(editorState) {
-    this.setState({ editorState, });
+    this.setState({ editorState });
   }
 
   createState(value) {
@@ -68,7 +68,7 @@ class ControlledEditor extends React.Component {
   }
 
   handleMyContentChange(newValue, editorState) {
-    const { onChange, value, } = this.props;
+    const { onChange, value } = this.props;
     if (!newValue) {
       editorState = EditorState.createEmpty();
     } else if (value !== newValue) {
@@ -76,13 +76,13 @@ class ControlledEditor extends React.Component {
     }
 
     this.setState({
-      editorState,
+      editorState
     });
   }
 
 
   render() {
-    const { editorState, } = this.state;
+    const { editorState } = this.state;
 
     return (
       <div
@@ -97,10 +97,10 @@ class ControlledEditor extends React.Component {
           toolbarOnFocus={this.state.pageEdit}
           toolbar={{
             options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'colorPicker', 'link', 'emoji', 'history'],
-            list: { inDropdown: true, },
-            textAlign: { inDropdown: true, },
-            link: { inDropdown: true, },
-            history: { inDropdown: true, },
+            list: { inDropdown: true },
+            textAlign: { inDropdown: true },
+            link: { inDropdown: true },
+            history: { inDropdown: true }
           }}
           onEditorStateChange={this.onEditorStateChange}
           readOnly={this.state.readOnly}

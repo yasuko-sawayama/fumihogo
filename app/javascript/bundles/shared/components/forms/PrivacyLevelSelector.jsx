@@ -4,7 +4,7 @@ import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
 class PrivacyLevelSelector extends React.Component {
   static propTypes = {
-    currentUser: PropTypes.any.isRequired,
+    currentUser: PropTypes.any.isRequired
   }
 
   constructor(props) {
@@ -14,7 +14,7 @@ class PrivacyLevelSelector extends React.Component {
   }
 
   handleChange(event) {
-    const { input: { value, }, } = this.props;
+    const { input: { value } } = this.props;
     this.props.input.onChange(event);
 
     // this.props.handleChange();
@@ -30,11 +30,11 @@ class PrivacyLevelSelector extends React.Component {
       meta: {
         touched,
         error,
-        warning,
-      },
+        warning
+      }
     } = this.props;
 
-    const Label = ({ name, label, }) => (
+    const Label = ({ name, label }) => (
       <ControlLabel htmlFor={name}>
         {label}
       </ControlLabel>

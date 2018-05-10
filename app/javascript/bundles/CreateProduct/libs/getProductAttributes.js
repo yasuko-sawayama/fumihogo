@@ -10,9 +10,9 @@ const getProductAttributesfromValue = values => ({
     permissions_list_id: values.privacy_level === 'list' ? values.permissions_list : null,
     pages_attributes: [{
       title: values.pageTitle,
-      content: values.content,
-    }],
-  },
+      content: values.content
+    }]
+  }
 });
 
 const getProductAttributesfromState = state => ({
@@ -23,9 +23,9 @@ const getProductAttributesfromState = state => ({
     permissions_list_id: selector(state, 'permissions_list'),
     pages_attributes: [{
       title: selector(state, 'pageTitle'),
-      content: selector(state, 'content'),
-    }],
-  },
+      content: selector(state, 'content')
+    }]
+  }
 });
 
 const getProductAttributes = formStateOrValue => (('form' in formStateOrValue) ?

@@ -9,7 +9,7 @@ import { fetchProductSuccess, fetchProductError } from '../actions/productAction
 import { PRODUCT_FETCH_REQUESTED } from '../constants/productConstants';
 import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
 
-export function* fetchProductInfo({ payload, }) {
+export function* fetchProductInfo({ payload }) {
   try {
     yield put(showLoading());
     const url = `${PRODUCT_API_ENTRY_POINT}/${payload.productId}/`;

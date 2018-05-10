@@ -19,12 +19,12 @@ class BootstrapField extends React.Component {
       meta: {
         touched,
         error,
-        warning,
-      },
+        warning
+      }
     } = this.props;
 
     const validationState = touched && (error && 'error') || (warning && 'warning') || null;
-    const Label = ({ name, label, }) => (
+    const Label = ({ name, label }) => (
       <ControlLabel htmlFor={name}>
         {label}
       </ControlLabel>

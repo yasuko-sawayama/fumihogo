@@ -15,16 +15,16 @@ const mapStateToProps = state => ({
   initialValues: {
 
   },
-  product: state.product,
+  product: state.product
 });
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators({ ...editActions, ...productActions, }, dispatch), };
+  return { actions: bindActionCreators({ ...editActions, ...productActions }, dispatch) };
 }
 
 const PageForm = reduxForm({
   form: 'edit_page',
-  validate,
+  validate
 })(EditPage);
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageForm);

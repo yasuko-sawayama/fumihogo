@@ -7,11 +7,11 @@ import getProductAttributes from '../libs/getProductAttributes';
 
 const NewForm = reduxForm({
   form: 'new_form',
-  validate,
+  validate
 })(newForm);
 
 export default connect(state => ({
   currentUser: state.currentUser,
-  productAttributes: getProductAttributes(state),
+  productAttributes: getProductAttributes(state)
 }))(NewForm);
 

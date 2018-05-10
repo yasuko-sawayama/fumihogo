@@ -20,7 +20,7 @@ const GrayContainer = styled.div`
 }
 `;
 
-export default ({ children, }) => (
+export default ({ children }) => (
   <GrayContainer>
     {children}
   </GrayContainer>

@@ -12,11 +12,11 @@ const mapStateToProps = state => ({
   product: state.product,
   error: state.errorMessage,
   loadingBar: state.loadingBar,
-  railsContext: state.railsContext,
+  railsContext: state.railsContext
 });
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(productActions, dispatch), };
+  return { actions: bindActionCreators(productActions, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewPage);

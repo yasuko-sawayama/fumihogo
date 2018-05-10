@@ -10,11 +10,11 @@ import * as productActions from '../actions/productActionCreators';
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
   product: state.product,
-  railsContent: state.railsContext,
+  railsContent: state.railsContext
 });
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(productActions, dispatch), };
+  return { actions: bindActionCreators(productActions, dispatch) };
 }
 
 // Don't forget to actually use connect!

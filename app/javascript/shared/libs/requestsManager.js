@@ -11,7 +11,7 @@ export const fetchEntities = (url, options = {}) => (
     url,
     responseType: 'json',
     headers: ReactOnRails.authenticityHeaders(),
-    ...options,
+    ...options
   })
 );
 
@@ -21,7 +21,7 @@ export const postEntities = (url, data, options = {}) => (
     url,
     data,
     headers: ReactOnRails.authenticityHeaders(),
-    ...options,
+    ...options
   })
 );
 
@@ -31,7 +31,7 @@ export const updateEntities = (url, data, options = {}) => (
     url,
     data,
     headers: ReactOnRails.authenticityHeaders(),
-    ...options,
+    ...options
   })
 );
 
@@ -40,6 +40,6 @@ export const deleteEntity = (url, options = {}) => (
     method: 'DELETE',
     url,
     headers: ReactOnRails.authenticityHeaders(),
-    ...options,
+    ...options
   })
 );

@@ -12,7 +12,7 @@ const StyledLink = styled(NavLink).attrs('active')`
 `;
 
 const PageLink = ({
-  id, api, position, title, url,
+  id, api, position, title, url
 }) => (
   <li>
     <StyledLink activeClassName="active" to={join(url, `/pages/${id}`)}>
@@ -26,7 +26,7 @@ PageLink.propTypes = {
   id: PropTypes.number.isRequired,
   position: PropTypes.number.isRequired,
   url: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default PageLink;

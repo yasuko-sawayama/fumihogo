@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Desc = styled.p`
   white-space: pre-line;
@@ -10,7 +10,7 @@ const Desc = styled.p`
 const Description = ({
   id,
   title,
-  description = "",
+  description = '',
   about: {
     created_at,
     character_count,

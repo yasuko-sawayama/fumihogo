@@ -12,12 +12,12 @@ class ErrorAlert extends React.Component {
     this.handleShow = this.handleShow.bind(this);
 
     this.state = {
-      show: true,
+      show: true
     };
   }
 
   componentWillReceiveProps = () => {
-    this.setState({ show: true, });
+    this.setState({ show: true });
   }
 
   componentDidUpdate = () => {
@@ -26,11 +26,11 @@ class ErrorAlert extends React.Component {
   }
 
   handleDismiss() {
-    this.setState({ show: false, });
+    this.setState({ show: false });
   }
 
   handleShow() {
-    this.setState({ show: true, });
+    this.setState({ show: true });
   }
 
   render() {

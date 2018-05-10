@@ -7,12 +7,12 @@ import {
 } from '../constants/productConstants';
 
 
-export const updateProduct = (data, { id, }) => ({
+export const updateProduct = (data, { id }) => ({
   type: PRODUCT_UPDATE_REQUESTED,
   payload: {
     data,
-    id,
-  },
+    id
+  }
 });
 
 export const updateProductSuccess = response => ({
@@ -20,8 +20,8 @@ export const updateProductSuccess = response => ({
   payload: {
     product: response.data.product,
     message: '作品情報を更新しました。',
-    style: 'success',
-  },
+    style: 'success'
+  }
 });
 
 export const updateProductError = error => console.log(error) || ({
@@ -29,6 +29,6 @@ export const updateProductError = error => console.log(error) || ({
   payload: {
     error,
     message: '作品情報の更新に失敗しました。',
-    style: 'danger',
-  },
+    style: 'danger'
+  }
 });

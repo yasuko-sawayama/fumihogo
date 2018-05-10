@@ -5,14 +5,14 @@ import { RIETextArea } from 'riek';
 class RIEKTextarea extends React.Component {
   static propTypes = {
     input: PropTypes.any.isRequired,
-    className: PropTypes.string,
+    className: PropTypes.string
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      text: props.input.value,
+      text: props.input.value
     };
 
     this.changeCallback = this.changeCallback.bind(this);
@@ -21,15 +21,15 @@ class RIEKTextarea extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ text: nextProps.input.value, });
+    this.setState({ text: nextProps.input.value });
   }
 
   changeState(value) {
-    this.setState({ text: value, });
+    this.setState({ text: value });
   }
 
   changeCallback(newState) {
-    const { [this.props.input.name]: value, } = newState;
+    const { [this.props.input.name]: value } = newState;
 
     this.changeState(value);
     this.props.input.onChange(value);
@@ -45,7 +45,7 @@ class RIEKTextarea extends React.Component {
         change={this.changeCallback}
         propName={input.name}
         className={className}
-        editProps={{ rows, cols, }}
+        editProps={{ rows, cols }}
       />
     );
   }

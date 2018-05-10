@@ -9,12 +9,12 @@ class InfoAlert extends React.Component {
     this.handleDismiss = this.handleDismiss.bind(this);
 
     this.state = {
-      show: true,
+      show: true
     };
   }
 
   componentWillReceiveProps = () => {
-    this.setState({ show: true, });
+    this.setState({ show: true });
   }
 
   componentDidUpdate = () => {
@@ -23,7 +23,7 @@ class InfoAlert extends React.Component {
   }
 
   handleDismiss() {
-    this.setState({ show: false, });
+    this.setState({ show: false });
   }
 
   render() {

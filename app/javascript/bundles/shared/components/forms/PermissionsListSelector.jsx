@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-const Label = ({ name, label, }) => (
+const Label = ({ name, label }) => (
   <ControlLabel htmlFor={name}>
     {label}
   </ControlLabel>
@@ -18,8 +18,8 @@ const PermissionsListSelector = (props) => {
     meta: {
       touched,
       error,
-      warning,
-    },
+      warning
+    }
   } = props;
 
   return (privacyLevel === 'list') && (

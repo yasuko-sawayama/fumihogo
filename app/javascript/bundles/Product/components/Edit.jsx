@@ -18,8 +18,8 @@ class Edit extends React.Component {
     currentUser: PropTypes.shape().isRequired,
     product: PropTypes.shape().isRequired,
     actions: PropTypes.shape({
-      fetchProduct: PropTypes.func.isRequired,
-    }).isRequired,
+      fetchProduct: PropTypes.func.isRequired
+    }).isRequired
   };
 
   constructor(props) {
@@ -41,9 +41,9 @@ class Edit extends React.Component {
   componentWillUpdate(nextProps) {
     const {
       dispatch, change,
-      currentUser: { permissions_lists, },
+      currentUser: { permissions_lists }
     } = this.props;
-    const { editAttributes: { updatedPrivacyLevel, permissions_list_id, }, } = nextProps;
+    const { editAttributes: { updatedPrivacyLevel, permissions_list_id } } = nextProps;
 
     if (updatedPrivacyLevel === 'list' && !permissions_list_id) {
       dispatch(change('permissions_list_id', permissions_lists[0].id));
@@ -61,10 +61,10 @@ class Edit extends React.Component {
       reset,
       handleSubmit,
       pristine,
-      submitting,
+      submitting
     } = this.props;
 
-    const { id, } = this.props.product;
+    const { id } = this.props.product;
 
     const TrashButton = styled(Button)`
 .fa {
@@ -100,10 +100,9 @@ margin: 0;
             message="各項目をクリックすると変更できます."
           />
           <form onSubmit={
-                  handleSubmit(formValues =>
-                               this.props.actions.updateProduct(
-                                 formValues, { id, }
-                               ))} >
+            handleSubmit(formValues =>
+              this.props.actions.updateProduct(formValues, { id }))}
+          >
             <SubmitButton />
             <About {...this.props} />
           </form>

@@ -5,11 +5,11 @@ import MessageAlert from '../components/MessageAlert';
 import * as alertActions from '../actions/alertActionCreators';
 
 const mapStateToProps = state => ({
-  ...state.alert,
+  ...state.alert
 });
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(alertActions, dispatch), };
+  return { actions: bindActionCreators(alertActions, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageAlert);

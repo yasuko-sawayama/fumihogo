@@ -6,8 +6,8 @@ import InnerSpiner from './spiner/InnerSpiner';
 class Spiner extends React.Component {
   static propTypes = {
     loading: PropTypes.shape({
-      content: PropTypes.number,
-    }),
+      content: PropTypes.number
+    })
   }
 
   render() {

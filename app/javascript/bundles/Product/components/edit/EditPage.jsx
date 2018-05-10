@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import PageEditForm from "./PageEditForm";
-import Pager from "../product/Pager";
-import { TwitterLink } from "../shared";
+import PageEditForm from './PageEditForm';
+import Pager from '../product/Pager';
+import { TwitterLink } from '../shared';
 
 class EditPage extends React.Component {
   // static propTypes = {
@@ -44,7 +44,7 @@ class EditPage extends React.Component {
   }
 
   fetchContent(pageId, pages) {
-    this.props.change("content", this.props.product.content);
+    this.props.change('content', this.props.product.content);
     this.props.actions.fetchPageContent(
       this.props.product.id,
       this.targetPage(pageId, pages)
