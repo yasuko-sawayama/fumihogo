@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
-import { join } from '../../shared/utils/join';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import { join } from '../../../shared/utils/join';
 
 const StyledLink = styled.li`
   .active {
@@ -18,6 +18,10 @@ const PageLink = ({ id, title, url, }) => (
     </NavLink>
   </StyledLink>
 );
+
+PageLink.defaultProps = {
+  title: '',
+};
 
 PageLink.propTypes = {
   id: PropTypes.number.isRequired,
