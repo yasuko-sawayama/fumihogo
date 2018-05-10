@@ -2,13 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Field } from 'redux-form';
-import { TwitterShareButton, TwitterIcon } from 'react-share';
 
 import PermissionsListSelector from '../../../shared/components/forms/PermissionsListSelector';
 import PrivacyLevelSelector from '../../../shared/components/forms/PrivacyLevelSelector';
 import RIEKTextarea from '../../../shared/components/forms/riek/RIEKTextarea';
-
-const url = location.href;
 
 const Desc = styled.div`
 white-space: pre-line;
@@ -80,11 +77,6 @@ const Description = ({
             />
           </dd>
         </dl>
-      </div>
-      <div className="pull-right">
-        <TwitterShareButton url={url} title={`${title}`} >
-          <TwitterIcon size={32} round />
-        </TwitterShareButton>
       </div>
     </div>
   </div>
