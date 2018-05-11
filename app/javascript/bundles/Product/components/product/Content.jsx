@@ -15,7 +15,7 @@ margin-right: 0.8em;
 const Content = ({
   pageTitle, content,
   pageId, totalPage,
-  impressionCount,
+  impressionCount
 }) => (
   <div className="row">
     <div className="col-xs-12">
@@ -27,7 +27,7 @@ const Content = ({
     <Article
       id="content"
       className="col-xs-12"
-      dangerouslySetInnerHTML={{ __html: content, }}
+      dangerouslySetInnerHTML={{ __html: content }}
     />
   </div>
 );
@@ -37,7 +37,7 @@ Content.propTypes = ({
   pageId: PropTypes.number.isRequired,
   totalPage: PropTypes.number.isRequired,
   content: PropTypes.string.isRequired,
-  impressionCount: PropTypes.number.isRequired,
+  impressionCount: PropTypes.number.isRequired
 });
 
 export default Content;

@@ -63,7 +63,7 @@ const ProductReducer = combineReducers({
   content: contentReducer,
   currentPage: currentPageReducer,
   pages: pagesReducer,
-  pageInfo: pageInfoReducer,
+  pageInfo: pageInfoReducer
 });
 
 export default ProductReducer;

@@ -19,12 +19,12 @@ const Description = ({
     character_count,
     privacyLevel,
     pageCount,
-    impressionCount,
+    impressionCount
   },
   author: {
     nickname,
-    avator,
-  },
+    avator
+  }
 }) => (
   <div className="row">
     <div className="col-xs-12">
@@ -69,12 +69,12 @@ Description.propTypes = {
     created_at: PropTypes.string.isRequired,
     character_count: PropTypes.number.isRequired,
     privacyLevel: PropTypes.string.isRequired,
-    pageCount: PropTypes.number.isRequired,
+    pageCount: PropTypes.number.isRequired
   }).isRequired,
   author: PropTypes.shape({
     nickname: PropTypes.string,
-    avator: PropTypes.string,
-  }),
+    avator: PropTypes.string
+  })
 };
 
 export default Description;

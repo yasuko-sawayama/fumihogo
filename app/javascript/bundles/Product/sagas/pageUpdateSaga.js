@@ -8,7 +8,7 @@ import { updatePageSuccess, updatePageError } from '../actions/pageEditActionCre
 import { PAGE_UPDATE_REQUESTED } from '../constants/pageEditConstants';
 import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
 
-export function* updatePage({ payload, }) {
+export function* updatePage({ payload }) {
   try {
     yield put(showLoading());
     //    yield put(clearError());

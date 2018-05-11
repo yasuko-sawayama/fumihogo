@@ -15,7 +15,7 @@ const ButtonCol = styled(Col)`
 padding-top: 20px;
 `;
 
-const AddButton = ({ id, }) => (
+const AddButton = ({ id }) => (
   <ButtonCol sm={2}>
     <LinkContainer
       to={`${productUrl(id)}pages/new`}
@@ -38,8 +38,8 @@ const About = ({
     author,
     about,
     pages,
-    auth,
-  },
+    auth
+  }
 }) => (
   <section id="about">
     <Title title={title} />
@@ -65,10 +65,10 @@ About.propTypes = {
     title: PropTypes.string.isRequired,
     author: PropTypes.object.isRequired,
     about: PropTypes.shape({
-      pageCount: PropTypes.number.isRequired,
+      pageCount: PropTypes.number.isRequired
     }).isRequired,
-    pages: PropTypes.array,
-  }).isRequired,
+    pages: PropTypes.array
+  }).isRequired
 };
 
 export default About;

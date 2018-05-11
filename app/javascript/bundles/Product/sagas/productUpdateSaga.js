@@ -7,7 +7,7 @@ import { updateProductSuccess, updateProductError } from '../actions/productEdit
 import { PRODUCT_UPDATE_REQUESTED } from '../constants/productConstants';
 import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
 
-export function* updateProduct({ payload, }) {
+export function* updateProduct({ payload }) {
   try {
     yield put(showLoading());
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.id}/`;

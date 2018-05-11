@@ -9,7 +9,7 @@ export * from './alertActionCreators';
 export const changePage = (pageId = 1) => ({
   type: PAGE_CHANGED,
   payload: {
-    pageId,
-  },
+    pageId
+  }
 });
 
