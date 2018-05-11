@@ -19,7 +19,7 @@ export function* fetchProductInfo({ payload, }) {
     yield [
       put(fetchProductError(error)),
       put(push('/'))
-    ]
+    ];
   } finally {
     yield put(hideLoading());
   }

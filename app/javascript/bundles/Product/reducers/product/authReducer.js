@@ -5,11 +5,11 @@ import {
 
 const initialState = {
   update: false,
-  show: false
-}
+  show: false,
+};
 
-const authReducer = (state=initialState, action) => {
-  switch(action.type) {
+const authReducer = (state = initialState, action) => {
+  switch (action.type) {
   case PRODUCT_FETCH_SUCCESS:
     return {
       update: action.payload.product.auth.update,

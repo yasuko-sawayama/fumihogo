@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "es6": true,
@@ -11,9 +12,11 @@
     "plugin:jest/recommended"
   ],
   "parserOptions": {
+    "ecmaVersion": 7,
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
-      "jsx": true
+      "jsx": true,
+      "classes": true
     },
     "sourceType": "module"
   },
@@ -36,7 +39,7 @@
     ],
     "comma-dangle": ["error", {
         "arrays": "never",
-        "objects": "always",
+        "objects": "never",
         "imports": "never",
         "exports": "never",
         "functions": "ignore"

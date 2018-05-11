@@ -19,31 +19,32 @@ class BootstrapField extends React.Component {
       meta: {
         touched,
         error,
-        warning,
-      },
+        warning
+      }
     } = this.props;
 
-    const validationState = touched && ( error && "error" ) || ( warning && "warning" ) || null;
-    const Label = ({name, label}) => (
+    const validationState = touched && (error && 'error') || (warning && 'warning') || null;
+    const Label = ({ name, label }) => (
       <ControlLabel htmlFor={name}>
-          {label}
+        {label}
       </ControlLabel>
     );
-    
+
     return (
       <FormGroup>
         { label && <Label {...input} label={label} /> }
 
         <FormControl
           {...input}
-          type = {type || "text"}
-          componentClass = {componentClass || "input"}
-          placeholder={placeholder} >
+          type={type || 'text'}
+          componentClass={componentClass || 'input'}
+          placeholder={placeholder}
+        >
           {children}
         </FormControl>
         { help && <p className="help-block">{help}</p> }
-        
-        {touched && ( error || warning ) && <span className="text-danger">{ error || warning }</span>}
+
+        {touched && (error || warning) && <span className="text-danger">{ error || warning }</span>}
       </FormGroup>
     );
   }

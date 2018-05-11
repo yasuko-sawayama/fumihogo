@@ -14,11 +14,11 @@ margin-top: 20px;
 }
 `;
 
-const tableOfContents = ({ pages, url }) => {
+const tableOfContents = ({ pages, url, }) => {
   const pageLinks = pages.map(page => (
     <PageLink key={page.id} {...page} url={url} />
   ));
-  
+
   return (
     <div className="tableOfContents">
       <ol className="nav nav-pills nav-stacked">
@@ -29,13 +29,11 @@ const tableOfContents = ({ pages, url }) => {
 };
 
 tableOfContents.propTypes = {
-  pages: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    })
-  ).isRequired,
+  pages: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  })).isRequired,
   url: PropTypes.string.isRequired,
-}
+};
 
 class TableOfContents extends React.Component {
   constructor(props) {
@@ -69,7 +67,7 @@ class TableOfContents extends React.Component {
           <Panel.Heading>
             <Panel.Title onClick={this.togglePanel} >
               もくじ
-              　
+
               <FA name={this.state.allowIcon} />
             </Panel.Title>
           </Panel.Heading>

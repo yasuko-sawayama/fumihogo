@@ -8,7 +8,7 @@ import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants'
 
 import { PAGE_CONTENT_FETCH_REQUESTED } from '../constants/productConstants';
 
-export function* fetchPageContent({ payload }) {
+export function* fetchPageContent({ payload, }) {
   try {
     yield put(showLoading('content'));
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.productId}/pages/${payload.id}`;

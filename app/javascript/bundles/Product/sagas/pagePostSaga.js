@@ -12,13 +12,13 @@ import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants'
 export function* postPage({ payload, }) {
   try {
     yield put(showLoading());
-//    yield put(clearError());
+    //    yield put(clearError());
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.productId}/pages/`;
     const response = yield call(postEntities, url, payload.data);
     yield [
       put(postPageSuccess(response)),
       put(push(`/${response.data.product_id}/pages/${response.data.position}`)) // friendry_id使っているのでpositionを使う
-    ]
+    ];
   } catch (error) {
     yield put(postPageError(error));
   } finally {

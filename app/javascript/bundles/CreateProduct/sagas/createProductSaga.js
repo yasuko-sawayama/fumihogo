@@ -7,7 +7,7 @@ import { redirectToRoot } from '../../../shared/libs/redirects';
 import { CREATE_REQUEST } from '../constants/createProductConstants';
 import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
 
-export function* postProduct({ payload, }) {
+export function* postProduct({ payload }) {
   try {
     yield put(showLoading());
     yield put(clearError());

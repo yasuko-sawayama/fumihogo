@@ -3,7 +3,7 @@
 import {
   PAGE_CONTENT_FETCH_SUCCESS,
   PAGE_CONTENT_FETCH_ERROR,
-  PAGE_CONTENT_FETCH_REQUESTED,
+  PAGE_CONTENT_FETCH_REQUESTED
 } from '../constants/productConstants';
 
 export const fetchPageContent = (productId, id) => ({
@@ -18,7 +18,7 @@ export const fetchPageContentSuccess = response => ({
   type: PAGE_CONTENT_FETCH_SUCCESS,
   payload: {
     product: {
-      page: { ...response.data.page },
+      page: { ...response.data.page, },
     },
   },
 });

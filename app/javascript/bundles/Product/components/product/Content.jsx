@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -24,9 +24,11 @@ const Content = ({
       <Count className="count pull-right text-muted">閲覧数：{impressionCount}</Count>
     </div>
 
-    <Article id="content"
-             className="col-xs-12"
-             dangerouslySetInnerHTML={{ __html: content }} />
+    <Article
+      id="content"
+      className="col-xs-12"
+      dangerouslySetInnerHTML={{ __html: content, }}
+    />
   </div>
 );
 

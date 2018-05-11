@@ -1,9 +1,9 @@
 import { CREATE_ERROR, CLEAR_ERROR } from '../constants/createProductConstants';
 
-const errorReducer = (state = null, { type, payload } ) => {
-  switch(type) {
+const errorReducer = (state = null, { type, payload }) => {
+  switch (type) {
   case CREATE_ERROR:
-    switch(payload.error.response.status) {
+    switch (payload.error.response.status) {
     case 401:
       return ({
         showError: true,
@@ -17,7 +17,7 @@ const errorReducer = (state = null, { type, payload } ) => {
         status: 422,
         title: 'データを確認してください。',
         message: '投稿しようとしている小説のデータが正しくありません。修正してもう一度投稿してください。',
-        dataErrors: payload.error.response.data,
+        dataErrors: payload.error.response.data
       });
     default:
       return ({
@@ -30,8 +30,8 @@ const errorReducer = (state = null, { type, payload } ) => {
   case CLEAR_ERROR:
     return null;
   default:
-      return state;
+    return state;
   }
-}
+};
 
 export default errorReducer;

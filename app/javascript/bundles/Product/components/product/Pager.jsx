@@ -8,9 +8,9 @@ const Previous = ({ previousPage, url, }) => (
     <Link
       to={join(url, `/pages/${previousPage.id}`)}
       title={previousPage.title}
-      >
+    >
       <span aria-hidden="true" className="fa fa-backward" />
-      　
+
       前のページ
     </Link>
   </li>
@@ -22,9 +22,9 @@ const Next = ({ nextPage, url, }) => (
     <Link
       to={join(url, `/pages/${nextPage.id}`)}
       title={nextPage.title}
-      >
+    >
       次のページ
-      　
+
       <span aria-hidden="true" className="fa fa-forward" />
     </Link>
   </li>
@@ -48,6 +48,6 @@ Pager.propTypes = {
     title: PropTypes.string,
   }),
   url: PropTypes.string.isRequired,
-}
+};
 
 export default Pager;

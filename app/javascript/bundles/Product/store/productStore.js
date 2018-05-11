@@ -19,7 +19,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middleware = [reduxRouterMiddleware, sagaMiddleware];
 
-const configureStore = railsProps => {
+const configureStore = (railsProps) => {
   const store = createStore(
     combineReducers({
       currentUser: currentUserReducer,

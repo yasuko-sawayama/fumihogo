@@ -4,7 +4,7 @@ import {
   PAGE_POST_REQUESTED,
   PAGE_POST_SUCCESS,
   PAGE_POST_ERROR,
-  CLEAR_ERROR,
+  CLEAR_ERROR
 } from '../constants/productConstants';
 
 export const postPage = (values, { id, }) => ({

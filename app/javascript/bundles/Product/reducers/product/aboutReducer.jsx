@@ -17,8 +17,8 @@ const aboutReducer = (state = {}, action) => {
       permissionsList: action.payload.product.about.permissionsList,
     };
 
-  // case PRODUCT_FETCH_ERROR:
-  //   return {};
+    // case PRODUCT_FETCH_ERROR:
+    //   return {};
 
   default:
     return state;

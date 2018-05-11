@@ -2,7 +2,7 @@ import { SHOW_MESSAGE, DISMISS_MESSAGE } from '../constants/alertConstants';
 
 import {
   PAGE_POST_REQUESTED, PAGE_POST_SUCCESS, PAGE_POST_ERROR,
-  PRODUCT_UPDATE_REQUESTED, PRODUCT_UPDATE_SUCCESS, PRODUCT_UPDATE_ERROR,
+  PRODUCT_UPDATE_REQUESTED, PRODUCT_UPDATE_SUCCESS, PRODUCT_UPDATE_ERROR
 } from '../constants/productConstants';
 
 import {
@@ -10,7 +10,7 @@ import {
   PAGE_DESTROY_REQUESTED, PAGE_DESTROY_SUCCESS, PAGE_DESTORY_ERROR
 } from '../constants/pageEditConstants';
 
-const alertReducer = (state=null, action) => {
+const alertReducer = (state = null, action) => {
   switch (action.type) {
   case SHOW_MESSAGE:
     return {
@@ -25,7 +25,7 @@ const alertReducer = (state=null, action) => {
       show: true,
       message: action.payload.message,
       style: action.payload.style || 'success',
-    }
+    };
   case PRODUCT_UPDATE_ERROR:
   case PAGE_POST_ERROR:
   case PAGE_UPDATE_ERROR:

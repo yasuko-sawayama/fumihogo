@@ -30,16 +30,15 @@ class InfoAlert extends React.Component {
     if (this.state.show) {
       return (
         <Alert bsStyle="info" onDismiss={this.handleDismiss}>
-          { this.props.title && <h4><FontAwesome name="info-circle" size="2x"/>{this.props.title}</h4> }
+          { this.props.title && <h4><FontAwesome name="info-circle" size="2x" />{this.props.title}</h4> }
           <p>
             { !this.props.title && <FontAwesome name="info-circle" /> }
             {this.props.message}
           </p>
         </Alert>
       );
-    } else {
-      return false;
     }
+    return false;
   }
 }
 

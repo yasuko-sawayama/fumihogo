@@ -26,7 +26,6 @@ class ErrorAlert extends React.Component {
   }
 
   handleDismiss() {
-
     this.setState({ show: false });
   }
 
@@ -39,7 +38,7 @@ class ErrorAlert extends React.Component {
       return (
         <Alert bsStyle="danger" onDismiss={this.handleDismiss}>
           <h4>
-            <FontAwesome name="exclamation-circle" size='2x'/>
+            <FontAwesome name="exclamation-circle" size="2x" />
             {this.props.title}
           </h4>
           <p>
@@ -48,9 +47,8 @@ class ErrorAlert extends React.Component {
           {this.props.dataErrors && <ErrorList errors={this.props.dataErrors} />}
         </Alert>
       );
-    } else {
-      return false;
     }
+    return false;
   }
 }
 
