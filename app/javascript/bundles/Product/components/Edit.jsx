@@ -1,25 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { NavLink, Route, Switch } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar';
+import ReactLoading from 'react-loading';
+import { Field } from 'redux-form';
+import { Button } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 import styled from 'styled-components';
 
-import { Route, Switch } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-
 import SpinerContainer from '../../shared/containers/SpinerContainer';
 import About from './edit/About';
+import Page from './product/Page';
 import NewPage from './edit/NewPage';
 import InfoAlert from '../../shared/components/InfoAlert';
 import PageEditContainer from '../containers/PageEditContainer';
 
+import { pageDestroy } from '../actions/pageDestroyActionCreators';
+
 class Edit extends React.Component {
   static propTypes = {
-    currentUser: PropTypes.shape().isRequired,
-    product: PropTypes.shape().isRequired,
-    actions: PropTypes.shape({
-      fetchProduct: PropTypes.func.isRequired
-    }).isRequired
+    currentUser: PropTypes.any.isRequired,
+    product: PropTypes.any.isRequired,
   };
 
   constructor(props) {
@@ -41,9 +43,9 @@ class Edit extends React.Component {
   componentWillUpdate(nextProps) {
     const {
       dispatch, change,
-      currentUser: { permissions_lists }
+      currentUser: { permissions_lists, },
     } = this.props;
-    const { editAttributes: { updatedPrivacyLevel, permissions_list_id } } = nextProps;
+    const { editAttributes: { updatedPrivacyLevel, permissions_list_id, }, } = nextProps;
 
     if (updatedPrivacyLevel === 'list' && !permissions_list_id) {
       dispatch(change('permissions_list_id', permissions_lists[0].id));
@@ -61,10 +63,10 @@ class Edit extends React.Component {
       reset,
       handleSubmit,
       pristine,
-      submitting
+      submitting,
     } = this.props;
 
-    const { id } = this.props.product;
+    const { id, } = this.props.product;
 
     const TrashButton = styled(Button)`
 .fa {
@@ -99,10 +101,7 @@ margin: 0;
           <InfoAlert
             message="各項目をクリックすると変更できます."
           />
-          <form onSubmit={
-            handleSubmit(formValues =>
-              this.props.actions.updateProduct(formValues, { id }))}
-          >
+          <form onSubmit={handleSubmit(values => console.log(values) || this.props.actions.updateProduct(values, { id, }))} >
             <SubmitButton />
             <About {...this.props} />
           </form>

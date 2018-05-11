@@ -17,9 +17,9 @@ const PageEditForm = (props) => {
       id,
       currentPage,
       about: {
-        impressionCount
-      }
-    }
+        impressionCount,
+      },
+    },
   } = props;
   return (
     <div className="row">

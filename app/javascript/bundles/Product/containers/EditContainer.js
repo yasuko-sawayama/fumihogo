@@ -23,7 +23,7 @@ const initialValues = product => ({
   title: product.title,
   description: product.description,
   privacy_level: product.info.privacy_level,
-  permissions_list_id: product.info.permissions_list_id
+  permissions_list_id: product.info.permissions_list_id,
 });
 
 
@@ -34,9 +34,9 @@ const mapStateToProps = state => ({
   product: state.product,
   editAttributes: {
     updatedPrivacyLevel: selector(state, 'privacy_level'),
-    permission_list_id: selector(state, 'permission_list_id')
+    permission_list_id: selector(state, 'permission_list_id'),
   },
-  railsContent: state.railsContext
+  railsContent: state.railsContext,
 });
 
 function mapDispatchToProps(dispatch) {
@@ -45,15 +45,15 @@ function mapDispatchToProps(dispatch) {
       {
         ...productActions,
         ...editActions,
-        ...deletePageActions
+        ...deletePageActions,
       },
       dispatch,
-    )
+    ),
   };
 }
 
 const EditForm = reduxForm({
-  form: 'edit_product'
+  form: 'edit_product',
 })(Edit);
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditForm);

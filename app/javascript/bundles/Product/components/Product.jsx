@@ -12,8 +12,8 @@ class Product extends React.Component {
     currentUser: PropTypes.shape().isRequired,
     product: PropTypes.shape().isRequired,
     actions: PropTypes.shape({
-      fetchProduct: PropTypes.func.isRequired
-    }).isRequired
+      fetchProduct: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   componentWillMount() {

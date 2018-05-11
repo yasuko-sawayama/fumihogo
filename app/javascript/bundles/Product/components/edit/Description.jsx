@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Field } from 'redux-form';
+import { TwitterShareButton, TwitterIcon } from 'react-share';
 
 import PermissionsListSelector from '../../../shared/components/forms/PermissionsListSelector';
 import PrivacyLevelSelector from '../../../shared/components/forms/PrivacyLevelSelector';
 import RIEKTextarea from '../../../shared/components/forms/riek/RIEKTextarea';
+
+const url = location.href;
 
 const Desc = styled.div`
 white-space: pre-line;
@@ -15,7 +18,7 @@ margin-bottom: 15px;
 const Description = ({
   currentUser,
   editAttributes: {
-    updatedPrivacyLevel
+    updatedPrivacyLevel,
   },
   title,
   description = '',
@@ -24,12 +27,12 @@ const Description = ({
     character_count,
     privacyLevel,
     pageCount,
-    impressionCount
+    impressionCount,
   },
   author: {
     nickname,
-    avator
-  }
+    avator,
+  },
 }) => (
   <div className="row">
     <div className="col-xs-12">
@@ -78,6 +81,11 @@ const Description = ({
           </dd>
         </dl>
       </div>
+      <div className="pull-right">
+        <TwitterShareButton url={url} title={`${title}`} >
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+      </div>
     </div>
   </div>
 );
@@ -90,12 +98,12 @@ Description.propTypes = {
     character_count: PropTypes.number.isRequired,
     privacyLevel: PropTypes.string.isRequired,
     pageCount: PropTypes.number.isRequired,
-    impressionCount: PropTypes.number.isRequired
+    impressionCount: PropTypes.number.isRequired,
   }).isRequired,
   author: PropTypes.shape({
     nickname: PropTypes.string,
-    avator: PropTypes.string
-  })
+    avator: PropTypes.string,
+  }),
 };
 
 export default Description;

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import PageEditForm from './PageEditForm';
 import Pager from '../product/Pager';
-import { TwitterLink } from '../shared';
 
 class EditPage extends React.Component {
   // static propTypes = {
@@ -30,7 +29,7 @@ class EditPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { pageId } = this.props.match.params;
+    const { pageId, } = this.props.match.params;
 
     if (pageId && pageId !== nextProps.match.params.pageId) {
       this.props.actions.changePage(nextProps.match.params.pageId);
@@ -45,21 +44,14 @@ class EditPage extends React.Component {
 
   fetchContent(pageId, pages) {
     this.props.change('content', this.props.product.content);
-    this.props.actions.fetchPageContent(
-      this.props.product.id,
-      this.targetPage(pageId, pages)
-    );
+    this.props.actions.fetchPageContent(this.props.product.id, this.targetPage(pageId, pages));
   }
 
   render() {
     return (
       <section id="pageEdit" className="page">
-        <TwitterLink url="dummy" title="dummy" />
         <PageEditForm {...this.props} />
-        <Pager
-          {...this.props.product.pageInfo}
-          url={`/${this.props.product.id}/`}
-        />
+        <Pager {...this.props.product.pageInfo} url={`/${this.props.product.id}/`} />
       </section>
     );
   }

@@ -13,7 +13,7 @@ class MessageAlert extends React.Component {
 
   static propTypes = {
     style: PropTypes.string,
-    message: PropTypes.string
+    message: PropTypes.string,
   }
 
   handleDismiss() {
@@ -27,7 +27,7 @@ class MessageAlert extends React.Component {
       </ul>
     );
 
-    const ErrorMessages = ({ response: { data } }) => console.log(data) || (
+    const ErrorMessages = ({ response: { data, }, }) => console.log(data) || (
       <div className="row">
         <div className="col-xs-2 col-sm-1">
           <FontAwesome name="exclamation-triangle" size="3x" />

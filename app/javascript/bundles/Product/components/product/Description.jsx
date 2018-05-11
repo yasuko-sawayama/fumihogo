@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { TwitterShareButton, TwitterIcon } from 'react-share';
+
+const url = location.href;
 
 const Desc = styled.p`
-  white-space: pre-line;
+white-space: pre-line;
 `;
 
 // TODO: 画像
@@ -16,21 +19,28 @@ const Description = ({
     character_count,
     privacyLevel,
     pageCount,
-    impressionCount
+    impressionCount,
   },
-  author: { nickname, avator }
+  author: {
+    nickname,
+    avator,
+  },
 }) => (
   <div className="row">
     <div className="col-xs-12">
       <h3>Description</h3>
     </div>
     <div className="col-sm-12">
-      <Desc className="description">{description}</Desc>
+      <Desc className="description">
+        {description}
+      </Desc>
       <div className="dl-horizontal" id="about">
         <dl>
           <dt>作者:</dt>
           <dd>
-            <a href={`/users/${nickname}`}>{nickname}</a>
+            <a href={`/users/${nickname}`}>
+              {nickname}
+            </a>
           </dd>
           <dt>公開日:</dt>
           <dd>{created_at}</dd>
@@ -44,6 +54,11 @@ const Description = ({
           <dd>{privacyLevel}</dd>
         </dl>
       </div>
+      <div className="pull-right">
+        <TwitterShareButton url={url} title={`${title} を共有する`} >
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+      </div>
     </div>
   </div>
 );
@@ -54,12 +69,12 @@ Description.propTypes = {
     created_at: PropTypes.string.isRequired,
     character_count: PropTypes.number.isRequired,
     privacyLevel: PropTypes.string.isRequired,
-    pageCount: PropTypes.number.isRequired
+    pageCount: PropTypes.number.isRequired,
   }).isRequired,
   author: PropTypes.shape({
     nickname: PropTypes.string,
-    avator: PropTypes.string
-  })
+    avator: PropTypes.string,
+  }),
 };
 
 export default Description;

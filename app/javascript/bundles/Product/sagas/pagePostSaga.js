@@ -9,7 +9,7 @@ import { postPageSuccess, postPageError } from '../actions/postPageActionCreator
 import { PAGE_POST_REQUESTED } from '../constants/productConstants';
 import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
 
-export function* postPage({ payload }) {
+export function* postPage({ payload, }) {
   try {
     yield put(showLoading());
     //    yield put(clearError());

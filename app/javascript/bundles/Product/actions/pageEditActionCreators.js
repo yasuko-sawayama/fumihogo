@@ -11,16 +11,16 @@ export const updatePage = (data, id, pageId) => ({
   payload: {
     data,
     id,
-    pageId
-  }
+    pageId,
+  },
 });
 
 export const updatePageSuccess = response => ({
   type: PAGE_UPDATE_SUCCESS,
   payload: {
     message: 'ページを更新しました。',
-    style: 'success'
-  }
+    style: 'success',
+  },
 });
 
 export const updatePageError = error => console.log(error) || ({
@@ -28,7 +28,7 @@ export const updatePageError = error => console.log(error) || ({
   payload: {
     error,
     message: 'ページの更新に失敗しました。',
-    style: 'danger'
-  }
+    style: 'danger',
+  },
 });
 

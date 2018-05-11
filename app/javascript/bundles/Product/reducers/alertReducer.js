@@ -15,7 +15,7 @@ const alertReducer = (state = null, action) => {
   case SHOW_MESSAGE:
     return {
       show: true,
-      ...state
+      ...state,
     };
   case PRODUCT_UPDATE_SUCCESS:
   case PAGE_POST_SUCCESS:
@@ -24,7 +24,7 @@ const alertReducer = (state = null, action) => {
     return {
       show: true,
       message: action.payload.message,
-      style: action.payload.style || 'success'
+      style: action.payload.style || 'success',
     };
   case PRODUCT_UPDATE_ERROR:
   case PAGE_POST_ERROR:
@@ -35,14 +35,14 @@ const alertReducer = (state = null, action) => {
         show: true,
         error: action.payload.error,
         message: action.payload.message,
-        style: action.payload.style || 'danger'
+        style: action.payload.style || 'danger',
       };
     }
 
     return {
       show: true,
       message: '不明なエラーが発生しました。',
-      style: 'danger'
+      style: 'danger',
     };
 
   case DISMISS_MESSAGE:
@@ -51,7 +51,7 @@ const alertReducer = (state = null, action) => {
   case PAGE_UPDATE_REQUESTED:
   case PAGE_DESTROY_REQUESTED:
     return {
-      show: false
+      show: false,
     };
   default:
     return state;
