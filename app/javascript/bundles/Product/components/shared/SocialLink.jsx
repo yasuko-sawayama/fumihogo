@@ -9,7 +9,7 @@ const SocialLink = ({ id, title, currentPage, pages }) => {
   const linkTitle = `${title}：${pageTitle(pages, currentPage)}`;
 
   return (
-    <div className="social-icons">
+    <div className="social-icons row">
       <TwitterLink title={linkTitle} />
     </div>
   );
@@ -19,7 +19,7 @@ SocialLink.propTypes = {
   id: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  pages: PropTypes.arrayOf.isRequired
+  pages: PropTypes.arrayOf
 };
 
 export default SocialLink;
