@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const Title = ({ title }) => (
   <div className="page-header">
@@ -8,7 +8,7 @@ const Title = ({ title }) => (
 );
 
 Title.propTypes = {
-  title: PropTypes.string,
-}
+  title: PropTypes.string
+};
 
 export default Title;

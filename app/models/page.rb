@@ -78,7 +78,8 @@ class Page < ApplicationRecord
   end
 
   def check_for_last_page
-    return if product.pages.count > 1
+    return if product.pages.count > 1 ||
+              destroyed_by_association
 
     errors.add :base, '最後のページは削除できません。'
     throw(:abort)

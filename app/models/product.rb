@@ -47,7 +47,7 @@ class Product < ApplicationRecord
 
   strip_attributes only: :title, regex: /[[:blank:]]+$/
 
-  accepts_nested_attributes_for :pages
+  accepts_nested_attributes_for :pages, allow_destroy: true, reject_if: :all_blank
 
   enumerize :privacy_level,
             in: { closed: 0,

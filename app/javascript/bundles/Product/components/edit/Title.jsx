@@ -1,7 +1,7 @@
 import React from "react";
-import { Field } from 'redux-form';
+import { Field } from "redux-form";
 
-import RIEKInput from '../../../shared/components/forms/riek/RIEKInput';
+import RIEKInput from "../../../shared/components/forms/riek/RIEKInput";
 
 const Title = updateProduct => (
   <div className="page-header">
@@ -12,7 +12,7 @@ const Title = updateProduct => (
         type="text"
         size={40}
         className="ProductTitle"
-        />
+      />
     </h1>
   </div>
 );

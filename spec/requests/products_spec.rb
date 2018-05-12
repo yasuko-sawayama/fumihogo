@@ -121,7 +121,7 @@ RSpec.describe "Products", type: :request do
       it 'エラーメッセージ' do
         subject
         body = JSON.parse(response.body)
-        p body
+       
         expect(body['errors']['auth']).to match('権限がありません')
       end
     end

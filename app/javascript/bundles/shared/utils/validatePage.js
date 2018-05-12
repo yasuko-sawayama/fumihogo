@@ -1,4 +1,4 @@
-const validate = values => {
+const validate = (values) => {
   const errors = {};
 
   if (values.title && values.title.length > 45) {
@@ -17,6 +17,6 @@ const validate = values => {
   }
 
   return errors;
-}
+};
 
 export default validate;

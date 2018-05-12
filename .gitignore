@@ -74,3 +74,5 @@ db/fixtures/
 /latest.dump.1
 /local.dump
 /latest.dump*
+public/assets/
+/stats.json
