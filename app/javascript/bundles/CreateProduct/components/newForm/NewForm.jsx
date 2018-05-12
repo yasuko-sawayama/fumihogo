@@ -1,14 +1,14 @@
 /* eslint camelcase: 0 */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 // import styled from 'styled-components';
-import { Field } from 'redux-form';
+import { Field } from "redux-form";
 
-import BootstrapField from '../../../shared/components/forms/BootstrapField';
-import PermissionsListSelector from '../../../shared/components/forms/PermissionsListSelector';
-import PrivacyLevelSelector from '../../../shared/components/forms/PrivacyLevelSelector';
-import PageForm from '../../../shared/components/forms/PageForm';
+import BootstrapField from "../../../shared/components/forms/BootstrapField";
+import PermissionsListSelector from "../../../shared/components/forms/PermissionsListSelector";
+import PrivacyLevelSelector from "../../../shared/components/forms/PrivacyLevelSelector";
+import PageForm from "../../../shared/components/forms/PageForm";
 
 class newForm extends React.Component {
   static propTypes = {
@@ -28,8 +28,8 @@ class newForm extends React.Component {
     } = this.props;
     const { productAttributes: { product: { privacy_level, permissions_list_id } } } = nextProps;
 
-    if (privacy_level === 'list' && !permissions_list_id) {
-      dispatch(change('permissions_list', permissions_lists[0].id));
+    if (privacy_level === "list" && !permissions_list_id) {
+      dispatch(change("permissions_list", permissions_lists[0].id));
     }
   }
 

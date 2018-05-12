@@ -1,10 +1,10 @@
 import {
   PAGE_CONTENT_FETCH_SUCCESS,
   PAGE_CONTENT_FETCH_ERROR
-} from '../../constants/productConstants';
+} from "../../constants/productConstants";
 
 const defaultState = {
-  pageTitle: '',
+  pageTitle: "",
   impressionCount: 0,
   nextPage: null,
   previousPage: null
@@ -19,7 +19,7 @@ const pageInfoReducer = (state = defaultState, action) => {
 
   case PAGE_CONTENT_FETCH_ERROR:
     return {
-      pageTitle: ''
+      pageTitle: ""
     };
 
   default:

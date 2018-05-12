@@ -3,7 +3,7 @@ import {
   PRODUCT_FETCH_REQUESTED,
   PRODUCT_FETCH_SUCCESS,
   PRODUCT_FETCH_ERROR
-} from '../constants/productConstants';
+} from "../constants/productConstants";
 
 export const fetchProduct = id => ({
   type: PRODUCT_FETCH_REQUESTED,

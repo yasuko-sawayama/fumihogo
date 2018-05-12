@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Jumbotron } from 'react-bootstrap';
+import React from "react";
+import styled from "styled-components";
+import { Jumbotron } from "react-bootstrap";
 
 const Dialog = styled(Jumbotron)`
     background: #fff;

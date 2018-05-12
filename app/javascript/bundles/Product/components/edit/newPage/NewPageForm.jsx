@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import React from "react";
+import PropTypes from "prop-types";
+import { reduxForm } from "redux-form";
 
-import PageForm from '../../../../shared/components/forms/PageForm';
-import validate from './validate';
+import PageForm from "../../../../shared/components/forms/PageForm";
+import validate from "./validate";
 
 const NewPageForm = (props) => {
   const {
@@ -42,6 +42,6 @@ NewPageForm.propTypes = ({
 });
 
 export default reduxForm({
-  form: 'new_page_form',
+  form: "new_page_form",
   validate
 })(NewPageForm);

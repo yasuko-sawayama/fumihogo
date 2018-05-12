@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
 const Information = ({ id }) => (
   <h1>詳細情報:{id} </h1>

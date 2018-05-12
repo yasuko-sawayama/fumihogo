@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import FontAwesome from 'react-fontawesome';
-import { Row, Col, Button } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import FontAwesome from "react-fontawesome";
+import { Row, Col, Button } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import styled from "styled-components";
 
-import Title from './Title';
-import TableOfContents from './TableOfContents';
-import Description from './Description';
+import Title from "./Title";
+import TableOfContents from "./TableOfContents";
+import Description from "./Description";
 
 const productUrl = id => `/${id}/`;
 

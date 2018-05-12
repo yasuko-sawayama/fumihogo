@@ -1,4 +1,4 @@
-import watchCreateProduct from './createProductSaga';
+import watchCreateProduct from "./createProductSaga";
 
 export default function* productSaga() {
   yield [

@@ -1,11 +1,11 @@
-import { takeEvery, call, put, all } from 'redux-saga/effects';
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import { takeEvery, call, put, all } from "redux-saga/effects";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
-import { postEntities } from '../../../shared/libs/requestsManager';
-import { postProductSuccess, postProductError, clearError } from '../actions/productActionCreators';
-import { redirectToRoot } from '../../../shared/libs/redirects';
-import { CREATE_REQUEST } from '../constants/createProductConstants';
-import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
+import { postEntities } from "../../../shared/libs/requestsManager";
+import { postProductSuccess, postProductError, clearError } from "../actions/productActionCreators";
+import { redirectToRoot } from "../../../shared/libs/redirects";
+import { CREATE_REQUEST } from "../constants/createProductConstants";
+import { PRODUCT_API_ENTRY_POINT } from "../../shared/constants/commonConstants";
 
 export function* postProduct({ payload }) {
   try {

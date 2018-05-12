@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 const Label = ({ name, label }) => (
   <ControlLabel htmlFor={name}>
@@ -22,7 +22,7 @@ const PermissionsListSelector = (props) => {
     }
   } = props;
 
-  return (privacyLevel === 'list') && (
+  return (privacyLevel === "list") && (
     <FormGroup>
       { label && <Label {...input} label={label} /> }
 

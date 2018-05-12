@@ -1,10 +1,10 @@
 // Post Product Container
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import NewPage from '../components/NewPage';
-import * as productActions from '../actions/productActionCreators';
+import NewPage from "../components/NewPage";
+import * as productActions from "../actions/productActionCreators";
 
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = state => ({

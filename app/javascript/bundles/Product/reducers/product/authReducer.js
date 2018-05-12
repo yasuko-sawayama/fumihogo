@@ -1,7 +1,7 @@
 import {
   PRODUCT_FETCH_SUCCESS,
   PRODUCT_FETCH_ERROR
-} from '../../constants/productConstants';
+} from "../../constants/productConstants";
 
 const initialState = {
   update: false,

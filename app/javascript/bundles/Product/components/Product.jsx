@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { Route, Switch } from 'react-router-dom';
-import LoadingBar from 'react-redux-loading-bar';
-import SpinerContainer from '../../shared/containers/SpinerContainer';
-import About from './product/About';
-import Page from './product/Page';
+import { Route, Switch } from "react-router-dom";
+import LoadingBar from "react-redux-loading-bar";
+import SpinerContainer from "../../shared/containers/SpinerContainer";
+import About from "./product/About";
+import Page from "./product/Page";
 
 class Product extends React.Component {
   static propTypes = {

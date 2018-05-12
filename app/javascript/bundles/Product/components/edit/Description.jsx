@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Field } from 'redux-form';
-import { TwitterShareButton, TwitterIcon } from 'react-share';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Field } from "redux-form";
+import { TwitterShareButton, TwitterIcon } from "react-share";
 
-import PermissionsListSelector from '../../../shared/components/forms/PermissionsListSelector';
-import PrivacyLevelSelector from '../../../shared/components/forms/PrivacyLevelSelector';
-import RIEKTextarea from '../../../shared/components/forms/riek/RIEKTextarea';
+import PermissionsListSelector from "../../../shared/components/forms/PermissionsListSelector";
+import PrivacyLevelSelector from "../../../shared/components/forms/PrivacyLevelSelector";
+import RIEKTextarea from "../../../shared/components/forms/riek/RIEKTextarea";
 
 const url = location.href;
 
@@ -21,7 +21,7 @@ const Description = ({
     updatedPrivacyLevel
   },
   title,
-  description = '',
+  description = "",
   about: {
     created_at,
     character_count,

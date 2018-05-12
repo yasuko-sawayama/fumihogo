@@ -53,15 +53,17 @@
     "babel-jest": "^22.0.4",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.15.0",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-jest": "^21.6.0",
+    "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "jest": "^22.0.4",
     "jest-enzyme": "^6.0.0",
     "prettier": "^1.12.1",
+    "prettier-eslint": "^8.8.1",
+    "prettier-eslint-cli": "^4.7.1",
     "regenerator-runtime": "^0.11.1",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-dev-server": "2.11.2"
@@ -73,7 +75,8 @@
   "scripts": {
     "test": "jest --coverage",
     "bundle-stats": "webpack-bundle-analyzer dist/stats.json",
-    "lint": "eslint --ext .js,.jsx --fix ./app/javascript/"
+    "lint": "eslint --ext .js,.jsx --fix ./app/javascript/",
+    "format": "prettier-eslint \"app/javascript/**/*.js\""
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",

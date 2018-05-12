@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
-import { join } from '../../../shared/utils/join';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
+import { join } from "../../../shared/utils/join";
+import styled from "styled-components";
 
-const StyledLink = styled(NavLink).attrs('active')`
+const StyledLink = styled(NavLink).attrs("active")`
 &.active {
     color: #fff;
     background-color: #EB6864;
@@ -16,7 +16,7 @@ const PageLink = ({
 }) => (
   <li>
     <StyledLink activeClassName="active" to={join(url, `/pages/${position}`)}>
-      {position}.{' '}
+      {position}.{" "}
       {title}
     </StyledLink>
   </li>

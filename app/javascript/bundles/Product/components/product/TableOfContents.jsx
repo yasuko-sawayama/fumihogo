@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Panel } from 'react-bootstrap';
-import onClickOutside from 'react-onclickoutside';
-import FA from 'react-fontawesome';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import { Panel } from "react-bootstrap";
+import onClickOutside from "react-onclickoutside";
+import FA from "react-fontawesome";
+import styled from "styled-components";
 
-import PageLink from './PageLink';
+import PageLink from "./PageLink";
 
 const StyledPanel = styled(Panel)`
 margin-top: 20px;
@@ -41,7 +41,7 @@ class TableOfContents extends React.Component {
 
     this.state = {
       open: true,
-      allowIcon: 'toggle-up'
+      allowIcon: "toggle-up"
     };
 
     this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -50,13 +50,13 @@ class TableOfContents extends React.Component {
 
   // react-onclickoutside用設定
   handleClickOutside() {
-    this.setState({ open: false, allowIcon: 'toggle-down' });
+    this.setState({ open: false, allowIcon: "toggle-down" });
   }
 
   togglePanel() {
     this.setState({
       open: !this.state.open,
-      allowIcon: this.state.open ? 'toggle-down' : 'toggle-up'
+      allowIcon: this.state.open ? "toggle-down" : "toggle-up"
     });
   }
 

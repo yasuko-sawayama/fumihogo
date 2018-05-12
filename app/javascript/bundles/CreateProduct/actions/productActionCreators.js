@@ -3,9 +3,9 @@
 import {
   CREATE_REQUEST, CREATE_SUCCESS,
   CREATE_ERROR, CLEAR_ERROR
-} from '../constants/createProductConstants';
+} from "../constants/createProductConstants";
 
-import getProductAttributes from '../libs/getProductAttributes';
+import getProductAttributes from "../libs/getProductAttributes";
 
 export const createProduct = data => ({
   type: CREATE_REQUEST,

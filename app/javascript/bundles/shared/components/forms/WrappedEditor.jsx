@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import ControlledEditor from './ControlledEditor';
+import ControlledEditor from "./ControlledEditor";
 
 const WrapperEditor = (props) => {
   const {

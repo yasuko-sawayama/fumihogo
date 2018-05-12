@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { RIETextArea } from 'riek';
+import React from "react";
+import PropTypes from "prop-types";
+import { RIETextArea } from "riek";
 
 class RIEKTextarea extends React.Component {
   static propTypes = {
@@ -37,7 +37,7 @@ class RIEKTextarea extends React.Component {
 
   render() {
     const {
-      input, className = '', rows = 3, cols = 50, ...props
+      input, className = "", rows = 3, cols = 50, ...props
     } = this.props;
     return (
       <RIETextArea

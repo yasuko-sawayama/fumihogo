@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import FontAwesome from 'react-fontawesome';
-import { Alert, Button } from 'react-bootstrap';
+import React from "react";
+import PropTypes from "prop-types";
+import FontAwesome from "react-fontawesome";
+import { Alert, Button } from "react-bootstrap";
 
 class MessageAlert extends React.Component {
   constructor(props, context) {

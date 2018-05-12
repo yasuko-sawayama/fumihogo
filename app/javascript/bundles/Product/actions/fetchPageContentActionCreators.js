@@ -4,7 +4,7 @@ import {
   PAGE_CONTENT_FETCH_SUCCESS,
   PAGE_CONTENT_FETCH_ERROR,
   PAGE_CONTENT_FETCH_REQUESTED
-} from '../constants/productConstants';
+} from "../constants/productConstants";
 
 export const fetchPageContent = (productId, id) => ({
   type: PAGE_CONTENT_FETCH_REQUESTED,

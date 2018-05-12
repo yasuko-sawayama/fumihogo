@@ -1,0 +1,5 @@
+{
+  "singleQuate": true,
+  "printWidth": 100,
+  "parser": "flow"
+}

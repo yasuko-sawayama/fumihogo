@@ -1,4 +1,4 @@
-import { PAGE_CHANGED } from '../../constants/productConstants';
+import { PAGE_CHANGED } from "../../constants/productConstants";
 
 const currentPageReducer = (state = 1, action) => {
   switch (action.type) {

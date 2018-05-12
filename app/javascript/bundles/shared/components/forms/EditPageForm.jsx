@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
-import FontAwesome from 'react-fontawesome';
+import React from "react";
+import PropTypes from "prop-types";
+import { Field } from "redux-form";
+import FontAwesome from "react-fontawesome";
 
-import RIEKInput from '../../../shared/components/forms/riek/RIEKInput';
-import EditorField from './EditorField';
+import RIEKInput from "../../../shared/components/forms/riek/RIEKInput";
+import EditorField from "./EditorField";
 
 const EditPageForm = ({ id, pageId = 1 }) => (
   <div id="pageContent">
     <h3>
       ページタイトル
-      {'　'}
+      {"　"}
       <FontAwesome name="quote-left" />
       <Field
         name="title"

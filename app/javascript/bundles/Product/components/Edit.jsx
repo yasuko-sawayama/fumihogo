@@ -1,22 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { NavLink, Route, Switch } from 'react-router-dom';
-import LoadingBar from 'react-redux-loading-bar';
-import ReactLoading from 'react-loading';
-import { Field } from 'redux-form';
-import { Button } from 'react-bootstrap';
-import FontAwesome from 'react-fontawesome';
-import styled from 'styled-components';
+import { NavLink, Route, Switch } from "react-router-dom";
+import LoadingBar from "react-redux-loading-bar";
+import ReactLoading from "react-loading";
+import { Field } from "redux-form";
+import { Button } from "react-bootstrap";
+import FontAwesome from "react-fontawesome";
+import styled from "styled-components";
 
-import SpinerContainer from '../../shared/containers/SpinerContainer';
-import About from './edit/About';
-import Page from './product/Page';
-import NewPage from './edit/NewPage';
-import InfoAlert from '../../shared/components/InfoAlert';
-import PageEditContainer from '../containers/PageEditContainer';
+import SpinerContainer from "../../shared/containers/SpinerContainer";
+import About from "./edit/About";
+import Page from "./product/Page";
+import NewPage from "./edit/NewPage";
+import InfoAlert from "../../shared/components/InfoAlert";
+import PageEditContainer from "../containers/PageEditContainer";
 
-import { pageDestroy } from '../actions/pageDestroyActionCreators';
+import { pageDestroy } from "../actions/pageDestroyActionCreators";
 
 class Edit extends React.Component {
   static propTypes = {
@@ -47,8 +47,8 @@ class Edit extends React.Component {
     } = this.props;
     const { editAttributes: { updatedPrivacyLevel, permissions_list_id } } = nextProps;
 
-    if (updatedPrivacyLevel === 'list' && !permissions_list_id) {
-      dispatch(change('permissions_list_id', permissions_lists[0].id));
+    if (updatedPrivacyLevel === "list" && !permissions_list_id) {
+      dispatch(change("permissions_list_id", permissions_lists[0].id));
     }
   }
 
@@ -83,7 +83,7 @@ margin: 0;
         >
           変更を保存
         </Button>
-        {' '}
+        {" "}
         <button type="button" disabled={pristine || submitting} onClick={reset} className="btn btn-default">
           キャンセル
         </button>
