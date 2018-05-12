@@ -8,19 +8,15 @@ import styled from "styled-components";
 import Title from "./Title";
 import TableOfContents from "./TableOfContents";
 import Description from "./Description";
-
-const productUrl = id => `/${id}/`;
+import { productUrl } from "../../libs/utils";
 
 const ButtonCol = styled(Col)`
-padding-top: 20px;
+  padding-top: 20px;
 `;
 
 const AddButton = ({ id }) => (
   <ButtonCol sm={2}>
-    <LinkContainer
-      to={`${productUrl(id)}pages/new`}
-      activeClassName="hidden"
-    >
+    <LinkContainer to={`${productUrl(id)}pages/new`} activeClassName="hidden">
       <Button bsStyle="primary">
         <FontAwesome name="plus-square" />
         ページ追加
@@ -31,15 +27,7 @@ const AddButton = ({ id }) => (
 
 const About = ({
   currentUser,
-  product: {
-    id,
-    title,
-    description,
-    author,
-    about,
-    pages,
-    auth
-  }
+  product: { id, title, description, author, about, pages, auth }
 }) => (
   <section id="about">
     <Title title={title} />
@@ -52,9 +40,9 @@ const About = ({
     />
     <Row>
       <div className="col-sm-10">
-        { about.pageCount > 1 && <TableOfContents pages={pages} url={productUrl(id)} /> }
+        {about.pageCount > 1 && <TableOfContents pages={pages} productId={id} />}
       </div>
-      { auth.update && <AddButton id={id} /> }
+      {auth.update && <AddButton id={id} />}
     </Row>
   </section>
 );

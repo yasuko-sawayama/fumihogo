@@ -6,6 +6,7 @@ import LoadingBar from "react-redux-loading-bar";
 import SpinerContainer from "../../shared/containers/SpinerContainer";
 import About from "./product/About";
 import Page from "./product/Page";
+import { SocialLink } from "./shared";
 
 class Product extends React.Component {
   static propTypes = {
@@ -33,6 +34,7 @@ class Product extends React.Component {
         <section id="product">
           <SpinerContainer />
           <About {...this.props} />
+          <SocialLink {...this.props.product} />
           <hr />
           <Switch>
             <Route
@@ -48,12 +50,14 @@ class Product extends React.Component {
             />
             <Route
               path="/"
-              render={props => (<Page
-                {...props}
-                product={this.props.product}
-                currentUser={this.props.currentUser}
-                actions={this.props.actions}
-              />)}
+              render={props => (
+                <Page
+                  {...props}
+                  product={this.props.product}
+                  currentUser={this.props.currentUser}
+                  actions={this.props.actions}
+                />
+              )}
             />
           </Switch>
         </section>

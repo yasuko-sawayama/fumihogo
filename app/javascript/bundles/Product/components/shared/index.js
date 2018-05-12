@@ -1,3 +1,3 @@
 /* eslint-disable import/prefer-default-export */
 
-export { default as TwitterLink } from "./TwitterIcon";
+export { default as SocialLink } from "./SocialLink";
