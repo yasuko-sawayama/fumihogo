@@ -15,6 +15,7 @@ import Page from "./product/Page";
 import NewPage from "./edit/NewPage";
 import InfoAlert from "../../shared/components/InfoAlert";
 import PageEditContainer from "../containers/PageEditContainer";
+import SocialLink from "./shared/SocialLink";
 
 import { pageDestroy } from "../actions/pageDestroyActionCreators";
 
@@ -42,10 +43,13 @@ class Edit extends React.Component {
 
   componentWillUpdate(nextProps) {
     const {
-      dispatch, change,
+      dispatch,
+      change,
       currentUser: { permissions_lists }
     } = this.props;
-    const { editAttributes: { updatedPrivacyLevel, permissions_list_id } } = nextProps;
+    const {
+      editAttributes: { updatedPrivacyLevel, permissions_list_id }
+    } = nextProps;
 
     if (updatedPrivacyLevel === "list" && !permissions_list_id) {
       dispatch(change("permissions_list_id", permissions_lists[0].id));
@@ -57,34 +61,27 @@ class Edit extends React.Component {
   }
 
   render() {
-    const {
-      values,
-      dirty,
-      reset,
-      handleSubmit,
-      pristine,
-      submitting
-    } = this.props;
+    const { values, dirty, reset, handleSubmit, pristine, submitting } = this.props;
 
     const { id } = this.props.product;
 
     const TrashButton = styled(Button)`
-.fa {
-margin: 0;
-}
-`;
+      .fa {
+        margin: 0;
+      }
+    `;
 
     const SubmitButton = () => (
       <div>
-        <Button
-          bsStyle="primary"
-          type="submit"
-          disabled={pristine || submitting}
-        >
+        <Button bsStyle="primary" type="submit" disabled={pristine || submitting}>
           変更を保存
-        </Button>
-        {" "}
-        <button type="button" disabled={pristine || submitting} onClick={reset} className="btn btn-default">
+        </Button>{" "}
+        <button
+          type="button"
+          disabled={pristine || submitting}
+          onClick={reset}
+          className="btn btn-default"
+        >
           キャンセル
         </button>
         <TrashButton bsStyle="default" onClick={this.handleDestroy} className="pull-right">
@@ -98,28 +95,30 @@ margin: 0;
         <LoadingBar />
         <section id="product">
           <SpinerContainer />
-          <InfoAlert
-            message="各項目をクリックすると変更できます."
-          />
-          <form onSubmit={handleSubmit(values => console.log(values) || this.props.actions.updateProduct(values, { id }))} >
+          <InfoAlert message="各項目をクリックすると変更できます." />
+          <form
+            onSubmit={handleSubmit(
+              values => console.log(values) || this.props.actions.updateProduct(values, { id })
+            )}
+          >
             <SubmitButton />
             <About {...this.props} />
           </form>
+          <SocialLink {...this.props.product} />
           <hr />
           <Switch>
             <Route
               path={`/${id}/pages/new/`}
-              render={props => (<NewPage
-                {...props}
-                currentUser={this.props.currentUser}
-                product={this.props.product}
-                actions={this.props.actions}
-              />)}
+              render={props => (
+                <NewPage
+                  {...props}
+                  currentUser={this.props.currentUser}
+                  product={this.props.product}
+                  actions={this.props.actions}
+                />
+              )}
             />
-            <Route
-              path={`/${id}/pages/:pageId(\\d+)?/`}
-              component={PageEditContainer}
-            />
+            <Route path={`/${id}/pages/:pageId(\\d+)?/`} component={PageEditContainer} />
             <Route path="/" component={PageEditContainer} />
           </Switch>
         </section>

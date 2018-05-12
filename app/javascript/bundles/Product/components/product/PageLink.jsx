@@ -22,7 +22,7 @@ const PageLink = ({ api, position, title, productId }) => (
 
 PageLink.propTypes = {
   position: PropTypes.number.isRequired,
-  productId: PropTypes.number.isRequired,
+  productId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 };
 

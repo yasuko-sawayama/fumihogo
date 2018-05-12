@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { TwitterShareButton, TwitterIcon } from "react-share";
 
-const TwitterLink = ({ url, title }) => (
+const TwitterLink = ({ title }) => (
   <div className="pull-right">
-    <TwitterShareButton url={url} title={`${title}`} >
+    <TwitterShareButton url={window.location.href} title={`${title}`}>
       <TwitterIcon size={32} round />
     </TwitterShareButton>
   </div>
