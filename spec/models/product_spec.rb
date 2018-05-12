@@ -50,4 +50,13 @@ RSpec.describe Product, type: :model do
       expect(Product.with_privacy_level(:public_open)).to include(product)
     end
   end
+
+  describe '#destroy' do
+    subject(:destroy) { product.destroy! }
+
+    let!(:product) { create(:product) }
+
+    it { expect { destroy }.not_to raise_error }
+    it { expect { destroy }.to change(Product, :count).by(-1) }
+  end
 end

@@ -1,16 +1,16 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
-import { push } from 'react-router-redux';
+import { takeEvery, call, put } from "redux-saga/effects";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
+import { push } from "react-router-redux";
 
-import { deleteEntity } from '../../../shared/libs/requestsManager';
-import { pageDestroySuccess, pageDestroyError } from '../actions/pageDestroyActionCreators';
+import { deleteEntity } from "../../../shared/libs/requestsManager";
+import { pageDestroySuccess, pageDestroyError } from "../actions/pageDestroyActionCreators";
 
-import { PAGE_DESTROY_REQUESTED } from '../constants/pageEditConstants';
-import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
+import { PAGE_DESTROY_REQUESTED } from "../constants/pageEditConstants";
+import { PRODUCT_API_ENTRY_POINT } from "../../shared/constants/commonConstants";
 
-export function* destroyPage({ payload, }) {
+export function* destroyPage({ payload }) {
   try {
-    yield put(showLoading('content'));
+    yield put(showLoading("content"));
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.id}/pages/${payload.pageId}`;
     const response = yield call(deleteEntity, url);
     yield [
@@ -20,7 +20,7 @@ export function* destroyPage({ payload, }) {
   } catch (error) {
     yield put(pageDestroyError(error));
   } finally {
-    yield put(hideLoading('content'));
+    yield put(hideLoading("content"));
   }
 }
 

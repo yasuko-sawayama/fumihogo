@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const Article = styled.article`
 line-height: 1.8;
@@ -15,7 +15,7 @@ margin-right: 0.8em;
 const Content = ({
   pageTitle, content,
   pageId, totalPage,
-  impressionCount,
+  impressionCount
 }) => (
   <div className="row">
     <div className="col-xs-12">
@@ -24,9 +24,11 @@ const Content = ({
       <Count className="count pull-right text-muted">閲覧数：{impressionCount}</Count>
     </div>
 
-    <Article id="content"
-             className="col-xs-12"
-             dangerouslySetInnerHTML={{ __html: content }} />
+    <Article
+      id="content"
+      className="col-xs-12"
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
   </div>
 );
 
@@ -35,7 +37,7 @@ Content.propTypes = ({
   pageId: PropTypes.number.isRequired,
   totalPage: PropTypes.number.isRequired,
   content: PropTypes.string.isRequired,
-  impressionCount: PropTypes.number.isRequired,
+  impressionCount: PropTypes.number.isRequired
 });
 
 export default Content;

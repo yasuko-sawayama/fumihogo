@@ -2,7 +2,7 @@ import {
   PRODUCT_FETCH_SUCCESS,
   PRODUCT_FETCH_ERROR,
   PRODUCT_UPDATE_SUCCESS
-} from '../../constants/productConstants';
+} from "../../constants/productConstants";
 
 
 const infoReducer = (state = {}, action) => {

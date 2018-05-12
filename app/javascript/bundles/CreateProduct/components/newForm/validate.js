@@ -1,4 +1,4 @@
-const validate = values => {
+const validate = (values) => {
   const errors = {};
   if (!values.title) {
     errors.title = "タイトルを入力してください。";
@@ -10,7 +10,7 @@ const validate = values => {
     errors.description = "概要は200文字以内で入力して下さい。";
   }
   if (values.pageTitle && values.pageTitle.length > 45) {
-    errors.pageTitle = "章タイトルの長さは45文字以下にしてください。"
+    errors.pageTitle = "章タイトルの長さは45文字以下にしてください。";
   }
   if (!values.content) {
     errors.content = "本文を入力して下さい。";

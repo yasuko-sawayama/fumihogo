@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Field } from 'redux-form';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Field } from "redux-form";
 
-import EditPageForm from '../../../shared/components/forms/EditPageForm';
+import EditPageForm from "../../../shared/components/forms/EditPageForm";
 // import validate from './validate';
 
-const PageEditForm = props => {
+const PageEditForm = (props) => {
   const {
     pristine,
     reset,
@@ -17,9 +17,9 @@ const PageEditForm = props => {
       id,
       currentPage,
       about: {
-        impressionCount,
-      },
-    },
+        impressionCount
+      }
+    }
   } = props;
   return (
     <div className="row">

@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { RIETextArea } from 'riek';
+import React from "react";
+import PropTypes from "prop-types";
+import { RIETextArea } from "riek";
 
 class RIEKTextarea extends React.Component {
   static propTypes = {
     input: PropTypes.any.isRequired,
-    className: PropTypes.string,
+    className: PropTypes.string
   }
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       text: props.input.value
@@ -36,14 +36,17 @@ class RIEKTextarea extends React.Component {
   }
 
   render() {
-    const {input, className="", rows=3, cols=50, ...props} = this.props
-    return(
+    const {
+      input, className = "", rows = 3, cols = 50, ...props
+    } = this.props;
+    return (
       <RIETextArea
         value={input.value}
         change={this.changeCallback}
         propName={input.name}
         className={className}
-        editProps={{rows, cols}}/>
+        editProps={{ rows, cols }}
+      />
     );
   }
 }

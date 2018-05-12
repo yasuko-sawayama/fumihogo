@@ -1,15 +1,15 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
+import { takeLatest, call, put } from "redux-saga/effects";
+import { push } from "react-router-redux";
 
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
-import { fetchEntities } from '../../../shared/libs/requestsManager';
-import { fetchProductSuccess, fetchProductError } from '../actions/productActionCreators';
+import { fetchEntities } from "../../../shared/libs/requestsManager";
+import { fetchProductSuccess, fetchProductError } from "../actions/productActionCreators";
 
-import { PRODUCT_FETCH_REQUESTED } from '../constants/productConstants';
-import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
+import { PRODUCT_FETCH_REQUESTED } from "../constants/productConstants";
+import { PRODUCT_API_ENTRY_POINT } from "../../shared/constants/commonConstants";
 
-export function* fetchProductInfo({ payload, }) {
+export function* fetchProductInfo({ payload }) {
   try {
     yield put(showLoading());
     const url = `${PRODUCT_API_ENTRY_POINT}/${payload.productId}/`;
@@ -18,8 +18,8 @@ export function* fetchProductInfo({ payload, }) {
   } catch (error) {
     yield [
       put(fetchProductError(error)),
-      put(push('/'))
-    ]
+      put(push("/"))
+    ];
   } finally {
     yield put(hideLoading());
   }
