@@ -1,13 +1,13 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import { takeEvery, call, put } from "redux-saga/effects";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
-import { updateEntities } from '../../../shared/libs/requestsManager';
-import { updateProductSuccess, updateProductError } from '../actions/productEditActionCreators';
+import { updateEntities } from "../../../shared/libs/requestsManager";
+import { updateProductSuccess, updateProductError } from "../actions/productEditActionCreators";
 
-import { PRODUCT_UPDATE_REQUESTED } from '../constants/productConstants';
-import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
+import { PRODUCT_UPDATE_REQUESTED } from "../constants/productConstants";
+import { PRODUCT_API_ENTRY_POINT } from "../../shared/constants/commonConstants";
 
-export function* updateProduct({ payload, }) {
+export function* updateProduct({ payload }) {
   try {
     yield put(showLoading());
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.id}/`;

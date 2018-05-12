@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 
-import React from 'react';
+import React from "react";
 
-const rrd = require('react-router-dom');
+const rrd = require("react-router-dom");
 // Just render plain div with its children
-rrd.BrowserRouter = ({ children, }) => <div>{children}</div>;
+rrd.BrowserRouter = ({ children }) => <div>{children}</div>;
 
 module.exports = rrd;

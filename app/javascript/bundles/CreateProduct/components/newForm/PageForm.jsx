@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
+import React from "react";
+import PropTypes from "prop-types";
+import { Field } from "redux-form";
 
-import BootstrapField from '../../../shared/components/forms/BootstrapField';
-import EditorField from '../../../shared/components/forms/EditorField';
+import BootstrapField from "../../../shared/components/forms/BootstrapField";
+import EditorField from "../../../shared/components/forms/EditorField";
 
 const description = () => (
   <div className="description">

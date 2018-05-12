@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import ReactLoading from 'react-loading';
-import ReactDelayRender from 'react-delay-render';
-import DisplayGrayWrapper from '../DisplayGrayWrapper';
+import ReactLoading from "react-loading";
+import ReactDelayRender from "react-delay-render";
+import DisplayGrayWrapper from "../DisplayGrayWrapper";
 
 class InnerSpiner extends React.Component {
   render() {

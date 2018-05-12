@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import InnerSpiner from './spiner/InnerSpiner';
+import InnerSpiner from "./spiner/InnerSpiner";
 
 class Spiner extends React.Component {
   static propTypes = {

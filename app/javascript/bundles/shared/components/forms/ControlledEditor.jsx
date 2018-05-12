@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw, convertFromRaw, ContentState } from 'draft-js';
-import { draftToMarkdown, markdownToDraft } from 'markdown-draft-js';
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState, convertToRaw, convertFromRaw, ContentState } from "draft-js";
+import { draftToMarkdown, markdownToDraft } from "markdown-draft-js";
 
 class ControlledEditor extends React.Component {
   constructor(props) {
@@ -86,7 +86,7 @@ class ControlledEditor extends React.Component {
 
     return (
       <div
-        className={this.state.readOnly ? null : 'pageEditor'}
+        className={this.state.readOnly ? null : "pageEditor"}
         onDoubleClick={this.onDoubleClick}
         onBlur={this.onBlur}
       >
@@ -96,7 +96,7 @@ class ControlledEditor extends React.Component {
           editorClassName="editorArea"
           toolbarOnFocus={this.state.pageEdit}
           toolbar={{
-            options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'colorPicker', 'link', 'emoji', 'history'],
+            options: ["inline", "blockType", "fontSize", "list", "textAlign", "colorPicker", "link", "emoji", "history"],
             list: { inDropdown: true },
             textAlign: { inDropdown: true },
             link: { inDropdown: true },

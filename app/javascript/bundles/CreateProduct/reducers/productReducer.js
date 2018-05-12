@@ -1,4 +1,4 @@
-import { CREATE_SUCCESS } from '../constants/createProductConstants';
+import { CREATE_SUCCESS } from "../constants/createProductConstants";
 
 const productReducer = (state = {}, action) => {
   switch (action.type) {

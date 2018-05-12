@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import LoadingBar from 'react-redux-loading-bar';
-import SpinerContainer from '../../shared/containers/SpinerContainer';
-import SuccessDialog from './SuccessDialog';
-import { reset } from 'redux-form';
+import React from "react";
+import PropTypes from "prop-types";
+import LoadingBar from "react-redux-loading-bar";
+import SpinerContainer from "../../shared/containers/SpinerContainer";
+import SuccessDialog from "./SuccessDialog";
+import { reset } from "redux-form";
 
-import NewForm from './NewForm';
-import Title from '../../Product/components/product/Title';
-import ErrorAlert from '../../shared/components/ErrorAlert';
+import NewForm from "./NewForm";
+import Title from "../../Product/components/product/Title";
+import ErrorAlert from "../../shared/components/ErrorAlert";
 
 class NewPage extends React.Component {
   static propTypes = {

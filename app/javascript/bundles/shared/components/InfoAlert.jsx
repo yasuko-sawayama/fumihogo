@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Alert, Button } from 'react-bootstrap';
-import FontAwesome from 'react-fontawesome';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Alert, Button } from "react-bootstrap";
+import FontAwesome from "react-fontawesome";
 
 class InfoAlert extends React.Component {
   constructor(props) {

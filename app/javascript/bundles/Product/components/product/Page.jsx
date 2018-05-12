@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import Content from './Content';
-import Pager from './Pager';
+import Content from "./Content";
+import Pager from "./Pager";
 
 class Page extends React.Component {
   static propTypes = {
     product: PropTypes.shape({
       id: PropTypes.number.isRequired,
       pageInfo: PropTypes.shape({
-        impressionCount: PropTypes.number.isRequired,
+        impressionCount: PropTypes.number.isRequired
       }).isRequired,
       currentPage: PropTypes.number.isRequired,
-      content: PropTypes.string.isRequired,
-    }),
+      content: PropTypes.string.isRequired
+    })
   }
 
   constructor(props) {
@@ -29,7 +29,7 @@ class Page extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { pageId, } = this.props.match.params;
+    const { pageId } = this.props.match.params;
 
 
     if (pageId && pageId !== nextProps.match.params.pageId) {

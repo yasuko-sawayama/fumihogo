@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Alert, Button } from 'react-bootstrap';
-import FontAwesome from 'react-fontawesome';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Alert, Button } from "react-bootstrap";
+import FontAwesome from "react-fontawesome";
 
-import ErrorList from './errors/ErrorList';
+import ErrorList from "./errors/ErrorList";
 
 class ErrorAlert extends React.Component {
   constructor(props, context) {

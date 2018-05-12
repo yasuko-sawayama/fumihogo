@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import { join } from '../../../shared/utils/join';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { join } from "../../../shared/utils/join";
 
 const StyledLink = styled.li`
   .active {
@@ -11,7 +11,7 @@ const StyledLink = styled.li`
   }
 `;
 
-const PageLink = ({ id, title, url, }) => (
+const PageLink = ({ id, title, url }) => (
   <StyledLink>
     <NavLink activeClassName="active" to={join(url, `/pages/${id}`)}>
       {id}. {title}
@@ -20,13 +20,13 @@ const PageLink = ({ id, title, url, }) => (
 );
 
 PageLink.defaultProps = {
-  title: '',
+  title: ""
 };
 
 PageLink.propTypes = {
   id: PropTypes.number.isRequired,
   url: PropTypes.string.isRequired,
-  title: PropTypes.string,
+  title: PropTypes.string
 };
 
 export default PageLink;

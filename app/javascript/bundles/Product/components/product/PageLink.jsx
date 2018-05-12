@@ -1,31 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
-import { join } from '../../../shared/utils/join';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 
-const StyledLink = styled(NavLink).attrs('active')`
-&.active {
+import { pageUrl } from "../../libs/utils";
+
+const StyledLink = styled(NavLink).attrs("active")`
+  &.active {
     color: #fff;
-    background-color: #EB6864;
-}
+    background-color: #eb6864;
+  }
 `;
 
-const PageLink = ({
-  api, position, title, url,
-}) => (
+const PageLink = ({ api, position, title, productId }) => (
   <li>
-    <StyledLink activeClassName="active" to={join(url, `/pages/${position}`)}>
-      {position}.{' '}
-      {title}
+    <StyledLink activeClassName="active" to={pageUrl(position, productId)}>
+      {position}. {title}
     </StyledLink>
   </li>
 );
 
 PageLink.propTypes = {
   position: PropTypes.number.isRequired,
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  productId: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default PageLink;

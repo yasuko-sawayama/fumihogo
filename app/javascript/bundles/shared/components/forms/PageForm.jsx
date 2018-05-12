@@ -1,8 +1,8 @@
-import React from 'react';
-import { Field } from 'redux-form';
+import React from "react";
+import { Field } from "redux-form";
 
-import BootstrapField from './BootstrapField';
-import EditorField from './EditorField';
+import BootstrapField from "./BootstrapField";
+import EditorField from "./EditorField";
 
 const Notice = () => (
   <div className="description">

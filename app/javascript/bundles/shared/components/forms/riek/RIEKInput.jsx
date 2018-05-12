@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { RIEInput } from 'riek';
+import React from "react";
+import PropTypes from "prop-types";
+import { RIEInput } from "riek";
 
 class RIEKInput extends React.Component {
   static propTypes = {
@@ -38,7 +38,7 @@ class RIEKInput extends React.Component {
     const {
       input,
       size = 20,
-      className = '',
+      className = "",
       meta: {
         touched,
         error,
@@ -52,7 +52,7 @@ class RIEKInput extends React.Component {
         <RIEInput
           propName={input.name}
 
-          value={this.state.text || '　　　　　'}
+          value={this.state.text || "　　　　　"}
           change={this.changeCallback}
           editProps={{
             size

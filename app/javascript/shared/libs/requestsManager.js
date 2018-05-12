@@ -1,15 +1,15 @@
 /* eslint-disable import/prefer-default-export */
 
-import axios from 'axios';
-import ReactOnRails from 'react-on-rails';
+import axios from "axios";
+import ReactOnRails from "react-on-rails";
 
 // const API_ENTRY_URL = '/api/v1/';
 
 export const fetchEntities = (url, options = {}) => (
   axios({
-    method: 'GET',
+    method: "GET",
     url,
-    responseType: 'json',
+    responseType: "json",
     headers: ReactOnRails.authenticityHeaders(),
     ...options
   })
@@ -17,7 +17,7 @@ export const fetchEntities = (url, options = {}) => (
 
 export const postEntities = (url, data, options = {}) => (
   axios({
-    method: 'POST',
+    method: "POST",
     url,
     data,
     headers: ReactOnRails.authenticityHeaders(),
@@ -27,7 +27,7 @@ export const postEntities = (url, data, options = {}) => (
 
 export const updateEntities = (url, data, options = {}) => (
   axios({
-    method: 'PATCH',
+    method: "PATCH",
     url,
     data,
     headers: ReactOnRails.authenticityHeaders(),
@@ -37,7 +37,7 @@ export const updateEntities = (url, data, options = {}) => (
 
 export const deleteEntity = (url, options = {}) => (
   axios({
-    method: 'DELETE',
+    method: "DELETE",
     url,
     headers: ReactOnRails.authenticityHeaders(),
     ...options
