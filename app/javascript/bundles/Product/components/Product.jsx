@@ -10,7 +10,7 @@ import { SocialLink } from "./shared";
 
 class Product extends React.Component {
   static propTypes = {
-    currentUser: PropTypes.shape().isRequired,
+    currentUser: PropTypes.shape(),
     product: PropTypes.shape().isRequired,
     actions: PropTypes.shape({
       fetchProduct: PropTypes.func.isRequired

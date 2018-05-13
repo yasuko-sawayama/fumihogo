@@ -42,7 +42,7 @@ class TableOfContents extends React.Component {
   render() {
     return (
       <div id="pagePanel">
-        <StyledPanel expanded={this.state.open}>
+        <StyledPanel defaultExpanded expanded={this.state.open} onToggle={() => {}}>
           <Panel.Heading>
             <Panel.Title onClick={this.togglePanel}>
               もくじ
