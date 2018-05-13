@@ -5,7 +5,7 @@ import onClickOutside from "react-onclickoutside";
 import FA from "react-fontawesome";
 import styled from "styled-components";
 
-import PageLink from "../shared/PageLink";
+import InnerTable from "./tableOfContents/InnerTable";
 
 const StyledPanel = styled(Panel)`
   margin-top: 20px;
@@ -14,38 +14,25 @@ const StyledPanel = styled(Panel)`
   }
 `;
 
-const tableOfContents = ({ pages, productId }) => {
-  const pageLinks = pages.map(page => (
-    <PageLink key={page.position} {...page} productId={productId} />
-  ));
-
-  return (
-    <div className="tableOfContents">
-      <ol className="nav nav-pills nav-stacked">{pageLinks}</ol>
-    </div>
-  );
-};
-
-tableOfContents.propTypes = {
-  pages: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired
-    })
-  ).isRequired,
-  id: PropTypes.number.isRequired
-};
-
 class TableOfContents extends React.Component {
+  static propTypes = {
+    isOpen: PropTypes.bool.isRequired
+  };
+
   constructor(props) {
     super(props);
 
     this.state = {
-      open: true,
+      open: props.isOpen,
       allowIcon: "toggle-up"
     };
 
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.togglePanel = this.togglePanel.bind(this);
+  }
+
+  componentWillReceiveProps(nextProp) {
+    this.setState({ open: nextProp.isOpen });
   }
 
   // react-onclickoutside用設定
@@ -63,14 +50,16 @@ class TableOfContents extends React.Component {
   render() {
     return (
       <div id="pagePanel">
-        <StyledPanel expanded={this.state.open}>
+        <StyledPanel expanded={this.state.open} onToggle={() => {}}>
           <Panel.Heading>
             <Panel.Title onClick={this.togglePanel}>
               もくじ
               <FA name={this.state.allowIcon} />
             </Panel.Title>
           </Panel.Heading>
-          <Panel.Body collapsible>{tableOfContents(this.props)}</Panel.Body>
+          <Panel.Body collapsible>
+            <InnerTable {...this.props} />
+          </Panel.Body>
         </StyledPanel>
       </div>
     );
