@@ -19,7 +19,7 @@ SocialLink.propTypes = {
   id: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  pages: PropTypes.arrayOf
+  pages: PropTypes.array
 };
 
 export default SocialLink;

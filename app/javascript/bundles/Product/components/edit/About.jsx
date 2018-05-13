@@ -43,7 +43,7 @@ const About = ({
     />
     <Row>
       <div className="col-sm-10">
-        {about.pageCount > 1 && <TableOfContents pages={pages} url={productUrl(id)} />}
+        {about.pageCount > 1 && <TableOfContents pages={pages} productId={id} />}
       </div>
       {auth.update && <AddButton id={id} />}
     </Row>
