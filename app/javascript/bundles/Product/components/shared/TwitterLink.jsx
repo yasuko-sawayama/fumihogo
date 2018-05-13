@@ -11,7 +11,6 @@ const TwitterLink = ({ title }) => (
 );
 
 TwitterLink.propTypes = {
-  url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 };
 

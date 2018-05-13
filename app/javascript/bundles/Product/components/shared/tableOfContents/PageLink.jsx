@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-import { pageUrl } from "../../libs/utils";
+import { pageUrl } from "../../../libs/utils";
 
 const StyledLink = styled(NavLink).attrs("active")`
   &.active {

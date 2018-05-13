@@ -6,8 +6,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import styled from "styled-components";
 
 import Title from "./Title";
-import TableOfContents from "./TableOfContents";
 import Description from "./Description";
+import { TableOfContents } from "../shared";
 import { productUrl } from "../../libs/utils";
 
 const ButtonCol = styled(Col)`

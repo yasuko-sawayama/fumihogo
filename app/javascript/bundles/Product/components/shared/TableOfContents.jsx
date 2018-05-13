@@ -5,7 +5,7 @@ import onClickOutside from "react-onclickoutside";
 import FA from "react-fontawesome";
 import styled from "styled-components";
 
-import PageLink from "../shared/PageLink";
+import InnerTable from "./tableOfContents/InnerTable";
 
 const StyledPanel = styled(Panel)`
   margin-top: 20px;
@@ -13,27 +13,6 @@ const StyledPanel = styled(Panel)`
     cursor: pointer;
   }
 `;
-
-const tableOfContents = ({ pages, productId }) => {
-  const pageLinks = pages.map(page => (
-    <PageLink key={page.position} {...page} productId={productId} />
-  ));
-
-  return (
-    <div className="tableOfContents">
-      <ol className="nav nav-pills nav-stacked">{pageLinks}</ol>
-    </div>
-  );
-};
-
-tableOfContents.propTypes = {
-  pages: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired
-    })
-  ).isRequired,
-  id: PropTypes.number.isRequired
-};
 
 class TableOfContents extends React.Component {
   constructor(props) {
@@ -70,7 +49,9 @@ class TableOfContents extends React.Component {
               <FA name={this.state.allowIcon} />
             </Panel.Title>
           </Panel.Heading>
-          <Panel.Body collapsible>{tableOfContents(this.props)}</Panel.Body>
+          <Panel.Body collapsible>
+            <InnerTable {...this.props} />
+          </Panel.Body>
         </StyledPanel>
       </div>
     );
