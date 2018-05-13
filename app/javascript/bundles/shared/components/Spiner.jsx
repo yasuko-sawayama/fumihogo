@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import InnerSpiner from './spiner/InnerSpiner';
+import InnerSpiner from "./spiner/InnerSpiner";
 
 class Spiner extends React.Component {
   static propTypes = {
     loading: PropTypes.shape({
-      content: PropTypes.number,
-    }),
+      content: PropTypes.number
+    })
   }
 
-  render() {    
+  render() {
     return (
       this.props.loading.content > 0 && <InnerSpiner />
     );
   }
-};
+}
 
 export default Spiner;

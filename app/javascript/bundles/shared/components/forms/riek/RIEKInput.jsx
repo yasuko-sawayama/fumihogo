@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { RIEInput } from 'riek';
+import React from "react";
+import PropTypes from "prop-types";
+import { RIEInput } from "riek";
 
 class RIEKInput extends React.Component {
   static propTypes = {
     input: PropTypes.any.isRequired,
     size: PropTypes.number,
-    className: PropTypes.string,
+    className: PropTypes.string
   }
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       text: props.input.value
@@ -27,25 +27,25 @@ class RIEKInput extends React.Component {
   changeState(value) {
     this.setState({ text: value });
   }
-  
+
   changeCallback(newState) {
     const { [this.props.input.name]: value } = newState;
     this.changeState(value);
     this.props.input.onChange(value);
   }
 
-   render() {
+  render() {
     const {
       input,
-      size=20,
-      className="",
+      size = 20,
+      className = "",
       meta: {
         touched,
         error,
-        warning,
+        warning
       },
       ...props
-    } = this.props
+    } = this.props;
 
     return (
       <span>
@@ -55,14 +55,14 @@ class RIEKInput extends React.Component {
           value={this.state.text || "　　　　　"}
           change={this.changeCallback}
           editProps={{
-            size,
+            size
           }}
           classEditing="form-control"
           className={className}
-          />
-        {touched && ( error || warning ) && <p className="text-danger">{ error || warning }</p>}
+        />
+        {touched && (error || warning) && <p className="text-danger">{ error || warning }</p>}
       </span>
-    )
+    );
   }
 }
 

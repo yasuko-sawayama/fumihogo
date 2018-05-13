@@ -1,9 +1,9 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import React from "react";
+import { Provider } from "react-redux";
 
-import configureStore from '../store/productStore';
+import configureStore from "../store/productStore";
 
-import PostProductContainer from '../containers/PostProductContainer';
+import PostProductContainer from "../containers/PostProductContainer";
 
 
 // See documentation for https://github.com/reactjs/react-redux.

@@ -24,7 +24,11 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:alert] = 'このページを表示する権限がありません。'
-    redirect_to(request.referer || root_path)
+    redirect_to root_path
+  end
+
+  def store_location_for_user!
+    store_location_for(:user, request.fullpath)
   end
 
   private

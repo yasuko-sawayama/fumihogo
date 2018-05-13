@@ -2,7 +2,7 @@ import React from "react";
 
 import ControlledEditor from "./ControlledEditor";
 
-const WrapperEditor = props => {
+const WrapperEditor = (props) => {
   const {
     placeholder,
     input: { onChange, value },
@@ -13,8 +13,8 @@ const WrapperEditor = props => {
     meta: {
       touched,
       error,
-      warning,
-    },
+      warning
+    }
   } = props;
 
   return (
@@ -27,8 +27,8 @@ const WrapperEditor = props => {
         value={value}
         productId={productId}
         pageId={pageId}
-        />
-      {touched && ( error || warning ) && <span className="text-danger">{ error || warning }</span>}
+      />
+      {touched && (error || warning) && <span className="text-danger">{ error || warning }</span>}
     </div>
   );
 };

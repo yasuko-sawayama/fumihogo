@@ -1,14 +1,14 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
+import { takeEvery, call, put } from "redux-saga/effects";
 
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
-import { updateEntities } from '../../../shared/libs/requestsManager';
-import { updatePageSuccess, updatePageError } from '../actions/pageEditActionCreators';
+import { updateEntities } from "../../../shared/libs/requestsManager";
+import { updatePageSuccess, updatePageError } from "../actions/pageEditActionCreators";
 
-import { PAGE_UPDATE_REQUESTED } from '../constants/pageEditConstants';
-import { PRODUCT_API_ENTRY_POINT } from '../../shared/constants/commonConstants';
+import { PAGE_UPDATE_REQUESTED } from "../constants/pageEditConstants";
+import { PRODUCT_API_ENTRY_POINT } from "../../shared/constants/commonConstants";
 
-export function* updatePage({ payload, }) {
+export function* updatePage({ payload }) {
   try {
     yield put(showLoading());
     //    yield put(clearError());
