@@ -28,6 +28,10 @@ class Edit extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      isPanelOpen: props.isPanelOpen
+    };
+
     this.handleDestroy = this.handleDestroy.bind(this);
   }
 
@@ -35,9 +39,10 @@ class Edit extends React.Component {
     this.props.actions.fetchProduct(this.props.product.id);
   }
 
-  componentWillReceiveProps(nextProp) {
-    if (this.props.product.id !== nextProp.product.id) {
-      this.props.actions.fetchProduct(nextProp.product.id);
+  componentWillReceiveProps(nextProps) {
+    if (this.props.product.id !== nextProps.product.id) {
+      this.props.actions.fetchProduct(nextProps.product.id);
+      this.setState({ isPanelOpen: nextProps.isPanelOpen });
     }
   }
 
