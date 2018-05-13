@@ -5,34 +5,34 @@ import onClickOutside from "react-onclickoutside";
 import FA from "react-fontawesome";
 import styled from "styled-components";
 
-import PageLink from "./PageLink";
+import PageLink from "../shared/PageLink";
 
 const StyledPanel = styled(Panel)`
-margin-top: 20px;
-.panel-title {
-  cursor: pointer;
-}
+  margin-top: 20px;
+  .panel-title {
+    cursor: pointer;
+  }
 `;
 
-const tableOfContents = ({ pages, url }) => {
+const tableOfContents = ({ pages, productId }) => {
   const pageLinks = pages.map(page => (
-    <PageLink key={page.id} {...page} url={url} />
+    <PageLink key={page.position} {...page} productId={productId} />
   ));
 
   return (
     <div className="tableOfContents">
-      <ol className="nav nav-pills nav-stacked">
-        {pageLinks}
-      </ol>
+      <ol className="nav nav-pills nav-stacked">{pageLinks}</ol>
     </div>
   );
 };
 
 tableOfContents.propTypes = {
-  pages: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired
-  })).isRequired,
-  url: PropTypes.string.isRequired
+  pages: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired
+    })
+  ).isRequired,
+  id: PropTypes.number.isRequired
 };
 
 class TableOfContents extends React.Component {
@@ -63,19 +63,15 @@ class TableOfContents extends React.Component {
   render() {
     return (
       <div id="pagePanel">
-        <StyledPanel expanded={this.state.open} >
+        <StyledPanel expanded={this.state.open}>
           <Panel.Heading>
-            <Panel.Title onClick={this.togglePanel} >
+            <Panel.Title onClick={this.togglePanel}>
               もくじ
-
               <FA name={this.state.allowIcon} />
             </Panel.Title>
           </Panel.Heading>
-          <Panel.Body collapsible>
-            {tableOfContents(this.props)}
-          </Panel.Body>
+          <Panel.Body collapsible>{tableOfContents(this.props)}</Panel.Body>
         </StyledPanel>
-
       </div>
     );
   }

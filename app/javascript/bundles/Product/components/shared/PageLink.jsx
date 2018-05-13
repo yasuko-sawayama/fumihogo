@@ -1,32 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { join } from "../../../shared/utils/join";
+import styled from "styled-components";
 
-const StyledLink = styled.li`
-  .active {
+import { pageUrl } from "../../libs/utils";
+
+const StyledLink = styled(NavLink).attrs("active")`
+  &.active {
     color: #fff;
     background-color: #eb6864;
   }
 `;
 
-const PageLink = ({ id, title, url }) => (
-  <StyledLink>
-    <NavLink activeClassName="active" to={join(url, `/pages/${id}`)}>
-      {id}. {title}
-    </NavLink>
-  </StyledLink>
+const PageLink = ({ api, position, title, productId }) => (
+  <li>
+    <StyledLink activeClassName="active" to={pageUrl(position, productId)}>
+      {position}. {title}
+    </StyledLink>
+  </li>
 );
 
-PageLink.defaultProps = {
-  title: ""
-};
-
 PageLink.propTypes = {
-  id: PropTypes.number.isRequired,
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string
+  position: PropTypes.number.isRequired,
+  productId: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default PageLink;
