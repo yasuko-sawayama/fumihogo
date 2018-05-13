@@ -14,7 +14,7 @@ class Page extends React.Component {
       currentPage: PropTypes.number.isRequired,
       content: PropTypes.string.isRequired
     })
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -31,21 +31,28 @@ class Page extends React.Component {
   componentWillReceiveProps(nextProps) {
     const { pageId } = this.props.match.params;
 
-
     if (pageId && pageId !== nextProps.match.params.pageId) {
       this.fetchContent(nextProps.match.params.pageId, nextProps.product.pages);
       this.props.actions.changePage(nextProps.match.params.pageId);
+      this.scrollToTop();
     }
   }
 
   targetPage(pageId, pages) {
     // Paramがない場合は常に1ページ目
-    if (!pageId) { return pages[0]; }
+    if (!pageId) {
+      return pages[0];
+    }
     return pages.find(page => page.id === Number(pageId)) || pages[0];
   }
 
   fetchContent(pageId, pages) {
     this.props.actions.fetchPageContent(this.props.product.id, this.targetPage(pageId, pages).id);
+  }
+
+  scrollToTop() {
+    const pageDom = document.getElementById("page");
+    window.scrollTo(0, pageDom.offsetTop + 60);
   }
 
   render() {

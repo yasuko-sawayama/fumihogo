@@ -6,10 +6,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import styled from "styled-components";
 
 import Title from "./Title";
-import TableOfContents from "./TableOfContents";
 import Description from "./Description";
-
-const productUrl = id => `/${id}/`;
+import { TableOfContents } from "../shared";
 
 const ButtonCol = styled(Col)`
   padding-top: 20px;

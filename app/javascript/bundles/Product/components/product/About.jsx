@@ -6,8 +6,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import styled from "styled-components";
 
 import Title from "./Title";
-import TableOfContents from "./TableOfContents";
 import Description from "./Description";
+import { TableOfContents } from "../shared";
 import { productUrl } from "../../libs/utils";
 
 const ButtonCol = styled(Col)`
@@ -27,6 +27,7 @@ const AddButton = ({ id }) => (
 
 const About = ({
   currentUser,
+  isPanelOpen,
   product: { id, title, description, author, about, pages, auth }
 }) => (
   <section id="about">
@@ -40,7 +41,9 @@ const About = ({
     />
     <Row>
       <div className="col-sm-10">
-        {about.pageCount > 1 && <TableOfContents pages={pages} productId={id} />}
+        {about.pageCount > 1 && (
+          <TableOfContents pages={pages} productId={id} isOpen={isPanelOpen} />
+        )}
       </div>
       {auth.update && <AddButton id={id} />}
     </Row>
@@ -48,6 +51,8 @@ const About = ({
 );
 
 About.propTypes = {
+  currentUser: PropTypes.shape(),
+  isPanelOpen: PropTypes.bool.isRequired,
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
