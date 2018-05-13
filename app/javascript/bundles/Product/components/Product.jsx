@@ -17,6 +17,14 @@ class Product extends React.Component {
     }).isRequired
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isPanelOpen: true
+    };
+  }
+
   componentWillMount() {
     this.props.actions.fetchProduct(this.props.product.id);
   }
@@ -25,6 +33,7 @@ class Product extends React.Component {
     if (this.props.product.id !== nextProp.product.id) {
       this.props.actions.fetchProduct(nextProp.product.id);
     }
+    this.setState({ isPanelOpen: false });
   }
 
   render() {
@@ -33,7 +42,7 @@ class Product extends React.Component {
         <LoadingBar />
         <section id="product">
           <SpinerContainer />
-          <About {...this.props} />
+          <About {...this.props} isPanelOpen={this.state.isPanelOpen} />
           <SocialLink {...this.props.product} />
           <hr />
           <Switch>

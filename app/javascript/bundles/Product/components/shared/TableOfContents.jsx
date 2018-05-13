@@ -15,16 +15,24 @@ const StyledPanel = styled(Panel)`
 `;
 
 class TableOfContents extends React.Component {
+  static propTypes = {
+    isOpen: PropTypes.bool.isRequired
+  };
+
   constructor(props) {
     super(props);
 
     this.state = {
-      open: true,
+      open: props.isOpen,
       allowIcon: "toggle-up"
     };
 
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.togglePanel = this.togglePanel.bind(this);
+  }
+
+  componentWillReceiveProps(nextProp) {
+    this.setState({ open: nextProp.isOpen });
   }
 
   // react-onclickoutside用設定
@@ -42,7 +50,7 @@ class TableOfContents extends React.Component {
   render() {
     return (
       <div id="pagePanel">
-        <StyledPanel defaultExpanded expanded={this.state.open} onToggle={() => {}}>
+        <StyledPanel expanded={this.state.open} onToggle={() => {}}>
           <Panel.Heading>
             <Panel.Title onClick={this.togglePanel}>
               もくじ
