@@ -5,7 +5,7 @@ import onClickOutside from "react-onclickoutside";
 import FA from "react-fontawesome";
 import styled from "styled-components";
 
-import PageLink from "./PageLink";
+import PageLink from "../shared/PageLink";
 
 const StyledPanel = styled(Panel)`
   margin-top: 20px;
@@ -14,7 +14,7 @@ const StyledPanel = styled(Panel)`
   }
 `;
 
-const tableOfContents = ({ pages, id }) => {
+const tableOfContents = ({ pages, productId }) => {
   const pageLinks = pages.map(page => (
     <PageLink key={page.position} {...page} productId={productId} />
   ));
