@@ -55,11 +55,15 @@ class Page < ApplicationRecord
     title.presence || "ページ#{position}"
   end
 
-  private
-
-  def should_generate_new_friendly_id?
-    position_changed? || super
+  # FriendlyIdが数字ではfindしてくれなくなったので暫定
+  def to_param
+    position.to_s
   end
+
+  private
+  # def should_generate_new_friendly_id?
+  #   position_changed? || super
+  # end
 
   def update_character_count
     self.character_count = count_character
