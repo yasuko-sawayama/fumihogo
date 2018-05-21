@@ -39,6 +39,7 @@ RSpec.describe Page, type: :model do
 
   describe 'trim_title' do
     let(:page) { build(:page, title: space_title) }
+
     before { page.validate }
 
     describe '全角トリムできること' do
@@ -59,27 +60,28 @@ RSpec.describe Page, type: :model do
 
     before do
       create_list(:page, 12, product: product)
-    end 
-    
+    end
+
     it { expect(product.pages.find_by(position: 3).previous.position).to eq(2) }
     it { expect(product.pages.find_by(position: 5).next.position).to eq(6) }
   end
 
-  describe 'frendry_id' do
-    let!(:product) { create(:product) }
-    let!(:page) { build(:page, product: product) }
+  # FriendlyId一旦外し
+  # describe 'frendry_id' do
+  #   let(:product) { create(:product) }
 
-    it 'positionをIDの代わりに使用できること' do
-      create_list(:page, 10, product: product)
-      page.save!
-      page.insert_at(3)
-      page.save!
-      # friendly.findを使うとIDまたはpositionで検索されるため、
-      # find_by_friendly_idを使用してpositionのみを検索対象とする
-      # optionに:findersを指定すること
-      expect(product.pages.find_by_friendly_id(3)).to eq(page)
-    end
-  end
+  #   it 'positionをIDの代わりに使用できること' do
+  #     create_list(:page, 10, product: product)
+  #     page = create(:page, product: product)
+  #     page.save!
+  #     page.insert_at(3)
+  #     page.save!
+  #     # friendly.findを使うとIDまたはpositionで検索されるため、
+  #     # find_by_friendly_idを使用してpositionのみを検索対象とする
+  #     # optionに:findersを指定すること
+  #     expect(product.pages.friendly.find(3)).to eq(page)
+  #   end
+  # end
 
   describe "文字数をキャッシュする" do
     let(:page) { create(:page, content: Faker::Lorem.characters(50)) }
@@ -93,10 +95,10 @@ RSpec.describe Page, type: :model do
       expect(page.reload.character_count).to eq(20)
     end
   end
-  
+
   describe "productのcharacter countをアップデートする" do
     let(:product) { create(:product) }
-    let(:page)  { build(:page, product: product) }
+    let(:page) { build(:page, product: product) }
 
     it "ページを追加するとカウントアップすること" do
       page.content = Faker::Lorem.characters(30)

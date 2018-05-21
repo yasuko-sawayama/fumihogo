@@ -1,12 +1,14 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe 'Pages', type: :request do
-  let(:headers) {{
-                   "CONTENT_TYPE" => "application/json",
-                   "ACCEPT" => "application/json"
-                 }}
+  let(:headers) do
+    {
+      'CONTENT_TYPE' => 'application/json',
+      'ACCEPT' => 'application/json'
+    }
+  end
 
-  describe "GET /products/:id" do
+  describe 'GET /products/:id' do
     context '権限がある場合' do
       let(:product) do
         create(:product,
@@ -21,14 +23,14 @@ RSpec.describe 'Pages', type: :request do
                content: '本文ですよ本文ですよ本文ですよ本文ですよ')
       end
 
-      it "レスポンスが返ること" do
+      it "\xE3\x83\xAC\xE3\x82\xB9\xE3\x83\x9D\xE3\x83\xB3\xE3\x82\xB9\xE3\x81\x8C\xE8\xBF\x94\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
         get api_v1_product_page_path(product, page), headers: headers
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it 'jsonが取得できること' do
         get api_v1_product_page_path(product, page), headers: headers
-        expect(response.content_type).to eq("application/json")
+        expect(response.content_type).to eq('application/json')
       end
 
       it '内容が取得できること' do
@@ -53,7 +55,6 @@ RSpec.describe 'Pages', type: :request do
     end
 
     context '権限がない場合' do
-      
     end
   end
 
@@ -66,7 +67,7 @@ RSpec.describe 'Pages', type: :request do
       before do
         sign_in user
       end
-      
+
       it '削除できること' do
         expect do
           delete api_v1_product_page_path(product, page),

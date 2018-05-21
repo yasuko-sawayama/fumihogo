@@ -48,7 +48,8 @@ class Api::V1::PagesController < Api::V1::ApiController
   end
 
   def set_page
-    authorize @page = @product.pages.friendly.find(params[:id])
+    # authorize @page = @product.pages.friendly.find(params[:id])
+    authorize @page = @product.pages.find_by(position: params[:id])
   end
 
   def page_params

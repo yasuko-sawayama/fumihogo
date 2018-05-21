@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe ProductPolicy, vcr: true do
-
   subject { described_class }
 
-  permissions ".scope" do
-
+  permissions '.scope' do
     let(:resolved_scope) do
       described_class::Scope.new(user, Product.all).resolve
     end
@@ -17,17 +15,22 @@ RSpec.describe ProductPolicy, vcr: true do
     context '作者：' do
       let(:user) { create(:user) }
 
-      let!(:my_closed) { create(:product,
-                                user: user,
-                                privacy_level: :closed)
-      }
-      let!(:my_login) { create(:product,
-                               user: user,
-                               privacy_level: :login) }
+      let!(:my_closed) do
+        create(:product,
+               user: user,
+               privacy_level: :closed)
+      end
+      let!(:my_login) do
+        create(:product,
+               user: user,
+               privacy_level: :login)
+      end
 
-      let!(:my_open) { create(:product,
-                              user: user,
-                              privacy_level: :public_open) }
+      let!(:my_open) do
+        create(:product,
+               user: user,
+               privacy_level: :public_open)
+      end
 
       it '非公開作品を含む' do
         expect(resolved_scope).to include(my_closed)
@@ -85,21 +88,20 @@ RSpec.describe ProductPolicy, vcr: true do
     let(:login) { create(:product, user: creator, privacy_level: :login) }
     # let(:restricted) { build(:product, user: creator, restricted: true, privacy_level: :open) }
 
-    it "作成者は自分の作品が閲覧できること" do
-
+    it "\xE4\xBD\x9C\xE6\x88\x90\xE8\x80\x85\xE3\x81\xAF\xE8\x87\xAA\xE5\x88\x86\xE3\x81\xAE\xE4\xBD\x9C\xE5\x93\x81\xE3\x81\x8C\xE9\x96\xB2\xE8\xA6\xA7\xE3\x81\xA7\xE3\x81\x8D\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
       expect(subject).to permit(creator, closed)
       expect(subject).to permit(creator, open)
       expect(subject).to permit(creator, login)
-      
+
       # expect(subject).to permit(creator, restricted)
     end
 
-    it "全体公開作品はログインしていなくても閲覧できること" do
+    it "\xE5\x85\xA8\xE4\xBD\x93\xE5\x85\xAC\xE9\x96\x8B\xE4\xBD\x9C\xE5\x93\x81\xE3\x81\xAF\xE3\x83\xAD\xE3\x82\xB0\xE3\x82\xA4\xE3\x83\xB3\xE3\x81\x97\xE3\x81\xA6\xE3\x81\x84\xE3\x81\xAA\xE3\x81\x8F\xE3\x81\xA6\xE3\x82\x82\xE9\x96\xB2\xE8\xA6\xA7\xE3\x81\xA7\xE3\x81\x8D\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
       expect(subject).to permit(User.new, open)
       expect(subject).to permit(other, open)
     end
 
-    it "ログイン公開作品はログインしたユーザーのみ閲覧できること" do
+    it "\xE3\x83\xAD\xE3\x82\xB0\xE3\x82\xA4\xE3\x83\xB3\xE5\x85\xAC\xE9\x96\x8B\xE4\xBD\x9C\xE5\x93\x81\xE3\x81\xAF\xE3\x83\xAD\xE3\x82\xB0\xE3\x82\xA4\xE3\x83\xB3\xE3\x81\x97\xE3\x81\x9F\xE3\x83\xA6\xE3\x83\xBC\xE3\x82\xB6\xE3\x83\xBC\xE3\x81\xAE\xE3\x81\xBF\xE9\x96\xB2\xE8\xA6\xA7\xE3\x81\xA7\xE3\x81\x8D\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
       expect(subject).not_to permit(guest, login)
       expect(subject).to permit(other, login)
     end
@@ -109,11 +111,12 @@ RSpec.describe ProductPolicy, vcr: true do
     #   expect(subject).to permit(user, restricted)
     # end
 
-
-    describe "リスト限定" do
-      let(:my_list) { create(:permissions_list, user: creator, twitter_list_id: 853249524558581761) }
-      let(:list) { create(:product, user: creator,
-                          privacy_level: :list, permissions_list: my_list) }
+    describe "\xE3\x83\xAA\xE3\x82\xB9\xE3\x83\x88\xE9\x99\x90\xE5\xAE\x9A" do
+      let(:my_list) { create(:permissions_list, user: creator, twitter_list_id: 853_249_524_558_581_761) }
+      let(:list) do
+        create(:product, user: creator,
+                         privacy_level: :list, permissions_list: my_list)
+      end
       let(:member) { create(:user) }
       let(:not_twitter) { create(:user) }
 
@@ -125,11 +128,11 @@ RSpec.describe ProductPolicy, vcr: true do
         allow(not_twitter).to receive(:twitter?).and_return(false)
       end
 
-      it "作者本人は閲覧できること" do
+      it "\xE4\xBD\x9C\xE8\x80\x85\xE6\x9C\xAC\xE4\xBA\xBA\xE3\x81\xAF\xE9\x96\xB2\xE8\xA6\xA7\xE3\x81\xA7\xE3\x81\x8D\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
         expect(subject).to permit(creator, list)
       end
 
-      it "リストに含まれているユーザーのみ閲覧できること" do
+      it "\xE3\x83\xAA\xE3\x82\xB9\xE3\x83\x88\xE3\x81\xAB\xE5\x90\xAB\xE3\x81\xBE\xE3\x82\x8C\xE3\x81\xA6\xE3\x81\x84\xE3\x82\x8B\xE3\x83\xA6\xE3\x83\xBC\xE3\x82\xB6\xE3\x83\xBC\xE3\x81\xAE\xE3\x81\xBF\xE9\x96\xB2\xE8\xA6\xA7\xE3\x81\xA7\xE3\x81\x8D\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
         expect(subject).to permit(member, list)
         expect(subject).not_to permit(other, list)
       end
@@ -139,18 +142,18 @@ RSpec.describe ProductPolicy, vcr: true do
         expect(subject).not_to permit(not_twitter, list)
       end
 
-      it "ログインしていないユーザーは閲覧できないこと" do
+      it "\xE3\x83\xAD\xE3\x82\xB0\xE3\x82\xA4\xE3\x83\xB3\xE3\x81\x97\xE3\x81\xA6\xE3\x81\x84\xE3\x81\xAA\xE3\x81\x84\xE3\x83\xA6\xE3\x83\xBC\xE3\x82\xB6\xE3\x83\xBC\xE3\x81\xAF\xE9\x96\xB2\xE8\xA6\xA7\xE3\x81\xA7\xE3\x81\x8D\xE3\x81\xAA\xE3\x81\x84\xE3\x81\x93\xE3\x81\xA8" do
         expect(subject).not_to permit(guest, list)
       end
     end
     let(:member) { create(:user) }
 
-    it "非公開作品は作者以外閲覧できないこと" do
+    it "\xE9\x9D\x9E\xE5\x85\xAC\xE9\x96\x8B\xE4\xBD\x9C\xE5\x93\x81\xE3\x81\xAF\xE4\xBD\x9C\xE8\x80\x85\xE4\xBB\xA5\xE5\xA4\x96\xE9\x96\xB2\xE8\xA6\xA7\xE3\x81\xA7\xE3\x81\x8D\xE3\x81\xAA\xE3\x81\x84\xE3\x81\x93\xE3\x81\xA8" do
       expect(subject).not_to permit(guest, closed)
       expect(subject).not_to permit(member, closed)
     end
 
-    #TODO
+    # TODO
     # it 'ユーザー限定公開作品は設定されたユーザーのみ閲覧できること'
   end
 
@@ -168,7 +171,7 @@ RSpec.describe ProductPolicy, vcr: true do
   permissions :update? do
     describe 'ログインしている' do
       let(:user) { create(:user) }
-      
+
       it '自分の作品は変更できる' do
         my_product = build(:product, user: user)
         expect(subject).to permit(user, my_product)

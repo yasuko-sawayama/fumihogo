@@ -1,7 +1,7 @@
 class PermissionListFactory
   attr_accessor :access_token, :access_secret
   attr_reader :client, :user
-  
+
   def initialize(user, params = {})
     @user = user
     @access_token = params.fetch(:access_token, '')
@@ -27,7 +27,7 @@ class PermissionListFactory
                     .find_or_create_by(twitter_list_id: list.id) do |newlist|
       newlist.name = list.name
     end
-    new_list.touch              # 確認時間をupdate
+    new_list.touch # 確認時間をupdate
   end
 
   def delete_old_lists

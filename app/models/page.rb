@@ -24,7 +24,7 @@
 #
 
 class Page < ApplicationRecord
-  extend FriendlyId
+  belongs_to :product, inverse_of: :pages
 
   # page count
   counter_culture :product, column_name: 'character_count',
@@ -34,22 +34,15 @@ class Page < ApplicationRecord
   is_impressionable counter_cache: true,
                     unique: :session_hash
 
-  belongs_to :product, inverse_of: :pages
-
   acts_as_list scope: :product, top_of_list: 1
   strip_attributes only: :title, regex: /[[:blank:]]+$/
-
-  # products/:product_id/page/:positionでアクセスする
-  friendly_id :position, use: [:scoped, :finders],
-              scope: :product,
-              slug_column: :position
 
   before_save :update_character_count
   before_destroy :check_for_last_page
 
   validates :content, presence: true, length: { in: 10...30_000 }
   validates :title, length: { maximum: 45, allow_blank: true }
-
+  
   def next
     product.pages.where('position > ?', position).first
   end
@@ -59,7 +52,7 @@ class Page < ApplicationRecord
   end
 
   def formatted_title
-    title.blank? ? "ページ#{position}" : title
+    title.presence || "ページ#{position}"
   end
 
   private
@@ -73,7 +66,7 @@ class Page < ApplicationRecord
   end
 
   def count_character
-    #TODO: markdownの記号を除く
+    # TODO: markdownの記号を除く
     content.blank? ? 0 : content.length
   end
 
@@ -85,4 +78,3 @@ class Page < ApplicationRecord
     throw(:abort)
   end
 end
-
