@@ -3,7 +3,7 @@ module MetaTagsHelper
     {
       site: Settings.site.name,
       title: @product&.title || 'ふみほご',
-      description: '小説の下書きをしたりするサイトです。', 
+      description: '小説の下書きをしたりするサイトです。',
       # keywords:         デフォルトページキーワード
       reverse: true,
       canonical: request.original_url,
@@ -35,7 +35,7 @@ module MetaTagsHelper
   end
 
   def page_og_image
-    @page_image||image_url(Settings.site.meta.ogp.image_path)
+    @page_image || image_url(Settings.site.meta.ogp.image_path)
   end
 
   # ページのINDEX許可条件

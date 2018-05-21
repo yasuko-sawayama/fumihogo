@@ -11,7 +11,7 @@ class Edit < SitePrism::Page
     email.set(new_email)
     submit_button.click
   end
-    
+
   def submit!
     submit_button.click
   end

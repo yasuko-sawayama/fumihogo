@@ -1,12 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe "Products", type: :request do
-  let(:headers) {{
-    "CONTENT_TYPE" => "application/json",
-    "ACCEPT" => "application/json"
- }}
+RSpec.describe 'Products', type: :request do
+  let(:headers) do
+    {
+      'CONTENT_TYPE' => 'application/json',
+      'ACCEPT' => 'application/json'
+    }
+  end
 
-  describe "GET /products/:id" do
+  describe 'GET /products/:id' do
     context '権限がある場合' do
       let(:product) do
         create(:product,
@@ -14,14 +16,14 @@ RSpec.describe "Products", type: :request do
                privacy_level: :public_open)
       end
 
-      it "レスポンスが返ること" do
+      it "\xE3\x83\xAC\xE3\x82\xB9\xE3\x83\x9D\xE3\x83\xB3\xE3\x82\xB9\xE3\x81\x8C\xE8\xBF\x94\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
         get api_v1_product_path(product), headers: headers
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it 'jsonが取得できること' do
         get api_v1_product_path(product), headers: headers
-        expect(response.content_type).to eq("application/json")
+        expect(response.content_type).to eq('application/json')
       end
 
       it 'タイトルが取得できること' do
@@ -44,7 +46,7 @@ RSpec.describe "Products", type: :request do
 
       it '401がかえること' do
         get api_v1_product_path(product), headers: headers
-        expect(response).to have_http_status(401)
+        expect(response).to have_http_status(:unauthorized)
       end
 
       it 'エラーメッセージがかえること' do
@@ -54,7 +56,7 @@ RSpec.describe "Products", type: :request do
     end
   end
 
-  describe "POST /api/v1/products" do
+  describe 'POST /api/v1/products' do
     subject { post '/api/v1/products', params: { product: product_params } }
 
     context '権限がある場合' do
@@ -66,7 +68,7 @@ RSpec.describe "Products", type: :request do
         let(:product_params) do
           attributes_for(:product).merge(pages_attributes: [attributes_for(:page)])
         end
-        
+
         it '200が帰ること' do
           subject
           expect(response.status).to eq(201)
@@ -111,7 +113,7 @@ RSpec.describe "Products", type: :request do
 
       it '401がかえること' do
         subject
-        expect(response).to have_http_status(401)
+        expect(response).to have_http_status(:unauthorized)
       end
 
       it '作品が増えないこと' do
@@ -121,7 +123,7 @@ RSpec.describe "Products", type: :request do
       it 'エラーメッセージ' do
         subject
         body = JSON.parse(response.body)
-       
+
         expect(body['errors']['auth']).to match('権限がありません')
       end
     end

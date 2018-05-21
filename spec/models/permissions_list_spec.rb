@@ -57,23 +57,24 @@ RSpec.describe PermissionsList, type: :model, vcr: true do
       before { allow(user).to receive(:twitter?).and_return(true) }
 
       describe 'リストに含まれる場合' do
-        let(:list) { create(:permissions_list, twitter_list_id: 853249524558581761) }
+        let(:list) { create(:permissions_list, twitter_list_id: 853_249_524_558_581_761) }
 
-        it { is_expected.to be_truthy }
+        it { should be_truthy }
       end
 
       describe 'ユーザーの別のリストに含まれる場合' do
-        let(:list) { create(:permissions_list, twitter_list_id: 818095242884714497) }
+        let(:list) { create(:permissions_list, twitter_list_id: 818_095_242_884_714_497) }
 
-        it { is_expected.to be_falsy }
+        it { should be_falsy }
       end
     end
 
     describe 'twitterユーザーではない場合' do
-      let(:list) { create(:permissions_list, twitter_list_id: 853249524558581761) }
+      let(:list) { create(:permissions_list, twitter_list_id: 853_249_524_558_581_761) }
+
       before { allow(user).to receive(:twitter?).and_return(false) }
 
-      it { is_expected.to be_falsy }
+      it { should be_falsy }
     end
   end
 end

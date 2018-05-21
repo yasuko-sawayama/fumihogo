@@ -27,7 +27,14 @@
   .editorArea {
     padding: 0 10px;
     height: auto !important;
+    min-height: 250px;
   }
+}
+
+.public-DraftStyleDefault-block {
+  margin: 0;
+  line-height: 2.2;
+  letter-spacing: 0.1;
 }
 
 // 編集ページでは枠線なし
