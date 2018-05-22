@@ -11,6 +11,7 @@ AllCops:
     - Rakefile
     - spec/rails_helper.rb
     - spec/spec_helper.rb
+    - spec/support/**/*
     - 'vendor/**/*'
     - config/initializers/**/*
     - db/migrate/**/*
@@ -21,6 +22,9 @@ AllCops:
     - Guardfile
 Rails:
   Enabled: true
+
+Style/Documentation:
+  Enabled: false
 
 # 日本語でのコメントを許可
 AsciiComments:
@@ -69,6 +73,8 @@ Metrics/LineLength:
   URISchemes:
     - http
     - https
+  Exclude:
+    - 'spec/features/**/*'
 
 Metrics/MethodLength:
   Max: 15
@@ -85,13 +91,22 @@ Metrics/AbcSize:
 
 Style/AndOr:
   EnforcedStyle: conditionals
-  
-Style/Documentation:
+
+Naming/UncommunicativeBlockParamName:
   Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'app/controllers/application_controller.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/mailers/application_mailer.rb'
-    - 'app/models/application_record.rb'
-    - 'config/application.rb'
+    - 'app/views/api/**/*'
+
+Naming/VariableName:
+  Exclude:
+    - 'app/views/api/**/*'
+
+# 更新時間変更の為に使用しているので…後ほど検討
+Rails/SkipsModelValidations:
+  Enabled: false
+
+# policieも遅くなりすぎる気がする
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/policies/**/*'
+    - 'spec/requests/**/*'
+    - 'spec/features/**/*'

@@ -1,7 +1,10 @@
 class Api::V1::ApiController < ApplicationController
-  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  rescue_from ActionController::InvalidAuthenticityToken, with: :render_invalid_http
+  rescue_from ActiveRecord::RecordInvalid,
+              with: :render_unprocessable_entity_response
+  rescue_from ActiveRecord::RecordNotFound,
+              with: :render_not_found_response
+  rescue_from ActionController::InvalidAuthenticityToken,
+              with: :render_invalid_http
 
   protected
 

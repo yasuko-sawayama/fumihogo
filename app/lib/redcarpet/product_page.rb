@@ -1,5 +1,6 @@
 # Markdownをカスタマイズ
 # ルビとダブルダッシュを処理
+# rubocop:disable Metrics/LineLength
 class Redcarpet::ProductPage < Redcarpet::Render::HTML
   KANJIPAT = "[々〇〻\u3400-\u9FFF\uF900-\uFAFF※ヶ〆]".freeze
 
@@ -28,3 +29,4 @@ class Redcarpet::ProductPage < Redcarpet::Render::HTML
     text.gsub(/——|ーー|――/, '<span style="text-decoration: line-through">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')
   end
 end
+# rubocop:enable Metrics/LineLength

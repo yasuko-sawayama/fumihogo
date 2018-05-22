@@ -83,7 +83,7 @@ RSpec.describe Page, type: :model do
   #   end
   # end
 
-  describe "文字数をキャッシュする" do
+  describe '文字数をキャッシュする' do
     let(:page) { create(:page, content: Faker::Lorem.characters(50)) }
 
     it '文字数が記録されること' do
@@ -96,17 +96,17 @@ RSpec.describe Page, type: :model do
     end
   end
 
-  describe "productのcharacter countをアップデートする" do
+  describe 'productのcharacter countをアップデートする' do
     let(:product) { create(:product) }
     let(:page) { build(:page, product: product) }
 
-    it "ページを追加するとカウントアップすること" do
+    it 'ページを追加するとカウントアップすること' do
       page.content = Faker::Lorem.characters(30)
       expect { page.save! }.to change { product.reload.character_count }.by(30)
     end
 
-    context "既にページがある場合" do
-      it "合計数が記録されること" do
+    context '既にページがある場合' do
+      it '合計数が記録されること' do
         product.pages.delete_all
         Page.counter_culture_fix_counts
         product.pages.create(content: Faker::Lorem.characters(40))
@@ -115,7 +115,7 @@ RSpec.describe Page, type: :model do
       end
     end
 
-    it "ページを変更するとカウントアップすること" do
+    it 'ページを変更するとカウントアップすること' do
       product.pages.delete_all
       Page.counter_culture_fix_counts
       page = create(:page, content: Faker::Lorem.characters(40), product: product)
@@ -135,7 +135,7 @@ RSpec.describe Page, type: :model do
     it '一ページだけのときは削除できないこと' do
       product.pages.delete_all
       last_page = create(:page, product: product)
-      expect { last_page.destroy }.not_to change { product.reload.pages.count }
+      expect { last_page.destroy }.not_to change(Page, :count)
     end
   end
 end

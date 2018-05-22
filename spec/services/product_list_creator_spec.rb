@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProductListCreator do
   describe '作者のリストの場合' do
-    subject(:create_list) { creator.set_twitter_list(list_id) }
+    subject(:create_list) { creator.sync_twitter_list(list_id) }
 
     let(:creator) { described_class.new(product) }
     let(:list_id) { 818_095_242_884_714_497 }

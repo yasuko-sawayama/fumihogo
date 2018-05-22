@@ -7,8 +7,13 @@ Rails.application.routes.draw do
              }
 
   resources :products, except: [:update, :edit, :create] do
-    # for react-router
-    get ':any_action', action: :show, on: :member
+    member do
+      # for authorization error info
+      get :not_authorized
+      # for react-router
+      get ':any_action', action: :show
+    end
+
     resources :pages, except: :new, controller: 'products' do
       get :new, action: :show   # React Routerに委譲
     end

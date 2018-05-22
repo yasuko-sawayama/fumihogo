@@ -10,8 +10,10 @@ module MarkdownHelper
                                           tables: true)
     end
 
+    # rubocop:disable  Rails/OutputSafety
     # @markdown.render(preserve_multi_new_line(text)).html_safe
     @markdown.render(text).html_safe
+    # rubocop:enable  Rails/OutputSafety
   end
 
   # def preserve_multi_new_line(text)

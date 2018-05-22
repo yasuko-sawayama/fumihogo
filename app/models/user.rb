@@ -42,7 +42,9 @@ class User < ApplicationRecord
   extend FriendlyId
 
   has_many :social_profiles, dependent: :destroy
-  has_many :products, -> { order(created_at: :desc) }, dependent: :destroy
+  has_many :products, -> { order(created_at: :desc) },
+           dependent: :destroy,
+           inverse_of: :user
   # 閲覧許可リスト
   has_many :permissions_lists, dependent: :destroy
   has_many :member_permissions,
@@ -97,7 +99,7 @@ class User < ApplicationRecord
   end
 
   def sns_url
-    social_profiles.order(provider: :desc).first.url || '#'
+    social_profiles.order(provider: :desc).first&.url || '#'
   end
 
   def self.update_list(profile, policy)
