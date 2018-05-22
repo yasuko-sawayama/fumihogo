@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 describe 'サインイン時のリダイレクト', type: :feature do
   let (:user) { create(:user) }
@@ -17,7 +17,7 @@ describe 'サインイン時のリダイレクト', type: :feature do
     scenario 'ログイン後、対象の作品ページにリダイレクトされる。' do
       login_page.login(user.email, user.password)
       visit product_path(product)
-      
+
       expect(page).to have_content('作品ページ')
     end
   end

@@ -49,7 +49,7 @@ group :red_green_refactor, halt_on_fail: true do
   end
 
 
-  guard :rubocop, all_on_start: false, cli: ['--format', 'clang', '--rails', '--auto-correct'] do
+  guard :rubocop, all_on_start: false, cli: ['--format', 'clang', '--rails'] do
     watch(%r{.+\.rb$})
     watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
   end

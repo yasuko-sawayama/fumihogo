@@ -82,7 +82,7 @@ gem 'figaro'
 gem 'meta-tags'
 
 gem 'acts_as_list'
-gem 'friendly_id', '~> 5.2.3'
+gem 'friendly_id', '~> 5.2.4'
 
 # admin
 gem 'rails_admin', '~> 1.3'

@@ -42,7 +42,7 @@ class User < ApplicationRecord
   extend FriendlyId
 
   has_many :social_profiles, dependent: :destroy
-  has_many :products, -> { order(created_at: :desc) },  dependent: :destroy
+  has_many :products, -> { order(created_at: :desc) }, dependent: :destroy
   # 閲覧許可リスト
   has_many :permissions_lists, dependent: :destroy
   has_many :member_permissions,
@@ -77,15 +77,17 @@ class User < ApplicationRecord
     profile = SocialProfile.find_or_initialize_from_auth(auth)
     policy = profile.provider_policy(auth)
 
-    OAuthUserCreator.new(profile, policy)
-      .create_new_user_from_profile if profile.user.nil?
+    if profile.user.nil?
+      OAuthUserCreator.new(profile, policy)
+                      .create_new_user_from_profile
+    end
 
     profile.save!
     update_list(profile, policy) if policy.instance_of?(OAuthPolicy::Twitter)
 
     [profile.user, policy]
   end
-  
+
   def twitter?
     social_profiles.exists?(provider: 'twitter')
   end
@@ -95,14 +97,14 @@ class User < ApplicationRecord
   end
 
   def sns_url
-    social_profiles.order(provider: :desc).first.url || "#"
+    social_profiles.order(provider: :desc).first.url || '#'
   end
 
   def self.update_list(profile, policy)
     factory = PermissionListFactory.new(profile.user,
                                         access_token: policy.credentials['token'],
                                         access_secret: policy.credentials['secret'])
-    Timeout::timeout(120) do
+    Timeout.timeout(120) do
       factory.fetch_lists_from_twitter
     end
   end

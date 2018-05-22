@@ -24,7 +24,9 @@ class ProductsController < ApplicationController
   private
 
   def set_product
-    authorize @product = Product.find(params[:product_id] ||
-                                      params[:id]) if params[:id]
+    if params[:id]
+      authorize @product = Product.find(params[:product_id] ||
+                                        params[:id])
+    end
   end
 end

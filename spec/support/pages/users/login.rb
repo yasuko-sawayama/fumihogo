@@ -46,7 +46,7 @@ class Login < SitePrism::Page
 
     allow(list).to receive(:id).and_return(1)
     allow(list).to receive(:name).and_return('test_name')
-    
+
     allow(client).to receive(:user_lists).and_return([list])
     allow(TwitterClient).to receive(:new).and_return(client)
   end
@@ -60,7 +60,7 @@ class Login < SitePrism::Page
         'uid'  => 'mock_uid_1234',
         'info' => {
           'name' => 'Mock User',
-          'nickname' => "#{twitter_name.blank? ? 'Mock User' : twitter_name}",
+          'nickname' => (twitter_name.presence || 'Mock User').to_s,
           'image' => 'http://mock_image_url.com',
           'description' => 'mock description',
           'urls' => {
@@ -79,5 +79,4 @@ class Login < SitePrism::Page
         }
       )
   end
-
 end
