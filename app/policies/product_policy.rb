@@ -1,3 +1,4 @@
+# 作品権限
 class ProductPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

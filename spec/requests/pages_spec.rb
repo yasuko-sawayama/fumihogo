@@ -23,7 +23,7 @@ RSpec.describe 'Pages', type: :request do
                content: '本文ですよ本文ですよ本文ですよ本文ですよ')
       end
 
-      it "\xE3\x83\xAC\xE3\x82\xB9\xE3\x83\x9D\xE3\x83\xB3\xE3\x82\xB9\xE3\x81\x8C\xE8\xBF\x94\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
+      it 'レスポンスが返ること' do
         get api_v1_product_page_path(product, page), headers: headers
         expect(response).to have_http_status(:ok)
       end
@@ -55,6 +55,7 @@ RSpec.describe 'Pages', type: :request do
     end
 
     context '権限がない場合' do
+      it 'リダイレクトされること'
     end
   end
 
@@ -84,6 +85,8 @@ RSpec.describe 'Pages', type: :request do
       end
     end
 
-    context '権限がない場合'
+    context '権限がない場合' do
+      it 'リダイレクトされること'
+    end
   end
 end

@@ -22,6 +22,7 @@
 #  index_admins_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
+# 管理者モデル
 class Admin < ApplicationRecord
   # 登録不可
   devise :database_authenticatable,

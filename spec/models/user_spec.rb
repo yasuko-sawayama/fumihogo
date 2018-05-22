@@ -115,7 +115,7 @@ RSpec.describe User, type: :model do
         end
 
         it '自己紹介が設定されていること' do
-          user, policy = assign_user
+          user, _policy = assign_user
           expect(user.description).to eq('mock description')
         end
 
@@ -158,7 +158,7 @@ RSpec.describe User, type: :model do
 
       context '既存ユーザー：' do
         let!(:ext_user) { create(:user) }
-        let!(:social_profile) do
+        before do
           create(:social_profile,
                  user: ext_user,
                  uid: 'mock_uid_1234',

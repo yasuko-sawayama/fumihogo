@@ -16,7 +16,7 @@ RSpec.describe 'Products', type: :request do
                privacy_level: :public_open)
       end
 
-      it "\xE3\x83\xAC\xE3\x82\xB9\xE3\x83\x9D\xE3\x83\xB3\xE3\x82\xB9\xE3\x81\x8C\xE8\xBF\x94\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
+      it 'レスポンスが返ること' do
         get api_v1_product_path(product), headers: headers
         expect(response).to have_http_status(:ok)
       end
@@ -108,7 +108,8 @@ RSpec.describe 'Products', type: :request do
 
     context '権限がない場合' do
       let(:product_params) do
-        attributes_for(:product).merge(pages_attributes: [attributes_for(:page, product: nil)])
+        attributes_for(:product).merge(pages_attributes:
+                                         [attributes_for(:page, product: nil)])
       end
 
       it '401がかえること' do

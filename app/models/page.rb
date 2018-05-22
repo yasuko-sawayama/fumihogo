@@ -23,6 +23,7 @@
 #  fk_rails_...  (product_id => products.id)
 #
 
+# 連載単位
 class Page < ApplicationRecord
   belongs_to :product, inverse_of: :pages
 
@@ -43,6 +44,7 @@ class Page < ApplicationRecord
   validates :content, presence: true, length: { in: 10...30_000 }
   validates :title, length: { maximum: 45, allow_blank: true }
 
+  # rubocop:disable Rails/FindBy
   def next
     product.pages.where('position > ?', position).first
   end
@@ -50,6 +52,7 @@ class Page < ApplicationRecord
   def previous
     product.pages.where('position < ?', position).last
   end
+  # rubocop:enable Rails/FindBy
 
   def formatted_title
     title.presence || "ページ#{position}"

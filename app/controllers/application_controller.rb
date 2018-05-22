@@ -1,11 +1,17 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
-  after_action :verify_authorized, except: :index, unless: :auth_skipping_controllers?
-  after_action :verify_policy_scoped, only: :index, unless: :auth_skipping_controllers?
+  after_action :verify_authorized,
+               except: :index,
+               unless: :auth_skipping_controllers?
+  after_action :verify_policy_scoped,
+               only: :index,
+               unless: :auth_skipping_controllers?
 
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  rescue_from ActionController::InvalidAuthenticityToken, with: :reload_to_root
+  rescue_from Pundit::NotAuthorizedError,
+              with: :user_not_authorized
+  rescue_from ActionController::InvalidAuthenticityToken,
+              with: :reload_to_root
 
   protect_from_forgery with: :exception
 

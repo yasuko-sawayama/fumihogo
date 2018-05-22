@@ -19,6 +19,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 
+# 中間クラス
 class MemberPermission < ApplicationRecord
   belongs_to :member,
              foreign_key: 'user_id',

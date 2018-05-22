@@ -83,7 +83,7 @@ RSpec.describe Page, type: :model do
   #   end
   # end
 
-  describe "\xE6\x96\x87\xE5\xAD\x97\xE6\x95\xB0\xE3\x82\x92\xE3\x82\xAD\xE3\x83\xA3\xE3\x83\x83\xE3\x82\xB7\xE3\x83\xA5\xE3\x81\x99\xE3\x82\x8B" do
+  describe '文字数をキャッシュする' do
     let(:page) { create(:page, content: Faker::Lorem.characters(50)) }
 
     it '文字数が記録されること' do
@@ -96,17 +96,17 @@ RSpec.describe Page, type: :model do
     end
   end
 
-  describe "product\xE3\x81\xAEcharacter count\xE3\x82\x92\xE3\x82\xA2\xE3\x83\x83\xE3\x83\x97\xE3\x83\x87\xE3\x83\xBC\xE3\x83\x88\xE3\x81\x99\xE3\x82\x8B" do
+  describe 'productのcharacter countをアップデートする' do
     let(:product) { create(:product) }
     let(:page) { build(:page, product: product) }
 
-    it "\xE3\x83\x9A\xE3\x83\xBC\xE3\x82\xB8\xE3\x82\x92\xE8\xBF\xBD\xE5\x8A\xA0\xE3\x81\x99\xE3\x82\x8B\xE3\x81\xA8\xE3\x82\xAB\xE3\x82\xA6\xE3\x83\xB3\xE3\x83\x88\xE3\x82\xA2\xE3\x83\x83\xE3\x83\x97\xE3\x81\x99\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
+    it 'ページを追加するとカウントアップすること' do
       page.content = Faker::Lorem.characters(30)
       expect { page.save! }.to change { product.reload.character_count }.by(30)
     end
 
-    context "\xE6\x97\xA2\xE3\x81\xAB\xE3\x83\x9A\xE3\x83\xBC\xE3\x82\xB8\xE3\x81\x8C\xE3\x81\x82\xE3\x82\x8B\xE5\xA0\xB4\xE5\x90\x88" do
-      it "\xE5\x90\x88\xE8\xA8\x88\xE6\x95\xB0\xE3\x81\x8C\xE8\xA8\x98\xE9\x8C\xB2\xE3\x81\x95\xE3\x82\x8C\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
+    context '既にページがある場合' do
+      it '合計数が記録されること' do
         product.pages.delete_all
         Page.counter_culture_fix_counts
         product.pages.create(content: Faker::Lorem.characters(40))
@@ -115,7 +115,7 @@ RSpec.describe Page, type: :model do
       end
     end
 
-    it "\xE3\x83\x9A\xE3\x83\xBC\xE3\x82\xB8\xE3\x82\x92\xE5\xA4\x89\xE6\x9B\xB4\xE3\x81\x99\xE3\x82\x8B\xE3\x81\xA8\xE3\x82\xAB\xE3\x82\xA6\xE3\x83\xB3\xE3\x83\x88\xE3\x82\xA2\xE3\x83\x83\xE3\x83\x97\xE3\x81\x99\xE3\x82\x8B\xE3\x81\x93\xE3\x81\xA8" do
+    it 'ページを変更するとカウントアップすること' do
       product.pages.delete_all
       Page.counter_culture_fix_counts
       page = create(:page, content: Faker::Lorem.characters(40), product: product)
@@ -135,7 +135,7 @@ RSpec.describe Page, type: :model do
     it '一ページだけのときは削除できないこと' do
       product.pages.delete_all
       last_page = create(:page, product: product)
-      expect { last_page.destroy }.not_to change { product.reload.pages.count }
+      expect { last_page.destroy }.not_to change(Page, :count)
     end
   end
 end
