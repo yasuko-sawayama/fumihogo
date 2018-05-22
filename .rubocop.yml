@@ -11,6 +11,7 @@ AllCops:
     - Rakefile
     - spec/rails_helper.rb
     - spec/spec_helper.rb
+    - spec/support/**/*
     - 'vendor/**/*'
     - config/initializers/**/*
     - db/migrate/**/*

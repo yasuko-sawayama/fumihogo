@@ -97,7 +97,7 @@ class User < ApplicationRecord
   end
 
   def sns_url
-    social_profiles.order(provider: :desc).first.url || '#'
+    social_profiles.order(provider: :desc).first&.url || '#'
   end
 
   def self.update_list(profile, policy)

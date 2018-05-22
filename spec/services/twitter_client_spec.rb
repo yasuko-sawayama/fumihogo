@@ -32,12 +32,12 @@ RSpec.describe TwitterClient, vcr: true do
     let(:user) { double(:user) }
 
     it 'メンバーが所属していればtrue' do
-      expect(user).to receive(:twitter_uid).and_return('83561601')
+      expect(user).to have_received(:twitter_uid).and_return('83561601')
       expect(list_member?).to be_truthy
     end
 
     it '所属していなければfalse' do
-      expect(user).to receive(:twitter_uid).and_return('tekitounabangou')
+      expect(user).to have_received(:twitter_uid).and_return('tekitounabangou')
       expect(list_member?).to be_falsy
     end
   end

@@ -1,0 +1,19 @@
+- if @product.privacy_level.closed?
+  %p この作品は非公開です。
+- if @product.privacy_level.login?
+  %p この作品はログイン限定公開です。
+  %p 閲覧はログインしてください。
+- if @product.privacy_level.list?
+  %p この作品はリスト限定公開です。
+  - if current_user
+    %p 作品の閲覧を希望する方は、作者のTwitterアカウントに依頼を行って下さい。
+    %p
+      = link_to @product.user.sns_url do
+        = @product.user.nickname
+  - else
+    %p リストに追加されている方はログインしてみてください。
+
+- unless current_user
+  %hr
+  = render 'shared/main_login_form'
+ 

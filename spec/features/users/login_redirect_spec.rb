@@ -10,7 +10,7 @@ describe 'サインイン時のリダイレクト', type: :feature do
   before { product_page.load(product_id: product.id) }
 
   describe 'ログインせずにログイン限定作品ページにアクセスした場合', :js do
-    scenario 'ログインページにリダイレクトされる。' do
+    scenario 'ページにリダイレクトされる。' do
       expect(page).to have_content('ログインする')
     end
 
