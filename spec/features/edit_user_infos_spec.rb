@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "\xE3\x83\xA6\xE3\x83\xBC\xE3\x82\xB6\xE3\x83\xBC\xE6\x83\x85\xE5\xA0\xB1\xE7\xB7\xA8\xE9\x9B\x86", type: :feature do
+RSpec.feature 'ユーザー情報編集', type: :feature do
   let(:edit_page) { Edit.new }
   let(:login_page) { Login.new }
 

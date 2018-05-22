@@ -8,7 +8,8 @@ class TwitterClient
     @user = user
     @client = connect_twitter
 
-    # @rate_limits = Twitter::REST::Request.new(@client, :get, '/1.1/application/rate_limit_status.json').perform
+    # @rate_limits = Twitter::REST::Request.new(@client,
+    # :get, '/1.1/application/rate_limit_status.json').perform
   end
 
   def user_lists

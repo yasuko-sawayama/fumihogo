@@ -3,6 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": ">=8.11.0"
+  },
   "repository": "git@github.personal:yasuko-sawayama/fumihogo.git",
   "license": "MIT",
   "dependencies": {
