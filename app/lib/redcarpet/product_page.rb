@@ -1,3 +1,5 @@
+# Markdownをカスタマイズ
+# ルビとダブルダッシュを処理
 class Redcarpet::ProductPage < Redcarpet::Render::HTML
   KANJIPAT = "[々〇〻\u3400-\u9FFF\uF900-\uFAFF※ヶ〆]".freeze
 
@@ -15,10 +17,9 @@ class Redcarpet::ProductPage < Redcarpet::Render::HTML
     rubyhtml = '<ruby>\1<rp>（</rp><rt>\2</rt><rp>）</rp></ruby>'.freeze
 
     # 縦棒がある場合
-    text.gsub!(/｜(.+?)《(.+?)》/, rubyhtml) if text.match(/｜/)
+    text.gsub!(/｜(.+?)《(.+?)》/, rubyhtml) if text =~ /｜/
     # 漢字および外字
-    text.gsub!(/((?:#{KANJIPAT}|(?:\\UTF\{[0-9a-fA-F]+\}|\\CID\{[0-9]+\}))+?)《(.+?)》/, rubyhtml) if text
-      .match(/(?:#{KANJIPAT}|(?:\\UTF\{[0-9a-fA-F]+\}|\\CID\{[0-9]+\}))+?《.+?》/)
+    text.gsub!(/((?:#{KANJIPAT}|(?:\\UTF\{[0-9a-fA-F]+\}|\\CID\{[0-9]+\}))+?)《(.+?)》/, rubyhtml) if text =~ /(?:#{KANJIPAT}|(?:\\UTF\{[0-9a-fA-F]+\}|\\CID\{[0-9]+\}))+?《.+?》/
 
     text
   end

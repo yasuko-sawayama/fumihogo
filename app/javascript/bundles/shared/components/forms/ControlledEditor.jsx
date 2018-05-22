@@ -1,10 +1,17 @@
 import React from "react";
+import PropType from "prop-types";
 
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw, convertFromRaw, ContentState } from "draft-js";
 import { draftToMarkdown, markdownToDraft } from "markdown-draft-js";
 
 class ControlledEditor extends React.Component {
+  static propTypes = {
+    value: PropType.string,
+    productId: PropType.number,
+    pageId: PropType.number
+  };
+
   constructor(props) {
     super(props);
 
@@ -30,13 +37,14 @@ class ControlledEditor extends React.Component {
     this.props.onChange(draftToMarkdown(rawContent));
   }
 
-
   componentWillReceiveProps(nextProps) {
     const { value, productId, pageId } = nextProps;
 
-    if (productId !== this.state.productId ||
-        pageId !== this.state.pageId ||
-        (!this.state.editorState.getCurrentContent().hasText() && value)) {
+    if (
+      productId !== this.state.productId ||
+      pageId !== this.state.pageId ||
+      (!this.state.editorState.getCurrentContent().hasText() && value)
+    ) {
       // ページ移動していればStateを作り直す
       this.setState({
         editorState: this.createState(value),
@@ -49,9 +57,11 @@ class ControlledEditor extends React.Component {
   onDoubleClick() {
     this.setState({ readOnly: false });
   }
-  onBlur() { this.setState({ readOnly: true }); }
+  onBlur() {
+    this.setState({ readOnly: true });
+  }
 
-  onEditorStateChange: Function = (editorState) => {
+  onEditorStateChange: Function = editorState => {
     const newValue = draftToMarkdown(convertToRaw(editorState.getCurrentContent()));
     this.handleMyContentChange(newValue, editorState);
   };
@@ -64,7 +74,13 @@ class ControlledEditor extends React.Component {
     if (!value) {
       return EditorState.createEmpty();
     }
-    return EditorState.createWithContent(convertFromRaw(markdownToDraft(value)));
+    return EditorState.createWithContent(
+      convertFromRaw(
+        markdownToDraft(value, {
+          preserveNewlines: true
+        })
+      )
+    );
   }
 
   handleMyContentChange(newValue, editorState) {
@@ -79,7 +95,6 @@ class ControlledEditor extends React.Component {
       editorState
     });
   }
-
 
   render() {
     const { editorState } = this.state;
@@ -96,7 +111,17 @@ class ControlledEditor extends React.Component {
           editorClassName="editorArea"
           toolbarOnFocus={this.state.pageEdit}
           toolbar={{
-            options: ["inline", "blockType", "fontSize", "list", "textAlign", "colorPicker", "link", "emoji", "history"],
+            options: [
+              "inline",
+              "blockType",
+              "fontSize",
+              "list",
+              "textAlign",
+              "colorPicker",
+              "link",
+              "emoji",
+              "history"
+            ],
             list: { inDropdown: true },
             textAlign: { inDropdown: true },
             link: { inDropdown: true },

@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.feature '作品を作成する', type: :feature do
   before { login_user }
@@ -32,4 +32,3 @@ RSpec.feature '作品を作成する', type: :feature do
   scenario '作品の投稿に失敗するとエラーメッセージが表示される', :js
   scenario 'ログアウトした状態で投稿しようとするとエラーメッセージが表示される', :js
 end
-

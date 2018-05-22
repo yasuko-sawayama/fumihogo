@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  
+
   # Punditの検証を行わないコントローラ
   def auth_skipping_controllers?
     devise_controller? || high_voltage_controller?

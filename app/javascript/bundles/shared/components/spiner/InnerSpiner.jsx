@@ -9,7 +9,7 @@ class InnerSpiner extends React.Component {
     return (
       <DisplayGrayWrapper>
         <div id="loader">
-          <ReactLoading type="spinningBubbles" color="white" height="180" width="180" />
+          <ReactLoading type="spinningBubbles" color="white" height={180} width={180} />
         </div>
       </DisplayGrayWrapper>
     );

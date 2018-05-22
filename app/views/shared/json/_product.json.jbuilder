@@ -1,7 +1,7 @@
 
 json.extract! product, :id, :title, :description
 
-json.info do |info|
+json.info do |_info|
   json.extract! product, :id, :privacy_level, :permissions_list_id
 end
 

@@ -1,15 +1,15 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe ProductListCreator do
   describe '作者のリストの場合' do
     subject(:create_list) { creator.set_twitter_list(list_id) }
-    
+
     let(:creator) { described_class.new(product) }
-    let(:list_id) { 818095242884714497 }
+    let(:list_id) { 818_095_242_884_714_497 }
     let(:user) { create(:user) }
     let(:product) { build(:product, user: user, privacy_level: :list) }
 
-    before { allow(user).to receive(:twitter_uid).and_return(52043701) }
+    before { allow(user).to receive(:twitter_uid).and_return(52_043_701) }
 
     it '作成できること' do
       expect { create_list }.to change(PermissionsList, :count).by(1)

@@ -51,7 +51,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:member_permissions).inverse_of(:member) }
     it do
       should have_many(:added_permissions_lists)
-               .class_name('PermissionsList').through(:member_permissions)
+        .class_name('PermissionsList').through(:member_permissions)
     end
   end
 
@@ -164,7 +164,7 @@ RSpec.describe User, type: :model do
                  uid: 'mock_uid_1234',
                  provider: 'twitter')
         end
-        
+
         it 'ユーザーが作成されないこと' do
           expect { assign_user }.not_to change(User, :count)
         end

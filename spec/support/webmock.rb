@@ -7,7 +7,7 @@ VCR.configure do |c|
     allow_playback_repeats: true,
     record: :new_episodes
   }
-  
+
   c.ignore_localhost = true
   c.allow_http_connections_when_no_cassette = true
 end

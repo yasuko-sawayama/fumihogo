@@ -6,16 +6,15 @@ describe 'product shows details', type: :feature do
       build(:product,
             title: '作品タイトル',
             description: '説明文ですよ',
-            privacy_level: 'public_open'
-           )
+            privacy_level: 'public_open')
     end
 
     before do
       product.pages.delete_all
       product.pages << build(:page,
-                              title: 'ページタイトル',
-                              content: '本文内容ですよ本文内容ですよ本文内容ですよ本文内容ですよ',
-                              product: product)
+                             title: 'ページタイトル',
+                             content: '本文内容ですよ本文内容ですよ本文内容ですよ本文内容ですよ',
+                             product: product)
       product.save!
     end
 

@@ -6,10 +6,10 @@ import { LinkContainer } from "react-router-bootstrap";
 import styled from "styled-components";
 
 import Title from "./Title";
-import TableOfContents from "./TableOfContents";
 import Description from "./Description";
+import { TableOfContents } from "../shared";
 
-const productUrl = id => `/${id}/`;
+import { productUrl } from "../../libs/utils";
 
 const ButtonCol = styled(Col)`
   padding-top: 20px;
@@ -28,6 +28,7 @@ const AddButton = ({ id }) => (
 
 const About = ({
   currentUser,
+  isPanelOpen,
   editAttributes,
   product: { id, title, description, author, about, pages, auth }
 }) => (
@@ -43,7 +44,9 @@ const About = ({
     />
     <Row>
       <div className="col-sm-10">
-        {about.pageCount > 1 && <TableOfContents pages={pages} productId={id} />}
+        {about.pageCount > 1 && (
+          <TableOfContents pages={pages} productId={id} isOpen={isPanelOpen} />
+        )}
       </div>
       {auth.update && <AddButton id={id} />}
     </Row>
