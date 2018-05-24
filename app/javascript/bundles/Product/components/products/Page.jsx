@@ -12,8 +12,10 @@ class Page extends React.Component {
         impressionCount: PropTypes.number.isRequired
       }).isRequired,
       currentPage: PropTypes.number.isRequired,
-      content: PropTypes.string.isRequired
+      content: PropTypes.string.isRequired,
+      pages: PropTypes.array.isRequired
     }).isRequired,
+    actions: PropTypes.arrayOf(PropTypes.func).isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
         pageId: PropTypes.string
@@ -21,15 +23,21 @@ class Page extends React.Component {
     }).isRequired
   };
 
+  static targetPage(pageId, pages) {
+    // Paramがない場合は常に1ページ目
+    if (!pageId) {
+      return pages[0];
+    }
+    return pages.find(page => page.position === Number(pageId)) || pages[0];
+  }
+
   constructor(props) {
     super(props);
 
-    this.targetPage = this.targetPage.bind(this);
     this.fetchContent = this.fetchContent.bind(this);
   }
 
   componentWillMount() {
-    this.props.actions.changePage(this.props.match.params.pageId);
     this.fetchContent(this.props.match.params.pageId, this.props.product.pages);
   }
 
@@ -43,21 +51,15 @@ class Page extends React.Component {
 
     if (pageId && this.props.match.params.pageId !== pageId) {
       this.fetchContent(pageId, pages);
-      this.props.actions.changePage(pageId);
       this.scrollToTop();
     }
   }
 
-  targetPage(pageId, pages) {
-    // Paramがない場合は常に1ページ目
-    if (!pageId) {
-      return pages[0];
-    }
-    return pages.find(page => page.id === Number(pageId)) || pages[0];
-  }
-
   fetchContent(pageId, pages) {
-    this.props.actions.fetchPageContent(this.props.product.id, this.targetPage(pageId, pages).id);
+    this.props.actions.fetchPageContent(
+      this.props.product.id,
+      Page.targetPage(pageId, pages).position
+    );
   }
 
   scrollToTop() {
