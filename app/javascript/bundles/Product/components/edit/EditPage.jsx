@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import PageEditForm from "./PageEditForm";
-import Pager from "../product/Pager";
+import Pager from "../shared/Pager";
 
 class EditPage extends React.Component {
   // static propTypes = {
@@ -29,11 +29,17 @@ class EditPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { pageId } = this.props.match.params;
+    const {
+      product: { pages },
+      match: {
+        params: { pageId }
+      }
+    } = nextProps;
 
-    if (pageId && pageId !== nextProps.match.params.pageId) {
-      this.props.actions.changePage(nextProps.match.params.pageId);
-      this.fetchContent(nextProps.match.params.pageId, nextProps.product.pages);
+    if (pageId && this.props.match.params.pageId !== pageId) {
+      this.fetchContent(pageId, pages);
+      this.props.actions.changePage(pageId);
+      this.scrollToTop();
     }
   }
 
