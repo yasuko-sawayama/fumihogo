@@ -24,7 +24,6 @@ class EditPage extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.changePage(this.props.match.params.pageId);
     this.fetchContent(this.props.match.params.pageId, this.props.product.pages);
   }
 
@@ -38,18 +37,15 @@ class EditPage extends React.Component {
 
     if (pageId && this.props.match.params.pageId !== pageId) {
       this.fetchContent(pageId, pages);
-      this.props.actions.changePage(pageId);
-      this.scrollToTop();
     }
   }
 
   targetPage(pageId, pages) {
     // Paramがない場合は常に1ページ目
-    return pageId || pages[0].id;
+    return pageId || 1;
   }
 
   fetchContent(pageId, pages) {
-    this.props.change("content", this.props.product.content);
     this.props.actions.fetchPageContent(this.props.product.id, this.targetPage(pageId, pages));
   }
 

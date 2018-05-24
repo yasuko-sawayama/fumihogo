@@ -29,7 +29,6 @@ class Page extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.changePage(this.props.match.params.pageId);
     this.fetchContent(this.props.match.params.pageId, this.props.product.pages);
   }
 
@@ -43,7 +42,6 @@ class Page extends React.Component {
 
     if (pageId && this.props.match.params.pageId !== pageId) {
       this.fetchContent(pageId, pages);
-      this.props.actions.changePage(pageId);
       this.scrollToTop();
     }
   }
