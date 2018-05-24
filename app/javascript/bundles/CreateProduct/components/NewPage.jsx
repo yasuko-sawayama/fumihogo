@@ -6,13 +6,13 @@ import SuccessDialog from "./SuccessDialog";
 import { reset } from "redux-form";
 
 import NewForm from "./NewForm";
-import Title from "../../Product/components/product/Title";
+import Title from "../../Product/components/products/Title";
 import ErrorAlert from "../../shared/components/ErrorAlert";
 
 class NewPage extends React.Component {
   static propTypes = {
     form: PropTypes.any.isRequired
-  }
+  };
 
   render() {
     return (

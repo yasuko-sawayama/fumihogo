@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Content from "./Content";
-import Pager from "./Pager";
+import Pager from "../shared/Pager";
 
 class Page extends React.Component {
   static propTypes = {
@@ -13,7 +13,12 @@ class Page extends React.Component {
       }).isRequired,
       currentPage: PropTypes.number.isRequired,
       content: PropTypes.string.isRequired
-    })
+    }).isRequired,
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        pageId: PropTypes.string
+      }).isRequired
+    }).isRequired
   };
 
   constructor(props) {
@@ -29,11 +34,16 @@ class Page extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { pageId } = this.props.match.params;
+    const {
+      product: { pages },
+      match: {
+        params: { pageId }
+      }
+    } = nextProps;
 
-    if (pageId && pageId !== nextProps.match.params.pageId) {
-      this.fetchContent(nextProps.match.params.pageId, nextProps.product.pages);
-      this.props.actions.changePage(nextProps.match.params.pageId);
+    if (pageId && this.props.match.params.pageId !== pageId) {
+      this.fetchContent(pageId, pages);
+      this.props.actions.changePage(pageId);
       this.scrollToTop();
     }
   }
