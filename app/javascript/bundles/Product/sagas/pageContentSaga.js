@@ -18,7 +18,6 @@ export function* fetchPageContent({ payload }) {
     yield put(showLoading("content"));
     const url = `${PRODUCT_API_ENTRY_POINT}${payload.productId}/pages/${payload.id}`;
     const response = yield call(fetchEntities, url);
-    console.log(response.data.page.content);
     yield [
       put(fetchPageContentSuccess(response)),
       put(change("edit_page", "content", response.data.page.content)),
