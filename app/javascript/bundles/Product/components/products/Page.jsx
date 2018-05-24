@@ -51,11 +51,14 @@ class Page extends React.Component {
     if (!pageId) {
       return pages[0];
     }
-    return pages.find(page => page.id === Number(pageId)) || pages[0];
+    return pages.find(page => page.position === Number(pageId)) || pages[0];
   }
 
   fetchContent(pageId, pages) {
-    this.props.actions.fetchPageContent(this.props.product.id, this.targetPage(pageId, pages).id);
+    this.props.actions.fetchPageContent(
+      this.props.product.id,
+      this.targetPage(pageId, pages).position
+    );
   }
 
   scrollToTop() {
