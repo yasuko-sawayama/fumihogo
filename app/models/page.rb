@@ -25,6 +25,8 @@
 
 # 連載単位
 class Page < ApplicationRecord
+  include Commentable
+
   belongs_to :product, inverse_of: :pages
 
   # page count

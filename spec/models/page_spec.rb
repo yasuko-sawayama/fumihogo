@@ -28,6 +28,7 @@ require 'rails_helper'
 RSpec.describe Page, type: :model do
   describe 'association' do
     it { should belong_to(:product) }
+    it { should have_one(:thread) }
   end
 
   describe 'validation' do
@@ -65,6 +66,8 @@ RSpec.describe Page, type: :model do
     it { expect(product.pages.find_by(position: 3).previous.position).to eq(2) }
     it { expect(product.pages.find_by(position: 5).next.position).to eq(6) }
   end
+
+  it_behaves_like 'commentable'
 
   # FriendlyId一旦外し
   # describe 'frendry_id' do
@@ -124,7 +127,7 @@ RSpec.describe Page, type: :model do
     end
   end
 
-  describe '最後のページは削除できない' do
+  describe '削除' do
     let(:product) { create(:product) }
     let!(:page) { create(:page, product: product) }
 
@@ -132,6 +135,12 @@ RSpec.describe Page, type: :model do
       expect { page.destroy }.to change { product.reload.pages.count }.by(-1)
     end
 
+    xcontext 'コメントがあるとき' do
+      it '削除できること' do
+        page.comment('コメント')
+        expect { page.destroy }.to change { product.rekiad.oages.count }.by(-1)
+      end
+    end
     it '一ページだけのときは削除できないこと' do
       product.pages.delete_all
       last_page = create(:page, product: product)

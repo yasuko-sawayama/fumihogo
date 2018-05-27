@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180429134946) do
+ActiveRecord::Schema.define(version: 20180527110849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,29 @@ ActiveRecord::Schema.define(version: 20180429134946) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "comment_replies", force: :cascade do |t|
+    t.bigint "comment_thread_id"
+    t.text "content"
+    t.integer "status", default: 1, null: false
+    t.boolean "anonymous", default: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_thread_id"], name: "index_comment_replies_on_comment_thread_id"
+    t.index ["status"], name: "index_comment_replies_on_status"
+    t.index ["user_id"], name: "index_comment_replies_on_user_id"
+  end
+
+  create_table "comment_threads", force: :cascade do |t|
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.datetime "closed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["closed_at"], name: "index_comment_threads_on_closed_at"
+    t.index ["commentable_type", "commentable_id"], name: "index_comment_threads_on_commentable_type_and_commentable_id", unique: true
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -165,6 +188,8 @@ ActiveRecord::Schema.define(version: 20180429134946) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "comment_replies", "comment_threads"
+  add_foreign_key "comment_replies", "users"
   add_foreign_key "member_permissions", "permissions_lists"
   add_foreign_key "member_permissions", "users"
   add_foreign_key "pages", "products"

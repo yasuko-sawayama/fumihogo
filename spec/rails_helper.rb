@@ -25,7 +25,8 @@ SimpleCov.start 'rails'
 SimpleCov.minimum_coverage 55
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-
+Dir[Rails.root.join('spec/models/concerns/**/*.rb')].each { |f| require f }
+ 
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
