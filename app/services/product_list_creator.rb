@@ -5,7 +5,7 @@ class ProductListCreator
     @product = product
   end
 
-  def set_twitter_list(twitter_list_id)
+  def sync_twitter_list(twitter_list_id)
     list = PermissionsList.find_or_initialize_by(twitter_list_id: twitter_list_id)
 
     twitter = TwitterClient.new

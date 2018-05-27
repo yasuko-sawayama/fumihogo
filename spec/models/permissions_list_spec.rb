@@ -21,6 +21,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable RSpec/ScatteredSetup
 RSpec.describe PermissionsList, type: :model, vcr: true do
   describe 'associations' do
     it { should belong_to(:user) }
@@ -43,7 +44,6 @@ RSpec.describe PermissionsList, type: :model, vcr: true do
     it '同じユーザーを二回追加できないこと' do
       add_list
       expect { add_list }.not_to change { list.reload.members.count }
-      expect(list.reload.members.count).to eq(1)
     end
   end
 
@@ -57,20 +57,29 @@ RSpec.describe PermissionsList, type: :model, vcr: true do
       before { allow(user).to receive(:twitter?).and_return(true) }
 
       describe 'リストに含まれる場合' do
-        let(:list) { create(:permissions_list, twitter_list_id: 853_249_524_558_581_761) }
+        let(:list) do
+          create(:permissions_list,
+                 twitter_list_id: 853_249_524_558_581_761)
+        end
 
         it { should be_truthy }
       end
 
       describe 'ユーザーの別のリストに含まれる場合' do
-        let(:list) { create(:permissions_list, twitter_list_id: 818_095_242_884_714_497) }
+        let(:list) do
+          create(:permissions_list,
+                 twitter_list_id: 818_095_242_884_714_497)
+        end
 
         it { should be_falsy }
       end
     end
 
     describe 'twitterユーザーではない場合' do
-      let(:list) { create(:permissions_list, twitter_list_id: 853_249_524_558_581_761) }
+      let(:list) do
+        create(:permissions_list,
+               twitter_list_id: 853_249_524_558_581_761)
+      end
 
       before { allow(user).to receive(:twitter?).and_return(false) }
 
@@ -78,3 +87,4 @@ RSpec.describe PermissionsList, type: :model, vcr: true do
     end
   end
 end
+# rubocop:enable RSpec/ScatteredSetup

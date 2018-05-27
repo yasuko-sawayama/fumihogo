@@ -29,4 +29,7 @@ json.about do |about|
   about.impressionCount product.impressionist_count
 end
 
-json.pages product.pages, partial: 'shared/json/page', as: :page, locals: { product: product }
+json.pages product.pages,
+           partial: 'shared/json/page',
+           as: :page,
+           locals: { product: product }

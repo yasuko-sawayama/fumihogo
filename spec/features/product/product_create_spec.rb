@@ -23,7 +23,7 @@ RSpec.feature '作品を作成する', type: :feature do
 
     click_button '新しい小説を作成する'
 
-    sleep 3
+    sleep 4
     expect(Product.find_by(title: '最新のタイトル')).not_to be_nil
     expect(page).to have_content('新しい小説を作成しました')
     expect(page).to have_css('h2', text: '最新のタイトル')

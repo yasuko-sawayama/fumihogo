@@ -1,7 +1,9 @@
 module LoginHelper
   def login_user
     password = SecureRandom.hex(8)
-    user = FactoryBot.create(:user, password: password, password_confirmation: password)
+    user = FactoryBot.create(:user,
+                             password: password,
+                             password_confirmation: password)
 
     visit new_user_session_path
     fill_in 'メールアドレス', with: user.email

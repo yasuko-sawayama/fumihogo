@@ -1,11 +1,17 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
-  after_action :verify_authorized, except: :index, unless: :auth_skipping_controllers?
-  after_action :verify_policy_scoped, only: :index, unless: :auth_skipping_controllers?
+  after_action :verify_authorized,
+               except: :index,
+               unless: :auth_skipping_controllers?
+  after_action :verify_policy_scoped,
+               only: :index,
+               unless: :auth_skipping_controllers?
 
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  rescue_from ActionController::InvalidAuthenticityToken, with: :reload_to_root
+  rescue_from Pundit::NotAuthorizedError,
+              with: :user_not_authorized
+  rescue_from ActionController::InvalidAuthenticityToken,
+              with: :reload_to_root
 
   protect_from_forgery with: :exception
 
@@ -24,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:alert] = 'このページを表示する権限がありません。'
-    redirect_to root_path
+    auth_error_redirect
   end
 
   def store_location_for_user!
@@ -36,6 +42,11 @@ class ApplicationController < ActionController::Base
   # Punditの検証を行わないコントローラ
   def auth_skipping_controllers?
     devise_controller? || high_voltage_controller?
+  end
+
+  def auth_error_redirect
+    redirect_to not_authorized_product_path(params[:product_id] || params[:id])
+    # redirect_to root_path
   end
 
   def high_voltage_controller?
