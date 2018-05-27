@@ -4,9 +4,9 @@ import { Field } from "redux-form";
 import FontAwesome from "react-fontawesome";
 
 import RIEKInput from "../../../shared/components/forms/riek/RIEKInput";
-import EditorField from "./EditorField";
+import { EditorField } from "../../../shared/components/forms/";
 
-const EditPageForm = ({ id, pageId = 1 }) => (
+const FormContent = ({ id, pageId = 1 }) => (
   <div id="pageContent">
     <h3>
       ページタイトル
@@ -21,7 +21,7 @@ const EditPageForm = ({ id, pageId = 1 }) => (
         className="ProductTitle"
       />
       <FontAwesome name="quote-right" />
-      <span className="text-muted">（{ pageId }ページ）</span>
+      <span className="text-muted">（{pageId}ページ）</span>
     </h3>
     <EditorField
       key="field"
@@ -35,9 +35,9 @@ const EditPageForm = ({ id, pageId = 1 }) => (
   </div>
 );
 
-EditPageForm.propTypes = {
+FormContent.propTypes = {
   id: PropTypes.number.isRequired,
   pageId: PropTypes.number.isRequired
 };
 
-export default EditPageForm;
+export default FormContent;
