@@ -32,9 +32,11 @@ class Comment::Reply < ApplicationRecord
              inverse_of: :replies
   belongs_to :user, optional: true
 
-  validates :content, length: { maximum: 2000 }, presence: true
+  validates :content,
+            length: { maximum: 2000 },
+            presence: true
 
-    enumerize :privacy_level,
+  enumerize :privacy_level,
             in: { closed: 0,
                   public_open: 1,
                   author_only: 2 },
