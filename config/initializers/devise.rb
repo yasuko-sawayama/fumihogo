@@ -6,8 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'cf4ebb184646b6d73ef6821b973d1eaf9374da9adec9fd87634d338d6aee67c150a2ef7c657b2c8669fa0dbc3f044df65158d6192cd01074dc614abb1f9433e4'
-  config.secret_key = ENV['secret_key_base']
+  # config.secret_key = '6a617e458ecf1cc2795a88b2a446e6a39aede051a99a218b0d870fb47ab11a840d0bb6a231d57f45aac29cd612c957b5f199a3f74bda15d93959542c1a34ceeb'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -109,7 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '44451e2c4993ca138b95e714b68fbd242dbebef30a10559b49a96c12acc4d269c8a8927a17140eda4f43f7df9d24e61640d71a8fced8564764e8ec361ef2ebcc'
+  # config.pepper = 'b38cfd1682f16a05e56c32e2c99cfe29ef410df2b4261e4ff7f794c3eecb780a6a7c06637a4b4ba8e387115ba643eb5bb25ce87f4fc53930a5c5b162490e2f3b'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -249,13 +248,25 @@ Devise.setup do |config|
   config.sign_out_via = :delete
 
   # ==> OmniAuth
+  # Add a new OmniAuth provider. Check the wiki for more information on setting
+  # up on your models and hooks.
+  # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  callback_url = if Rails.production?
+                   if ENV['HEROKU_ENV'] == 'staging'
+                     'https://fumihogo-staging.herokuapp.com/auth/twitters/callback'
+                   else
+                     'https://fumihogo.herokuapp.com/auth/twitters/callback'
+                   end
+                 else
+                    'http://localhost:3000/auth/twitters/callback'
+                 end
   config.omniauth :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET'],
                   {
                     secure_image_url: 'true',
-                    image_size: 'original'
+                    image_size: 'original',
+                    callback_url: callback_url
                   }
 
-  
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
