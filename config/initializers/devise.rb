@@ -251,14 +251,14 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  callback_url = if Rails.production?
+  callback_url = if Rails.env.production?
                    if ENV['HEROKU_ENV'] == 'staging'
-                     'https://fumihogo-staging.herokuapp.com/auth/twitters/callback'
+                     'https://fumihogo-staging.herokuapp.com/users/auth/twitters/callback'
                    else
-                     'https://fumihogo.herokuapp.com/auth/twitters/callback'
+                     'https://fumihogo.herokuapp.com/users/auth/twitters/callback'
                    end
                  else
-                    'http://localhost:3000/auth/twitters/callback'
+                    'http://localhost:3000/users/auth/twitters/callback'
                  end
   config.omniauth :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET'],
                   {
