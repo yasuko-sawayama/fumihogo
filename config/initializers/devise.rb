@@ -253,12 +253,12 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   callback_url = if Rails.env.production?
                    if ENV['HEROKU_ENV'] == 'staging'
-                     'https://fumihogo-staging.herokuapp.com/users/auth/twitters/callback'
+                     'https://fumihogo-staging.herokuapp.com/users/omniauth_callbacks'
                    else
-                     'https://fumihogo.herokuapp.com/users/auth/twitters/callback'
+                     'https://fumihogo.herokuapp.com/users/omniauth_callbacks'
                    end
                  else
-                    'http://localhost:3000/users/auth/twitters/callback'
+                    'http://localhost:3000/users/omniauth_callbacks'
                  end
   config.omniauth :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET'],
                   {
