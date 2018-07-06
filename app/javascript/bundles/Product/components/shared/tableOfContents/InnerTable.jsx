@@ -16,11 +16,9 @@ const tableOfContents = ({ pages, productId }) => {
 };
 
 tableOfContents.propTypes = {
-  pages: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired
-    })
-  ).isRequired,
+  pages: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired
+  })).isRequired,
   productId: PropTypes.number.isRequired
 };
 

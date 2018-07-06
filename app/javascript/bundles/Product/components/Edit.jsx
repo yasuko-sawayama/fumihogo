@@ -66,7 +66,9 @@ class Edit extends React.Component {
   }
 
   render() {
-    const { values, dirty, reset, handleSubmit, pristine, submitting } = this.props;
+    const {
+      values, dirty, reset, handleSubmit, pristine, submitting
+    } = this.props;
 
     const { id } = this.props.product;
 
@@ -102,9 +104,7 @@ class Edit extends React.Component {
           <SpinerContainer />
           <InfoAlert message="各項目をクリックすると変更できます." />
           <form
-            onSubmit={handleSubmit(
-              values => console.log(values) || this.props.actions.updateProduct(values, { id })
-            )}
+            onSubmit={handleSubmit(values => console.log(values) || this.props.actions.updateProduct(values, { id }))}
           >
             <SubmitButton />
             <About {...this.props} />

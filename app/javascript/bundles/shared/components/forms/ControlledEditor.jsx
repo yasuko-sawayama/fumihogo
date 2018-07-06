@@ -61,7 +61,7 @@ class ControlledEditor extends React.Component {
     this.setState({ readOnly: true });
   }
 
-  onEditorStateChange: Function = editorState => {
+  onEditorStateChange: Function = (editorState) => {
     const newValue = draftToMarkdown(convertToRaw(editorState.getCurrentContent()));
     this.handleMyContentChange(newValue, editorState);
   };
@@ -74,13 +74,9 @@ class ControlledEditor extends React.Component {
     if (!value) {
       return EditorState.createEmpty();
     }
-    return EditorState.createWithContent(
-      convertFromRaw(
-        markdownToDraft(value, {
-          preserveNewlines: true
-        })
-      )
-    );
+    return EditorState.createWithContent(convertFromRaw(markdownToDraft(value, {
+      preserveNewlines: true
+    })));
   }
 
   handleMyContentChange(newValue, editorState) {

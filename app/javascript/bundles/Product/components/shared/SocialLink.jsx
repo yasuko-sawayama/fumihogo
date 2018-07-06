@@ -5,7 +5,9 @@ import { pageTitle } from "../../libs/utils";
 
 import TwitterLink from "./TwitterLink";
 
-const SocialLink = ({ id, title, currentPage, pages }) => {
+const SocialLink = ({
+  id, title, currentPage, pages
+}) => {
   const linkTitle = `${title}：${pageTitle(pages, currentPage)}`;
 
   return (

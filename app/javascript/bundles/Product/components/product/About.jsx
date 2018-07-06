@@ -28,7 +28,9 @@ const AddButton = ({ id }) => (
 const About = ({
   currentUser,
   isPanelOpen,
-  product: { id, title, description, author, about, pages, auth }
+  product: {
+    id, title, description, author, about, pages, auth
+  }
 }) => (
   <section id="about">
     <Title title={title} />
@@ -62,6 +64,10 @@ About.propTypes = {
     }).isRequired,
     pages: PropTypes.array
   }).isRequired
+};
+
+About.defaultProps = {
+  currentUser: {}
 };
 
 export default About;

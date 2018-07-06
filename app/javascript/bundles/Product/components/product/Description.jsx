@@ -11,7 +11,9 @@ const Description = ({
   id,
   title,
   description = "",
-  about: { created_at, character_count, privacyLevel, pageCount, impressionCount },
+  about: {
+    created_at, character_count, privacyLevel, pageCount, impressionCount
+  },
   author: { nickname, avator }
 }) => (
   <div className="row">

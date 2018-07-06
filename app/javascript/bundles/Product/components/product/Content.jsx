@@ -12,7 +12,9 @@ const Count = styled.p`
   margin-right: 0.8em;
 `;
 
-const Content = ({ pageTitle, content, pageId, totalPage, impressionCount }) => (
+const Content = ({
+  pageTitle, content, pageId, totalPage, impressionCount
+}) => (
   <div className="row">
     <div className="col-xs-12">
       {pageTitle && <h3>{pageTitle}</h3>}

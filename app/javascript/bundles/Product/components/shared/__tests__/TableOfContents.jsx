@@ -8,7 +8,7 @@ describe("TableOfContents", () => {
   const pages = [];
 
   it("can render", () => {
-    const tree = mount(<TableOfContents productId={1} pages={pages} isOpen={true} />);
+    const tree = mount(<TableOfContents productId={1} pages={pages} isOpen />);
     expect(tree.find(".panel-title")).toHaveText("もくじ");
   });
 

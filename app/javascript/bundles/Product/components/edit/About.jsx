@@ -30,7 +30,9 @@ const About = ({
   currentUser,
   isPanelOpen,
   editAttributes,
-  product: { id, title, description, author, about, pages, auth }
+  product: {
+    id, title, description, author, about, pages, auth
+  }
 }) => (
   <section id="about">
     <Title title={title} />

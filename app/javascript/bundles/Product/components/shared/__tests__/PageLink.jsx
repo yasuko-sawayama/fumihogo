@@ -1,29 +1,38 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { MemoryRouter } from "react-router";
 import { mount, shallow } from "enzyme";
 
 import PageLink from "../PageLink";
 
 describe("PageLink", () => {
-  it("正しいURLが生成できていること", () => {
-    const url = "http://example.com/products/1/";
-    const tree = shallow(<PageLink id={1} url={url} />);
-    const button = tree.find(NavLink);
-    expect(button.props().to).toBe("http://example.com/products/1/pages/1");
+  const title = "ページタイトル";
+
+  it("render", () => {
+    const tree = shallow(<PageLink title="タイトル" productId={1} position={1} />);
+    expect(tree).toMatchSnapshot();
   });
 
-  it("タイトルが表示できること", () => {
-    const url = "http://example.com/products/1/";
-    const title = "ページタイトル";
+  it("正しいURLが生成できていること", () => {
     const node = (
       <MemoryRouter>
-        <PageLink id={1} url={url} title={title} />
+        <PageLink title={title} productId={1} position={1} />
       </MemoryRouter>
     );
 
     const tree = mount(node);
+    const button = tree.find("a");
+    expect(button.props().href).toBe("/1/pages/1");
+  });
 
-    expect(tree).toHaveText("1. ページタイトル");
+  it("タイトルが表示できること", () => {
+    const node = (
+      <MemoryRouter>
+        <PageLink title={title} productId={1} position={1} />
+      </MemoryRouter>
+    );
+
+    const wrapper = mount(node);
+
+    expect(wrapper).toHaveText("1. ページタイトル");
   });
 });
