@@ -1,3 +1,3 @@
-const currentUserReducer = (state = null, action) => state;
+const currentUserReducer = (state = null) => state;
 
 export default currentUserReducer;

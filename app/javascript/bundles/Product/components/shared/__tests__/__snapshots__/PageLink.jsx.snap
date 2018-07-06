@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageLink render 1`] = `
+<li>
+  <PageLink__StyledLink
+    activeClassName="active"
+    to="/1/pages/1"
+  >
+    1
+    . 
+    タイトル
+  </PageLink__StyledLink>
+</li>
+`;
