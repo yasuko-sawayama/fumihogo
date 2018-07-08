@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable */
 
 const ROOT_PATH = `${location.protocol}//${location.host}`;
 

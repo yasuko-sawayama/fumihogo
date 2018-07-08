@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+
 import { join } from "../../../shared/utils/join";
 
 export const productUrl = id => `/${id}/`;
