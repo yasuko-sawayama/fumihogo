@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
@@ -22,7 +23,7 @@ require 'vcr'
 
 require 'simplecov'
 SimpleCov.start 'rails'
-SimpleCov.minimum_coverage 55
+SimpleCov.minimum_coverage 75
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
@@ -47,6 +48,7 @@ RSpec.configure do |config|
   config.include TwitterClientHelper
   
   config.order = "random"
+
   # Include path helpers
   config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL

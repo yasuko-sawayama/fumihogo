@@ -1,23 +1,7 @@
-/*
- *= require devise_bootstrap_views
- *= require font-awesome
- */
-
 @import "bootstrap-variables";
-
 @import "japanese_font";
 
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
-@import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg';
 // Bootstrap body padding for fixed navbar
 body { padding-top: 84px; }
-
-@import "common";
-@import "headers";
-@import "navbar";
-@import "footer";
-@import "home";
-@import "product";
-@import "productForm";

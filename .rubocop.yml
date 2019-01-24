@@ -15,8 +15,10 @@ AllCops:
     - 'vendor/**/*'
     - config/initializers/**/*
     - db/migrate/**/*
-    - app/javascript/**/*
+    - app/app/**/*
     - node_modules/**/*
+    - client/node_modules/**/*.*
+    - client/node_modules/**/.*
     - bin/**/*
     - db/seeds.rb
     - Guardfile

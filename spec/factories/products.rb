@@ -30,9 +30,9 @@
 FactoryBot.define do
   factory :product do
     user
-    title 'MyString'
-    description 'MyString'
-    privacy_level :public_open
+    title { 'MyString' }
+    description { 'MyString' }
+    privacy_level { :public_open }
     # character_count 1
 
     after(:build) do |product|

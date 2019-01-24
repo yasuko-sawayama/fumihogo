@@ -1,3 +1,0 @@
-# トップページヘルパ
-module HomeHelper
-end

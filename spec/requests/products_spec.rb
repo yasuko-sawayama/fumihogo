@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Products', type: :request do
+RSpec.xdescribe 'Products', type: :request do
   describe 'GET /products/:id' do
     let(:user) { create(:user) }
 

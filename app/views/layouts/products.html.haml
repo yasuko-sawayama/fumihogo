@@ -2,7 +2,11 @@
 
 // for product react page
 - content_for :javascript do
-  = javascript_pack_tag 'production-bundle', 'data-turbolinks-track': 'reload'
+  = javascript_pack_tag 'app-bundle', 'data-turbolinks-track': true, defer: true
+  = javascript_pack_tag 'vendor-bundle', 'data-turbolinks-track': true, defer: true
+
+- content_for :stylesheet do
+  = stylesheet_pack_tag 'application', media: 'all'
 
 = render '/layouts/shared/page_title'
-= render template: "/layouts/application" 
+= render template: "/layouts/application"

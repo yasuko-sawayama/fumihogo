@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'サインイン時のリダイレクト', type: :feature do
+xdescribe 'サインイン時のリダイレクト', type: :feature do
   let(:user) { create(:user) }
   let!(:product) { create(:product, title: '野生の王国', privacy_level: :login) }
 

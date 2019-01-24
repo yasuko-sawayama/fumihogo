@@ -1,7 +1,11 @@
-# You can run these commands in separate shells
-web: bin/rails s -p 3000
+# Run Rails without hot reloading (static assets).
+# For debugging with Pry:
+#   Tab 1: `foreman start -f Procfile.dev -m puma=0,all=1`
+#   Tab 2: `rails s webrick`
+rails: rails s -b 0.0.0.0
 
-# Next line runs a watch process with webpack to compile the changed files.
-# When making frequent changes to client side assets, you will prefer building webpack assets
-# upon saving rather than when you refresh your browser page.
-client: sh -c 'rm -rf public/packs/* || true && bin/rake react_on_rails:locale && bin/webpack -w'
+# Build client assets, watching for changes.
+rails-client-assets: sh -c 'rm -rf public/webpack/development/*' || true && sh -c 'yarn run build:dev:client'
+
+# Build server assets, watching for changes. Remove if not server rendering.
+rails-server-assets: sh -c 'yarn run build:dev:server'

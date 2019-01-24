@@ -37,7 +37,6 @@
 # 一般ユーザー
 # 投稿・閲覧可
 # Twitterのみ初期実装
-# TODO: Facebook, Google（必要か…？）
 class User < ApplicationRecord
   extend FriendlyId
 

@@ -22,6 +22,6 @@
 FactoryBot.define do
   factory :permissions_list do
     user
-    twitter_list_id 'リスト名'
+    twitter_list_id { 'リスト名' }
   end
 end
