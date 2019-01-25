@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ReactOnRailsWithWebpacker
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    / NOTE: Must use defer and not async to keep async scripts loading in correct order
+    = javascript_pack_tag('vendor-bundle', 'data-turbolinks-track': true, defer: true)
+    = javascript_pack_tag('app-bundle', 'data-turbolinks-track': true, defer: true)
+  %body
+    = yield
+    = redux_store_hydration_data

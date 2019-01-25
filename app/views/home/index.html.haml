@@ -1,0 +1,26 @@
+.page-empty
+  .page-empty-content
+    %h1 ふみほご
+    .form-description
+      %p 小説の下書きをしたり人に見てもらったりするツールです。
+      %p 今のところアルファ版以下です
+    %br/
+    - if user_signed_in?
+      .form-description
+        %p
+          = link_to new_product_path, class: 'btn btn-primary' do
+            %i.fa.fa-pencil
+            新しい小説を書き始める
+        %p
+          = link_to '小説一覧へ', products_path, class: 'button btn-default'
+    - else
+      = render 'devise/sessions/form'
+
+      = link_to new_registration_path(resource), class: 'button button-primary button-block' do
+        %i.fas.fa-plus-square　新規登録
+
+      -#.form-description
+      -#  %h3 ChangeLog
+      -#  %dl
+      -#    %dt 2017.4.29
+      -#    %dd React on Railsで書き直し

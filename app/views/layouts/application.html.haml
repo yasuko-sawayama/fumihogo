@@ -2,10 +2,11 @@
 %html{lang: 'ja'}
   = render 'layouts/shared/head'
   %body{class: controller_name}
+    = render 'layouts/shared/flash'
     = yield
     -#= render 'layouts/shared/nav'
     -#.container
-    -#  = render 'layouts/shared/flash'
+
     -#  - if content_for?(:page_title)
     -#    = yield(:page_title)
     -#  - elsif content_for?(:title)
