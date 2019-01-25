@@ -2,30 +2,31 @@
 %html{lang: 'ja'}
   = render 'layouts/shared/head'
   %body{class: controller_name}
-    = render 'layouts/shared/nav'
-    .container
-      = render 'layouts/shared/flash'
-      - if content_for?(:page_title)
-        = yield(:page_title)
-      - elsif content_for?(:title)
-        .page-header
-          %h1= yield :title
-          - if content_for?(:read)
-            %p.read= yield :read
+    = yield
+    -#= render 'layouts/shared/nav'
+    -#.container
+    -#  = render 'layouts/shared/flash'
+    -#  - if content_for?(:page_title)
+    -#    = yield(:page_title)
+    -#  - elsif content_for?(:title)
+    -#    .page-header
+    -#      %h1= yield :title
+    -#      - if content_for?(:read)
+    -#        %p.read= yield :read
 
-    
-      %section.main.row
-        .col-xs-12.col-md-10.col-md-offset-1
-          = yield
 
-      - if content_for?(:redux_store)
-        // for redux store
-        = yield :redux_store
-        = redux_store_hydration_data
+      -#%section.main.row
+      -#  .col-xs-12.col-md-10.col-md-offset-1
+      -#    = yield
+      -#
+      -#- if content_for?(:redux_store)
+      -#  // for redux store
+      -#  = yield :redux_store
+      -#  = redux_store_hydration_data
 
-    %footer
-      #footer-main
-        .container
-          .row
-            .col-md-6.col-md-offset-3.site-title
-              ふみほご
+    -#%footer
+    -#  #footer-main
+    -#    .container
+    -#      .row
+    -#        .col-md-6.col-md-offset-3.site-title
+    -#          ふみほご

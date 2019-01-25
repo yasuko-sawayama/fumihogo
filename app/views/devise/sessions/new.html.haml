@@ -1,8 +1,6 @@
-= render 'form'
+.page-empty
+  .page-empty-content
+    %h1 ふみほご
 
-- if resource_name.to_s == 'user'
-  = link_to  user_twitter_omniauth_authorize_path, class: 'btn btn-block btn-primary btn-login' do
-    %i.fa.fa-twitter
-    &nbsp;Twitterでログインする
+    = render 'form'
 
-= render 'devise/shared/links'

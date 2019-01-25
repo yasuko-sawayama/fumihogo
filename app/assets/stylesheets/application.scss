@@ -1,7 +1,15 @@
 @import "bootstrap-variables";
 @import "japanese_font";
 
-@import "bootstrap";
+$color-primary: #EB6864;
+$color-secondary: #22B24C;
+;
+
+@import "particles/particles";
+
+@import "home";
 
 // Bootstrap body padding for fixed navbar
-body { padding-top: 84px; }
+body {
+  font-size: 16px;
+}
