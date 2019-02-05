@@ -5,7 +5,7 @@ class SignUp < SitePrism::Page
   element :nickname, "input[name='user[nickname]']"
   element :password, "input[name='user[password]']"
   element :password_confirmation, "input[name='user[password_confirmation]']"
-  element :sign_up_button, "input[name='commit']"
+  element :sign_up_button, "button[type='submit']"
 
   def sign_up!(current_email = nil, current_nickname = nil, current_password = nil)
     email.set(current_email)

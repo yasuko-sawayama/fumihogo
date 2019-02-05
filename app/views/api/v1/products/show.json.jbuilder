@@ -1,7 +1,7 @@
 json.currentUser do |_user|
-  json.partial! 'shared/json/current_user', current_user: current_user
-end
+  json.partial! 'api/v1/shared/current_user', current_user: current_user
+end if current_user
 
 json.product do
-  json.partial! 'shared/json/product', product: @product
+  json.partial! 'api/v1/shared/product', product: @product
 end
