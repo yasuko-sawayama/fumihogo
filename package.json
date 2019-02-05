@@ -9,8 +9,6 @@
     "build:test": "(cd client && yarn run build:test)",
     "build:production:client": "(cd client && yarn run build:production:client)",
     "build:production:server": "(cd client && yarn run build:production:server)",
-    "build:client": "(cd client && yarn run build:client)",
-    "build:server": "(cd client && yarn run build:server)",
     "build:dev:client": "(cd client && yarn run build:dev:client)",
     "build:dev:server": "(cd client && yarn run build:dev:server)",
     "hot-assets": "(cd client && yarn run hot-assets)",
