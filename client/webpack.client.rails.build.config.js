@@ -89,7 +89,7 @@ module.exports = merge(config, {
                                 plugins: 'autoprefixer',
                             },
                         },
-                        'sass-loader',
+                        { 'sass-loader' },
                         {
                             loader: 'sass-resources-loader',
                             options: {
