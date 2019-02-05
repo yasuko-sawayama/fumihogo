@@ -19,7 +19,8 @@
     "build:production:client": "NODE_ENV=production webpack -p --config webpack.client.rails.build.config.js",
     "build:production:server": "NODE_ENV=production webpack -p --config webpack.server.rails.build.config.js",
     "build:production": "yarn run build:production:server && yarn run build:production:client",
-    "hot-assets": "NODE_ENV=development babel-node server-rails-hot.js"
+    "hot-assets": "NODE_ENV=development babel-node server-rails-hot.js",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
     "@babel/cli": "^7.0.0",
@@ -40,6 +41,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "history": "^4.6.3",
+    "hoist-non-react-statics": "^3.3.0",
     "imports-loader": "^0.7.1",
     "jquery": "^3.2.1",
     "jquery-ujs": "^1.2.2",
@@ -71,10 +73,11 @@
   },
   "devDependencies": {
     "body-parser": "^1.17.1",
-    "eslint": "^5.7.0",
+    "eslint": "^5.13.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-shakacode": "^16.0.1",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^22.2.2",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "fbjs": "^1.0.0",
