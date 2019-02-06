@@ -3,6 +3,7 @@
 // Note that Foreman (Procfile.dev) has also been configured to take care of this.
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const merge = require("webpack-merge");
 const { env } = require("process");
 const config = require("./webpack.client.base.config");
@@ -26,7 +27,13 @@ if (devBuild) {
 
 module.exports = merge(config, {
   entry: {
-    "vendor-bundle": ["jquery-ujs"]
+    "vendor-bundle": [
+      "react",
+      "redux",
+      "react-on-rails"
+      // "jquery-ujs",
+      // "jquery"
+    ]
   },
 
   output: {
@@ -105,16 +112,16 @@ module.exports = merge(config, {
             sham: "es5-shim/es5-sham"
           }
         }
-      },
-      {
-        test: require.resolve("jquery-ujs"),
-        use: {
-          loader: "imports-loader",
-          options: {
-            jQuery: "jquery"
-          }
-        }
       }
+      // {
+      //   test: require.resolve("jquery-ujs"),
+      //   use: {
+      //     loader: "imports-loader",
+      //     options: {
+      //       jQuery: "jquery"
+      //     }
+      //   }
+      // }
     ]
   },
 
@@ -122,6 +129,11 @@ module.exports = merge(config, {
     new ExtractTextPlugin({
       filename: "[name]-[contenthash].css",
       allChunks: true
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: "static",
+      // openAnalyzer: false,
+      reportFilename: "bundle_sizes.html"
     })
   ]
 });
