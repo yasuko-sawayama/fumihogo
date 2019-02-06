@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import ExamplePanel from "../helpers/ExamplePanel";
+import ProfilePanel from "../helpers/ProfilePanel";
 import Footer from "../helpers/Footer";
 import PageTitle from "../helpers/PageTitle";
 import Sidebar from "../helpers/Sidebar";
@@ -27,7 +27,7 @@ export default function Backend(props) {
         <div className="content-side-overlay"/>
 
         <div className="content-side">
-          <ExamplePanel/>
+          <ProfilePanel/>
         </div>
       </div>
     </div>

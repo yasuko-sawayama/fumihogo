@@ -4,8 +4,8 @@ export default class Footer extends Component {
     render() {
         return (
             <div className="footer">
-                <div className="footer-left">
-                    &copy; 2017 Created by Code Vision. All rights reserved.
+                <div className="footer-left wf-hannari">
+                    ふみほご
                 </div>
 
                 <div className="footer-right">
