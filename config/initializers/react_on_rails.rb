@@ -6,8 +6,10 @@
 ReactOnRails.configure do |config|
   # This configures the script to run to build the production assets by webpack. Set this to nil
   # if you don't want react_on_rails building this file for you.
-  config.build_production_command = "RAILS_ENV=production NODE_ENV=production bin/webpack"
-
+  config.node_modules_location = "client" # Pre 9.0.0 always used "client"
+  config.webpack_generated_files = %w[ app-bundle.js vendor-bundle.js app-bundle.css
+                                       vendor-bundle.css server-bundle.js ]
+  config.build_production_command = "yarn run build:production"
   ################################################################################
   ################################################################################
   # TEST CONFIGURATION OPTIONS
@@ -22,7 +24,7 @@ ReactOnRails.configure do |config|
   # with rspec then this controls what yarn command is run
   # to automatically refresh your webpack assets on every test run.
   #
-  config.build_test_command = "RAILS_ENV=test bin/webpack"
+  config.build_test_command = "yarn run build:test"
 
   ################################################################################
   ################################################################################
@@ -38,5 +40,7 @@ ReactOnRails.configure do |config|
   # different. You should have ONE server bundle which can create all of your server rendered
   # React components.
   #
-  config.server_bundle_js_file = "hello-world-bundle.js"
+  config.webpack_generated_files = %w[manifest.json]
+  config.server_bundle_js_file = "server-bundle.js"
+  # config.rendering_extension = RenderingExtension
 end

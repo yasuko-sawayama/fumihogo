@@ -27,27 +27,27 @@ const compiler = webpack(webpackConfig);
 
 const devServer = new WebpackDevServer(compiler, {
     publicPath: output.publicPath,
-    proxy: {
-        '*': output.publicPathWithHost,
-    },
-    headers: {
-        'Access-Control-Allow-Origin': '*',
-    },
-    disableHostCheck: true,
-    clientLogLevel: 'info',
+    // proxy: {
+    //     '*': output.publicPathWithHost,
+    // },
+    // headers: {
+    //     'Access-Control-Allow-Origin': '*',
+    // },
+    // disableHostCheck: true,
+    // clientLogLevel: 'info',
     hot: true,
-    inline: true,
-    historyApiFallback: true,
-    quiet: false,
-    noInfo: false,
-    lazy: false,
-    stats: {
-        colors: true,
-        hash: false,
-        version: false,
-        chunks: false,
-        children: false,
-    },
+    // inline: true,
+    // historyApiFallback: true,
+    // quiet: false,
+    // noInfo: false,
+    // lazy: false,
+    // stats: {
+    //     colors: true,
+    //     hash: false,
+    //     version: false,
+    //     chunks: false,
+    //     children: false,
+    // }
 });
 
 devServer.listen(settings.dev_server.port, settings.dev_server.host, err => {

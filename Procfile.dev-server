@@ -2,6 +2,7 @@
 
 rails: rails s
 
+# 一旦 app-bundle.cssをlayoutで読み込まない設定にしないと動かない
 # Run the hot reload server for client development
 hot-assets: yarn run hot-assets
 

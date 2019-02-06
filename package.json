@@ -9,19 +9,13 @@
     "build:test": "(cd client && yarn run build:test)",
     "build:production:client": "(cd client && yarn run build:production:client)",
     "build:production:server": "(cd client && yarn run build:production:server)",
-    "build:client": "(cd client && yarn run build:client)",
-    "build:server": "(cd client && yarn run build:server)",
     "build:dev:client": "(cd client && yarn run build:dev:client)",
     "build:dev:server": "(cd client && yarn run build:dev:server)",
-    "hot-assets": "(cd client && yarn run hot-assets)"
+    "hot-assets": "(cd client && yarn run hot-assets)",
+    "storybook": "(cd client && yarn run storybook)"
   },
   "dependencies": {
-    "@rails/webpacker": "3.5",
-    "babel-preset-react": "^6.24.1"
   },
   "devDependencies": {
-    "babel-cli": "^7.0.0-beta.3",
-    "prettier": "^1.16.1",
-    "webpack-dev-server": "2.11.2"
   }
 }
