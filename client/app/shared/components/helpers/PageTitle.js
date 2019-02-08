@@ -4,20 +4,18 @@ import PropTypes from "prop-types";
 // import Breadcrumbs from "../helpers/Breadcrumbs";
 import Shortcuts from "../ui/Shortcut";
 
-const PageTitle = ({title}) =>
-     (
-      <div className="page-title">
-          {/*<Breadcrumbs/>*/}
+const PageTitle = ({ title }) => (
+  <div className="page-title">
+    {/*<Breadcrumbs/>*/}
 
-          <h1>{title}</h1>
+    <h1>{title}</h1>
 
-          <Shortcuts/>
-      </div>
-    );
-
+    <Shortcuts />
+  </div>
+);
 
 PageTitle.propTypes = {
-    title: PropTypes.string.isRequired
-}
+  title: PropTypes.string.isRequired
+};
 
-export default PageTitle
+export default PageTitle;

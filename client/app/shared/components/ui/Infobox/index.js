@@ -1,8 +1,6 @@
-import Infobox from './Infobox';
-import InfoboxProject from './InfoboxProject';
+import Infobox from "./Infobox";
+import InfoboxProject from "./InfoboxProject";
 
-export {
-    InfoboxProject
-}
+export { InfoboxProject };
 
 export default Infobox;

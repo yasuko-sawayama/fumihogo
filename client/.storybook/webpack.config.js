@@ -12,7 +12,7 @@ module.exports = (storybookBaseConfig, configType) => {
     loaders: ["style-loader", "css-loader", "sass-loader"],
     include: [
       path.resolve(__dirname, "../"),
-      path.resolve(__dirname, "../../app/assets/stylesheets"),
+      path.resolve(__dirname, "../../app/assets/stylesheets")
     ]
   });
 
