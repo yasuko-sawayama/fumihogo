@@ -1,16 +1,22 @@
 @import "bootstrap-variables";
 @import "japanese_font";
 
-$color-primary: #EB6864;
-$color-secondary: #22B24C;
+$color-primary: #455A64;
+$color-secondary: #EB6864;
 ;
+//$color-primary: #455A64 !default;
+//$color-secondary: #78909C !default;
+$color-font: #455A64 !default;
 
 @import "particles/particles";
 
 @import "alert";
 @import "home";
 
-// Bootstrap body padding for fixed navbar
+@import "footer";
+
+.wf-hannari { font-family: "Hannari"; }
+
 body {
   font-size: 16px;
 }
