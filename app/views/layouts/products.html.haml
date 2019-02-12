@@ -1,17 +1,22 @@
--# - set_meta_tags title: yield(:title)
-
-// for product react page
-- content_for :javascript do
-  = javascript_pack_tag 'app-bundle', 'data-turbolinks-track': true, defer: true
-  = javascript_pack_tag 'vendor-bundle', 'data-turbolinks-track': true, defer: true
+- set_meta_tags title: yield(:title)
 
 - content_for :stylesheet do
-  = stylesheet_pack_tag 'application', media: 'all'
+  = stylesheet_link_tag "//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css"
+  = stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons"
   / NOTE: Must use defer and not async to keep async scripts loading in correct order
   / hotloadingおわったら有効にする
   -#= stylesheet_pack_tag('app-bundle',
   -#                      media: 'all',
   -#                      'data-turbolinks-track': true)
+
+- content_for :javascript do
+  = javascript_include_tag "https://oss.maxcdn.com/respond/1.4.2/respond.min.js"
+  = javascript_include_tag "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"
+  = javascript_pack_tag('vendor-bundle', 'data-turbolinks-track': true, defer: true)
+  = javascript_pack_tag('app-bundle', 'data-turbolinks-track': true, defer: true)
+
+- content_for :react_on_rails do
+  = redux_store_hydration_data
 
 = render '/layouts/shared/page_title'
 = render template: "/layouts/application"

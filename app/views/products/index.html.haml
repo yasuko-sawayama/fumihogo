@@ -1,1 +1,7 @@
-= render 'shared/product_index', user: current_user
+-#= render 'shared/product_index', user: current_user
+- content_for :title do
+  タイトル
+  -#- if user.profile_image
+  -#  = image_tag user.profile_image, size: '40x40'
+  -##{user.nickname}さんの作品一覧
+= react_component("ProductApp", prerender: false, trace: true)

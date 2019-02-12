@@ -1,7 +1,7 @@
 # 作品のページ表示用
 class ProductsController < WithReactController
   before_action :store_location_for_user!
-  before_action :authenticate_user!, except: [:show, :not_authorized
+  before_action :authenticate_user!, except: [:show, :not_authorized]
   before_action :set_and_authorize_product, only: [:show, :destroy]
 
   def index

@@ -4,6 +4,9 @@
   %body{class: controller_name}
     = render 'layouts/shared/flash'
     = yield
+
+    - if content_for? :react_on_rails
+      = redux_store_hydration_data
     -#= render 'layouts/shared/nav'
     -#.container
 
