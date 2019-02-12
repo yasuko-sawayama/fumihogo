@@ -7,6 +7,11 @@
 
 - content_for :stylesheet do
   = stylesheet_pack_tag 'application', media: 'all'
+  / NOTE: Must use defer and not async to keep async scripts loading in correct order
+  / hotloadingおわったら有効にする
+  -#= stylesheet_pack_tag('app-bundle',
+  -#                      media: 'all',
+  -#                      'data-turbolinks-track': true)
 
 = render '/layouts/shared/page_title'
 = render template: "/layouts/application"

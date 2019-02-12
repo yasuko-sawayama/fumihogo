@@ -23,9 +23,7 @@ module.exports = merge.strategy({
   devtool: "eval-source-map",
 
   entry: {
-    "vendor-bundle": [
-      // "jquery-ujs"
-    ],
+    "vendor-bundle": ["react-on-rails"],
     "app-bundle": [
       "react-hot-loader/patch",
       `webpack-dev-server/client?http://${settings.dev_server.host}:${
