@@ -10,24 +10,22 @@ import Toolbar from "../helpers/Toolbar";
 export default function Backend(props) {
   return (
     <div className="page-inner">
-      <Toolbar/>
-      <Sidebar/>
+      <Toolbar />
+      <Sidebar />
 
       <div className="main">
-        <PageTitle title="テスト用タイトル"/>
+        <PageTitle title="テスト用タイトル" />
 
-        <div className="content">
-          {props.children}
-        </div>
+        <div className="content">{props.children}</div>
 
-        <Footer/>
+        <Footer />
       </div>
 
       <div className="content-side-wrapper">
-        <div className="content-side-overlay"/>
+        <div className="content-side-overlay" />
 
         <div className="content-side">
-          <ProfilePanel/>
+          <ProfilePanel />
         </div>
       </div>
     </div>
@@ -36,5 +34,4 @@ export default function Backend(props) {
 
 Backend.propTypes = {
   children: PropTypes.node.isRequired
-}
-
+};

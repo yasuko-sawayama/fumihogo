@@ -1,9 +1,5 @@
 json.extract! product, :id, :title, :description
 
-json.info do |_info|
-  json.extract! product, :id, :privacy_level, :permissions_list_id
-end
-
 json.auth do |auth|
   auth.update policy(product).update?
   auth.show policy(product).show?
@@ -14,18 +10,24 @@ json.author do |author|
   author.id product&.user&.id
 end
 
-json.about do |about|
+json.info do |about|
   about.created_at l product.created_at if product.persisted?
   about.character_count product.character_count
-  about.pageCount product.page_count
-  about.privacyLevel product.privacy_level_text
+  about.page_count product.page_count
+  about.privacy_level product.privacy_level
+  about.privacy_level_text product.privacy_level_text
+
+  # in: { closed: 0,
+  #       public_open: 1,
+  #       login: 2,
+  #       list: 3 }
   if product.privacy_level.list?
-    about.permissionsList do |list|
+    about.permissions_list do |list|
       list.id product.permissions_list.id
       list.name product.permissions_list.name
     end
   end
-  about.impressionCount product.impressionist_count
+  about.impression_count product.impressionist_count
 end
 
 json.pages product.pages,
