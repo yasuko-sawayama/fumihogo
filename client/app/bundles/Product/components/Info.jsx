@@ -8,7 +8,8 @@ const Info = ({
     impression_count,
     privacy_level,
     privacy_level_text,
-    permission_list: { name }
+    permission_list: { name },
+    created_at
   }
 }) => (
   <ul className="infobox-content-properties">
@@ -33,6 +34,10 @@ const Info = ({
         <span>リスト:</span> <strong>{name}</strong>
       </li>
     )}
+
+    <li>
+      <span>作成日:</span> <strong>{created_at}</strong>
+    </li>
   </ul>
 );
 

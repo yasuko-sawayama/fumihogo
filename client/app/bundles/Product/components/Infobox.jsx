@@ -10,7 +10,9 @@ const Author = ({ author: { id, nickname } }) => (
   </h4>
 );
 
-const InfoBox = ({ product: { id, title, description, info, author } }) => (
+const InfoBox = ({
+                   product: { id, title, description, info, author, auth }
+                 }) => (
   <div className="infobox" id={`product-${id}`}>
     <div className="infobox-inner">
       <div className="infobox-header">
@@ -20,7 +22,7 @@ const InfoBox = ({ product: { id, title, description, info, author } }) => (
         </div>
 
         <div className="infobox-header-action">
-          <ProductButton />
+          <ProductButton auth={auth}/>
         </div>
       </div>
       <div className="infobox-content">
