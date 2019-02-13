@@ -10,8 +10,8 @@ import Toolbar from "../helpers/Toolbar";
 export default function Backend(props) {
   return (
     <div className="page-inner">
-      <Sidebar/>
       <Toolbar/>
+      <Sidebar/>
 
       <div className="main">
         <PageTitle title="テスト用タイトル"/>

@@ -1,12 +1,12 @@
 import React from "react";
+import Frontend from "../../../shared/components/layouts/Frontend";
 import ProductList from "./ProductList";
 
 const Product = () => {
   return (
-    <div>
-      <h1>タイトル</h1>
+    <Frontend title="やすこの作品一覧">
       <ProductList/>
-    </div>
+    </Frontend>
   );
 };
 
