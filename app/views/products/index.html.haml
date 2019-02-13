@@ -4,4 +4,4 @@
   -#- if user.profile_image
   -#  = image_tag user.profile_image, size: '40x40'
   -##{user.nickname}さんの作品一覧
-= react_component("ProductApp", prerender: false, trace: true)
+= render 'shared/product'

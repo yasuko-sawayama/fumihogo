@@ -1,5 +1,7 @@
 # アカウント関連（Devise系はdevise/以下）
-class UsersController < ApplicationController
+class UsersController < WithReactController
+  layout 'products'
+
   def show
     authorize @user = User.friendly.find(params[:id])
     @products = policy_scope(@user.products)
