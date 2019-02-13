@@ -1,6 +1,6 @@
-import React from "react";
+ import React from "react";
 import PropTypes from "prop-types";
-
+import Frontend from "../../../shared/components/layouts/Frontend";
 import InfoBox from "./Infobox";
 
 const ProductList = ({ products }) => {
@@ -9,9 +9,11 @@ const ProductList = ({ products }) => {
   ));
 
   return (
+    <Frontend title="やすこの作品一覧">
     <div className="content-inner">
-      <div className="members">{productBoxes}</div>
+      <div className="product-list">{productBoxes}</div>
     </div>
+    </Frontend>
   );
 };
 

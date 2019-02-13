@@ -1,12 +1,15 @@
 import React from "react";
-import Frontend from "../../../shared/components/layouts/Frontend";
+import {  BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import ProductList from "./ProductList";
 
 const Product = () => {
   return (
-    <Frontend title="やすこの作品一覧">
-      <ProductList/>
-    </Frontend>
+<Router>
+<Switch>
+  <Route path="/" component={ProductList} />
+</Switch>
+</Router>
   );
 };
 

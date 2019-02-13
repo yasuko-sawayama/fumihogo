@@ -1,4 +1,4 @@
-.projects, .members {
+.projects, .product-list {
   .infobox {
     @media (min-width: $media-md) and (max-width: $media-lg) {
       @include span(6 of 12);

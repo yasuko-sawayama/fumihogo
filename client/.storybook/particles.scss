@@ -2172,24 +2172,24 @@ table tr:last-child td {
  * 17. Infobox
  */
 @media (min-width: 992px) and (max-width: 1281px) {
-  .projects .infobox, .members .infobox {
+  .projects .infobox, .product-list .infobox {
     width: 49.15254%;
     float: left;
     margin-right: 1.69492%;
   }
-  .projects .infobox:nth-child(2n), .members .infobox:nth-child(2n) {
+  .projects .infobox:nth-child(2n), .product-list .infobox:nth-child(2n) {
     float: right;
     margin-right: 0;
   }
 }
 
 @media (min-width: 1281px) {
-  .projects .infobox, .members .infobox {
+  .projects .infobox, .product-list .infobox {
     width: 32.20339%;
     float: left;
     margin-right: 1.69492%;
   }
-  .projects .infobox:nth-child(3n), .members .infobox:nth-child(3n) {
+  .projects .infobox:nth-child(3n), .product-list .infobox:nth-child(3n) {
     float: right;
     margin-right: 0;
   }
