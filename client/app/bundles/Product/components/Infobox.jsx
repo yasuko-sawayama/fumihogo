@@ -11,8 +11,8 @@ const Author = ({ author: { id, nickname } }) => (
 );
 
 const InfoBox = ({
-                   product: { id, title, description, info, author, auth }
-                 }) => (
+  product: { id, title, description, info, author, auth }
+}) => (
   <div className="infobox" id={`product-${id}`}>
     <div className="infobox-inner">
       <div className="infobox-header">
@@ -22,7 +22,7 @@ const InfoBox = ({
         </div>
 
         <div className="infobox-header-action">
-          <ProductButton auth={auth}/>
+          <ProductButton auth={auth} to={`/products/${id}`} />
         </div>
       </div>
       <div className="infobox-content">

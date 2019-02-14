@@ -28,7 +28,7 @@ module.exports = merge.strategy({
       "react-hot-loader/patch",
       `webpack-dev-server/client?http://${settings.dev_server.host}:${
         settings.dev_server.port
-        }`,
+      }`,
       "webpack/hot/only-dev-server"
     ]
   },

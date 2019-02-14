@@ -17,7 +17,7 @@ export default class Toolbar extends Component {
       <div className="toolbar">
         <div className="toolbar-inner">
           <div className="logo">
-            <img src="/img/logo.svg" alt=""/>
+            <img src="/img/logo.svg" alt="" />
           </div>
 
           <ul className="top">
@@ -34,7 +34,7 @@ export default class Toolbar extends Component {
             {/*</li>*/}
           </ul>
 
-          <Navigation/>
+          <Navigation />
 
           <ul className="bottom">
             <li>
@@ -90,7 +90,7 @@ export default class Toolbar extends Component {
           {/*</div>*/}
 
           <div className="toolbar-actions">
-            <div className="toolbar-slide-overlay"/>
+            <div className="toolbar-slide-overlay" />
 
             <div className="toolbar-slide-inner">
               <div
@@ -100,7 +100,7 @@ export default class Toolbar extends Component {
                 <i className="md-icon">close</i>
               </div>
 
-              <CreateToolBar/>
+              <CreateToolBar />
             </div>
           </div>
         </div>

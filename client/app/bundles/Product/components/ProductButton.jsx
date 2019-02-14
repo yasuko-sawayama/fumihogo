@@ -12,7 +12,7 @@ const BookIcon = styled.i`
   padding: 0.5em 0.6em;
 
   background-color: ${props =>
-  props.disabled ? Color.UNREADABLE : "transparent"};
+    props.disabled ? Color.UNREADABLE : "transparent"};
 `;
 
 const CircleButton = styled(NavLink)`
@@ -28,7 +28,7 @@ const CircleButton = styled(NavLink)`
 
 const ProductButton = ({ to, auth: { show } }) => (
   <CircleButton to={to} disabled={!show}>
-    <BookIcon className="fas fa-book" disabled={!show}/>
+    <BookIcon className="fas fa-book" disabled={!show} />
     {show && <div>よむ</div>}
   </CircleButton>
 );

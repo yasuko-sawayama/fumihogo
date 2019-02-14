@@ -1,19 +1,27 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { MemoryRouter } from "react-router";
+
 // import { action } from "@storybook/addon-actions";
+import { Provider } from "react-redux";
 import { withKnobs, text, boolean, number } from "@storybook/addon-knobs/react";
 
 import Product from "../Product";
 import ProductList from "../ProductList";
 
+import sharedStore from "../../../../stores/sharedStore";
+
+const store = sharedStore();
+
 storiesOf("作品ページ", module)
   .addDecorator(story => (
-    <MemoryRouter initialEntries={["/", "products"]}>{story()}</MemoryRouter>
+    <Provider store={store}>
+      <MemoryRouter initialEntries={["/", "products"]}>{story()}</MemoryRouter>
+    </Provider>
   ))
   .addDecorator(withKnobs)
   .add("基本レイアウト", () => {
-    return <Product/>;
+    return <Product />;
   })
   .add("作品リスト", () => {
     const products = [
@@ -73,5 +81,5 @@ storiesOf("作品ページ", module)
       }
     ];
 
-    return <ProductList products={products}/>;
+    return <ProductList products={products} />;
   });

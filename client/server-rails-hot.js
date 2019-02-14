@@ -55,6 +55,6 @@ devServer.listen(settings.dev_server.port, settings.dev_server.host, err => {
   console.log(
     `=> 🔥  Webpack development server is running on ${
       output.publicPathWithHost
-      }`
+    }`
   );
 });

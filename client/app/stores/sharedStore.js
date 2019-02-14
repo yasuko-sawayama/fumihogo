@@ -9,8 +9,9 @@ import reducers from "../reducers";
 /*
  *  Export a function that takes the props and returns a Redux store
  *  This is used so that 2 components can have the same store.
+ *  デフォルトはStorybook用
  */
-export default (props, railsContext) => {
+const sharedStore = (props = {}, railsContext = {}) => {
   // eslint-disable-next-line no-param-reassign
   delete props.prerender;
 
@@ -21,3 +22,5 @@ export default (props, railsContext) => {
     newProps
   );
 };
+
+export default sharedStore;

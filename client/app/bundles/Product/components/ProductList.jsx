@@ -1,5 +1,6 @@
- import React from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import Frontend from "../../../shared/components/layouts/Frontend";
 import InfoBox from "./Infobox";
 
@@ -10,9 +11,9 @@ const ProductList = ({ products }) => {
 
   return (
     <Frontend title="やすこの作品一覧">
-    <div className="content-inner">
-      <div className="product-list">{productBoxes}</div>
-    </div>
+      <div className="content-inner">
+        <div className="product-list">{productBoxes}</div>
+      </div>
     </Frontend>
   );
 };
@@ -25,4 +26,6 @@ ProductList.defaultProps = {
   products: []
 };
 
-export default ProductList;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(ProductList);
