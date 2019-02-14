@@ -9,8 +9,4 @@ class WithReactController < ApplicationController
   def initialize_shared_store
     redux_store("sharedStore", props: @app_props)
   end
-
-  def set_data
-    @app_props = {name: "Mrs. Client Side Rendering"}
-  end
 end

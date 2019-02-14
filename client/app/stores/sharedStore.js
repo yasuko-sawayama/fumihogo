@@ -1,10 +1,10 @@
 import { combineReducers, applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import middleware from "redux-thunk";
+import thunk from "redux-thunk";
 
 import reducers from "../reducers";
 
-// const middleware = [];
+const middleware = [thunk];
 
 /*
  *  Export a function that takes the props and returns a Redux store
@@ -17,7 +17,7 @@ const sharedStore = (props = {}, railsContext = {}) => {
 
   const combinedReducer = combineReducers(reducers);
   const newProps = { ...props, railsContext };
-  return composeWithDevTools(applyMiddleware(middleware))(createStore)(
+  return composeWithDevTools(applyMiddleware(...middleware))(createStore)(
     combinedReducer,
     newProps
   );
