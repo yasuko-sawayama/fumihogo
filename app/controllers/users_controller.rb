@@ -4,9 +4,11 @@ class UsersController < WithReactController
 
   def show
     authorize @user = User.friendly.find(params[:id])
-    @products = policy_scope(@user.products)
-                .order(created_at: :desc)
-                .page(params[:page]).per(20)
+    # @products = policy_scope(@user.products)
+    #             .order(created_at: :desc)
+    #             .page(params[:page]).per(20)
+    @products = Product.all
+
     render content_type: 'text/html'
   end
 
@@ -16,11 +18,5 @@ class UsersController < WithReactController
 
   private
 
-  def set_data
-    @app_props = {
-        productData: render_to_string(template: '/api/v1/products/index',
-                                      handler: :jbuilder,
-                                      locals: {products: @products})
-    }
-  end
+
 end
