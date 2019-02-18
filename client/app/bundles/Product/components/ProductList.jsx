@@ -11,7 +11,7 @@ const ProductList = ({ products }) => {
 
   return (
     <Frontend title="やすこの作品一覧">
-      <div className="content-inner">
+      <div classname="content-inner">
         <div className="product-list">{productBoxes}</div>
       </div>
     </Frontend>
