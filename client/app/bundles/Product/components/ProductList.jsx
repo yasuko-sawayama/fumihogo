@@ -5,6 +5,7 @@ import Frontend from "../../../shared/components/layouts/Frontend";
 import InfoBox from "./Infobox";
 
 const ProductList = ({ products }) => {
+  console.log(products);
   const productBoxes = products.map(product => (
     <InfoBox key={product.id} product={product} />
   ));
@@ -26,6 +27,9 @@ ProductList.defaultProps = {
   products: []
 };
 
-const mapStateToProps = state => state;
+const mapStateToProps = state =>
+  console.log(state) || {
+    products: state.productData.products
+  };
 
 export default connect(mapStateToProps)(ProductList);

@@ -5,7 +5,7 @@ class WithReactController < ApplicationController
   private
 
   def initialize_shared_store
-    redux_store("sharedStore", props: @app_props)
+    redux_store("sharedStore", props: @app_props.to_s)
   end
 
   def set_app_data
@@ -13,7 +13,9 @@ class WithReactController < ApplicationController
         currentUserData: render_to_string(partial: '/api/v1/shared/current_user',
                                           formats: :json,
                                           locals: {current_user: current_user}),
-        productData: @products
+        productData: render_to_string(partial: '/api/v1/shared/products',
+                                      format: :json,
+                                      locals: {products: @products})
     }
   end
 end
