@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   # User
   get '/user/edit', to: 'users#edit'
-  resources :users, only: [:show, :update]
+  resources :users, only: [:show, :update], format: :html
 
   namespace :api, { format: :json } do
     namespace :v1 do

@@ -6,6 +6,6 @@
   "plugins": [
     "react-hot-loader/babel",
     "@babel/plugin-proposal-class-properties",
-    "babel-plugin-root-import"
+    ["babel-plugin-root-import",{"rootPathSuffix": "app"}]
   ]
 }

@@ -8,19 +8,13 @@ class UsersController < WithReactController
                     .order(created_at: :desc)
                     .page(params[:page]).per(20)
 
-    set_app_data
     initialize_shared_store
 
-    render content_type: 'text/html'
+    render formats: :html
+
   end
 
   def edit
     authorize @user = current_user
-  end
-
-  private
-
-  def set_products
-
   end
 end
