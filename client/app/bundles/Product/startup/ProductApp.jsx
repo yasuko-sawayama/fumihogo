@@ -14,12 +14,22 @@ const ProductApp = (props, _railsContext, domNodeId) => {
   // eslint-disable-next-line no-param-reassign
   delete props.prerender;
 
+  console.log(props);
+
   // This is where we get the existing store.
   const store = ReactOnRails.getStore("sharedStore");
 
+  console.log(store);
+
+  // const productStore = createStore(
+  //   combinedReducer,
+  //   props,
+  //   applyMiddleware(middleware)
+  // );
+
   // Provider uses this.props.children, so we're not typical React syntax.
   // This allows redux to add additional props to the HelloWorldContainer.
-  const renderApp = (Komponent) => {
+  const renderApp = Komponent => {
     const element = (
       <AppContainer>
         <Provider store={store}>
@@ -39,4 +49,3 @@ const ProductApp = (props, _railsContext, domNodeId) => {
 };
 
 export default ProductApp;
-

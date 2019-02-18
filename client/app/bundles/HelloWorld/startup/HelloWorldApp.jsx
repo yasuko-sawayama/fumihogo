@@ -1,5 +1,5 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import React from "react";
+import { Provider } from "react-redux";
 import ReactOnRails from "react-on-rails";
 import { AppContainer } from "react-hot-loader";
 import ReactDOM from "react-dom";
@@ -19,7 +19,7 @@ const HelloWorldApp = (props, _railsContext, domNodeId) => {
 
   // Provider uses this.props.children, so we're not typical React syntax.
   // This allows redux to add additional props to the HelloWorldContainer.
-  const renderApp = (Komponent) => {
+  const renderApp = Komponent => {
     const element = (
       <AppContainer>
         <Provider store={store}>
@@ -39,4 +39,3 @@ const HelloWorldApp = (props, _railsContext, domNodeId) => {
 };
 
 export default HelloWorldApp;
-

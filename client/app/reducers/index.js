@@ -1,5 +1,6 @@
 import helloWorldReducer from "../bundles/HelloWorld/reducers/helloWorldReducer";
 import railsContextReducer from "./railsContextReducer";
+import currentUserReducer from "./currentUserReducer";
 import productReducer from "./productReducer";
 
 // This is how you do a directory of reducers.
@@ -7,5 +8,6 @@ import productReducer from "./productReducer";
 export default {
   helloWorldData: helloWorldReducer,
   railsContext: railsContextReducer,
+  currentUserData: currentUserReducer,
   productData: productReducer
 };

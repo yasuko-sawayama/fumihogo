@@ -4,10 +4,12 @@ class UsersController < WithReactController
 
   def show
     authorize @user = User.friendly.find(params[:id])
-    # @products = policy_scope(@user.products)
-    #             .order(created_at: :desc)
-    #             .page(params[:page]).per(20)
-    @products = Product.all
+    @products = policy_scope(@user.products)
+                    .order(created_at: :desc)
+                    .page(params[:page]).per(20)
+
+    set_app_data
+    initialize_shared_store
 
     render content_type: 'text/html'
   end
@@ -18,5 +20,7 @@ class UsersController < WithReactController
 
   private
 
+  def set_products
 
+  end
 end
