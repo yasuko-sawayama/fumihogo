@@ -6,9 +6,13 @@ import Info from "./Info";
 
 const Author = ({ author: { id, nickname } }) => (
   <h4>
-    <a href={`/users/${id}`}>{nickname}</a>
+    <a href={`/users/${nickname}`}>{nickname}</a>
   </h4>
 );
+
+Author.propTypes = {
+  author: PropTypes.shape().isRequired
+};
 
 const InfoBox = ({
   product: { id, title, description, info, author, auth }
@@ -25,6 +29,7 @@ const InfoBox = ({
           <ProductButton auth={auth} to={`/products/${id}`} />
         </div>
       </div>
+
       <div className="infobox-content">
         <Info info={info} />
         <p>{description}</p>
@@ -32,5 +37,9 @@ const InfoBox = ({
     </div>
   </div>
 );
+
+InfoBox.propTypes = {
+  product: PropTypes.shape().isRequired
+};
 
 export default InfoBox;

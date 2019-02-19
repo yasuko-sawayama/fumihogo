@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Frontend from "~/shared/components/layouts/Frontend";
 import InfoBox from "./product/Infobox";
 
 const ProductList = ({ products }) => {
@@ -8,7 +9,13 @@ const ProductList = ({ products }) => {
     <InfoBox key={product.id} product={product} />
   ));
 
-  return <div className="product-list">{productBoxes}</div>;
+  return (
+    <Frontend>
+      <div className="content-inner">
+        <div className="product-list">{productBoxes}</div>
+      </div>
+    </Frontend>
+  );
 };
 
 ProductList.propTypes = {
