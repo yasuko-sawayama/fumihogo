@@ -58,6 +58,6 @@ Info.defaultProps = {
     impression_count: 0,
     permission_list: null
   }
-}
+};
 
 export default Info;

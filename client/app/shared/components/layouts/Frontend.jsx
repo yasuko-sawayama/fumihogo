@@ -7,25 +7,23 @@ import PageTitle from "../helpers/PageTitle";
 import Sidebar from "../frontend/Sidebar";
 import Toolbar from "../frontend/Toolbar";
 
-const Frontend = ({ title, children }) => (
+const Frontend = ({ children }) => (
   <div className="page-inner">
-    <Toolbar/>
-    <Sidebar/>
+    <Toolbar />
+    <Sidebar />
 
     <div className="main">
-      <PageTitle title={title}/>
-      <div className="content">
-        {children}
-      </div>
+      <PageTitle />
+      <div className="content">{children}</div>
 
-      <Footer/>
+      <Footer />
     </div>
 
     <div className="content-side-wrapper">
-      <div className="content-side-overlay"/>
+      <div className="content-side-overlay" />
 
       <div className="content-side">
-        <ProfilePanel/>
+        <ProfilePanel />
       </div>
     </div>
   </div>

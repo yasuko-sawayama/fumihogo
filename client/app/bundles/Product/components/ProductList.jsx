@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Frontend from "~/shared/components/layouts/Frontend";
 import InfoBox from "./product/Infobox";
 
 const ProductList = ({ products }) => {
@@ -9,13 +8,7 @@ const ProductList = ({ products }) => {
     <InfoBox key={product.id} product={product} />
   ));
 
-  return (
-    <Frontend title="やすこの作品一覧">
-      <div className="content-inner">
-        <div className="product-list">{productBoxes}</div>
-      </div>
-    </Frontend>
-  );
+  return <div className="product-list">{productBoxes}</div>;
 };
 
 ProductList.propTypes = {
@@ -27,7 +20,7 @@ ProductList.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-    products: state.productData.products
-  });
+  products: state.productData.products
+});
 
 export default connect(mapStateToProps)(ProductList);

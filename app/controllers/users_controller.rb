@@ -3,7 +3,7 @@ class UsersController < WithReactController
   layout 'products'
 
   def show
-    authorize @user = User.friendly.find(params[:id])
+    authorize @user = User.friendly.find(params[:id]).decorate
     @products = policy_scope(@user.products)
                     .order(created_at: :desc)
                     .page(params[:page]).per(20)

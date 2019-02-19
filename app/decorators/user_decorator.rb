@@ -6,4 +6,8 @@ class UserDecorator < ApplicationDecorator
     twitter = TwitterClient.new(self, context)
     twitter.user_lists
   end
+
+  def social_account_name
+    social_profiles&.first&.account_name
+  end
 end

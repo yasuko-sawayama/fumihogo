@@ -1,4 +1,4 @@
-User.seed do |user|
+User.seed_once do |user|
   user.id = 1
   user.nickname = "test1"
 end
