@@ -1168,6 +1168,20 @@
     marked "^0.5.2"
     prop-types "^15.6.2"
 
+"@storybook/addon-viewport@^4.1.12":
+  version "4.1.12"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-4.1.12.tgz#29d546eec7f0c1e6fdc158124f826bbf71dbee56"
+  integrity sha512-RLRuFcwjhwbsNQ/I3fV4hYmDgdp4Gv0frq1r2z8ysP3N3TlqFbjkkNBSLgv8GQvY8SxwD9Va7yTzDe6A8AVY6w==
+  dependencies:
+    "@emotion/styled" "^0.10.6"
+    "@storybook/addons" "4.1.12"
+    "@storybook/components" "4.1.12"
+    "@storybook/core-events" "4.1.12"
+    core-js "^2.5.7"
+    global "^4.3.2"
+    prop-types "^15.6.2"
+    util-deprecate "^1.0.2"
+
 "@storybook/addons@4.1.11", "@storybook/addons@^4.1.11":
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-4.1.11.tgz#a0d537bd10d123ecee6cb1f5f149b148ce250e57"
@@ -1175,6 +1189,16 @@
   dependencies:
     "@storybook/channels" "4.1.11"
     "@storybook/components" "4.1.11"
+    global "^4.3.2"
+    util-deprecate "^1.0.2"
+
+"@storybook/addons@4.1.12":
+  version "4.1.12"
+  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-4.1.12.tgz#ab38bfd0be97ed02a7d43d97cc631fa4c3a6f3a2"
+  integrity sha512-W2+bM65LiPWTy22X+B5nVuUs3Eiy0wWY/97AA9mTkDY7lq2/NAeOUQNEoqaRPU9hUE7XFn/ngd+p39+CUSP1zw==
+  dependencies:
+    "@storybook/channels" "4.1.12"
+    "@storybook/components" "4.1.12"
     global "^4.3.2"
     util-deprecate "^1.0.2"
 
@@ -1191,6 +1215,11 @@
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-4.1.11.tgz#d161497fa3cd848cc9d518aa1c37052857e22e3c"
   integrity sha512-zYusY8cno4keMozn2lDpBgyNSOueFh+hrPETioSB5Z8Kd3F5OjM7681vJC8QA67yOBEie2hHk0CVxRpuxziMwA==
+
+"@storybook/channels@4.1.12":
+  version "4.1.12"
+  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-4.1.12.tgz#656161e48467c0fef0dedce1ab21972d2eb7fa27"
+  integrity sha512-vep5vOmZ3K9/usIGc82tld5af6lQdIpzXGp1VlQ4lG69j09UxO+1H3gQn6dSFEm+9D4hqjp8wj0ZO10N4/xb/w==
 
 "@storybook/client-logger@4.1.11":
   version "4.1.11"
@@ -1213,10 +1242,31 @@
     react-textarea-autosize "^7.0.4"
     render-fragment "^0.1.1"
 
+"@storybook/components@4.1.12":
+  version "4.1.12"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-4.1.12.tgz#c497167562907ce2adb31b275b60109c9f3269da"
+  integrity sha512-3s+zvzaUXjsAIFimKFmCUsKUEtQAAZwsNQc501IOE61A+g7LQypM7UWBhlzwaPh33L1Z34WQrEP991ThF9tXUw==
+  dependencies:
+    "@emotion/core" "^0.13.1"
+    "@emotion/provider" "^0.11.2"
+    "@emotion/styled" "^0.10.6"
+    global "^4.3.2"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-inspector "^2.3.0"
+    react-split-pane "^0.1.84"
+    react-textarea-autosize "^7.0.4"
+    render-fragment "^0.1.1"
+
 "@storybook/core-events@4.1.11":
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-4.1.11.tgz#78cfb2b4014ca27909421cdebfa9c96533929a5a"
   integrity sha512-rVb76xFLJkTFcBHL1oTdJW8O2N7q+Cc6Mo7v9u3TnM4WuRk08/GyzzO7sRvEg3Mvo59AOLu1uqYovRMo4tZEnQ==
+
+"@storybook/core-events@4.1.12":
+  version "4.1.12"
+  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-4.1.12.tgz#1a861c1c450f076c146f6cc3c8a4ccd0d4dc0d35"
+  integrity sha512-NrZ5k2tsS8Cil99E2M4wzOdkTaxkK0NvicwEPoTcz0utyWrF4T7fThE3qoGBoVTZ+6quWazRFvsvO9MhEnMYnw==
 
 "@storybook/core@4.1.11":
   version "4.1.11"
@@ -4553,6 +4603,23 @@ eslint-config-shakacode@^16.0.1:
     babel-eslint "8.2.2"
     eslint-config-airbnb "16.1.0"
 
+eslint-import-resolver-babel-plugin-root-import@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-babel-plugin-root-import/-/eslint-import-resolver-babel-plugin-root-import-1.1.1.tgz#b060f1177557918389f7ed476e5b36a43854a381"
+  integrity sha512-ZZxdV9AxzL2WFVggDxZ36xodPg2+BTrkhhMf/of+BxSVh/GKLGCs17EDq5b61wqC7/oQsA2h1RtH1fV7HOUV/w==
+  dependencies:
+    eslint-import-resolver-node "^0.2.1"
+    json5 "^0.5.0"
+
+eslint-import-resolver-node@^0.2.1:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-node/-/eslint-import-resolver-node-0.2.3.tgz#5add8106e8c928db2cba232bcd9efa846e3da16c"
+  integrity sha1-Wt2BBujJKNssuiMrzZ76hG49oWw=
+  dependencies:
+    debug "^2.2.0"
+    object-assign "^4.0.1"
+    resolve "^1.1.6"
+
 eslint-import-resolver-node@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-node/-/eslint-import-resolver-node-0.3.2.tgz#58f15fb839b8d0576ca980413476aab2472db66a"
@@ -4569,7 +4636,7 @@ eslint-module-utils@^2.3.0:
     debug "^2.6.8"
     pkg-dir "^2.0.0"
 
-eslint-plugin-import@^2.2.0:
+eslint-plugin-import@^2.16.0:
   version "2.16.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.16.0.tgz#97ac3e75d0791c4fac0e15ef388510217be7f66f"
   integrity sha512-z6oqWlf1x5GkHIFgrSvtmudnqM6Q60KM4KvpWi5ubonMjycLjndvd5+8VAZIsTlHC03djdgJuyKG6XO577px6A==

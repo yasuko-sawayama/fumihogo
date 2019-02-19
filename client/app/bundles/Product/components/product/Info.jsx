@@ -8,7 +8,7 @@ const Info = ({
     impression_count,
     privacy_level,
     privacy_level_text,
-    permission_list: { name },
+    permission_list,
     created_at
   }
 }) => (
@@ -31,7 +31,7 @@ const Info = ({
 
     {privacy_level === "list" && (
       <li>
-        <span>リスト:</span> <strong>{name}</strong>
+        <span>リスト:</span> <strong>{permission_list.name}</strong>
       </li>
     )}
 
@@ -44,8 +44,20 @@ const Info = ({
 Info.propTypes = {
   info: PropTypes.shape({
     character_count: PropTypes.number.isRequired,
-    page_count: PropTypes.number.isRequired
+    page_count: PropTypes.number.isRequired,
+    impression_count: PropTypes.number,
+    privacy_level: PropTypes.string.isRequired,
+    privacy_level_text: PropTypes.string.isRequired,
+    permission_list: PropTypes.shape(),
+    created_at: PropTypes.string.isRequired
   }).isRequired
 };
+
+Info.defaultProps = {
+  info: {
+    impression_count: 0,
+    permission_list: null
+  }
+}
 
 export default Info;

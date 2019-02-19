@@ -2,6 +2,11 @@
   font-family: "Hannari";
 }
 
+@media (max-width: 768px) {
+  .content-inner {
+    padding: 15px 15px;
+  }
+}
 /**
  * 17. Infobox
  */
@@ -28,3 +33,4 @@
     margin-right: 0;
   }
 }
+

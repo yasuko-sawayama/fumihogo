@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-import { Color } from "../../../shared/constants";
+import { Color } from "~/shared/constants";
 
 const BookIcon = styled.i`
   font-size: 42px;

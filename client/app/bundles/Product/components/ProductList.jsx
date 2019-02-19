@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Frontend from "../../../shared/components/layouts/Frontend";
-import InfoBox from "./Infobox";
+import Frontend from "~/shared/components/layouts/Frontend";
+import InfoBox from "./product/Infobox";
 
 const ProductList = ({ products }) => {
-  console.log(products);
   const productBoxes = products.map(product => (
     <InfoBox key={product.id} product={product} />
   ));
@@ -27,9 +26,8 @@ ProductList.defaultProps = {
   products: []
 };
 
-const mapStateToProps = state =>
-  console.log(state) || {
+const mapStateToProps = state => ({
     products: state.productData.products
-  };
+  });
 
 export default connect(mapStateToProps)(ProductList);
