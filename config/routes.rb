@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get '/user/edit', to: 'users#edit'
   resources :users, only: [:show, :update] do
     member do
-      get '*any_action', action: :show
+      get '(/*any_action)', action: :show
     end
   end
 

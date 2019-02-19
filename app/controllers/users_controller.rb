@@ -11,7 +11,6 @@ class UsersController < WithReactController
     initialize_shared_store
 
     render formats: :html
-
   end
 
   def edit

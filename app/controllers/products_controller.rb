@@ -6,9 +6,16 @@ class ProductsController < WithReactController
 
   def index
     @products = policy_scope(current_user.products).page(params[:page])
+    initialize_shared_store
   end
 
-  def show; end
+  def show
+    @user = @product.user.decorate
+    @list_type = 'content'
+    initialize_shared_store
+
+    render formats: :html
+  end
 
   def new
     authorize @product = Product.new

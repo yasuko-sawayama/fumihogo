@@ -10,8 +10,8 @@ const Product = () => {
       <Frontend title="やすこの作品一覧">
         <div className="content-inner">
           <Switch>
-            <Route path="/" component={ProductList} />
-            <Route path="/:product_id" component={ProductReading} />
+            <Route exact path="/users/:nickname" component={ProductList}/>
+            <Route path="/products/:product_id" component={ProductReading}/>
           </Switch>
         </div>
       </Frontend>
