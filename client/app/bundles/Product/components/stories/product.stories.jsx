@@ -16,6 +16,7 @@ import sharedStore from "~/stores/sharedStore";
 import Product from "../Product";
 import ProductList from "../ProductList";
 import InfoBox from "../product/Infobox";
+import ProductReading from "../ProductReading";
 
 addDecorator(withViewport("iphone6"));
 
@@ -126,4 +127,5 @@ storiesOf("作品ページ", module)
         }
       }}
     />
-  ));
+  ))
+  .add("閲覧ページ", () => <ProductReading/>);

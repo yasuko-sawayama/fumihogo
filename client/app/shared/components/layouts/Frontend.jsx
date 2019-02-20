@@ -14,7 +14,9 @@ const Frontend = ({ children }) => (
 
     <div className="main">
       <PageTitle />
-      <div className="content">{children}</div>
+      <div className="content">
+        <div className="content-inner">{children}</div>
+      </div>
 
       <Footer />
     </div>

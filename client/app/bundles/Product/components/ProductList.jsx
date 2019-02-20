@@ -11,9 +11,7 @@ const ProductList = ({ products }) => {
 
   return (
     <Frontend>
-      <div className="content-inner">
-        <div className="product-list">{productBoxes}</div>
-      </div>
+      <div className="product-list">{productBoxes}</div>
     </Frontend>
   );
 };
