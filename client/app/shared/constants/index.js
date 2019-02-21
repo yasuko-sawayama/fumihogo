@@ -1,2 +1,2 @@
 export { default as Color } from "./color";
-export { default as Type } from "./types";
+export { default as Types } from "./types";
