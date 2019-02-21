@@ -1,9 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import ProductButton from "./Infobox";
-
-const productUrl = url => url.replace("/pages", "");
 
 const pageList = (pages, url) =>
   pages.map(page => (
@@ -41,8 +39,7 @@ const pageList = (pages, url) =>
     </tr>
   ));
 
-//TODO: リダイレクトしないようにreact on railsを設定
-const PageList = ({ pages, match: { url } }) => (
+const PageList = ({ pages, match: { url }, history }) => (
   <div className="infobox-header">
     <div className="infobox-header-content page-list">
       <div className="table-responsive">
@@ -53,9 +50,9 @@ const PageList = ({ pages, match: { url } }) => (
               <td colSpan={2}>もくじ</td>
               <td className={"close-button"}>
                 {" "}
-                <a href={productUrl(url)}>
-                  <i className="material-icons">clear</i>
-                </a>
+                <i className="material-icons" onClick={() => history.goBack()}>
+                  clear
+                </i>
               </td>
             </tr>
           </thead>
@@ -65,6 +62,14 @@ const PageList = ({ pages, match: { url } }) => (
     </div>
   </div>
 );
+
+PageList.propTypes = {
+  pages: PropTypes.shape().isRequired,
+  match: PropTypes.shape({
+    url: PropTypes.string.isRequired
+  }),
+  history: PropTypes.func.isRequired
+};
 
 function mapStateToProps(state) {
   return { pages: state.productData.currentProduct.pages };

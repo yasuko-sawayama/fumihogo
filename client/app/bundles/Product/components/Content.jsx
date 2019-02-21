@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Route, Switch } from "react-router-dom";
 
 import InfoBox from "./product/Infobox";
 
@@ -47,6 +48,10 @@ class Content extends Component {
     return (
       <div>
         <InfoBox product={this.state.product} />
+        <Switch>
+          <Route path="/pages/:page_order" render={() => <div>なかみ1</div>}/>
+          <Route path="/" render={() => <div>なかみ</div>}/>
+        </Switch>
       </div>
     );
   }

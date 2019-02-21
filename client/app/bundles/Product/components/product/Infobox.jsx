@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import ProductButton from "./ProductButton";
 import Info from "./Info";
 import PageList from "./PageList";
+import PageTitle from "./PageTitle";
 
 const Author = ({ author: { id, nickname } }) => (
   <h4>
@@ -13,6 +14,15 @@ const Author = ({ author: { id, nickname } }) => (
 
 Author.propTypes = {
   author: PropTypes.shape().isRequired
+};
+
+const InfoBoxContent = ({ info, description }) => {
+  return (
+    <div className="infobox-content">
+      <Info info={info}/>
+      <p>{description}</p>
+    </div>
+  );
 };
 
 const InfoBox = ({
@@ -31,12 +41,17 @@ const InfoBox = ({
         </div>
       </div>
 
-      <Route path="*/pages" component={PageList} />
-
-      <div className="infobox-content">
-        <Info info={info} />
-        <p>{description}</p>
-      </div>
+      <Route exact path="*/pages" component={PageList}/>
+      <Route
+        exact
+        path="/products/:product_id"
+        render={() => <InfoBoxContent info={info} description={description}/>}
+      />
+      <Route
+        exact
+        path="/products/:product_id/pages/:page_id"
+        component={PageTitle}
+      />
     </div>
   </div>
 );
