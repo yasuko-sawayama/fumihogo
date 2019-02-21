@@ -128,4 +128,6 @@ storiesOf("作品ページ", module)
       }}
     />
   ))
-  .add("閲覧ページ", () => <ProductReading/>);
+  .add("閲覧ページ", () => (
+    <ProductReading match={{ params: { product_id: 1 } }} />
+  ));

@@ -10,11 +10,14 @@ $color-font: #455A64 !default;
 
 @import "particles/particles";
 @import "custom";
+@import "page-list";
+
 
 @import "alert";
 @import "home";
 
 @import "footer";
+
 
 .wf-hannari { font-family: "Hannari"; }
 

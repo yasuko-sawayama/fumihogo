@@ -8,7 +8,7 @@ json.info do
 end
 
 json.currentProduct do
-  json.partial! 'api/v1/shared/product', product: @product
+  @product ? json.partial!('api/v1/shared/product', product: @product) : nil
 end
 
 json.products do

@@ -58,6 +58,10 @@ class Page < ApplicationRecord
     title.presence || "ページ#{position}"
   end
 
+  def character_count
+    count_character
+  end
+
   # FriendlyIdが数字ではfindしてくれなくなったので暫定
   def to_param
     position.to_s

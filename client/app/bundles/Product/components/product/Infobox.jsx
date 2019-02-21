@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import { Route } from "react-router-dom";
 import ProductButton from "./ProductButton";
 import Info from "./Info";
+import PageList from "./PageList";
 
 const Author = ({ author: { id, nickname } }) => (
   <h4>
@@ -26,9 +27,11 @@ const InfoBox = ({
         </div>
 
         <div className="infobox-header-action">
-          <ProductButton auth={auth} to={`/products/${id}`} />
+          <ProductButton auth={auth} product_id={id} />
         </div>
       </div>
+
+      <Route path="*/pages" component={PageList} />
 
       <div className="infobox-content">
         <Info info={info} />

@@ -1,22 +1,28 @@
 import React, { Component } from "react";
 import Frontend from "~/shared/components/layouts/Frontend";
-import {
-  Mobile,
-  Tablet,
-  Default
-} from "~/shared/components/layouts/responsive";
-import Empty from "../../../shared/components/layouts/Empty";
+import { Mobile, Default } from "~/shared/components/layouts/responsive";
+import ContentPage from "../../../shared/components/layouts/ContentPage";
+
+import Content from "./Content";
 
 class ProductReading extends Component {
   render() {
-    console.log(this.props.match);
+    const {
+      match: {
+        params: { product_id }
+      }
+    } = this.props;
     return (
       <div>
         <Mobile>
-          <Empty>モバイルのなかみ</Empty>
+          <ContentPage>
+            <Content id={product_id} />
+          </ContentPage>
         </Mobile>
         <Default>
-          <Frontend>デフォルトのなかみ</Frontend>
+          <Frontend>
+            <Content id={product_id} />
+          </Frontend>
         </Default>
       </div>
     );
