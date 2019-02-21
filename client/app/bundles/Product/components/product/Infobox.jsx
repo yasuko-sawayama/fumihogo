@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Route } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 import ProductButton from "./ProductButton";
 import Info from "./Info";
 import PageList from "./PageList";
@@ -32,7 +32,11 @@ const InfoBox = ({
     <div className="infobox-inner">
       <div className="infobox-header">
         <div className="infobox-header-content">
-          <h3>{title}</h3>
+          <h3>
+            <NavLink to={`/products/${id}`} disabled={!auth.show}>
+              {title}
+            </NavLink>
+          </h3>
           <Author author={author} />
         </div>
 

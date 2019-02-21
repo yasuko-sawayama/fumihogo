@@ -1,10 +1,13 @@
 import { combineReducers, applyMiddleware, createStore } from "redux";
+import createSagaMiddleware from "redux-saga";
 import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunk";
+// import thunk from "redux-thunk";
 
 import reducers from "../reducers";
+import rootSaga from "../sagas";
 
-const middleware = [thunk];
+// const middleware = [thunk];
+const sagaMiddleware = createSagaMiddleware();
 
 /*
  *  Export a function that takes the props and returns a Redux store
@@ -17,10 +20,12 @@ const sharedStore = (props = {}, railsContext = {}) => {
 
   const combinedReducer = combineReducers(reducers);
   const newProps = { ...props, railsContext };
-  return composeWithDevTools(applyMiddleware(...middleware))(createStore)(
+  return composeWithDevTools(applyMiddleware(sagaMiddleware))(createStore)(
     combinedReducer,
     newProps
   );
 };
+
+sagaMiddleware.run(rootSaga);
 
 export default sharedStore;
