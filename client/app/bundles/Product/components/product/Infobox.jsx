@@ -53,7 +53,7 @@ const InfoBox = ({
       />
       <Route
         exact
-        path="/products/:product_id/pages/:page_id"
+        path="/products/:product_id/pages/:page_order"
         component={PageTitle}
       />
     </div>

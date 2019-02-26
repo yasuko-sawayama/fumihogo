@@ -4,16 +4,21 @@ import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import InfoBox from "./product/Infobox";
-
-const fetchContent = id => console.log("aaaaaaa") || { test: "test" };
+import { fetchProductRequest } from "../../../actions";
 
 class Content extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired
   };
 
+  componentDidMount() {
+    console.log(this.props);
+    this.props.fetchContent(this.props.id);
+  }
+
   componentDidUpdate() {
-    fetchContent(this.props.id);
+    console.log(this.props);
+    this.props.fetchContent(this.props.id);
   }
 
   render() {
@@ -29,8 +34,20 @@ class Content extends Component {
   }
 }
 
+Content.propTypes = {
+  fetchContent: PropTypes.func.isRequired,
+  product: PropTypes.shape().isRequired
+};
+
 const mapStateToProps = state => ({
   product: state.productData.currentProduct
 });
 
-export default connect(mapStateToProps)(Content);
+const mapDispatchToProps = dispatch => ({
+  fetchContent: id => dispatch(fetchProductRequest(id))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Content);

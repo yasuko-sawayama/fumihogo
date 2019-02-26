@@ -1,10 +1,13 @@
-import { takeLatest, call, put, spawn } from "redux-saga/effects";
+import { takeLatest, call, put, all } from "redux-saga/effects";
 
 import { Types } from "~/shared/constants";
 
+const fetchRequest = props => new Promise(() => console.log(props));
+
 function* fetchProduct(action) {
-  console.log(action);
   try {
+    console.log("aaaaaaa");
+    console.log(action);
     const product = yield call(fetchRequest, "/products");
     yield put({ type: Types.FETCH_PRODUCT_SUCCESS, product });
   } catch (e) {
@@ -20,19 +23,8 @@ function* productSaga() {
 // single entry point to start all Sagas at once
 
 function* rootSaga() {
-  const sagas = [productSaga];
+  const sagas = [productSaga()];
 
-  yield sagas.map(saga =>
-    spawn(function* () {
-      while (true) {
-        try {
-          yield call(saga);
-          break;
-        } catch (e) {
-          console.log(e);
-        }
-      }
-    })
-  );
+  yield all(sagas);
 }
 export default rootSaga;
