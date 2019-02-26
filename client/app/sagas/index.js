@@ -6,7 +6,6 @@ const fetchRequest = props => new Promise(() => console.log(props));
 
 function* fetchProduct(action) {
   try {
-    console.log("aaaaaaa");
     console.log(action);
     const product = yield call(fetchRequest, "/products");
     yield put({ type: Types.FETCH_PRODUCT_SUCCESS, product });

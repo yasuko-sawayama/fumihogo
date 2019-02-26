@@ -1,44 +1,44 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import { Switch, Route } from "react-router-dom";
 
 import Frontend from "~/shared/components/layouts/Frontend";
-import { Mobile, Default } from "~/shared/components/layouts/responsive";
+import { Default, Mobile } from "~/shared/components/layouts/responsive";
 import ContentPage from "../../../shared/components/layouts/ContentPage";
+import InfoBox from "./product/Infobox";
+import Content from "./product/Content";
 
-import Content from "./Content";
+const ProductReading = ({ match: { path } }) => {
+  const InnerContent = () => (
+    <div>
+      <InfoBox/>
+      <Switch>
+        <Route path={`${path}/pages/:page_order`} component={Content}/>
+        <Route exact path={`${path}/`} component={Content}/>
+      </Switch>
+    </div>
+  );
 
-class ProductReading extends Component {
-  static propTypes = {
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        product_id: PropTypes.string,
-        page_order: PropTypes.string
-      }).isRequired
-    }).isRequired
-  };
+  return (
+    <div>
+      <Mobile>
+        <ContentPage>
+          <InnerContent/>
+        </ContentPage>
+      </Mobile>
+      <Default>
+        <Frontend>
+          <InnerContent/>
+        </Frontend>
+      </Default>
+    </div>
+  );
+};
 
-  render() {
-    const {
-      match: {
-        params: { product_id, page_order }
-      }
-    } = this.props;
-
-    return (
-      <div>
-        <Mobile>
-          <ContentPage>
-            <Content id={product_id} page={page_order}/>
-          </ContentPage>
-        </Mobile>
-        <Default>
-          <Frontend>
-            <Content id={product_id} page={page_order}/>
-          </Frontend>
-        </Default>
-      </div>
-    );
-  }
-}
+ProductReading.propTypes = {
+  match: PropTypes.shape({
+    path: PropTypes.string.isRequired
+  }).isRequired
+};
 
 export default ProductReading;

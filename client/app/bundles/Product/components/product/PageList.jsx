@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const pageList = (pages, url) =>
   pages.map(page => (
-    <tr>
+    <tr key={{ page.position }}>
       {/*TODO: 作者用に公開・非公開を表示*/}
       {/*<td className="min-width">*/}
       {/*<div className={"status"}>*/}

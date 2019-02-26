@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Route, NavLink } from "react-router-dom";
 import ProductButton from "./ProductButton";
 import Info from "./Info";
@@ -64,4 +65,8 @@ InfoBox.propTypes = {
   product: PropTypes.shape().isRequired
 };
 
-export default InfoBox;
+const mapStateToProps = state => ({
+  product: state.productData.currentProduct
+});
+
+export default connect(mapStateToProps)(InfoBox);
