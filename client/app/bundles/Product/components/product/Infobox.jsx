@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { Route, NavLink } from "react-router-dom";
 import ProductButton from "./ProductButton";
 import Info from "./Info";
@@ -26,47 +25,49 @@ const InfoBoxContent = ({ info, description }) => {
   );
 };
 
-const InfoBox = ({
-  product: { id, title, description, info, author, auth }
-}) => (
-  <div className="infobox" id={`product-${id}`}>
-    <div className="infobox-inner">
-      <div className="infobox-header">
-        <div className="infobox-header-content">
-          <h3>
-            <NavLink to={`/products/${id}`} disabled={!auth.show}>
-              {title}
-            </NavLink>
-          </h3>
-          <Author author={author} />
+const InfoBox = props => {
+  const {
+    product: { id, title, description, info, author, auth }
+  } = props;
+
+  return (
+    <div className="infobox" id={`product-${id}`}>
+      <div className="infobox-inner">
+        <div className="infobox-header">
+          <div className="infobox-header-content">
+            <h3>
+              <NavLink to={`/products/${id}`} disabled={!auth.show}>
+                {title}
+              </NavLink>
+            </h3>
+            <Author author={author}/>
+          </div>
+
+          <div className="infobox-header-action">
+            <ProductButton auth={auth} product_id={id}/>
+          </div>
         </div>
 
-        <div className="infobox-header-action">
-          <ProductButton auth={auth} product_id={id} />
-        </div>
+        <Route exact path="*/pages" component={PageList}/>
+        <Route
+          exact
+          path="/products/:product_id"
+          render={() => (
+            <InfoBoxContent info={info} description={description}/>
+          )}
+        />
+        <Route
+          exact
+          path="/products/:product_id/pages/:page_order"
+          component={PageTitle}
+        />
       </div>
-
-      <Route exact path="*/pages" component={PageList}/>
-      <Route
-        exact
-        path="/products/:product_id"
-        render={() => <InfoBoxContent info={info} description={description}/>}
-      />
-      <Route
-        exact
-        path="/products/:product_id/pages/:page_order"
-        component={PageTitle}
-      />
     </div>
-  </div>
-);
+  );
+};
 
 InfoBox.propTypes = {
   product: PropTypes.shape().isRequired
 };
 
-const mapStateToProps = state => ({
-  product: state.productData.currentProduct
-});
-
-export default connect(mapStateToProps)(InfoBox);
+export default InfoBox;

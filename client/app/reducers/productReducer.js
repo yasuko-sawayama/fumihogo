@@ -2,7 +2,8 @@ import { Types } from "~/shared/constants";
 
 const initialState = {
   products: [],
-  currentProduct: null
+  currentProduct: {},
+  currentPage: {}
 };
 
 // Why name function the same as the reducer?
@@ -16,6 +17,13 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         currentPage: payload.page
+      };
+    }
+    case Types.FETCH_PRODUCT_SUCCESS: {
+      return {
+        ...state,
+        currentUser: payload.currentUser,
+        currentProduct: payload.product
       };
     }
     default:

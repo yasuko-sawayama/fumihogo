@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { fetchProductRequest } from "../../../../actions";
+import { fetchProductPageRequest } from "../../../../actions";
 
 class Content extends Component {
   static propTypes = {
@@ -55,7 +55,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchContent: (id, page) => dispatch(fetchProductRequest(id, page))
+  fetchContent: (id, page) => dispatch(fetchProductPageRequest(id, page))
 });
 
 export default connect(

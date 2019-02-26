@@ -6,11 +6,11 @@ const pageTitle = (pages, page_order) =>
   pages.find(page => page.id === parseInt(page_order)).title || "";
 
 const PageTitle = ({
-                     match: {
-                       params: { page_order }
-                     },
-                     pages
-                   }) => (
+  match: {
+    params: { page_order }
+  },
+  pages
+}) => (
   <div className="infobox-content">
     {pageTitle(pages, page_order)} /ページ{page_order}
   </div>
