@@ -1,28 +1,35 @@
 import { takeLatest, call, put, all } from "redux-saga/effects";
 
 import { Types } from "~/shared/constants";
+import { fetchEntity } from "~/utils/requestManager";
 
-const fetchRequest = props => new Promise(() => console.log(props));
+const fetchPageContent = (product_id, page) =>
+  fetchEntity(`/api/v1/products/${product_id}/pages/${page}`);
 
-function* fetchProduct(action) {
+function* fetchPage(action) {
   try {
-    console.log(action);
-    const product = yield call(fetchRequest, "/products");
-    yield put({ type: Types.FETCH_PRODUCT_SUCCESS, product });
+    const {
+      payload: { product_id, page }
+    } = action;
+    const product = yield call(fetchPageContent, product_id, page);
+    yield put({
+      type: Types.FETCH_PRODUCT_PAGE_SUCCESS,
+      payload: { ...product.data }
+    });
   } catch (e) {
     console.log(e);
   }
 }
 
-function* productSaga() {
-  yield takeLatest(Types.FETCH_PRODUCT_REQUEST, fetchProduct);
+function* productPageSaga() {
+  yield takeLatest(Types.FETCH_PRODUCT_PAGE_REQUEST, fetchPage);
 }
 
 // notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
 
 function* rootSaga() {
-  const sagas = [productSaga()];
+  const sagas = [productPageSaga()];
 
   yield all(sagas);
 }

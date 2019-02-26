@@ -22,7 +22,7 @@ class Content extends Component {
     this.props.fetchContent(id, page_order);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const {
       match: {
         params: { page_order }
@@ -30,11 +30,17 @@ class Content extends Component {
       product: { id }
     } = this.props;
 
+    if (
+      prevProps.match.params.page_order === page_order &&
+      prevProps.product.id === id
+    )
+      return;
+
     this.props.fetchContent(id, page_order);
   }
 
   render() {
-    return <div>aaaaa</div>;
+    return <div>{this.props.page && this.props.page.content}</div>;
   }
 }
 
@@ -44,7 +50,8 @@ Content.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  product: state.productData.currentProduct
+  product: state.productData.currentProduct,
+  page: state.productData.currentPage
 });
 
 const mapDispatchToProps = dispatch => ({

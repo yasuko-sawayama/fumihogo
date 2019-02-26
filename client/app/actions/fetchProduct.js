@@ -1,8 +1,7 @@
-import { put, call } from "redux-saga/effects";
 import { Types } from "~/shared/constants";
 
 export const fetchProductRequest = (product_id, page) => ({
-  type: Types.FETCH_PRODUCT_REQUEST,
+  type: Types.FETCH_PRODUCT_PAGE_REQUEST,
   payload: {
     product_id,
     page: page || "1"
