@@ -19,8 +19,6 @@ class ProductReading extends React.Component {
       }
     } = this.props;
 
-    console.log(this.props);
-
     fetchProduct(product_id);
   }
 
