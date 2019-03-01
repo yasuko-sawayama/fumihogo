@@ -43,9 +43,9 @@ class Content extends Component {
 
   render() {
     return this.props.page ? (
-      <ContentReading content={this.props.page.content}/>
+      <ContentReading content={this.props.page.content} />
     ) : (
-      <ContentNotFound/>
+      <ContentNotFound />
     );
   }
 }

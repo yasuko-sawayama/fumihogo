@@ -44,10 +44,10 @@ class ProductReading extends React.Component {
 
     const InnerContent = () => (
       <div>
-        <InfoBox product={product}/>
+        <InfoBox product={product} />
         <Switch>
-          <Route path={`${path}/pages/:page_order`} component={Content}/>
-          <Route exact path={`${path}/`} component={Content}/>
+          <Route path={`${path}/pages/:page_order`} component={Content} />
+          <Route exact path={`${path}/`} component={Content} />
         </Switch>
       </div>
     );
@@ -56,12 +56,12 @@ class ProductReading extends React.Component {
       <div>
         <Mobile>
           <ContentPage>
-            <InnerContent/>
+            <InnerContent />
           </ContentPage>
         </Mobile>
         <Default>
           <Frontend>
-            <InnerContent/>
+            <InnerContent />
           </Frontend>
         </Default>
       </div>

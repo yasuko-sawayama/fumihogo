@@ -67,4 +67,4 @@ storiesOf("個別作品ページ", module)
       match={{ params: { product_id: "1" }, path: "/products/:product_id" }}
     />
   ))
-  .add("作品本文", () => <ContentReading content={text("本文", "テスト用")}/>);
+  .add("作品本文", () => <ContentReading content={text("本文", "テスト用")} />);

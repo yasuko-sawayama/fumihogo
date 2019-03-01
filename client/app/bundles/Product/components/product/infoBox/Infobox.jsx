@@ -11,7 +11,7 @@ import ProductNotFound from "../ProductNotFound";
 
 const InfoBox = props => {
   if (!props.product) {
-    return <ProductNotFound/>;
+    return <ProductNotFound />;
   }
 
   const {
@@ -28,20 +28,20 @@ const InfoBox = props => {
                 {title}
               </NavLink>
             </h3>
-            <Author author={author}/>
+            <Author author={author} />
           </div>
 
           <div className="infobox-header-action">
-            <ProductButton auth={auth} product_id={id}/>
+            <ProductButton auth={auth} product_id={id} />
           </div>
         </div>
 
-        <Route exact path="*/pages" component={PageList}/>
+        <Route exact path="*/pages" component={PageList} />
         <Route
           exact
           path="/products/:product_id"
           render={() => (
-            <InfoBoxContent info={info} description={description}/>
+            <InfoBoxContent info={info} description={description} />
           )}
         />
         <Route

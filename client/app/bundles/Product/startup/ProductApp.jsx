@@ -27,7 +27,7 @@ const ProductApp = (props, _railsContext, domNodeId) => {
     const element = (
       <AppContainer>
         <Provider store={store}>
-          <Komponent/>
+          <Komponent />
         </Provider>
       </AppContainer>
     );

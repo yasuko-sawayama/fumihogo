@@ -169,5 +169,5 @@ storiesOf("作品ページ:作品がない場合", module)
     </Provider>
   ))
   .add("閲覧ページ", () => (
-    <ProductReading match={{ params: { product_id: "1" } }}/>
+    <ProductReading match={{ params: { product_id: "1" } }} />
   ));

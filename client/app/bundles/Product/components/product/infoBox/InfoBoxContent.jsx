@@ -5,7 +5,7 @@ import Info from "./Info";
 const InfoBoxContent = ({ info, description }) => {
   return (
     <div className="infobox-content">
-      <Info info={info}/>
+      <Info info={info} />
       <p>{description}</p>
     </div>
   );
