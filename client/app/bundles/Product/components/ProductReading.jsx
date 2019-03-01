@@ -5,8 +5,8 @@ import { Switch, Route } from "react-router-dom";
 import Frontend from "~/shared/components/layouts/Frontend";
 import { Default, Mobile } from "~/shared/components/layouts/responsive";
 import ContentPage from "../../../shared/components/layouts/ContentPage";
-import InfoBox from "./product/Infobox";
-import Content from "./product/Content";
+import InfoBox from "./product/infoBox";
+import Content from "./product/content";
 import { connect } from "react-redux";
 import { fetchProductRequest } from "~/actions";
 
@@ -18,6 +18,8 @@ class ProductReading extends React.Component {
         params: { product_id }
       }
     } = this.props;
+
+    console.log(this.props);
 
     fetchProduct(product_id);
   }

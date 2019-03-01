@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { fetchProductPageRequest } from "../../../../actions";
+import { fetchProductPageRequest } from "../../../../../actions";
+import ContentReading from "./ContentReading";
+import ContentNotFound from "./ContentNotFound";
 
 class Content extends Component {
   static propTypes = {
@@ -40,13 +42,22 @@ class Content extends Component {
   }
 
   render() {
-    return <div>{this.props.page && this.props.page.content}</div>;
+    return this.props.page ? (
+      <ContentReading content={this.props.page.content}/>
+    ) : (
+      <ContentNotFound/>
+    );
   }
 }
 
 Content.propTypes = {
   fetchContent: PropTypes.func.isRequired,
-  product: PropTypes.shape().isRequired
+  product: PropTypes.shape().isRequired,
+  page: PropTypes.shape()
+};
+
+Content.defaultProps = {
+  page: null
 };
 
 const mapStateToProps = state => ({

@@ -2,16 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Info = ({
-  info: {
-    character_count,
-    page_count,
-    impression_count,
-    privacy_level,
-    privacy_level_text,
-    permission_list,
-    created_at
-  }
-}) => (
+                info: {
+                  character_count,
+                  page_count,
+                  impression_count,
+                  privacy_level,
+                  privacy_level_text,
+                  permission_list,
+                  created_at
+                }
+              }) => (
   <ul className="infobox-content-properties">
     <li>
       <span>文字数:</span> <strong>{character_count} count</strong>

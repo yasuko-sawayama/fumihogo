@@ -1,31 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Route, NavLink } from "react-router-dom";
-import ProductButton from "./ProductButton";
-import Info from "./Info";
-import PageList from "./PageList";
-import PageTitle from "./PageTitle";
 
-const Author = ({ author: { id, nickname } }) => (
-  <h4>
-    <a href={`/users/${nickname}`}>{nickname}</a>
-  </h4>
-);
-
-Author.propTypes = {
-  author: PropTypes.shape().isRequired
-};
-
-const InfoBoxContent = ({ info, description }) => {
-  return (
-    <div className="infobox-content">
-      <Info info={info}/>
-      <p>{description}</p>
-    </div>
-  );
-};
+import InfoBoxContent from "./InfoBoxContent";
+import Author from "./Author";
+import ProductButton from "../ProductButton";
+import PageList from "../PageList";
+import PageTitle from "../PageTitle";
+import ProductNotFound from "../ProductNotFound";
 
 const InfoBox = props => {
+  if (!props.product) {
+    return <ProductNotFound/>;
+  }
+
   const {
     product: { id, title, description, info, author, auth }
   } = props;
