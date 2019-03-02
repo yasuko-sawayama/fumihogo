@@ -4,7 +4,6 @@ import { composeWithDevTools } from "redux-devtools-extension";
 // import thunk from "redux-thunk";
 
 import reducers from "../reducers";
-import rootSaga from "../sagas";
 
 // const middleware = [thunk];
 export const sagaMiddleware = createSagaMiddleware();

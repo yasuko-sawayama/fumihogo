@@ -1,27 +1,67 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
+import { Switch, Route } from "react-router-dom";
+
 import Frontend from "~/shared/components/layouts/Frontend";
-import { Mobile, Default } from "~/shared/components/layouts/responsive";
+import { Default, Mobile } from "~/shared/components/layouts/responsive";
 import ContentPage from "../../../shared/components/layouts/ContentPage";
+import InfoBox from "./product/infoBox";
+import Content from "./product/content";
+import { connect } from "react-redux";
+import { fetchProductRequest } from "~/actions";
 
-import Content from "./Content";
-
-class ProductReading extends Component {
-  render() {
+class ProductReading extends React.Component {
+  componentDidMount() {
     const {
+      fetchProduct,
       match: {
         params: { product_id }
       }
     } = this.props;
+
+    fetchProduct(product_id);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      fetchProduct,
+      match: {
+        params: { product_id }
+      }
+    } = this.props;
+
+    if (prevProps.match.params.product_id === product_id && this.props.product)
+      return;
+
+    fetchProduct(product_id);
+  }
+
+  render() {
+    const {
+      match: { path },
+      product
+    } = this.props;
+
+    const InnerContent = () => (
+      <div>
+        <InfoBox product={product} />
+        <Switch>
+          <Route path={`${path}/pages/:page_order`} component={Content} />
+          <Route exact path={`${path}/`} component={Content} />
+        </Switch>
+      </div>
+    );
+
     return (
       <div>
         <Mobile>
           <ContentPage>
-            <Content id={product_id} />
+            <InnerContent />
           </ContentPage>
         </Mobile>
         <Default>
           <Frontend>
-            <Content id={product_id} />
+            <InnerContent />
           </Frontend>
         </Default>
       </div>
@@ -29,4 +69,21 @@ class ProductReading extends Component {
   }
 }
 
-export default ProductReading;
+ProductReading.propTypes = {
+  match: PropTypes.shape({
+    path: PropTypes.string.isRequired
+  }).isRequired
+};
+
+const mapStateToProps = state => ({
+  product: state.productData.currentProduct
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchProduct: product_id => dispatch(fetchProductRequest(product_id))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductReading);

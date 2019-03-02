@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const pageList = (pages, url) =>
   pages.map(page => (
-    <tr>
+    <tr key={page.position}>
       {/*TODO: 作者用に公開・非公開を表示*/}
       {/*<td className="min-width">*/}
       {/*<div className={"status"}>*/}
@@ -45,7 +45,6 @@ const PageList = ({ pages, match: { url }, history }) => (
       <div className="table-responsive">
         <table>
           <thead>
-            {" "}
             <tr className="heading">
               <td colSpan={2}>もくじ</td>
               <td className={"close-button"}>
@@ -64,11 +63,11 @@ const PageList = ({ pages, match: { url }, history }) => (
 );
 
 PageList.propTypes = {
-  pages: PropTypes.shape().isRequired,
+  pages: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   match: PropTypes.shape({
     url: PropTypes.string.isRequired
   }),
-  history: PropTypes.func.isRequired
+  history: PropTypes.shape().isRequired
 };
 
 function mapStateToProps(state) {

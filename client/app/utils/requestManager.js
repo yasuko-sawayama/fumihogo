@@ -1,9 +1,13 @@
+/* eslint-disable import/prefer-default-export */
+
 import axios from "axios";
 import ReactOnRails from "react-on-rails";
 
-export const fetchEntity = (url, id=null) => console.log("fetched") || axios({
+export const fetchEntity = (url, options = {}) =>
+  axios({
     method: "GET",
-    url: id ? `${url}/${id}`: url,
-    responceType: "json",
+    url,
+    responseType: "json",
     headers: ReactOnRails.authenticityHeaders(),
+    ...options
   });

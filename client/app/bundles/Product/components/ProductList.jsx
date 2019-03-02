@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Frontend from "~/shared/components/layouts/Frontend";
-import InfoBox from "./product/Infobox";
+import InfoBox from "./product/infoBox";
 
 const ProductList = ({ products }) => {
   const productBoxes = products.map(product => (

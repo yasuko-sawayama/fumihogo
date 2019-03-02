@@ -6,6 +6,7 @@ import Footer from "../helpers/Footer";
 import PageTitle from "../helpers/PageTitle";
 import Sidebar from "../frontend/Sidebar";
 import Toolbar from "../frontend/Toolbar";
+import ErrorBoundary from "./ErrorBoundary";
 
 const Frontend = ({ children }) => (
   <div className="page-inner">
@@ -15,7 +16,9 @@ const Frontend = ({ children }) => (
     <div className="main">
       <PageTitle />
       <div className="content">
-        <div className="content-inner">{children}</div>
+        <div className="content-inner">
+          <ErrorBoundary>{children}</ErrorBoundary>
+        </div>
       </div>
 
       <Footer />
