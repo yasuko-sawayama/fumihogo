@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Switch, Route } from "react-router-dom";
-
 import Frontend from "~/shared/components/layouts/Frontend";
 import { Default, Mobile } from "~/shared/components/layouts/responsive";
 import ContentPage from "../../../shared/components/layouts/ContentPage";
@@ -52,8 +51,7 @@ class ProductReading extends React.Component {
       </div>
     );
 
-    return (
-      <div>
+    return (<div>
         <Mobile>
           <ContentPage>
             <InnerContent />
@@ -76,7 +74,8 @@ ProductReading.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  product: state.productData.currentProduct
+  product: state.productData.currentProduct,
+  loading: state.loading
 });
 
 const mapDispatchToProps = dispatch => ({
