@@ -14,20 +14,20 @@ class Content extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props)
     const {
+      fetchContent,
       match: {
         params: { page_order }
       },
       product: { id }
     } = this.props;
 
-   this.props.fetchContent(id, page_order);
+    fetchContent(id, page_order)
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.props)
     const {
+      fetchContent,
       match: {
         params: { page_order }
       },
@@ -37,9 +37,9 @@ class Content extends Component {
     if (
       prevProps.match.params.page_order === page_order &&
       prevProps.product.id === id
-    )
+    ) return;
 
-    this.props.fetchContent(id, page_order);
+    fetchContent(id, page_order);
   }
 
   render() {
