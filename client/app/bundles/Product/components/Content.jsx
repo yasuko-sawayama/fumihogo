@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { fetchProductRequest } from "~/actions"
 import InfoBox from "./product/Infobox";
 
 const fetchContent = id => console.log("aaaaaaa") || { test: "test" };
@@ -12,7 +13,12 @@ class Content extends Component {
     id: PropTypes.string.isRequired
   };
 
+  componentDidMount() {
+    this.props.fetchProductRequest(this.props.id)
+  }
+
   componentDidUpdate() {
+    console.log(this.props)
     fetchContent(this.props.id);
   }
 
@@ -33,4 +39,8 @@ const mapStateToProps = state => ({
   product: state.productData.currentProduct
 });
 
-export default connect(mapStateToProps)(Content);
+const mapDispatchToProps = {
+  fetchProductRequest
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content);

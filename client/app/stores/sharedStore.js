@@ -7,7 +7,7 @@ import reducers from "../reducers";
 import rootSaga from "../sagas";
 
 // const middleware = [thunk];
-const sagaMiddleware = createSagaMiddleware();
+export const sagaMiddleware = createSagaMiddleware();
 
 /*
  *  Export a function that takes the props and returns a Redux store
@@ -25,7 +25,5 @@ const sharedStore = (props = {}, railsContext = {}) => {
     newProps
   );
 };
-
-sagaMiddleware.run(rootSaga);
 
 export default sharedStore;

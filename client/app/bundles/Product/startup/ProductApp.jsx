@@ -4,6 +4,10 @@ import ReactOnRails from "react-on-rails";
 import { AppContainer } from "react-hot-loader";
 import ReactDOM from "react-dom";
 
+// Saga Middleware
+import rootSaga from "~/sagas"
+import { sagaMiddleware} from "../../../stores/sharedStore";
+
 import Product from "../components/Product";
 
 // See documentation for https://github.com/reactjs/react-redux.
@@ -16,6 +20,8 @@ const ProductApp = (props, _railsContext, domNodeId) => {
 
   // This is where we get the existing store.
   const store = ReactOnRails.getStore("sharedStore");
+
+  sagaMiddleware.run(rootSaga)
 
   // Provider uses this.props.children, so we're not typical React syntax.
   // This allows redux to add additional props to the HelloWorldContainer.
