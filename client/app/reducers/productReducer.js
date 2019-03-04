@@ -3,7 +3,8 @@ import { Types } from "~/shared/constants";
 const initialState = {
   products: [],
   currentProduct: {},
-  currentPage: {}
+  currentPage: {},
+  pageLoading: false
 };
 
 // Why name function the same as the reducer?

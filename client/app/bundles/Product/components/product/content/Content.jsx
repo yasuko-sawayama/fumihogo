@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
+import Loading from "~/shared/components/loading"
 import { fetchProductPageRequest } from "../../../../../actions";
 import ContentReading from "./ContentReading";
 import ContentNotFound from "./ContentNotFound";
@@ -15,17 +15,19 @@ class Content extends Component {
 
   componentDidMount() {
     const {
+      fetchContent,
       match: {
         params: { page_order }
       },
       product: { id }
     } = this.props;
 
-    this.props.fetchContent(id, page_order);
+    fetchContent(id, page_order)
   }
 
   componentDidUpdate(prevProps) {
     const {
+      fetchContent,
       match: {
         params: { page_order }
       },
@@ -35,13 +37,14 @@ class Content extends Component {
     if (
       prevProps.match.params.page_order === page_order &&
       prevProps.product.id === id
-    )
-      return;
+    ) return;
 
-    this.props.fetchContent(id, page_order);
+    fetchContent(id, page_order);
   }
 
   render() {
+    if (this.props.loading) return <Loading />;
+
     return this.props.page ? (
       <ContentReading content={this.props.page.content} />
     ) : (
@@ -53,7 +56,8 @@ class Content extends Component {
 Content.propTypes = {
   fetchContent: PropTypes.func.isRequired,
   product: PropTypes.shape().isRequired,
-  page: PropTypes.shape()
+  page: PropTypes.shape(),
+  loading: PropTypes.bool.isRequired
 };
 
 Content.defaultProps = {
@@ -62,7 +66,8 @@ Content.defaultProps = {
 
 const mapStateToProps = state => ({
   product: state.productData.currentProduct,
-  page: state.productData.currentPage
+  page: state.productData.currentPage,
+  loading: state.loading
 });
 
 const mapDispatchToProps = dispatch => ({

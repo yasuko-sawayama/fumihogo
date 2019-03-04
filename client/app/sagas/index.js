@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all } from "redux-saga/effects";
+import { takeLatest, call, put, all, take } from "redux-saga/effects";
 
 import { Types } from "~/shared/constants";
 import { fetchEntity } from "~/utils/requestManager";

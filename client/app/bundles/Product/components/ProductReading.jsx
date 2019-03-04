@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Switch, Route } from "react-router-dom";
-
 import Frontend from "~/shared/components/layouts/Frontend";
 import { Default, Mobile } from "~/shared/components/layouts/responsive";
 import ContentPage from "../../../shared/components/layouts/ContentPage";
@@ -9,6 +8,31 @@ import InfoBox from "./product/infoBox";
 import Content from "./product/content";
 import { connect } from "react-redux";
 import { fetchProductRequest } from "~/actions";
+
+const InnerContent = ({product, path}) => (
+  <div>
+    <InfoBox product={product} />
+    <Switch>
+      <Route path={`${path}/pages/:page_order`} component={Content} />
+      <Route exact path={`${path}/`} component={Content} />
+    </Switch>
+  </div>
+);
+
+const RenderCompornent = ({product, path}) => (
+  <div>
+        <Mobile>
+          <ContentPage>
+            <InnerContent product={product} path={path}/>
+          </ContentPage>
+        </Mobile>
+        <Default>
+          <Frontend>
+            <InnerContent product={product} path={path}/>
+          </Frontend>
+        </Default>
+      </div>
+)
 
 class ProductReading extends React.Component {
   componentDidMount() {
@@ -42,29 +66,8 @@ class ProductReading extends React.Component {
       product
     } = this.props;
 
-    const InnerContent = () => (
-      <div>
-        <InfoBox product={product} />
-        <Switch>
-          <Route path={`${path}/pages/:page_order`} component={Content} />
-          <Route exact path={`${path}/`} component={Content} />
-        </Switch>
-      </div>
-    );
-
     return (
-      <div>
-        <Mobile>
-          <ContentPage>
-            <InnerContent />
-          </ContentPage>
-        </Mobile>
-        <Default>
-          <Frontend>
-            <InnerContent />
-          </Frontend>
-        </Default>
-      </div>
+      <RenderCompornent product={product} path={path}/>
     );
   }
 }
@@ -72,11 +75,13 @@ class ProductReading extends React.Component {
 ProductReading.propTypes = {
   match: PropTypes.shape({
     path: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  fetchProduct: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  product: state.productData.currentProduct
+  product: state.productData.currentProduct,
+  loading: state.loading
 });
 
 const mapDispatchToProps = dispatch => ({
