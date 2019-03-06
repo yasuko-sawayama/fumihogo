@@ -6,6 +6,7 @@ import { Default, Mobile } from "~/shared/components/layouts/responsive";
 import ContentPage from "~/shared/components/layouts/ContentPage";
 import InfoBox from "./infoBox";
 import Content from "./content";
+import Paginate from "./Pagenate";
 
 const InnerContent = ({ product, path }) => (
   <div>
@@ -31,11 +32,13 @@ const RenderComponent = props => (
     <Mobile>
       <ContentPage>
         <InnerContent {...props} />
+        <Pagenate history={history}/>
       </ContentPage>
     </Mobile>
     <Default>
       <Frontend>
         <InnerContent {...props} />
+        <Pagenate history={history}/>
       </Frontend>
     </Default>
   </div>

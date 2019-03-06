@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchProductRequest } from "~/actions";
 import RenderComponent from "./product/RenderComponent";
-import RenderNotFound from "./product/ProductNotFound";
+import ProductNotFound from "./product/ProductNotFound";
 
 class ProductReading extends React.Component {
   componentDidMount() {
@@ -39,11 +39,14 @@ class ProductReading extends React.Component {
   render() {
     const {
       match: { path },
+      history,
       product
     } = this.props;
 
     if (product) {
-      return <RenderComponent product={product} path={path}/>;
+      return (
+        <RenderComponent product={product} path={path} history={history}/>
+      );
     }
     return <ProductNotFound/>;
   }
@@ -53,6 +56,7 @@ ProductReading.propTypes = {
   match: PropTypes.shape({
     path: PropTypes.string.isRequired
   }).isRequired,
+  history: PropTypes.shape().isRequired,
   product: PropTypes.shape(),
   fetchProduct: PropTypes.func.isRequired
 };
