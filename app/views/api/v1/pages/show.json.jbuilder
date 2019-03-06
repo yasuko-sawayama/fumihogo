@@ -6,7 +6,7 @@ json.page do |json|
     auth.update policy(@page).update?
   end
 
-  json.content policy(@page).update? ? @page.content : markdown(@page.content)
+  json.content markdown(@page.content)
 
   if @page.previous
     json.previousPage do |previous|
