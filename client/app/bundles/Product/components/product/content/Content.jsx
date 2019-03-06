@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Loading from "~/shared/components/loading"
+import Loading from "~/shared/components/loading";
 import { fetchProductPageRequest } from "../../../../../actions";
 import ContentReading from "./ContentReading";
 import ContentNotFound from "./ContentNotFound";
@@ -22,7 +22,7 @@ class Content extends Component {
       product: { id }
     } = this.props;
 
-    fetchContent(id, page_order)
+    fetchContent(id, page_order);
   }
 
   componentDidUpdate(prevProps) {
@@ -37,7 +37,8 @@ class Content extends Component {
     if (
       prevProps.match.params.page_order === page_order &&
       prevProps.product.id === id
-    ) return;
+    )
+      return;
 
     fetchContent(id, page_order);
   }

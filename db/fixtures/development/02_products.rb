@@ -18,3 +18,13 @@ Page.seed do |page|
 EOF
   page.product_id = 1
 end
+
+Page.seed do |page|
+  page.id = 2
+  page.title = "ページのタイトル"
+  page.position = 2
+  page.content = <<EOF
+本文
+EOF
+  page.product_id = 1
+end

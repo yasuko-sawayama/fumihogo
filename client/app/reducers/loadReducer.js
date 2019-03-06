@@ -12,8 +12,8 @@ const loadReducer = (state = initialState, action) => {
     case Types.FETCH_PRODUCT_ERROR:
       return false;
     default:
-      return state
+      return state;
   }
-}
+};
 
 export default loadReducer;

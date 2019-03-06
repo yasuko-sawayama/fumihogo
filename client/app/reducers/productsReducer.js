@@ -1,10 +1,10 @@
-const initialState = {}
+const initialState = {};
 
-const productsReducer = (state=initialState, action) => {
+const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     default:
       return state;
   }
-}
+};
 
 export default productsReducer;
