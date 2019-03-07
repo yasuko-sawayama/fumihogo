@@ -59,4 +59,13 @@ RSpec.describe Product, type: :model do
     it { expect { destroy }.not_to raise_error }
     it { expect { destroy }.to change(Product, :count).by(-1) }
   end
+
+  describe "お気に入り" do
+    let(:product) {create(:product)}
+    let(:user) {create(:user)}
+
+    it 'お気に入りに入れられること' do
+      expect {product.liked_by user}.to change {product.reload.votes_for.size}.by(1)
+    end
+  end
 end

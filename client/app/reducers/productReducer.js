@@ -15,6 +15,7 @@ const productReducer = (state = initialState, action) => {
 
   switch (type) {
     case Types.FETCH_PRODUCT_PAGE_SUCCESS: {
+      console.log(payload);
       return {
         ...state,
         currentPage: payload.page

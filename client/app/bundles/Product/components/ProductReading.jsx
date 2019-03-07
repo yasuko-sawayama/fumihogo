@@ -48,7 +48,7 @@ class ProductReading extends React.Component {
         <RenderComponent product={product} path={path} history={history}/>
       );
     }
-    return <ProductNotFound/>;
+    return null;
   }
 }
 

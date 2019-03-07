@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     end
 
     resources :pages, except: :new, controller: 'products' do
-      get :new, action: :show   # React Routerに委譲
+      member do
+        get '(/*any_action)', action: :show # React Routerに委譲
+      end
     end
   end
 

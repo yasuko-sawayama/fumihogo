@@ -8,7 +8,7 @@ export default class Navigation extends Component {
       <div className="navigation">
         <ul>
           <li>
-            <NavLink to="/" exact={true} activeClassName="active">
+            <NavLink to="/products" exact={true} activeClassName="active">
               <i className="md-icon">dashboard</i> <span>自分の作品一覧</span>
             </NavLink>
           </li>
