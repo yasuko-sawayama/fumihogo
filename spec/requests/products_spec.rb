@@ -39,11 +39,4 @@ RSpec.describe 'Products', type: :request do
       end
     end
   end
-
-  describe "お気に入り" do
-    context "ログインしていない場合" do
-      post product_like_path(product)
-      expect(response).to redirect_to(root_path)
-    end
-  end
 end

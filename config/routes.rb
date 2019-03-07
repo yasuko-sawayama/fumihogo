@@ -31,11 +31,14 @@ Rails.application.routes.draw do
     end
   end
 
+  #  API
   namespace :api, { format: :json } do
     namespace :v1 do
       resources :products do
         resources :pages, only: [:show, :create, :update, :destroy]
       end
+
+      resources :likes, only: :index
 
       get :current_user_info, controller: :users
     end

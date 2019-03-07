@@ -39,6 +39,7 @@
 # Twitterのみ初期実装
 class User < ApplicationRecord
   extend FriendlyId
+  acts_as_voter
 
   has_many :social_profiles, dependent: :destroy
   has_many :products, -> { order(created_at: :desc) },

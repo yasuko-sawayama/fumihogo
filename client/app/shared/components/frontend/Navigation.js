@@ -14,8 +14,8 @@ export default class Navigation extends Component {
           </li>
 
           <li>
-            <NavLink to="/headquarters" activeClassName="active">
-              <i className="md-icon">turned_in</i> <span>ブックマーク</span>
+            <NavLink to="/likes" activeClassName="active">
+              <i className="md-icon">favorite</i> <span>ブックマーク</span>
             </NavLink>
           </li>
 
