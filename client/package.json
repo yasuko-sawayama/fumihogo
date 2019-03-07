@@ -61,6 +61,7 @@
     "react-hot-loader": "^4.3.6",
     "react-loading": "^2.0.3",
     "react-on-rails": "11.2.2",
+    "react-paginate": "^6.3.0",
     "react-proptypes": "^1.0.0",
     "react-redux": "^5.0.5",
     "react-responsive": "^6.1.1",

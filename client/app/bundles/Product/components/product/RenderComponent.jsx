@@ -6,7 +6,7 @@ import { Default, Mobile } from "~/shared/components/layouts/responsive";
 import ContentPage from "~/shared/components/layouts/ContentPage";
 import InfoBox from "./infoBox";
 import Content from "./content";
-import Paginate from "./Pagenate";
+import Paginate from "./Paginate";
 
 const InnerContent = ({ product, path }) => (
   <div>
@@ -27,21 +27,36 @@ InnerContent.defaultProps = {
   product: null
 };
 
-const RenderComponent = props => (
-  <div>
-    <Mobile>
-      <ContentPage>
-        <InnerContent {...props} />
-        <Pagenate history={history}/>
-      </ContentPage>
-    </Mobile>
-    <Default>
-      <Frontend>
-        <InnerContent {...props} />
-        <Pagenate history={history}/>
-      </Frontend>
-    </Default>
-  </div>
-);
+const RenderComponent = props => {
+  const currentPageId =
+    props.product && props.product.currentPage && props.product.currentPage.id;
+
+  return (
+    <div>
+      <Mobile>
+        <ContentPage>
+          <InnerContent {...props} />
+          <Paginate
+            history={props.history}
+            productId={props.product.id}
+            pages={props.product.pages}
+            currentPage={currentPageId}
+          />
+        </ContentPage>
+      </Mobile>
+      <Default>
+        <Frontend>
+          <InnerContent {...props} />
+          <Paginate
+            history={props.history}
+            productId={props.product.id}
+            pages={props.product.pages}
+            currentPage={currentPageId}
+          />
+        </Frontend>
+      </Default>
+    </div>
+  );
+};
 
 export default RenderComponent;
