@@ -1,16 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Frontend from "~/shared/components/layouts/Frontend";
+import { connect } from "react-redux"
 
-const FavoriteList = props => {
-  const productBoxes = () => <div>一覧</div>;
+import Frontend from "~/shared/components/layouts/Frontend";
+import InfoBox from "~/shared/components/infoBox";
+
+const FavoriteList = ({ products }) => {
+  const favoriteBoxes = products.map(product => (
+    <InfoBox key={product.id} product={product} />
+  ));
+
   return (
     <Frontend>
-      <div className="product-list">{productBoxes}</div>
+      <div className="product-list">{favoriteBoxes}</div>
     </Frontend>
   );
 };
 
-// FavoriteList.propTypes = {};
+FavoriteList.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.shape())
+};
 
-export default FavoriteList;
+FavoriteList.defaultProps = {
+  products: []
+}
+
+const mapStateToProps = state => ({
+  products: state.productData.products
+});
+
+export default connect(mapStateToProps)(FavoriteList);

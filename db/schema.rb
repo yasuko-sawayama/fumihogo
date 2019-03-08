@@ -109,8 +109,9 @@ ActiveRecord::Schema.define(version: 2019_03_07_060923) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "privacy_level", default: 1
+    t.integer "privacy_level", default: 0
     t.integer "character_count", default: 0, null: false
+    t.string "cover_image"
     t.integer "impressions_count"
     t.bigint "permissions_list_id"
     t.boolean "restricted", default: false

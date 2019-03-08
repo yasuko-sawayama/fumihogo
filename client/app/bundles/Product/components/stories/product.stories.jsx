@@ -15,7 +15,7 @@ import { withViewport } from "@storybook/addon-viewport";
 import sharedStore from "~/stores/sharedStore";
 import Product from "../Product";
 import ProductList from "../ProductList";
-import InfoBox from "../product/infoBox/Infobox";
+import InfoBox from "../../../../shared/components/infoBox/Infobox";
 import ProductReading from "../ProductReading";
 
 addDecorator(withViewport("iphone6"));

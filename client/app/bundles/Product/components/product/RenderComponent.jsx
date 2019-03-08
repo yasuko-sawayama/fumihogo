@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Frontend from "~/shared/components/layouts/Frontend";
 import { Default, Mobile } from "~/shared/components/layouts/responsive";
 import ContentPage from "~/shared/components/layouts/ContentPage";
-import InfoBox from "./infoBox";
+import InfoBox from "../../../../shared/components/infoBox";
 import Content from "./content";
 import Paginate from "./Paginate";
 

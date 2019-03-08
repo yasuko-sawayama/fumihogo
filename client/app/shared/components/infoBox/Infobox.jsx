@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Route, NavLink } from "react-router-dom";
+import { withRouter } from 'react-router';
 
 import InfoBoxContent from "./InfoBoxContent";
 import Author from "./Author";
-import ProductButton from "../ProductButton";
-import PageList from "../PageList";
-import PageTitle from "../PageTitle";
-import ProductNotFound from "../ProductNotFound";
+import ProductButton from "../../../bundles/Product/components/product/ProductButton";
+import PageList from "../../../bundles/Product/components/product/PageList";
+import PageTitle from "../../../bundles/Product/components/product/PageTitle";
+import ProductNotFound from "../../../bundles/Product/components/product/ProductNotFound";
 
 const InfoBox = props => {
   if (!props.product) {
@@ -15,8 +16,23 @@ const InfoBox = props => {
   }
 
   const {
+    match: {path},
     product: { id, title, description, info, author, auth }
   } = props;
+
+  const pageLink = () => {
+    if (path.match(/products/)) {
+      return (
+        <NavLink to={`/products/${id}`} disabled={!auth.show}>
+          {title}
+        </NavLink>)
+    } else {
+      return (
+        <a href={`/products/${id}`} disabled={!auth.show}>
+          {title}
+        </a>)
+    }
+  }
 
   return (
     <div className="infobox" id={`product-${id}`}>
@@ -24,9 +40,7 @@ const InfoBox = props => {
         <div className="infobox-header">
           <div className="infobox-header-content">
             <h3>
-              <NavLink to={`/products/${id}`} disabled={!auth.show}>
-                {title}
-              </NavLink>
+              {pageLink()}
             </h3>
             <Author author={author} />
           </div>
@@ -55,7 +69,8 @@ const InfoBox = props => {
 };
 
 InfoBox.propTypes = {
-  product: PropTypes.shape().isRequired
+  product: PropTypes.shape().isRequired,
+  match: PropTypes.shape().isRequired
 };
 
-export default InfoBox;
+export default withRouter(InfoBox);

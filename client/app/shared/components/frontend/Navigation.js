@@ -28,7 +28,7 @@ export default class Navigation extends Component {
 
         <ul>
           <li>
-            <a href="/sign_in" activeClassName="active">
+            <a href="/sign_in">
               <i className="md-icon">arrow_forward</i> <span>ログイン</span>
             </a>
           </li>
