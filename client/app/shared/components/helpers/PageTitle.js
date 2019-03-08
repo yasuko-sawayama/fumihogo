@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import { connect } from "react-redux";
 
 // import Breadcrumbs from "../helpers/Breadcrumbs";
@@ -10,9 +11,10 @@ const titleName = ({ listType, author, title }) => {
     case "author":
       return `${author.name}の作品一覧`;
     case "content":
+    case "favorite":
       return title;
     default:
-      return "検索";
+      return "一覧";
   }
 };
 
@@ -30,7 +32,7 @@ PageTitle.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  info: state.productData.info
+  info: state.pageInfo
 });
 
 export default connect(mapStateToProps)(PageTitle);
