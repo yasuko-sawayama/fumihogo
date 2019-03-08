@@ -31,6 +31,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # お気に入り
+  resources 'likes', only: :index
+
   #  API
   namespace :api, { format: :json } do
     namespace :v1 do

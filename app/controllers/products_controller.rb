@@ -5,10 +5,8 @@ class ProductsController < WithReactController
   before_action :set_and_authorize_product, only: [:show, :destroy]
 
   def index
-    logger.debug "aaaaaaaaaaaaaaaaaaaaaaaaaa"
     @products = policy_scope(current_user.products).page(params[:page])
     @user = current_user
-    logger.debug @user
     initialize_shared_store
     render formats: :html
   end
