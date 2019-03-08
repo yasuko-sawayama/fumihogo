@@ -26,7 +26,7 @@ const LoadingStyled = styled(ReactLoading)`
 `;
 
 const Loading = () => (
-  <LoadingStyled type="spinningBubbles" delay={400} color="#ffffff"/>
+  <LoadingStyled type="spinningBubbles" delay={800} color="#ffffff"/>
 );
 
 export default Loading;
