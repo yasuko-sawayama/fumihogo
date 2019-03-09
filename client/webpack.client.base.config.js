@@ -31,8 +31,8 @@ module.exports = {
 
   optimization: {
     splitChunks: {
-      name: 'vendor-bundle',
-      chunks: 'initial',
+      name: "vendor-bundle",
+      chunks: "initial"
     }
   },
 
@@ -52,7 +52,7 @@ module.exports = {
 
   module: {
     rules: [
-      ...assetLoaderRules,
+      ...assetLoaderRules
 
       // {
       //     test: require.resolve('jquery'),

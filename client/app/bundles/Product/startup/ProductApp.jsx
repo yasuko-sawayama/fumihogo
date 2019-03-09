@@ -12,7 +12,7 @@ import Product from "../components/Product";
 // This is how you get props from the Rails view into the redux store.
 // This code here binds your smart component to the redux store.
 const ProductApp = (props, _railsContext, domNodeId) => {
-  const render = props.prerender ? ReactDOM.hydrate : ReactDOM.render;
+  const render = ReactDOM.hydrate;
   // eslint-disable-next-line no-param-reassign
   delete props.prerender;
 

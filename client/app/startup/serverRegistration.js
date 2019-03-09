@@ -3,13 +3,16 @@
 
 // Shows the mapping from the exported object to the name used by the server rendering.
 import ReactOnRails from "react-on-rails";
+import sharedStore from "../stores/sharedStore";
 
-// import SharedReduxStore from '../stores/SharedReduxStore';
-// import HelloWorldApp from "../bundles/HelloWorld/startup/HelloWorldApp";
+import ProductApp from "../bundles/Product/startup/ServerProductApp";
+import FavoriteApp from "../bundles/Favorite/startup/ServerFavoriteApp";
 
-// This is how react_on_rails can see the HelloWorld in the browser.
-ReactOnRails.register({});
+ReactOnRails.register({
+  ProductApp,
+  FavoriteApp
+});
 
-// ReactOnRails.registerStore({
-// //     SharedReduxStore,
-// // });
+ReactOnRails.registerStore({
+  sharedStore
+});

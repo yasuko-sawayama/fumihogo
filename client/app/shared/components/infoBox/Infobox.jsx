@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Route, NavLink } from "react-router-dom";
-import { withRouter } from 'react-router';
+import { withRouter } from "react-router";
 
 import InfoBoxContent from "./InfoBoxContent";
 import Author from "./Author";
@@ -16,7 +16,7 @@ const InfoBox = props => {
   }
 
   const {
-    match: {path},
+    match: { path },
     product: { id, title, description, info, author, auth }
   } = props;
 
@@ -25,23 +25,23 @@ const InfoBox = props => {
       return (
         <NavLink to={`/products/${id}`} disabled={!auth.show}>
           {title}
-        </NavLink>)
+        </NavLink>
+      );
     } else {
       return (
         <a href={`/products/${id}`} disabled={!auth.show}>
           {title}
-        </a>)
+        </a>
+      );
     }
-  }
+  };
 
   return (
     <div className="infobox" id={`product-${id}`}>
       <div className="infobox-inner">
         <div className="infobox-header">
           <div className="infobox-header-content">
-            <h3>
-              {pageLink()}
-            </h3>
+            <h3>{pageLink()}</h3>
             <Author author={author} />
           </div>
 

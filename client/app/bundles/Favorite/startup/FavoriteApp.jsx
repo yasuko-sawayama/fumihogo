@@ -12,6 +12,7 @@ import Favorite from "../components/Favorite";
 // This is how you get props from the Rails view into the redux store.
 // This code here binds your smart component to the redux store.
 const FavoriteApp = (props, _railsContext, domNodeId) => {
+  console.log(props);
   const render = props.prerender ? ReactDOM.hydrate : ReactDOM.render;
   // eslint-disable-next-line no-param-reassign
   delete props.prerender;

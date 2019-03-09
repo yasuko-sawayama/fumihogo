@@ -18,7 +18,7 @@ const { output, settings } = webpackConfigLoader(configPath);
 // entry is prepended because 'react-hot-loader/patch' must be the very first entry
 // for hot reloading to work.
 module.exports = merge.strategy({
-  mode: 'development',
+  mode: "development",
   entry: "prepend"
 })(config, {
   devtool: "eval-source-map",

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 
 import Frontend from "~/shared/components/layouts/Frontend";
 import InfoBox from "~/shared/components/infoBox";
@@ -23,7 +23,7 @@ FavoriteList.propTypes = {
 
 FavoriteList.defaultProps = {
   products: []
-}
+};
 
 const mapStateToProps = state => ({
   products: state.productData.products

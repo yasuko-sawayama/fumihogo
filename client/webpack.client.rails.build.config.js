@@ -26,7 +26,7 @@ if (devBuild) {
 }
 
 module.exports = merge(config, {
-  mode: 'production',
+  mode: "production",
 
   output: {
     filename: isHMR ? "[name]-[hash].js" : "[name]-[chunkhash].js",
@@ -38,9 +38,9 @@ module.exports = merge(config, {
   },
 
   externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-    'redux': 'Redux'
+    react: "React",
+    "react-dom": "ReactDOM",
+    redux: "Redux"
   },
 
   optimization: {
