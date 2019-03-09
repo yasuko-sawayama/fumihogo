@@ -1,5 +1,5 @@
-import "@babel/polyfill";
-import "es5-shim";
+// import "@babel/polyfill";
+// import "es5-shim";
 
 import ReactOnRails from "react-on-rails";
 

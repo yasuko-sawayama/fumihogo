@@ -3,9 +3,9 @@ import { storiesOf } from "@storybook/react";
 import { MemoryRouter } from "react-router";
 import { action } from "@storybook/addon-actions";
 
-import Empty from "./Empty";
-import Backend from "./Backend";
-import ProfilePanel from "../helpers/ProfilePanel";
+import Empty from "../Empty";
+import Backend from "../Backend";
+import ProfilePanel from "../../helpers/ProfilePanel";
 
 storiesOf("Layouts", module)
   .add("Empty", () => <Empty>空のレイアウト</Empty>)

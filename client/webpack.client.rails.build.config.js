@@ -26,15 +26,7 @@ if (devBuild) {
 }
 
 module.exports = merge(config, {
-  entry: {
-    "vendor-bundle": [
-      "react",
-      "redux",
-      "react-on-rails"
-      // "jquery-ujs",
-      // "jquery"
-    ]
-  },
+  mode: 'production',
 
   output: {
     filename: isHMR ? "[name]-[hash].js" : "[name]-[chunkhash].js",
@@ -43,6 +35,16 @@ module.exports = merge(config, {
     publicPath: output.publicPath,
     path: output.path,
     pathinfo: devBuild
+  },
+
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'redux': 'Redux'
+  },
+
+  optimization: {
+    sideEffects: true
   },
 
   // See webpack.client.base.config for adding modules common to both the webpack

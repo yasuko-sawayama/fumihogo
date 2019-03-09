@@ -13,7 +13,7 @@ export default class Navigation extends Component {
 
           <li>
             <a href="/likes">
-              <i className="md-icon">favorite</i> <span>ブックマーク</span>
+              <i className="md-icon">favorite</i> <span>お気に入り</span>
             </a>
           </li>
 
@@ -28,7 +28,7 @@ export default class Navigation extends Component {
 
         <ul>
           <li>
-            <a href="/sign_in" activeClassName="active">
+            <a href="/users/sign_in">
               <i className="md-icon">arrow_forward</i> <span>ログイン</span>
             </a>
           </li>

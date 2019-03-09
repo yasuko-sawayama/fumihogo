@@ -6,7 +6,9 @@ const Favorite = () => {
   return (
     <div>
       <Router>
-        <FavoriteList />
+        <Switch>
+          <Route exact path="/likes" component={FavoriteList}/>
+        </Switch>
       </Router>
     </div>
   );
