@@ -3,7 +3,7 @@ import { storiesOf, addDecorator } from "@storybook/react";
 
 import { withKnobs, boolean, number } from "@storybook/addon-knobs/react";
 import { withViewport } from "@storybook/addon-viewport";
-import FavButton from "../FavButton";
+import FavButton from "../favorite/FavButton";
 
 addDecorator(withViewport("iphone6"));
 

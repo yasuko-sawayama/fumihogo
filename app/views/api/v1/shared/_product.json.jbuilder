@@ -10,6 +10,11 @@ json.author do |author|
   author.id product&.user&.id
 end
 
+json.favorite do |fav|
+  fav.count product.get_likes.size
+  fav.myLike current_user ? (current_user.liked? product) : false
+end
+
 json.info do |about|
   about.created_at l product.created_at if product.persisted?
   about.character_count product.character_count

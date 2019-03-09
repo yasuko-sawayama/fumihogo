@@ -5,6 +5,7 @@ import { withRouter } from "react-router";
 
 import InfoBoxContent from "./InfoBoxContent";
 import Author from "./Author";
+import { Favorite } from "./favorite";
 import ProductButton from "../../../bundles/Product/components/product/ProductButton";
 import PageList from "../../../bundles/Product/components/product/PageList";
 import PageTitle from "../../../bundles/Product/components/product/PageTitle";
@@ -17,7 +18,7 @@ const InfoBox = props => {
 
   const {
     match: { path },
-    product: { id, title, description, info, author, auth }
+    product: { id, title, description, info, author, auth, favorite }
   } = props;
 
   const pageLink = () => {
@@ -48,6 +49,17 @@ const InfoBox = props => {
           <div className="infobox-header-action">
             <ProductButton auth={auth} product_id={id} />
           </div>
+        </div>
+        <div className="infobox-meta">
+          <ul>
+            <li>
+              <Favorite
+                count={favorite.count}
+                faved={favorite.myLike}
+                productId={id}
+              />
+            </li>
+          </ul>
         </div>
 
         <Route exact path="*/pages" component={PageList} />
