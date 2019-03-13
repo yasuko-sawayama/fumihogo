@@ -50,6 +50,7 @@ const InfoBox = props => {
             <ProductButton auth={auth} product_id={id} />
           </div>
         </div>
+        <Route exact path="*/pages" component={PageList} />
         <div className="infobox-meta">
           <ul>
             <li>
@@ -62,19 +63,22 @@ const InfoBox = props => {
           </ul>
         </div>
 
-        <Route exact path="*/pages" component={PageList} />
-        <Route
-          exact
-          path="/products/:product_id"
-          render={() => (
-            <InfoBoxContent info={info} description={description} />
-          )}
-        />
-        <Route
-          exact
-          path="/products/:product_id/pages/:page_order"
-          component={PageTitle}
-        />
+        <div className="infobox-content">
+          <div className="infobox-content-avatars">
+            <Route
+              exact
+              path="/products/:product_id"
+              render={() => (
+                <InfoBoxContent info={info} description={description}/>
+              )}
+            />
+            <Route
+              exact
+              path="/products/:product_id/pages/:page_order"
+              component={PageTitle}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
