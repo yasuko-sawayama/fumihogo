@@ -36,6 +36,7 @@
     padding: 0;
     border: 2px solid rgba(62, 62, 62, 0.06);
     border-radius: 50%;
+    outline: none;
     box-sizing: border-box;
     cursor: pointer;
     display: inline-block;
@@ -51,16 +52,19 @@
       margin-top: 40px;
     }
 
-    &:hover {
-      border-radius: 50%;
+    &:active {
+      padding-top: 1px;
+      padding-bottom: 2px;
+      background-color: #ececec;
+      -webkit-box-shadow: inset 0px 0px 8px #334c66;
+      -moz-box-shadow: inset 0px 0px 2px #3a6da0;
+      box-shadow: inset 0px 0px 2px #3a6da0;
+    }
 
+    &:hover {
       i {
         margin-top: 6px;
       }
     }
-  }
-
-  &:hover > button {
-    border-radius: 50%;
   }
 }
