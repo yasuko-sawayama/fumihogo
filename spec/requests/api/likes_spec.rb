@@ -102,7 +102,7 @@ RSpec.describe "お気に入りAPI" do
 
     context 'ログインしている場合' do
       it 'Likeを外せること' do
-        expect {subject}.to change {user.reload.voted_for? product}.from(true).to(false)
+        expect { subject }.to change {user.reload.voted_for? product}.from(true).to(false)
       end
     end
 

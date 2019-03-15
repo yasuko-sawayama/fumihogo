@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { toggleFav } from "../../../../actions";
+import { toggleFav as toggle } from "../../../../actions";
 import FavButton from "./FavButton";
 
 const Favorite = ({ productId, faved, count, toggleFav }) => {
@@ -10,7 +10,7 @@ const Favorite = ({ productId, faved, count, toggleFav }) => {
     <FavButton
       faved={faved}
       count={count}
-      handleClick={() => toggleFav(productId)}
+      handleClick={() => toggleFav(productId, !faved)}
     />
   );
 };
@@ -18,7 +18,8 @@ const Favorite = ({ productId, faved, count, toggleFav }) => {
 Favorite.propTypes = {
   productId: PropTypes.number.isRequired,
   faved: PropTypes.bool.isRequired,
-  count: PropTypes.number
+  count: PropTypes.number,
+  toggleFav: PropTypes.func.isRequired
 };
 
 Favorite.defaultProps = {
@@ -26,7 +27,7 @@ Favorite.defaultProps = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  toggleFav: productId => dispatch(toggleFav(productId))
+  toggleFav: (productId, faved) => dispatch(toggle(productId, faved))
 });
 export default connect(
   null,

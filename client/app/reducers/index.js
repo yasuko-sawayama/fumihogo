@@ -13,4 +13,3 @@ export default {
   pageInfo: pageInfoReducer,
   loading: loadReducer
 };
-6;

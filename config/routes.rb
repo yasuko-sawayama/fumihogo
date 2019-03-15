@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :products do
         resources :pages, only: [:show, :create, :update, :destroy]
-        resource :like, only: [:create, :destroy]
+        resource :likes, only: [:create, :destroy]
       end
 
       resources :likes, only: :index

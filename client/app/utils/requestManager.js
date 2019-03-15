@@ -11,3 +11,29 @@ export const fetchEntity = (url, options = {}) =>
     headers: ReactOnRails.authenticityHeaders(),
     ...options
   });
+
+export const postEntities = (url, data, options = {}) =>
+  axios({
+    method: "POST",
+    url,
+    data,
+    headers: ReactOnRails.authenticityHeaders(),
+    ...options
+  });
+
+export const updateEntities = (url, data, options = {}) =>
+  axios({
+    method: "PATCH",
+    url,
+    data,
+    headers: ReactOnRails.authenticityHeaders(),
+    ...options
+  });
+
+export const deleteEntity = (url, options = {}) =>
+  axios({
+    method: "DELETE",
+    url,
+    headers: ReactOnRails.authenticityHeaders(),
+    ...options
+  });
