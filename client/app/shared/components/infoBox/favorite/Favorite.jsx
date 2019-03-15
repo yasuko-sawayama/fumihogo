@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { toggleFav as toggle } from "../../../../actions";
 import FavButton from "./FavButton";
 
-const Favorite = ({ productId, faved, count, toggleFav }) => {
+const Favorite = props => {
+  const { productId, faved, count, toggleFav } = props;
   return (
     <FavButton
       faved={faved}
@@ -29,6 +30,7 @@ Favorite.defaultProps = {
 const mapDispatchToProps = dispatch => ({
   toggleFav: (productId, faved) => dispatch(toggle(productId, faved))
 });
+
 export default connect(
   null,
   mapDispatchToProps

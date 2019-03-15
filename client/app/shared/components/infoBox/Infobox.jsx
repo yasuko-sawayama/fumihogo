@@ -56,7 +56,7 @@ const InfoBox = props => {
             <li>
               <Favorite
                 count={favorite.count}
-                faved={favorite.myLike}
+                faved={favorite.faved}
                 productId={id}
               />
             </li>
@@ -64,20 +64,18 @@ const InfoBox = props => {
         </div>
 
         <div className="infobox-content">
-          <div className="infobox-content-avatars">
-            <Route
-              exact
-              path="/products/:product_id"
-              render={() => (
-                <InfoBoxContent info={info} description={description} />
-              )}
-            />
-            <Route
-              exact
-              path="/products/:product_id/pages/:page_order"
-              component={PageTitle}
-            />
-          </div>
+          <Route
+            exact
+            path="/products/:product_id"
+            render={() => (
+              <InfoBoxContent info={info} description={description} />
+            )}
+          />
+          <Route
+            exact
+            path="/products/:product_id/pages/:page_order"
+            component={PageTitle}
+          />
         </div>
       </div>
     </div>

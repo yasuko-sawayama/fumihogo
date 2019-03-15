@@ -18,8 +18,8 @@ function* fetchProduct(action) {
       type: Types.TOGGLE_PRODUCT_FAV_SUCCESS,
       payload: {
         productId,
-        count: fav.data.count
-        faved: faved
+        count: fav.data.count,
+        faved: fav.data.myLike
       }
     });
   } catch (e) {
