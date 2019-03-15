@@ -94,8 +94,24 @@ class User < ApplicationRecord
     social_profiles.exists?(provider: 'twitter')
   end
 
+  def twitter_profile
+    social_profiles.find_by(provider: 'twitter')
+  end
+
   def twitter_uid
-    social_profiles.find_by(provider: 'twitter')&.uid
+    twitter_profile&.uid
+  end
+
+  def twitter_displayname
+    twitter_profile&.account_name
+  end
+
+  def twitter_url
+    twitter_profile&.url
+  end
+
+  def twitter_description
+    twitter_profile&.description
   end
 
   def sns_url
