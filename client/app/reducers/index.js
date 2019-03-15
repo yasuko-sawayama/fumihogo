@@ -1,6 +1,6 @@
 import railsContextReducer from "./railsContextReducer";
 import currentUserReducer from "./currentUserReducer";
-import productReducer from "./productReducer";
+import productReducer from "./product";
 import loadReducer from "./loadReducer";
 import pageInfoReducer from "./pageInfoReducer";
 
