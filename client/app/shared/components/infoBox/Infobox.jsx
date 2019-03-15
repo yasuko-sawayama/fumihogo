@@ -44,6 +44,11 @@ const InfoBox = props => {
           <div className="infobox-header-content">
             <h3>{pageLink()}</h3>
             <Author author={author} />
+            <Route
+              exact
+              path="/products/:product_id/pages/:page_order"
+              component={PageTitle}
+            />
           </div>
 
           <div className="infobox-header-action">
@@ -63,20 +68,13 @@ const InfoBox = props => {
           </ul>
         </div>
 
-        <div className="infobox-content">
-          <Route
-            exact
-            path="/products/:product_id"
-            render={() => (
-              <InfoBoxContent info={info} description={description} />
-            )}
-          />
-          <Route
-            exact
-            path="/products/:product_id/pages/:page_order"
-            component={PageTitle}
-          />
-        </div>
+        <Route
+          exact
+          path="/products/:product_id"
+          render={() => (
+            <InfoBoxContent info={info} description={description} />
+          )}
+        />
       </div>
     </div>
   );

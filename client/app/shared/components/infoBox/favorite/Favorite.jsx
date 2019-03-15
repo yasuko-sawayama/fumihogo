@@ -11,7 +11,7 @@ const Favorite = props => {
     <FavButton
       faved={faved}
       count={count}
-      handleClick={() => toggleFav(productId, !faved)}
+      handleClick={() => toggleFav(productId, !faved, count)}
     />
   );
 };
@@ -28,7 +28,8 @@ Favorite.defaultProps = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  toggleFav: (productId, faved) => dispatch(toggle(productId, faved))
+  toggleFav: (productId, faved, prevCount) =>
+    dispatch(toggle(productId, faved, prevCount))
 });
 
 export default connect(

@@ -9,6 +9,7 @@ class Api::V1::LikesController < Api::V1::ApiController
 
   def create
     @product.liked_by current_user
+    eee
   end
 
   def destroy

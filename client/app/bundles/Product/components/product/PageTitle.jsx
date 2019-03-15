@@ -11,9 +11,9 @@ const PageTitle = ({
   },
   pages
 }) => (
-  <div className="infobox-content">
+  <h4 className="page-title">
     {pageTitle(pages, page_order)} /ページ{page_order}
-  </div>
+  </h4>
 );
 
 PageTitle.propTypes = {

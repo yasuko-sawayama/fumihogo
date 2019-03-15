@@ -9,10 +9,11 @@ const toggleFavoriteEntity = (productId, like) =>
     : deleteEntity(`/api/v1/products/${productId}/likes`);
 
 function* fetchProduct(action) {
+  const {
+    payload: { productId, faved, prevCount }
+  } = action;
+
   try {
-    const {
-      payload: { productId, faved }
-    } = action;
     const fav = yield call(toggleFavoriteEntity, productId, faved);
     yield put({
       type: Types.TOGGLE_PRODUCT_FAV_SUCCESS,
@@ -24,6 +25,15 @@ function* fetchProduct(action) {
     });
   } catch (e) {
     console.log(e);
+
+    yield put({
+      type: Types.TOGGLE_PRODUCT_FAV_ERROR,
+      payload: {
+        productId,
+        count: prevCount,
+        faved: !faved
+      }
+    });
   }
 }
 

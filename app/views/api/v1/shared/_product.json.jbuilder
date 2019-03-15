@@ -12,7 +12,7 @@ end
 
 json.favorite do |fav|
   fav.count product.get_likes.size
-  fav.myLike current_user ? (current_user.liked? product) : false
+  fav.faved current_user ? (current_user.liked? product) : false
 end
 
 json.info do |about|
