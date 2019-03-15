@@ -71,6 +71,7 @@
     "redux-saga": "^1.0.1",
     "redux-thunk": "^2.3.0",
     "resolve-url-loader": "^2.1.0",
+    "redux-devtools-extension": "^2.13.8",
     "sass-loader": "^6.0.6",
     "sass-resources-loader": "1.2.1",
     "style-loader": "^0.18.2",
@@ -105,7 +106,6 @@
     "prettier": "^1.14.3",
     "prettier-eslint-cli": "^4.7.1",
     "pretty-quick": "^1.10.0",
-    "redux-devtools-extension": "^2.13.8",
     "tape": "^4.7.0",
     "webpack-dev-server": "^2.6.1"
   }
