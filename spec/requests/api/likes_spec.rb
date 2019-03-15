@@ -67,7 +67,7 @@ RSpec.describe "お気に入りAPI" do
 
   describe "POST /api/v1/products/likes/" do
     subject(:like) do
-      post api_v1_product_like_path(product), headers: headers
+      post api_v1_product_likes_path(product), headers: headers
     end
 
     context "ログインしている場合" do
@@ -92,17 +92,20 @@ RSpec.describe "お気に入りAPI" do
 
   describe 'DELETE api/v1/product/:id/unlike' do
     subject(:unlike) do
-      delete api_v1_product_like_path(product), headers: headers
+      delete api_v1_product_likes_path(product), headers: headers
     end
 
     before do
-      sign_in user
       user.likes product
     end
 
     context 'ログインしている場合' do
+      before do
+        sign_in user
+      end
+
       it 'Likeを外せること' do
-        expect { subject }.to change {user.reload.voted_for? product}.from(true).to(false)
+        expect { unlike }.to change {user.reload.voted_for? product}.from(true).to(false)
       end
     end
 

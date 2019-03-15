@@ -2,6 +2,7 @@
 class Api::V1::LikesController < Api::V1::ApiController
   before_action :authenticate_user!
   before_action :set_product, except: :index
+  skip_after_action :verify_authorized
 
   def index
     @products = policy_scope(current_user.get_voted(Product))
@@ -9,7 +10,6 @@ class Api::V1::LikesController < Api::V1::ApiController
 
   def create
     @product.liked_by current_user
-    eee
   end
 
   def destroy
@@ -19,6 +19,6 @@ class Api::V1::LikesController < Api::V1::ApiController
   private
 
   def set_product
-    authorize @product = Product.find(params[:product_id])
+    @product = Product.find(params[:product_id])
   end
 end
