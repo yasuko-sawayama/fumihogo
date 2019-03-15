@@ -10,4 +10,4 @@ addDecorator(withViewport("iphone6"));
 storiesOf("ロード", module)
   .addDecorator(withKnobs)
   .addDecorator(withViewport())
-  .add("ロード中", () => <Loading/>);
+  .add("ロード中", () => <Loading />);

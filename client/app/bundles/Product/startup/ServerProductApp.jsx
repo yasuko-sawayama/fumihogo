@@ -9,7 +9,7 @@ const ServerProductApp = () => {
 
   return (
     <Provider store={store}>
-      <Product/>
+      <Product />
     </Provider>
   );
 };

@@ -10,10 +10,10 @@ import Paginate from "./Paginate";
 
 const InnerContent = ({ product, path }) => (
   <div>
-    <InfoBox product={product}/>
+    <InfoBox product={product} />
     <Switch>
-      <Route path={`${path}/pages/:page_order`} component={Content}/>
-      <Route exact path={`${path}/`} component={Content}/>
+      <Route path={`${path}/pages/:page_order`} component={Content} />
+      <Route exact path={`${path}/`} component={Content} />
     </Switch>
   </div>
 );

@@ -7,7 +7,7 @@ const Favorite = () => {
     <div>
       <Router>
         <Switch>
-          <Route exact path="/likes" component={FavoriteList}/>
+          <Route exact path="/likes" component={FavoriteList} />
         </Switch>
       </Router>
     </div>

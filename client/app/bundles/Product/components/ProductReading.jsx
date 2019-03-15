@@ -45,7 +45,7 @@ class ProductReading extends React.Component {
 
     if (product) {
       return (
-        <RenderComponent product={product} path={path} history={history}/>
+        <RenderComponent product={product} path={path} history={history} />
       );
     }
     return null;

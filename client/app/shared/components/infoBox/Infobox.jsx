@@ -69,7 +69,7 @@ const InfoBox = props => {
               exact
               path="/products/:product_id"
               render={() => (
-                <InfoBoxContent info={info} description={description}/>
+                <InfoBoxContent info={info} description={description} />
               )}
             />
             <Route

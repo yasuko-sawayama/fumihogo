@@ -10,7 +10,7 @@ const ServerFavoriteApp = () => {
 
   return (
     <Provider store={store}>
-      <Favorite/>
+      <Favorite />
     </Provider>
   );
 };

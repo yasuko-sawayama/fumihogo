@@ -12,7 +12,7 @@ const Content = styled.div`
 `;
 
 const ContentReading = ({ content }) => (
-  <Content dangerouslySetInnerHTML={{ __html: content }}/>
+  <Content dangerouslySetInnerHTML={{ __html: content }} />
 );
 
 ContentReading.propTypes = {
