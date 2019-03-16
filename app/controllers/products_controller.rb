@@ -23,6 +23,10 @@ class ProductsController < WithReactController
 
   def new
     authorize @product = Product.new
+    @title = '新しく小説を書く'
+    @list_type = 'create'
+    initialize_shared_store
+    render formats: :html
   end
 
   def destroy

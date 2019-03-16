@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Switch, Route } from "react-router-dom";
-import Frontend from "~/shared/components/layouts/Frontend";
-import { Default, Mobile } from "~/shared/components/layouts/responsive";
-import ContentPage from "~/shared/components/layouts/ContentPage";
+import Responsive from "~/shared/components/layouts/responsive"
+
 import InfoBox from "../../../../shared/components/infoBox";
 import Content from "./content";
 import Paginate from "./Paginate";
@@ -32,31 +31,16 @@ const RenderComponent = props => {
     props.product && props.product.currentPage && props.product.currentPage.id;
 
   return (
-    <div>
-      <Mobile>
-        <ContentPage>
-          <InnerContent {...props} />
-          <Paginate
-            history={props.history}
-            productId={props.product.id}
-            pages={props.product.pages}
-            currentPage={currentPageId}
-          />
-        </ContentPage>
-      </Mobile>
-      <Default>
-        <Frontend>
-          <InnerContent {...props} />
-          <Paginate
-            history={props.history}
-            productId={props.product.id}
-            pages={props.product.pages}
-            currentPage={currentPageId}
-          />
-        </Frontend>
-      </Default>
-    </div>
-  );
+    <Responsive>
+      <InnerContent {...props} />
+      <Paginate
+        history={props.history}
+        productId={props.product.id}
+        pages={props.product.pages}
+        currentPage={currentPageId}
+      />
+    </Responsive>
+  )
 };
 
 export default RenderComponent;

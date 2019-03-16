@@ -9,16 +9,16 @@ const CreateToolBar = () => {
 
       <ul>
         <li>
-          <a>
-            <i className="md-icon">folder_open</i>{" "}
-            <span>Project</span>
+          <a href="/products/new">
+            <i className="md-icon">library_books</i>{" "}
+            <span>新しく小説を書く</span>
           </a>
         </li>
 
         <li>
           <a>
-            <i className="md-icon">attach_money</i>{" "}
-            <span>Pricing Plan</span>
+            <i className="md-icon">description</i>{" "}
+            <span>ページを追加する</span>
           </a>
         </li>
 
