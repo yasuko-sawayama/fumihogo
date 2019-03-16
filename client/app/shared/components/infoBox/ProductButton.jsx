@@ -10,7 +10,7 @@ const BookIcon = styled.i`
   font-size: 42px;
   border-radius: 60px;
   box-shadow: 0px 0px 2px #888;
-  padding: 0.5em;
+  padding: 0.45em 0.5em;
 
   background-color: ${props =>
     props.disabled ? Color.UNREADABLE : "transparent"};
