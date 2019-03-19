@@ -42,7 +42,7 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'react_on_rails', '11.2.2'
-gem 'webpacker'
+gem 'webpacker', '~> 4.x'
 
 ########## Authentication ##########
 gem 'devise'
