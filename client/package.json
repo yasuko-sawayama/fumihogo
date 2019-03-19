@@ -93,6 +93,7 @@
     "@storybook/addon-viewport": "^4.1.12",
     "@storybook/addons": "^4.1.11",
     "@storybook/react": "^4.1.11",
+    "babel-plugin-styled-components": "^1.10.0",
     "body-parser": "^1.17.1",
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
