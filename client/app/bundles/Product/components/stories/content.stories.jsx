@@ -1,16 +1,12 @@
+/* eslint import/no-extraneous-dependencies: off */
+
 import React from "react";
 import { storiesOf, addDecorator } from "@storybook/react";
 import { MemoryRouter } from "react-router";
 
 // import { action } from "@storybook/addon-actions";
 import { Provider } from "react-redux";
-import {
-  withKnobs,
-  text,
-  boolean,
-  number,
-  object
-} from "@storybook/addon-knobs/react";
+import { withKnobs, text, boolean, number } from "@storybook/addon-knobs/react";
 import { withViewport } from "@storybook/addon-viewport";
 import sharedStore from "~/stores/sharedStore";
 import ProductReading from "../ProductReading";

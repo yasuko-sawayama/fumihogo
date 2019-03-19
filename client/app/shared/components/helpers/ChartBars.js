@@ -4,7 +4,7 @@ import ChartistGraph from "react-chartist";
 
 export default class ChartBars extends Component {
   render() {
-    let data = {
+    const data = {
       labels: [
         "Jan",
         "Feb",
@@ -25,11 +25,11 @@ export default class ChartBars extends Component {
       ]
     };
 
-    let options = {
+    const options = {
       high: 10,
       low: 0,
       axisY: {
-        labelInterpolationFnc: function(value, index) {
+        labelInterpolationFnc(value, index) {
           return index % 2 === 0 ? value : null;
         }
       }

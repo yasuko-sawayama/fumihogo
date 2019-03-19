@@ -34,31 +34,38 @@ const ContentLink = ({ product_id, auth: { show } }) => (
   </CircleButton>
 );
 
-const PageListLink = ({ product_id, info, pages, auth: { show } }) => (
+ContentLink.propTypes = {
+  product_id: PropTypes.number.isRequired,
+  auth: PropTypes.shape().isRequired
+};
+
+const PageListLink = ({ product_id, auth: { show } }) => (
   <CircleButton to={`/products/${product_id}/pages`} disabled={!show}>
     <BookIcon className="fas fa-list-alt" disabled={!show} />
     {show && <div>もくじ</div>}
   </CircleButton>
 );
 
+PageListLink.propTypes = {
+  product_id: PropTypes.number.isRequired,
+  auth: PropTypes.shape().isRequired
+};
+
 const ProductButton = props => {
   if (props.pages) {
     return <PageListLink {...props} />;
-  } else {
-    return <ContentLink {...props} />;
   }
+  return <ContentLink {...props} />;
 };
 
 ProductButton.propTypes = {
+  pages: PropTypes.arrayOf(PropTypes.shape()),
   product_id: PropTypes.number.isRequired,
   auth: PropTypes.shape({ show: PropTypes.bool }).isRequired
 };
 
 ProductButton.defaultProps = {
-  auth: {
-    show: false,
-    update: false
-  }
+  pages: null
 };
 
 const mapStateToProps = state => {
@@ -67,9 +74,8 @@ const mapStateToProps = state => {
       info: state.productData.currentProduct.info,
       pages: state.productData.currentProduct.pages
     };
-  } else {
-    return {};
   }
+  return {};
 };
 
 const mergeProps = (propsFromState, propsFromDispatch, ownProps) => ({

@@ -41,9 +41,9 @@ const ExamplePanel = ({ currentUser }) => (
             <a href={currentUser.twitterUrl}>@{currentUser.nickname}</a>
           </PanelListItem>
         )}
-        {/*<PanelListItem>*/}
-        {/*Pixiv: <a>xxxxxxx</a>.*/}
-        {/*</PanelListItem>*/}
+        {/* <PanelListItem> */}
+        {/* Pixiv: <a>xxxxxxx</a>. */}
+        {/* </PanelListItem> */}
       </PanelList>
     </PanelListWrapper>
     <PanelActionWrapper>

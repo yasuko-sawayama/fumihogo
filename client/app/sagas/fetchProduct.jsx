@@ -17,6 +17,7 @@ function* fetchProduct(action) {
       payload: { ...product.data }
     });
   } catch (e) {
+    /* eslint no-console: off */
     console.log(e);
   }
 }

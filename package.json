@@ -1,6 +1,9 @@
 {
   "name": "fumihogo",
   "private": true,
+  "engines": {
+    "yarn": "1.x"
+  },
   "scripts": {
     "postinstall": "cd ./client && yarn install",
     "test": "yarn run build:test && yarn run lint && rspec",

@@ -24,6 +24,7 @@ function* fetchProduct(action) {
       }
     });
   } catch (e) {
+    /* eslint no-console: off */
     console.log(e);
 
     yield put({

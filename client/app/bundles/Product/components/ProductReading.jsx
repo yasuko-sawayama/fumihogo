@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchProductRequest } from "~/actions";
 import RenderComponent from "./product/RenderComponent";
-import ProductNotFound from "./product/ProductNotFound";
+// import ProductNotFound from "./product/ProductNotFound";
 
 class ProductReading extends React.Component {
   componentDidMount() {

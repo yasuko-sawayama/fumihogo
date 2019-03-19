@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Switch, Route } from "react-router-dom";
-import Responsive from "~/shared/components/layouts/responsive"
-
+import Responsive from "~/shared/components/layouts/responsive.jsx";
 import InfoBox from "../../../../shared/components/infoBox";
 import Content from "./content";
 import Paginate from "./Paginate";
@@ -41,6 +40,11 @@ const RenderComponent = props => {
       />
     </Responsive>
   )
+};
+
+RenderComponent.propTypes = {
+  product: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired
 };
 
 export default RenderComponent;

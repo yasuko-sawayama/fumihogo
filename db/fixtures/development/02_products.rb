@@ -24,7 +24,7 @@ Page.seed do |page|
   page.title = "ページのタイトル"
   page.position = 2
   page.content = <<EOF
-本文
+本文だから10文字以上必要です。
 EOF
   page.product_id = 1
 end

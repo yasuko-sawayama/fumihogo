@@ -34,7 +34,7 @@ const InfoBox = props => {
       <a href={`/products/${id}`} >
         {title}
       </a>
-    )
+    );
   };
 
   return (

@@ -20,14 +20,12 @@ const titleName = ({ listType, author, title }) => {
   }
 };
 
-const PageTitle = ({ info }) => {
-  return (
-    <div className="page-title">
-      <h1>{titleName(info)}</h1>
-      <Shortcuts />
-    </div>
-  );
-};
+const PageTitle = ({ info }) => (
+  <div className="page-title">
+    <h1>{titleName(info)}</h1>
+    <Shortcuts />
+  </div>
+);
 
 PageTitle.propTypes = {
   info: PropTypes.shape().isRequired

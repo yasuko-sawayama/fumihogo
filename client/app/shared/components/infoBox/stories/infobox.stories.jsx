@@ -1,3 +1,6 @@
+/* eslint import/no-extraneous-dependencies: off */
+/* eslint no-alert: off */
+
 import React from "react";
 import { storiesOf, addDecorator } from "@storybook/react";
 

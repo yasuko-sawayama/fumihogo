@@ -24,7 +24,7 @@ export default class Stat extends Component {
           <div
             className={
               this.props.labelClass
-                ? this.props.labelClass + " stat-item-label"
+                ? `${this.props.labelClass} stat-item-label`
                 : "stat-item-label"
             }
           >

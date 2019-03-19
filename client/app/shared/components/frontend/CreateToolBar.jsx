@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-
 const CreateToolBar = () => {
   return (
     <div className="toolbar-slide-content">
@@ -47,4 +46,3 @@ const CreateToolBar = () => {
 };
 
 export default CreateToolBar;
-

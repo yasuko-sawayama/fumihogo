@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Loading from "~/shared/components/Loading";
+import Loading from "~/shared/components/Loading.jsx";
 import { fetchProductPageRequest } from "../../../../../actions";
 import ContentReading from "./ContentReading";
 import ContentNotFound from "./ContentNotFound";
@@ -9,7 +9,9 @@ import ContentNotFound from "./ContentNotFound";
 class Content extends Component {
   static propTypes = {
     match: PropTypes.shape({
-      params: PropTypes.shape({}).isRequired
+      params: PropTypes.shape({
+        page_order: PropTypes.number
+      }).isRequired
     }).isRequired
   };
 

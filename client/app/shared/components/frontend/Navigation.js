@@ -20,11 +20,11 @@ const Navigation = ({ currentUser }) =>
           </a>
         </li>
 
-        {/*<li>*/}
-        {/*<NavLink to="/contacts" activeClassName="active">*/}
-        {/*<i className="md-icon">view_list</i> <span>閲覧履歴</span>*/}
-        {/*</NavLink>*/}
-        {/*</li>*/}
+        {/* <li> */}
+        {/* <NavLink to="/contacts" activeClassName="active"> */}
+        {/* <i className="md-icon">view_list</i> <span>閲覧履歴</span> */}
+        {/* </NavLink> */}
+        {/* </li> */}
       </ul>
 
       {!currentUser && (

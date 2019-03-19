@@ -6,12 +6,12 @@ import { NavLink } from "react-router-dom";
 const pageList = (pages, url) =>
   pages.map(page => (
     <tr key={page.position}>
-      {/*TODO: 作者用に公開・非公開を表示*/}
-      {/*<td className="min-width">*/}
-      {/*<div className={"status"}>*/}
-      {/*<i className="md-icon">check</i>*/}
-      {/*</div>*/}
-      {/*</td>*/}
+      {/* TODO: 作者用に公開・非公開を表示 */}
+      {/* <td className="min-width"> */}
+      {/* <div className={"status"}> */}
+      {/* <i className="md-icon">check</i> */}
+      {/* </div> */}
+      {/* </td> */}
 
       <td>
         <div className="title-wrapper">
@@ -39,6 +39,11 @@ const pageList = (pages, url) =>
     </tr>
   ));
 
+pageList.propTypes = {
+  pages: PropTypes.arrayOf().isRequired,
+  url: PropTypes.string.isRequired
+};
+
 const PageList = ({ pages, match: { url }, history }) => (
   <div className="infobox-header">
     <div className="infobox-header-content page-list">
@@ -47,11 +52,11 @@ const PageList = ({ pages, match: { url }, history }) => (
           <thead>
             <tr className="heading">
               <td colSpan={2}>もくじ</td>
-              <td className={"close-button"}>
+              <td className="close-button">
                 {" "}
-                <i className="material-icons" onClick={() => history.goBack()}>
-                  clear
-                </i>
+                <button onClick={() => history.goBack()}>
+                  <i className="material-icons">clear</i>
+                </button>
               </td>
             </tr>
           </thead>
@@ -68,6 +73,10 @@ PageList.propTypes = {
     url: PropTypes.string.isRequired
   }),
   history: PropTypes.shape().isRequired
+};
+
+PageList.defaultProps = {
+  match: null
 };
 
 function mapStateToProps(state) {
