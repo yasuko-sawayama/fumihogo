@@ -134,7 +134,7 @@ module.exports = merge(config, {
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
-      // openAnalyzer: false,
+      openAnalyzer: false,
       reportFilename: "bundle_sizes.html"
     })
   ]
