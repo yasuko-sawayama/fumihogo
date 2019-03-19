@@ -4,7 +4,7 @@ default: &default
   source_path: client
   compile: false
   cache_path: tmp/cache/webpacker
-  public_output_path: pack
+  public_output_path: packs
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
