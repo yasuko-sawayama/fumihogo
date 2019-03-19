@@ -17,6 +17,10 @@
     "hot-assets": "(cd client && yarn run hot-assets)",
     "storybook": "(cd client && yarn run storybook)"
   },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
   "dependencies": {
     "susy": "^3.0.5"
   },
