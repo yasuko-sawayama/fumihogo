@@ -77,6 +77,10 @@ jobs:
             bundle exec rake db:create db:schema:load --trace
             bundle exec rake db:migrate
 
+      - run:
+          name: Compile webpack for test
+          command: yarn run build:test
+
       # run tests!
       - run:
           name: run tests
