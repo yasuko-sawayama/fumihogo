@@ -27,6 +27,6 @@ FactoryBot.define do
   factory :page do
     product
     title { 'テストタイトル' }
-    content { Faker::Lorem.sentences(5) }
+    content { Faker::Lorem.paragraph(5) }
   end
 end
