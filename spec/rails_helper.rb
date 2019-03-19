@@ -23,7 +23,7 @@ require 'vcr'
 
 require 'simplecov'
 SimpleCov.start 'rails'
-SimpleCov.minimum_coverage 75
+# SimpleCov.minimum_coverage 75
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
