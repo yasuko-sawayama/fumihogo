@@ -35,6 +35,9 @@ jobs:
           - v1-dependencies-{{ checksum "Gemfile.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
+      - run:
+          name:  Install capybara-webkit
+          command: sudo apt update && sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
 
       - run:
           name: Bundle Install
@@ -70,7 +73,7 @@ jobs:
       - run:
           name: Setup DB
           command: |
-            sudo apt update && sudo apt install postgresql-client
+            sudo apt install postgresql-client
             bundle exec rake db:create db:schema:load --trace
             bundle exec rake db:migrate
 

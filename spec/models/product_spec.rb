@@ -33,7 +33,7 @@ RSpec.describe Product, type: :model do
   describe 'association' do
     it { should belong_to(:user) }
     it { should have_many(:pages) }
-    it { should belong_to(:permissions_list) }
+    it { should belong_to(:permissions_list).required(false) }
   end
 
   describe 'validation' do
