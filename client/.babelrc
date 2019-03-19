@@ -1,0 +1,34 @@
+{
+  "presets": [
+    "@babel/react",
+    ["@babel/env",
+      {
+        "targets": {
+          "browsers": [
+              ">0.25%",
+            "not ie 11",
+            "not op_mini all"
+          ]
+        },
+        useBuiltIns: 'usage'
+      }
+    ]
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": true,
+        "pure": true
+      }
+    ],
+    "@babel/plugin-proposal-class-properties",
+    [
+      "babel-plugin-root-import",
+      {
+        "rootPathSuffix": "app"
+      }
+    ]
+  ]
+}

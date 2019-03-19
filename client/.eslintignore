@@ -1,0 +1,4 @@
+node_modules
+app/shared/components/ui/
+app/shared/components/frontend/
+app/shared/components/helpers/

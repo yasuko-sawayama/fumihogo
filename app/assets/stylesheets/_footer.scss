@@ -1,20 +1,5 @@
-footer {
-  position: relative;
-  width: 100%;
-  z-index: 5;
+.footer {
+  .footer-left {
 
-  &:last-child {
-    margin-bottom: 0 !important;
-  }
-
-  #footer-main {
-    padding: 40px 0;
-    background-color: #f5f5f5 !important;
-  }
-
-  .site-title {
-    text-align: center;
-    font-weight: bold;
-    font-family: "Hannari";
   }
 }

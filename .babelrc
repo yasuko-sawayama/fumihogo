@@ -15,7 +15,6 @@
   ],
   "plugins": [
     "syntax-dynamic-import",
-    "babel-plugin-styled-components",
     "transform-object-rest-spread",
     [
       "transform-class-properties",
@@ -23,10 +22,5 @@
         "spec": true
       }
     ]
-  ],
-  "env": {
-    "test": {
-      "plugins": ["transform-es2015-modules-commonjs"]
-    }
-  }
+  ]
 }

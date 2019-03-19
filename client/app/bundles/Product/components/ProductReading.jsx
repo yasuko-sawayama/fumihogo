@@ -1,0 +1,81 @@
+import React from "react";
+import PropTypes from "prop-types";
+
+import { connect } from "react-redux";
+import { fetchProductRequest } from "~/actions";
+import RenderComponent from "./product/RenderComponent";
+// import ProductNotFound from "./product/ProductNotFound";
+
+class ProductReading extends React.Component {
+  componentDidMount() {
+    const {
+      fetchProduct,
+      match: {
+        params: { product_id }
+      }
+    } = this.props;
+    fetchProduct(product_id);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      fetchProduct,
+      product,
+      match: {
+        params: { product_id }
+      }
+    } = this.props;
+
+    const {
+      match: {
+        params: { product_id: past_id }
+      }
+    } = prevProps;
+
+    if (past_id === product_id && product) return;
+
+    fetchProduct(product_id);
+  }
+
+  render() {
+    const {
+      match: { path },
+      history,
+      product
+    } = this.props;
+
+    if (product) {
+      return (
+        <RenderComponent product={product} path={path} history={history} />
+      );
+    }
+    return null;
+  }
+}
+
+ProductReading.propTypes = {
+  match: PropTypes.shape({
+    path: PropTypes.string.isRequired
+  }).isRequired,
+  history: PropTypes.shape().isRequired,
+  product: PropTypes.shape(),
+  fetchProduct: PropTypes.func.isRequired
+};
+
+ProductReading.defaultProps = {
+  product: null
+};
+
+const mapStateToProps = state => ({
+  product: state.productData.currentProduct,
+  loading: state.loading
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchProduct: product_id => dispatch(fetchProductRequest(product_id))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductReading);

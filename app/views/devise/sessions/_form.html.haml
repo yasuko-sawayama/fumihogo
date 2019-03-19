@@ -1,17 +1,18 @@
-.panel.panel-default.devise-bs
-  .panel-heading
-    %h4= t('.sign_in', default: 'Sign in')
-  .panel-body
-    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f|
-      .form-group
-        = f.label :email
-        = f.email_field :email, autofocus: true, class: 'form-control'
-      .form-group
-        = f.label :password
-        = f.password_field :password, autocomplete: 'off', class: 'form-control'
-      - if devise_mapping.rememberable?
-        .checkbox
-          = f.label :remember_me do
-            = f.check_box :remember_me
-            = t('.remember_me', default: 'Remember me')
-      = f.submit 'ログイン', class: 'btn btn-primary'
+= render 'devise/shared/error_messages'
+- if resource_name.to_s == 'user'
+  = link_to  user_twitter_omniauth_authorize_path, class: 'button-block button-twitter button' do
+    %i.fab.fa-twitter
+    &nbsp;Twitterでログインする
+
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f|
+  .form-group
+    = f.label :email
+    = f.email_field :email, class: 'form-control'
+  .form-group
+    = f.label :password
+    = f.password_field :password, class: 'form-control'
+
+  .form-group.form-group-button
+    %button.button.button-primary.button-right{:type => "submit"} ログイン
+  .form-group-button-description
+    = render 'devise/shared/links'

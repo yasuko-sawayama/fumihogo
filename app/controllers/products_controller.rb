@@ -1,19 +1,32 @@
 # 作品のページ表示用
-class ProductsController < ApplicationController
-  include ReactOnRails::Controller
-
+class ProductsController < WithReactController
   before_action :store_location_for_user!
   before_action :authenticate_user!, except: [:show, :not_authorized]
   before_action :set_and_authorize_product, only: [:show, :destroy]
+  skip_after_action :verify_policy_scoped, :only => :index
 
   def index
-    @products = policy_scope(current_user.products).page(params[:page])
+    @products = current_user.products.page(params[:page])
+    @products = Product.all
+    @user = current_user
+    initialize_shared_store
+    render formats: :html
   end
 
-  def show; end
+  def show
+    @user = @product.user.decorate
+    @list_type = 'content'
+    initialize_shared_store
+
+    render formats: :html
+  end
 
   def new
     authorize @product = Product.new
+    @title = '新しく小説を書く'
+    @list_type = 'create'
+    initialize_shared_store
+    render formats: :html
   end
 
   def destroy

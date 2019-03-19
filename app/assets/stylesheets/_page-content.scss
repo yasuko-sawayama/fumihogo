@@ -1,0 +1,47 @@
+.infobox-header-content > .page-title {
+  margin-top: 15px;
+  padding: 0;
+  border: none;
+}
+
+.page-content {
+  align-items: stretch;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  width: 100%;
+
+  &:after {
+    background-color: $color-primary;
+    //background-image: repeating-linear-gradient(-45deg,
+    //        $color-primary 0, $color-primary 30px,
+    //        $color-secondary 30px, $color-secondary 60px
+    //);
+    content: '';
+    display: block;
+    height: 3px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.page-content-inner {
+  margin: 20px 10px;
+  width: 100%;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 400;
+    border: 1px solid rgba(#000, .06);
+    border-bottom: 0;
+    margin: 0;
+    padding: 24px 30px;
+  }
+
+  form {
+    border: 1px solid rgba(#000, .06);
+    padding: 30px;
+  }
+}

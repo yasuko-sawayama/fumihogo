@@ -1,48 +1,24 @@
-# fumihogo
+# README
 
-[![CircleCI](https://circleci.com/gh/yasuko-sawayama/fumihogo.svg?style=svg)](https://circleci.com/gh/yasuko-sawayama/fumihogo)
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## やりたいこと
+Things you may want to cover:
 
-小説の下書きを一時的に保存しておくところが欲しい
+* Ruby version
 
-小説をオンラインで書きたい（暇な時間にスマホで編集したい）
+* System dependencies
 
-下書きをプレビューしてもらってコメント・校正してもらいたい
+* Configuration
 
+* Database creation
 
-## いまのところできること
- - Twitter連携
- - MarkDownエディタ
+* Database initialization
 
-※コメント機能一旦はずし中
+* How to run the test suite
 
-## やりたい機能？？
+* Services (job queues, cache servers, search engines, etc.)
 
- - スマホ・PC両方で見やすいようにしたい…
- - コメント
- - お気に入り（非公開）
- - バージョン管理
- - API公開（テキストエディタと連携したい）
+* Deployment instructions
 
-## とりあえずやらないこと
-
-- SNS的なこと
-- イラスト・画像対応
-
-## 起動方法
-
-```
-foraman start
-```
-
-### 構成
-react_on_railsでそれぞれ
-
- - 新規投稿画面
- - 編集/閲覧画面
-
-をreactで構築
-
-## メモ
-- Staticなページ管理にHighVoltage導入、/app/views/statics以下を指定
+* ...

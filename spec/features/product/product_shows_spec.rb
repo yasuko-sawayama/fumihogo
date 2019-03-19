@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'product shows details', type: :feature do
+xdescribe 'product shows details', type: :feature do
   describe 'Product Details Viewing', :js do
     let(:product) do
       build(:product,

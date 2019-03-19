@@ -1,23 +1,32 @@
-/*
- *= require devise_bootstrap_views
- *= require font-awesome
- */
-
 @import "bootstrap-variables";
-
 @import "japanese_font";
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+$color-primary: #455A64;
+$color-secondary: #EB6864;
+;
+//$color-primary: #455A64 !default;
+//$color-secondary: #78909C !default;
+$color-font: #455A64 !default;
 
-@import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg';
-// Bootstrap body padding for fixed navbar
-body { padding-top: 84px; }
+@import "particles/particles";
+@import "custom";
+@import "page-list";
 
-@import "common";
-@import "headers";
-@import "navbar";
-@import "footer";
+
+@import "alert";
 @import "home";
-@import "product";
-@import "productForm";
+
+@import "footer";
+@import "favorite";
+@import "menu";
+
+
+.wf-hannari { font-family: "Hannari"; }
+
+body {
+  font-size: 16px;
+}
+
+.disabled {
+  color: #a7b4ba;
+}

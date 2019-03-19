@@ -5,7 +5,7 @@ RSpec.describe TwitterClient, vcr: true do
 
   it 'TwitterのリストをID検索できること' do
     list = twitter.client.list(818_095_242_884_714_497)
-    expect(list[:name]).to eq('ぷらいべったー')
+    expect(list.name).to eq('ぷらいべったー')
   end
 
   describe 'ログインユーザーの所有リスト' do

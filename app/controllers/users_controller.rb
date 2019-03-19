@@ -1,10 +1,16 @@
 # アカウント関連（Devise系はdevise/以下）
-class UsersController < ApplicationController
+class UsersController < WithReactController
+  layout 'products'
+
   def show
-    authorize @user = User.friendly.find(params[:id])
+    authorize @user = User.friendly.find(params[:id]).decorate
     @products = policy_scope(@user.products)
-                .order(created_at: :desc)
-                .page(params[:page]).per(20)
+                    .order(created_at: :desc)
+                    .page(params[:page]).per(20)
+
+    initialize_shared_store
+
+    render formats: :html
   end
 
   def edit

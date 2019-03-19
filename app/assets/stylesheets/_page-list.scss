@@ -1,0 +1,24 @@
+// 目次用
+.page-list {
+  min-width: 100%;
+
+  & > .table-responsive {
+    min-width: 100%;
+
+    & > table {
+      min-width: 100%;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .table-responsive {
+    td.close-button {
+      width: 19px;
+      margin-left: 2px;
+      cursor: pointer;
+    }
+  }
+}

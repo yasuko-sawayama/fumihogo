@@ -1,0 +1,8 @@
+!!!
+%html{lang: 'ja'}
+  = render 'layouts/shared/head'
+  %body{class: controller_name}
+    .page-empty
+      .page-empty-content
+        = render 'layouts/shared/flash'
+        = yield

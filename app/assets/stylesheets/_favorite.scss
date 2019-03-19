@@ -1,0 +1,71 @@
+.favorite {
+  position: relative;
+  height: 50px;
+  width: 32px;
+  margin: 4px;
+
+  span {
+    display: block;
+    font-size: 13px;
+    color: rgba(62, 62, 62, 0.3);
+    margin-top: 3px;
+    width: 32px;
+    text-align: center;
+  }
+
+  i {
+    color: rgba(62, 62, 62, 0.3);
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+  }
+
+  & > i {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    z-index: 10;
+  }
+
+  &:hover > i {
+    display: none;
+  }
+
+  & > button {
+    position: relative;
+    padding: 0;
+    background-color: transparent;
+    border: 2px solid rgba(62, 62, 62, 0.06);
+    border-radius: 50%;
+    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    height: 32px;
+    overflow: hidden;
+    margin: 0 20px 0 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 32px;
+
+    i {
+      transition: all .2s ease;
+      margin-top: 40px;
+    }
+
+    &:active {
+      padding-top: 1px;
+      padding-bottom: 2px;
+      background-color: #ececec;
+      -webkit-box-shadow: inset 0px 0px 8px #334c66;
+      -moz-box-shadow: inset 0px 0px 2px #3a6da0;
+      box-shadow: inset 0px 0px 2px #3a6da0;
+    }
+
+    &:hover {
+      i {
+        margin-top: 6px;
+      }
+    }
+  }
+}

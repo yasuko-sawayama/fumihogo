@@ -37,9 +37,9 @@
 # 一般ユーザー
 # 投稿・閲覧可
 # Twitterのみ初期実装
-# TODO: Facebook, Google（必要か…？）
 class User < ApplicationRecord
   extend FriendlyId
+  acts_as_voter
 
   has_many :social_profiles, dependent: :destroy
   has_many :products, -> { order(created_at: :desc) },
@@ -94,8 +94,24 @@ class User < ApplicationRecord
     social_profiles.exists?(provider: 'twitter')
   end
 
+  def twitter_profile
+    social_profiles.find_by(provider: 'twitter')
+  end
+
   def twitter_uid
-    social_profiles.find_by(provider: 'twitter')&.uid
+    twitter_profile&.uid
+  end
+
+  def twitter_displayname
+    twitter_profile&.account_name
+  end
+
+  def twitter_url
+    twitter_profile&.url
+  end
+
+  def twitter_description
+    twitter_profile&.description
   end
 
   def sns_url

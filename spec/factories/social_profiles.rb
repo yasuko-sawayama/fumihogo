@@ -27,11 +27,11 @@
 
 FactoryBot.define do
   factory :social_profile do
-    user nil
-    uid 'xxxxxxxxxx'
-    provider :twitter
-    account_name 'test'
-    profile_image 'test'
-    url 'http://test.com'
+    user { nil }
+    uid { 'xxxxxxxxxx' }
+    provider { :twitter }
+    account_name { 'test' }
+    profile_image { 'test' }
+    url { 'http://test.com' }
   end
 end

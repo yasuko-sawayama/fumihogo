@@ -7,6 +7,12 @@ Capybara.register_driver :chrome do |app|
                                       ))
 end
 
+Capybara.configure do |capybara|
+  # capybara.app_host = 'http://example.com'
+  capybara.default_driver = :chrome
+  capybara.ignore_hidden_elements = false
+end
+
 Capybara.javascript_driver = :chrome
 
 Capybara::Screenshot.register_driver(:chrome) do |driver, path|

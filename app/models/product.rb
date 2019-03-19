@@ -34,6 +34,8 @@ class Product < ApplicationRecord
   # access count
   is_impressionable counter_cache: true,
                     unique: :session_hash
+  #  Like System
+  acts_as_votable
 
   belongs_to :user
   belongs_to :permissions_list, optional: true

@@ -19,7 +19,7 @@ class Login < SitePrism::Page
 
   element :email, "input[name='user[email]']"
   element :password, "input[name='user[password]']"
-  element :login_button, "input[name='commit']"
+  element :login_button, "button[type='submit']"
 
   def login(current_email = nil, current_password = nil)
     load
