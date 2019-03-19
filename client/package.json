@@ -12,7 +12,7 @@
     "lint": "eslint --ext .js,.jsx .",
     "test": "jest",
     "test_default": "yarn run build:test",
-    "build:test": "yarn run build:test:client && yarn run build:test:server",
+    "build:test": "yarn run build:test:client && yarn run build:test:server && yarn run test",
     "build:test:client": "NODE_ENV=test webpack --config webpack.client.rails.build.config.js",
     "build:test:server": "NODE_ENV=test webpack --config webpack.server.rails.build.config.js",
     "build:dev:client": "NODE_ENV=development webpack -w --config webpack.client.rails.build.config.js",

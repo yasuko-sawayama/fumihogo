@@ -6,7 +6,7 @@
   },
   "scripts": {
     "postinstall": "cd ./client && yarn install",
-    "test": "yarn run build:test && yarn run lint && rspec",
+    "test": "yarn run build:test && yarn run lint",
     "lint": "cd client && yarn run lint",
     "build:clean": "rm -rf public/webpack || true",
     "build:test": "(cd client && yarn run build:test)",

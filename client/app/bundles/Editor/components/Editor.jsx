@@ -1,8 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
-import Responsive from "~/shared/components/layouts/responsive"
+// import PropTypes from "prop-types";
+import Responsive from "~/shared/components/layouts/responsive.jsx"
 
-function Editor(props) {
+function Editor() {
   return (
     <Responsive>
     <div>
@@ -11,9 +11,5 @@ function Editor(props) {
     </Responsive>
   );
 }
-
-Editor.propTypes = {
-
-};
 
 export default Editor;
