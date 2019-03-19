@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 
 const Author = ({ author: { id, nickname } }) => (
   <h4>
-    <a href={`/users/${nickname}`}>{nickname}</a>
+    <a href={`/users/${nickname}`} id={`author-${id}`}>
+      {nickname}
+    </a>
   </h4>
 );
 

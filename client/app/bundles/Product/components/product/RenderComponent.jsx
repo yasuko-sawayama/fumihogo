@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Switch, Route } from "react-router-dom";
-import Frontend from "~/shared/components/layouts/Frontend";
-import { Default, Mobile } from "~/shared/components/layouts/responsive";
-import ContentPage from "~/shared/components/layouts/ContentPage";
+import Frontend from "~/shared/components/layouts/Frontend.jsx";
+import { Default, Mobile } from "~/shared/components/layouts/responsive.jsx";
+import ContentPage from "~/shared/components/layouts/ContentPage.jsx";
 import InfoBox from "../../../../shared/components/infoBox";
 import Content from "./content";
 import Paginate from "./Paginate";
@@ -57,6 +57,11 @@ const RenderComponent = props => {
       </Default>
     </div>
   );
+};
+
+RenderComponent.propTypes = {
+  product: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired
 };
 
 export default RenderComponent;

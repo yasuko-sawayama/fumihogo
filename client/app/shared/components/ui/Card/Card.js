@@ -13,7 +13,7 @@ export default class Card extends Component {
   getStyles() {
     if (this.props.image) {
       return {
-        backgroundImage: "url(" + this.props.image + ")"
+        backgroundImage: `url(${this.props.image})`
       };
     }
 

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export default class Stack extends Component {
   render() {
     return (
-      <div className={this.props.classes + " stack-wrapper"}>
+      <div className={`${this.props.classes} stack-wrapper`}>
         <div className="stack">
           {this.props.title ? <h2>{this.props.title}</h2> : ""}
 

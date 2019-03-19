@@ -24,7 +24,7 @@ export default class Progress extends Component {
           <div className="progress">
             <div
               className="progress-inner"
-              style={{ width: this.state.size + "%" }}
+              style={{ width: `${this.state.size}%` }}
             />
           </div>
 

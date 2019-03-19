@@ -1,16 +1,12 @@
+/* eslint import/no-extraneous-dependencies: off */
+
 import React from "react";
 import { storiesOf, addDecorator } from "@storybook/react";
 import { MemoryRouter } from "react-router";
 
 // import { action } from "@storybook/addon-actions";
 import { Provider } from "react-redux";
-import {
-  withKnobs,
-  text,
-  boolean,
-  number,
-  object
-} from "@storybook/addon-knobs/react";
+import { withKnobs, text, boolean, number } from "@storybook/addon-knobs/react";
 import { withViewport } from "@storybook/addon-viewport";
 import sharedStore from "~/stores/sharedStore";
 import Product from "../Product";
@@ -60,13 +56,13 @@ const products = [
       id: 1
     },
     info: {
-      //TODO: WithKnobs
+      // TODO: WithKnobs
       created_at: "2018-12-11",
       character_count: 20000,
       page_count: 123,
       impression_count: 1233,
 
-      //TODO: WithKnobs
+      // TODO: WithKnobs
       privacy_level: "list",
       privacy_level_text: "リスト限定公開",
       permission_list: {
@@ -118,12 +114,8 @@ storiesOf("作品リスト", module)
   ))
   .addDecorator(withKnobs)
   .addDecorator(withViewport())
-  .add("基本レイアウト", () => {
-    return <Product />;
-  })
-  .add("作品リスト", () => {
-    return <ProductList />;
-  })
+  .add("基本レイアウト", () => <Product />)
+  .add("作品リスト", () => <ProductList />)
   .add("作品パネル", () => (
     <InfoBox
       product={{

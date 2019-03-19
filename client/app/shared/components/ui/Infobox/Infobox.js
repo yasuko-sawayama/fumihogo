@@ -5,7 +5,7 @@ import { Button } from "../Button";
 
 export default class Infobox extends Component {
   render() {
-    let projects = this.props.member.projects.map(
+    const projects = this.props.member.projects.map(
       (project, index, { length }) => {
         let after = "";
 
@@ -24,7 +24,7 @@ export default class Infobox extends Component {
             <div className="infobox-header-avatar">
               <span
                 style={{
-                  backgroundImage: "url(" + this.props.member.avatar + ")"
+                  backgroundImage: `url(${this.props.member.avatar})`
                 }}
               />
             </div>

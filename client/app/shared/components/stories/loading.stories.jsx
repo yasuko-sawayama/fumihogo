@@ -1,7 +1,7 @@
+/* eslint import/no-extraneous-dependencies: off */
 import React from "react";
 import { storiesOf, addDecorator } from "@storybook/react";
-
-import { withKnobs, array, object, number } from "@storybook/addon-knobs/react";
+import { withKnobs } from "@storybook/addon-knobs/react";
 import { withViewport } from "@storybook/addon-viewport";
 import Loading from "../Loading";
 
@@ -11,3 +11,5 @@ storiesOf("ロード", module)
   .addDecorator(withKnobs)
   .addDecorator(withViewport())
   .add("ロード中", () => <Loading />);
+
+/* eslint-enable */

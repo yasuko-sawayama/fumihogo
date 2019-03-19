@@ -8,7 +8,7 @@ export default class Button extends Component {
       <NavLink
         to={this.props.to ? this.props.to : ""}
         className={
-          this.props.classes ? this.props.classes + " button" : "button"
+          this.props.classes ? `${this.props.classes} button` : "button"
         }
       >
         {this.props.children}

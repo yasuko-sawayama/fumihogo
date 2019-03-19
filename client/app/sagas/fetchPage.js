@@ -19,6 +19,7 @@ function* fetchPage(action) {
       payload: { ...pageContent.data }
     });
   } catch (e) {
+    /* eslint no-console: off */
     console.log(e);
   }
 }

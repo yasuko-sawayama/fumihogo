@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import Frontend from "~/shared/components/layouts/Frontend";
+import Frontend from "~/shared/components/layouts/Frontend.jsx";
 import InfoBox from "~/shared/components/infoBox";
 
 const FavoriteList = ({ products }) => {

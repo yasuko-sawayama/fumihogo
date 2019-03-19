@@ -4,7 +4,8 @@
     "airbnb",
     "plugin:jest/recommended",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "eslint:recommended"
   ],
   "env": {
     "browser": true,
@@ -16,27 +17,36 @@
   "plugins": [
     "react",
     "jest",
-    "prettier"
+    "prettier",
+    "import"
   ],
   "parserOptions": {
     "ecmaVersion": 7,
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
       "jsx": true,
       "classes": true
     },
     "sourceType": "module"
   },
   "settings": {
+    "import/extensions": [
+      ".js",
+      ".jsx"
+    ],
     "import/resolver": {
+      "babel-plugin-root-import": {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ],
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "app"
+      },
       "node": {
         "extensions": [
           ".js",
           ".jsx"
         ]
-      },
-      "babel-plugin-root-import": {
-        "rootPathSuffix": "app"
       }
     }
   },

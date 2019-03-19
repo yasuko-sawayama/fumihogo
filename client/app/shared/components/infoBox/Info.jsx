@@ -5,10 +5,10 @@ const Info = ({
   info: {
     character_count,
     page_count,
-    impression_count,
+    impression_count = 0,
     privacy_level,
     privacy_level_text,
-    permission_list,
+    permission_list = null,
     created_at
   }
 }) => (
@@ -51,13 +51,6 @@ Info.propTypes = {
     permission_list: PropTypes.shape(),
     created_at: PropTypes.string.isRequired
   }).isRequired
-};
-
-Info.defaultProps = {
-  info: {
-    impression_count: 0,
-    permission_list: null
-  }
 };
 
 export default Info;

@@ -28,13 +28,12 @@ const InfoBox = props => {
           {title}
         </NavLink>
       );
-    } else {
-      return (
-        <a href={`/products/${id}`} disabled={!auth.show}>
-          {title}
-        </a>
-      );
     }
+    return (
+      <a href={`/products/${id}`} disabled={!auth.show}>
+        {title}
+      </a>
+    );
   };
 
   return (
