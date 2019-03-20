@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { CSSTransition } from "react-transition-group";
 import ErrorBoundary from "./ErrorBoundary";
 
-const ContentPage = props => (
-  <div className="page-content">
-    <div className="page-content-inner">
-      <ErrorBoundary>{props.children}</ErrorBoundary>
-    </div>
+import Toolbar from "../frontend/Toolbar";
+
+const ContentPage = ({ children }) =>  {
+  const [showMenu, setShowMenu] = useState(false)
+  const hideMenu = () => setShowMenu(false);
+
+  return (
+  <div className="page-inner">
+      <ErrorBoundary>
+        {!showMenu && <button id="menu-btn" onClick={() => setShowMenu(true)}>
+            <i className="md-icon">library_books</i>
+          </button>}
+        <CSSTransition in={showMenu} timeout={300} unmountOnExit classNames="menu">
+        <Toolbar closeMenu={() => setShowMenu(false)}/>
+        </CSSTransition>
+        <div className="main" onClick={hideMenu()} onKeyDown={hideMenu()} role="presentation">
+          <div className="content">
+            <div className="content-inner">
+              <ErrorBoundary>{children}</ErrorBoundary>
+            </div>
+          </div>
+        </div>
+      </ErrorBoundary>
   </div>
 );
-
+}
 ContentPage.propTypes = {
   children: PropTypes.node.isRequired
 };

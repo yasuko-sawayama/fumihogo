@@ -6,7 +6,7 @@
   },
   "scripts": {
     "postinstall": "cd ./client && yarn install",
-    "test": "yarn run build:test && yarn run lint && rspec",
+    "test": "yarn run build:test && yarn run lint",
     "lint": "cd client && yarn run lint",
     "build:clean": "rm -rf public/webpack || true",
     "build:test": "(cd client && yarn run build:test)",
@@ -17,6 +17,10 @@
     "hot-assets": "(cd client && yarn run hot-assets)",
     "storybook": "(cd client && yarn run storybook)"
   },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
   "dependencies": {
     "susy": "^3.0.5"
   },

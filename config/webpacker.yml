@@ -2,6 +2,7 @@
 
 default: &default
   source_path: client
+  source_entry_path: packs
   compile: false
   cache_path: tmp/cache/webpacker
   public_output_path: packs

@@ -20,6 +20,7 @@ class ProductReading extends React.Component {
   componentDidUpdate(prevProps) {
     const {
       fetchProduct,
+      product,
       match: {
         params: { product_id }
       }
@@ -31,7 +32,7 @@ class ProductReading extends React.Component {
       }
     } = prevProps;
 
-    if (past_id === product_id && this.props.product) return;
+    if (past_id === product_id && product) return;
 
     fetchProduct(product_id);
   }

@@ -12,7 +12,9 @@ const titleName = ({ listType, author, title }) => {
       return `${author.name}の作品一覧`;
     case "content":
     case "favorite":
+    case "create":
       return title;
+
     default:
       return "一覧";
   }

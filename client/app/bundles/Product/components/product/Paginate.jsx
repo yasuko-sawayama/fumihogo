@@ -11,11 +11,11 @@ const Paginate = ({ history, productId, pages, currentPage }) => {
     <ReactPaginate
       containerClassName="pagination"
       pageCount={pageCount}
-      marginPagesDisplayed={2}
+      marginPagesDisplayed={1}
       previousLabel="前のページ"
       nextLabel="次のページ"
       initialPage={currentPage - 1}
-      pageRangeDisplayed={10}
+      pageRangeDisplayed={2}
       onPageChange={pageClick}
     />
   ) : null;

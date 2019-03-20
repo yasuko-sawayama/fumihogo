@@ -13,7 +13,7 @@ function* fetchPage(action) {
     } = action;
 
     const pageContent = yield call(fetchPageContent, product_id, page);
-    console.log(pageContent);
+
     yield put({
       type: Types.FETCH_PRODUCT_PAGE_SUCCESS,
       payload: { ...pageContent.data }

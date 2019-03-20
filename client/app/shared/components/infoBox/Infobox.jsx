@@ -6,7 +6,7 @@ import { withRouter } from "react-router";
 import InfoBoxContent from "./InfoBoxContent";
 import Author from "./Author";
 import { Favorite } from "./favorite";
-import ProductButton from "../../../bundles/Product/components/product/ProductButton";
+import ProductButton from "./ProductButton";
 import PageList from "../../../bundles/Product/components/product/PageList";
 import PageTitle from "../../../bundles/Product/components/product/PageTitle";
 import ProductNotFound from "../../../bundles/Product/components/product/ProductNotFound";
@@ -22,6 +22,7 @@ const InfoBox = props => {
   } = props;
 
   const pageLink = () => {
+    if (!auth.show) return <span className="disabled">({title})</span>
     if (path.match(/products/)) {
       return (
         <NavLink to={`/products/${id}`} disabled={!auth.show}>
@@ -30,7 +31,7 @@ const InfoBox = props => {
       );
     }
     return (
-      <a href={`/products/${id}`} disabled={!auth.show}>
+      <a href={`/products/${id}`} >
         {title}
       </a>
     );

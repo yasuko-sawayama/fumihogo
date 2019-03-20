@@ -36,6 +36,10 @@
 
 .infobox-header {
   margin-bottom: 20px;
+
+  h3 {
+    word-break: break-all;
+  }
 }
 
 .infobox-content-properties {

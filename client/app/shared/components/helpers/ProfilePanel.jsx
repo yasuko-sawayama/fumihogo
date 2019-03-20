@@ -47,10 +47,10 @@ const ExamplePanel = ({ currentUser }) => (
       </PanelList>
     </PanelListWrapper>
     <PanelActionWrapper>
-      <PanelAction title="ブックマーク" icon="bookmark_border" />
-      <PanelAction title="リスト" icon="group_add" />
-      <PanelAction title="作品" icon="view_list" />
-      <PanelAction title="検索" icon="search" />
+      {/*<PanelAction title="ブックマーク" icon="bookmark_border" />*/}
+      {/*<PanelAction title="リスト" icon="group_add" />*/}
+      {/*<PanelAction title="作品" icon="view_list" />*/}
+      {/*<PanelAction title="検索" icon="search" />*/}
       <PanelAction title="logout" icon="arrow_forward" onClick={logout} />
     </PanelActionWrapper>
   </Panel>

@@ -654,7 +654,7 @@ DEPENDENCIES
   vcr
   web-console (>= 3.3.0)
   webmock
-  webpacker
+  webpacker (~> 4.x)
 
 RUBY VERSION
    ruby 2.6.2p47

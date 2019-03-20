@@ -18,10 +18,15 @@ $color-font: #455A64 !default;
 
 @import "footer";
 @import "favorite";
+@import "menu";
 
 
 .wf-hannari { font-family: "Hannari"; }
 
 body {
   font-size: 16px;
+}
+
+.disabled {
+  color: #a7b4ba;
 }

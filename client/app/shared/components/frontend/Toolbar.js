@@ -38,7 +38,7 @@ export default class Toolbar extends Component {
 
           <ul className="bottom">
             <li>
-              <a>
+              <a onClick={this.props.closeMenu}>
                 <i className="md-icon">power_settings_new</i>
               </a>
             </li>

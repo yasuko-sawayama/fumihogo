@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 const Navigation = ({ currentUser }) =>
-  console.log(currentUser) || (
+ (
     <div className="navigation">
       <ul>
         {currentUser && (
