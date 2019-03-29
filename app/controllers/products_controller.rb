@@ -22,6 +22,7 @@ class ProductsController < WithReactController
 
   def edit
     @user = @product.user.decorate
+    @list_type = 'edit'
     initialize_shared_store
 
     render formats: :html

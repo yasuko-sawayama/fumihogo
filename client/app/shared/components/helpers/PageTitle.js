@@ -14,6 +14,8 @@ const titleName = ({ listType, author, title }) => {
     case "favorite":
     case "create":
       return title;
+    case "edit":
+      return `${title}の編集`;
 
     default:
       return "一覧";
