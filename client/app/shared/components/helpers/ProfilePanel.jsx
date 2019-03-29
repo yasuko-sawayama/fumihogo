@@ -22,42 +22,47 @@ const logout = () =>
     }, 2000)
   );
 
-const ExamplePanel = ({ currentUser }) => (
-  <Panel>
-    <PanelUser
-      name={currentUser.twitterDisplayName || currentUser.nickname}
-      subtitle={currentUser.twitterUrl ? "via Twitter" : ""}
-      image={currentUser.avatar}
-    />
+const ExamplePanel = ({ currentUser }) =>
+  currentUser && (
+    <Panel>
+      <PanelUser
+        name={currentUser.twitterDisplayName || currentUser.nickname}
+        subtitle={currentUser.twitterUrl ? "via Twitter" : ""}
+        image={currentUser.avatar}
+      />
 
-    <PanelListWrapper>
-      <PanelListTitle>プロフィール</PanelListTitle>
-      <p>{currentUser.twitterDescription}</p>
+      <PanelListWrapper>
+        <PanelListTitle>プロフィール</PanelListTitle>
+        <p>{currentUser.twitterDescription}</p>
 
-      <PanelList>
-        {currentUser.twitterUrl && (
-          <PanelListItem>
-            Twitter:{" "}
-            <a href={currentUser.twitterUrl}>@{currentUser.nickname}</a>
-          </PanelListItem>
-        )}
-        {/* <PanelListItem> */}
-        {/* Pixiv: <a>xxxxxxx</a>. */}
-        {/* </PanelListItem> */}
-      </PanelList>
-    </PanelListWrapper>
-    <PanelActionWrapper>
-      {/*<PanelAction title="ブックマーク" icon="bookmark_border" />*/}
-      {/*<PanelAction title="リスト" icon="group_add" />*/}
-      {/*<PanelAction title="作品" icon="view_list" />*/}
-      {/*<PanelAction title="検索" icon="search" />*/}
-      <PanelAction title="logout" icon="arrow_forward" onClick={logout} />
-    </PanelActionWrapper>
-  </Panel>
-);
+        <PanelList>
+          {currentUser.twitterUrl && (
+            <PanelListItem>
+              Twitter:{" "}
+              <a href={currentUser.twitterUrl}>@{currentUser.nickname}</a>
+            </PanelListItem>
+          )}
+          {/* <PanelListItem> */}
+          {/* Pixiv: <a>xxxxxxx</a>. */}
+          {/* </PanelListItem> */}
+        </PanelList>
+      </PanelListWrapper>
+      <PanelActionWrapper>
+        {/*<PanelAction title="ブックマーク" icon="bookmark_border" />*/}
+        {/*<PanelAction title="リスト" icon="group_add" />*/}
+        {/*<PanelAction title="作品" icon="view_list" />*/}
+        {/*<PanelAction title="検索" icon="search" />*/}
+        <PanelAction title="logout" icon="arrow_forward" onClick={logout} />
+      </PanelActionWrapper>
+    </Panel>
+  );
 
 ExamplePanel.propTypes = {
-  currentUser: PropTypes.shape().isRequired
+  currentUser: PropTypes.shape()
+};
+
+ExamplePanel.defaultProps = {
+  currentUser: null
 };
 
 const mapStateToProps = state => ({

@@ -1,0 +1,98 @@
+/**
+ * 17. Infobox
+ */
+@media (min-width: 992px) and (max-width: 1281px) {
+  .projects .infobox, .product-list .infobox {
+    width: 49.15254%;
+    float: left;
+    margin-right: 1.69492%;
+  }
+  .projects .infobox:nth-child(2n), .product-list .infobox:nth-child(2n) {
+    float: right;
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 1281px) {
+  .projects .infobox, .product-list .infobox {
+    width: 32.20339%;
+    float: left;
+    margin-right: 1.69492%;
+  }
+  .projects .infobox:nth-child(3n), .product-list .infobox:nth-child(3n) {
+    float: right;
+    margin-right: 0;
+  }
+}
+
+.infobox-header {
+  margin-bottom: 20px;
+
+  h3 {
+    word-break: break-all;
+  }
+}
+
+.infobox-meta {
+  max-width: 120px;
+}
+
+.infobox-content-properties {
+  @include susy-clearfix();
+
+  border-top: 1px solid rgba(#000, .06);
+  margin: 30px 0 0 0;
+  padding: 30px 0 0 0;
+
+  strong {
+    float: left;
+    font-weight: 400;
+    line-height: 44px;
+    margin: 0 20px 0 0;
+  }
+
+  ul {
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    @include susy-clearfix();
+
+    float: left;
+    margin-right: -12px;
+    position: relative;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:nth-child(1) {
+      z-index: 10;
+    }
+
+    &:nth-child(2) {
+      z-index: 9;
+    }
+
+    &:nth-child(3) {
+      z-index: 8;
+    }
+
+    &:nth-child(4) {
+      z-index: 7;
+    }
+
+    &:nth-child(5) {
+      z-index: 6;
+    }
+  }
+
+  span {
+    display: block;
+    height: 30px;
+    width: 240px;
+  }
+}

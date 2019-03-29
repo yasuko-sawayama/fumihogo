@@ -20,19 +20,25 @@ const titleName = ({ listType, author, title }) => {
   }
 };
 
-const PageTitle = ({ info }) => (
+const PageTitle = ({ info, currentUser }) => (
   <div className="page-title">
     <h1>{titleName(info)}</h1>
-    <Shortcuts />
+    {currentUser && <Shortcuts />}
   </div>
 );
 
 PageTitle.propTypes = {
-  info: PropTypes.shape().isRequired
+  info: PropTypes.shape().isRequired,
+  currentUser: PropTypes.shape()
+};
+
+PageTitle.defaultProps = {
+  currentUser: null
 };
 
 const mapStateToProps = state => ({
-  info: state.pageInfo
+  info: state.pageInfo,
+  currentUser: state.currentUserData
 });
 
 export default connect(mapStateToProps)(PageTitle);
