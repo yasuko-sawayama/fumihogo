@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Field, reduxForm } from "redux-form";
 import InputField from "./InputField";
@@ -26,6 +27,10 @@ const EditorForm = props => {
       </button>
     </StyledForm>
   );
+};
+
+EditorForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default reduxForm({ form: "editor", validate })(EditorForm);
