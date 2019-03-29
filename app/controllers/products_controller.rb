@@ -2,12 +2,11 @@
 class ProductsController < WithReactController
   before_action :store_location_for_user!
   before_action :authenticate_user!, except: [:show, :not_authorized]
-  before_action :set_and_authorize_product, only: [:show, :destroy]
+  before_action :set_and_authorize_product, only: [:show, :destroy, :edit]
   skip_after_action :verify_policy_scoped, :only => :index
 
   def index
     @products = current_user.products.page(params[:page])
-    @products = Product.all
     @user = current_user
     initialize_shared_store
     render formats: :html
@@ -16,6 +15,13 @@ class ProductsController < WithReactController
   def show
     @user = @product.user.decorate
     @list_type = 'content'
+    initialize_shared_store
+
+    render formats: :html
+  end
+
+  def edit
+    @user = @product.user.decorate
     initialize_shared_store
 
     render formats: :html

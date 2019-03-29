@@ -9,16 +9,13 @@ export default class Footer extends Component {
         <div className="footer-right">
           <ul>
             <li>
+              <a href="/about">ふみほごについて</a>
+            </li>
+            <li>
               <a>FAQ</a>
             </li>
             <li>
-              <a>Support</a>
-            </li>
-            <li>
-              <a>Knowledge Base</a>
-            </li>
-            <li>
-              <a>Contact</a>
+              <a href="https://twitter.com/sawayama_yasuko">Contact</a>
             </li>
           </ul>
         </div>

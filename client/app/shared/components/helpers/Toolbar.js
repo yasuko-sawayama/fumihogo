@@ -21,7 +21,6 @@ export default class Toolbar extends Component {
           </div>
 
           <ul className="top">
-
             <li>
               <a onClick={this.toggleActionsBodyClass.bind(this)}>
                 <i className="md-icon">add</i>

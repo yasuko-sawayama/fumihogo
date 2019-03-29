@@ -39,7 +39,7 @@ const RenderComponent = props => {
         currentPage={currentPageId}
       />
     </Responsive>
-  )
+  );
 };
 
 RenderComponent.propTypes = {

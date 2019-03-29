@@ -16,8 +16,7 @@ const CreateToolBar = () => {
 
         <li>
           <a>
-            <i className="md-icon">description</i>{" "}
-            <span>ページを追加する</span>
+            <i className="md-icon">description</i> <span>ページを追加する</span>
           </a>
         </li>
 
@@ -29,15 +28,13 @@ const CreateToolBar = () => {
 
         <li>
           <a>
-            <i className="md-icon">account_circle</i>{" "}
-            <span>Member</span>
+            <i className="md-icon">account_circle</i> <span>Member</span>
           </a>
         </li>
 
         <li>
           <a>
-            <i className="md-icon">shopping_cart</i>{" "}
-            <span>Product</span>
+            <i className="md-icon">shopping_cart</i> <span>Product</span>
           </a>
         </li>
       </ul>

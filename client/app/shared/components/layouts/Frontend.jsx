@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import ProfilePanel from "../helpers/ProfilePanel";
-import Footer from "../helpers/Footer";
+import Footer from "../frontend/Footer";
 import PageTitle from "../helpers/PageTitle";
 import Sidebar from "../frontend/Sidebar";
 import Toolbar from "../frontend/Toolbar";
