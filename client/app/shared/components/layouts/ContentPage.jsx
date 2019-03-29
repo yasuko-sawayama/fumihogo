@@ -7,7 +7,6 @@ import Toolbar from "../frontend/Toolbar";
 
 const ContentPage = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const hideMenu = () => setShowMenu(false);
 
   return (
     <div className="page-inner">
@@ -27,14 +26,11 @@ const ContentPage = ({ children }) => {
         </CSSTransition>
         <div
           className="main"
-          onClick={hideMenu()}
-          onKeyDown={hideMenu()}
+          onClick={() => setShowMenu(false)}
           role="presentation"
         >
           <div className="content">
-            <div className="content-inner">
-              <ErrorBoundary>{children}</ErrorBoundary>
-            </div>
+            <div className="content-inner">{children}</div>
           </div>
         </div>
       </ErrorBoundary>

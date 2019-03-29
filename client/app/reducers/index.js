@@ -1,3 +1,5 @@
+import { reducer as formReducer } from "redux-form";
+
 import railsContextReducer from "./railsContextReducer";
 import currentUserReducer from "./currentUserReducer";
 import productReducer from "./product";
@@ -11,5 +13,6 @@ export default {
   currentUserData: currentUserReducer,
   productData: productReducer,
   pageInfo: pageInfoReducer,
-  loading: loadReducer
+  loading: loadReducer,
+  form: formReducer
 };

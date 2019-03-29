@@ -43,7 +43,8 @@ class Product < ApplicationRecord
            dependent: :destroy,
            inverse_of: :product
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { in: 2..40 }
+  validates :description, length: { maximum: 255, allow_blank: true }
   validates :pages, presence: true
   validates :permissions_list, presence: true, if: -> { privacy_level.list? }
 
