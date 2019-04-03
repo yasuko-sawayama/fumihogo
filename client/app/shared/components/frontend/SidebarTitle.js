@@ -10,7 +10,9 @@ export default class SidebarTitle extends Component {
       <h1 className="sidebar-title-wrapper">
         <div className="sidebar-title-inner">
           <div className="sidebar-subtitle">下書き作成用</div>
-          <div className="sidebar-title">ふみほご</div>
+          <div className="sidebar-title">
+            <a href="/">ふみほご</a>
+          </div>
         </div>
       </h1>
     );

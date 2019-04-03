@@ -37,3 +37,11 @@
     text-align: center;
   }
 }
+form .page-header {
+  margin-bottom: 20px;
+  .page-header-content {
+    p {
+      color: $color-black;
+    }
+  }
+}

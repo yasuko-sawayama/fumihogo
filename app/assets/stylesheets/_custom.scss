@@ -12,5 +12,9 @@
   float: right;
 }
 
+.text-danger, .text-error {
+  color: $color-red;
+}
+
 @import "info-box";
 @import "page-content";

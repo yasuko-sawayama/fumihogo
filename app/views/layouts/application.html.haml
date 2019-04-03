@@ -2,15 +2,17 @@
 %html{lang: 'ja'}
   = render 'layouts/shared/head'
   %body{class: controller_name}
-    .page-inner
+    - if content_for? :react_on_rails
+      = render 'layouts/shared/flash'
+      = yield
+      = redux_store_hydration_data
+    - else
       .main
         .content
           .content-inner
             = render 'layouts/shared/flash'
             = yield
 
-    - if content_for? :react_on_rails
-      = redux_store_hydration_data
     -#= render 'layouts/shared/nav'
     -#.container
 
