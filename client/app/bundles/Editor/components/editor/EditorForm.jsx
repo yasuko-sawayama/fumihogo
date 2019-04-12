@@ -1,9 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Field, reduxForm, propTypes, SubmissionError } from "redux-form";
+import { reduxForm, propTypes, SubmissionError } from "redux-form";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import { postEntities } from "~/utils/requestManager";
-import InputField from "./InputField";
+
+import ProductInfo from "./ProductInfo";
+import ContentField from "./ContentField";
 import FormHeader from "./FormHeader";
 import validate from "./validate";
 
@@ -24,24 +28,25 @@ const EditorForm = props => {
   const { error, pristine, submitting, handleSubmit } = props;
 
   return (
-    <StyledForm onSubmit={handleSubmit(submitEditorForm)}>
-      {error && <FormHeader error={error} />}
-      <Field name="title" type="text" component={InputField} label="タイトル" />
-
-      <Field
-        name="description"
-        component={InputField}
-        type="textarea"
-        label="作品の説明"
-      />
-      <button
-        type="submit"
-        className="button button-primary pull-right"
-        disabled={pristine || submitting}
-      >
-        登録
-      </button>
-    </StyledForm>
+    <Router basename="/products">
+      <StyledForm onSubmit={handleSubmit(submitEditorForm)}>
+        {error && <FormHeader error={error} />}
+        <ProductInfo />
+        <Route
+          exact
+          path="/:productId/:path(edit|pages)/:pageOrder/:edit"
+          component={ContentField}
+        />
+        <Route exact path="/new" component={ContentField} />
+        <button
+          type="submit"
+          className="button button-primary pull-right"
+          disabled={pristine || submitting}
+        >
+          登録
+        </button>
+      </StyledForm>
+    </Router>
   );
 };
 

@@ -63,7 +63,21 @@ const InfoBox = props => {
               />
             </li>
             <li>
-              <Edit productId={id} auth={auth} />
+              <Route
+                exact
+                path="/products/:productId/pages/:pageOrder"
+                render={props => <Edit {...props} auth={auth} />}
+              />
+              <Route
+                exact
+                path="/products/:productId/:edit"
+                render={props => <Edit {...props} auth={auth} />}
+              />
+              <Route
+                exact
+                path="/products/"
+                render={() => <Edit auth={auth} productId={id} />}
+              />
             </li>
           </ul>
         </div>
