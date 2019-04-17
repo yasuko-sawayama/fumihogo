@@ -2,12 +2,12 @@
 // cd client && yarn run build:client
 // Note that Foreman (Procfile.dev) has also been configured to take care of this.
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const merge = require("webpack-merge");
 const { env } = require("process");
 const config = require("./webpack.client.base.config");
 const { resolve } = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Webpacker specific
 const webpackConfigLoader = require("react-on-rails/webpackConfigLoader");
@@ -59,51 +59,52 @@ module.exports = merge(config, {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                minimize: true,
-                modules: true,
-                importLoaders: 1,
-                localIdentName: "[name]__[local]__[hash:base64:5]"
-              }
-            },
-            "postcss-loader"
-          ]
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: "[name]__[local]__[hash:base64:5]"
+            }
+          },
+          "css-loader"
+        ]
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                minimize: true,
-                modules: true,
-                importLoaders: 3,
-                localIdentName: "[name]__[local]__[hash:base64:5]"
-              }
-            },
-            {
-              loader: "postcss-loader",
-              options: {
-                plugins: "autoprefixer"
-              }
-            },
-            { loader: "sass-loader" },
-            {
-              loader: "sass-resources-loader",
-              options: {
-                resources: "./app/assets/styles/app-variables.scss"
-              }
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: "[name]__[local]__[hash:base64:5]"
             }
-          ]
-        })
+          },
+          {
+            loader: "scss-loader",
+            options: {
+              minimize: true,
+              modules: true,
+              importLoaders: 3,
+              localIdentName: "[name]__[local]__[hash:base64:5]"
+            }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              plugins: "autoprefixer"
+            }
+          },
+          { loader: "sass-loader" },
+          {
+            loader: "sass-resources-loader",
+            options: {
+              resources: "./app/assets/styles/app-variables.scss"
+            }
+          }
+        ]
       },
       {
         test: require.resolve("react"),
@@ -128,14 +129,16 @@ module.exports = merge(config, {
   },
 
   plugins: [
-    new ExtractTextPlugin({
-      filename: "[name]-[contenthash].css",
-      allChunks: true
-    }),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
       openAnalyzer: false,
       reportFilename: "bundle_sizes.html"
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name]-[hash].css",
+      chunkFilename: "[name]-[hash].css"
     })
   ]
 });

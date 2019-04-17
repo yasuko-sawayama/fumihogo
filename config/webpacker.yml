@@ -5,10 +5,12 @@ default: &default
   source_entry_path: packs
   compile: false
   cache_path: tmp/cache/webpacker
-  public_output_path: packs
+  public_output_path: webpack
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
+
+  extract_css: true
 
   extensions:
     - .jsx

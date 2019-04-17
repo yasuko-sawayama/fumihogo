@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Editor } from "react-draft-wysiwyg";
+import styled from "styled-components";
+
 import {
   EditorState,
   convertToRaw,
@@ -8,6 +10,7 @@ import {
   ContentState
 } from "draft-js";
 import { draftToMarkdown, markdownToDraft } from "markdown-draft-js";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const createState = value => {
   if (!value) {

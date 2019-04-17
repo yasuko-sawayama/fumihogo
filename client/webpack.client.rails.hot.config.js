@@ -11,6 +11,7 @@ const webpack = require("webpack");
 const merge = require("webpack-merge");
 const config = require("./webpack.client.base.config");
 const webpackConfigLoader = require("react-on-rails/webpackConfigLoader");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const configPath = resolve("..", "config");
 const { output, settings } = webpackConfigLoader(configPath);
@@ -40,6 +41,25 @@ module.exports = merge.strategy({
     publicPath: output.publicPath
   },
 
+  // webpack.NamedModulesPlugin() is an optional module that is great for HMR debugging
+  // since it transform module IDs (112, 698, etc...) into their respective paths,
+  // but it can conflict with other libraries that expect global references.
+  // When in doubt, throw it out.
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css",
+      path: output.path,
+      publicPath: output.publicPath
+    })
+  ],
+
   module: {
     rules: [
       {
@@ -50,23 +70,17 @@ module.exports = merge.strategy({
       {
         test: /\.css$/,
         use: [
-          "style-loader",
           {
-            loader: "css-loader",
+            loader: MiniCssExtractPlugin.loader,
             options: {
               modules: true,
-              importLoaders: 0,
-              localIdentName: "[name]__[local]__[hash:base64:5]"
+              importLoaders: 1,
+              localIdentName: "[name]__[local]__[hash:base64:5]",
+              hmr: true
             }
           },
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: "autoprefixer"
-            }
-          }
-        ],
-        exclude: /node_modules/
+          "css-loader"
+        ]
       },
       {
         test: /\.scss$/,
@@ -108,18 +122,7 @@ module.exports = merge.strategy({
       //   }
       // }
     ]
-  },
-
-  // webpack.NamedModulesPlugin() is an optional module that is great for HMR debugging
-  // since it transform module IDs (112, 698, etc...) into their respective paths,
-  // but it can conflict with other libraries that expect global references.
-  // When in doubt, throw it out.
-
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
-  ]
+  }
 });
 
 console.log("Webpack HOT dev build for Rails"); // eslint-disable-line no-console
