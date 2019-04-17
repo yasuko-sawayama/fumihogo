@@ -5,7 +5,6 @@ import ControlledEditor from "./ControlledEditor";
 
 class ContentField extends Component {
   render() {
-    console.log(this.props);
     const { match, productId } = this.props;
 
     const editProductId = (match && match.params.productId) || productId;

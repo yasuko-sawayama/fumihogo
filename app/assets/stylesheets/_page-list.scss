@@ -19,6 +19,12 @@
       width: 19px;
       margin-left: 2px;
       cursor: pointer;
+
+      button {
+        border: 0;
+        background: none;
+        -webkit-appearance: none;
+      }
     }
   }
 }
