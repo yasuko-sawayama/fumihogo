@@ -6,9 +6,11 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { postEntities } from "~/utils/requestManager";
 
+import { Mobile } from "~/shared/components/layouts/responsive";
 import ProductInfo from "./ProductInfo";
 import ContentField from "./ContentField";
 import FormHeader from "./FormHeader";
+import ErrorHeader from "./ErrorHeader";
 import validate from "./validate";
 
 const StyledForm = styled.form`
@@ -30,7 +32,10 @@ const EditorForm = props => {
   return (
     <Router basename="/products">
       <StyledForm onSubmit={handleSubmit(submitEditorForm)}>
-        {error && <FormHeader error={error} />}
+        <Mobile>
+          <FormHeader title="編集" />
+        </Mobile>
+        {error && <ErrorHeader error={error} />}
         <ProductInfo />
         <Route
           exact

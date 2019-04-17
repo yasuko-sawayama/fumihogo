@@ -8,6 +8,17 @@
   }
 }
 
+.page-header.form {
+  margin-bottom: 20px;
+  position: absolute;
+  top: 25px;
+  left: 60px;
+
+  .page-header-inner {
+    padding: 5px;
+  }
+}
+
 .pull-right {
   float: right;
 }

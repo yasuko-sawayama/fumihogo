@@ -6,6 +6,7 @@ import InputField from "./InputField";
 const InfoFields = styled.div`
   border-bottom: solid 1px;
   padding-bottom: 10px;
+  margin-top: 20px;
   margin-bottom: 10px;
 `;
 const ProductInfo = () => {
