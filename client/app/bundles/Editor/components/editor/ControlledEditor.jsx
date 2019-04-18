@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Editor } from "react-draft-wysiwyg";
-import styled from "styled-components";
 
 import {
   EditorState,
@@ -101,7 +100,8 @@ class ControlledEditor extends Component {
 
   render() {
     const { editorState } = this.state;
-
+    const { options } = this.props;
+    console.log(options);
     return (
       <Editor
         editorState={editorState}
@@ -109,17 +109,7 @@ class ControlledEditor extends Component {
         editorClassName="editorArea"
         toolbarOnFocus={this.state.pageEdit}
         toolbar={{
-          options: [
-            "inline",
-            "blockType",
-            "fontSize",
-            "list",
-            "textAlign",
-            "colorPicker",
-            "link",
-            "emoji",
-            "history"
-          ],
+          options,
           list: { inDropdown: true },
           textAlign: { inDropdown: true },
           link: { inDropdown: true },
