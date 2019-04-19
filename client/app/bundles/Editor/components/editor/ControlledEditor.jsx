@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { Editor } from "react-draft-wysiwyg";
 
-import {
-  EditorState,
-  convertToRaw,
-  convertFromRaw,
-  ContentState
-} from "draft-js";
+import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { draftToMarkdown, markdownToDraft } from "markdown-draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
@@ -29,63 +23,52 @@ class ControlledEditor extends Component {
   static propTypes = {
     input: PropTypes.shape({
       onChange: PropTypes.func.isRequired
-    }).isRequired
+    }).isRequired,
+    options: PropTypes.shape()
+  };
+
+  static defaultProps = {
+    options: null
   };
 
   constructor(props) {
     super(props);
-
     const {
       input: { value }
     } = props;
+
+    const editorState = createState(value);
 
     this.state = {
       editorState
     };
 
-    this.onEditorStateChange = this.onEditorStateChange.bind(this);
-    this.changeValue = this.changeValue.bind(this);
-
-    this.changeValue(editorState);
-
-    const editorState = createState(value);
+    this.handleChange = this.handleChange.bind(this);
+    this.changeInputValue = this.changeInputValue.bind(this);
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   const { value } = nextProps;
-  // }
+  componentWillReceiveProps(nextProps) {
+    const {
+      input: { value }
+    } = nextProps;
 
-  onEditorStateChange(editorState) {
-    // const newValue = draftToMarkdown(
-    //   convertToRaw(editorState.getCurrentContent())
-    // );
-    // this.handleMyContentChange(newValue, editorState);
+    // Contentを取ってきたらエディタに反映
+    if (this.props.input.value === "") {
+      this.setState({ editorState: createState(value) });
+    }
+  }
 
-    // 一旦markdownなしで実装
-
+  handleChange(editorState) {
     this.setState({ editorState });
-    this.changeValue(editorState);
+    this.changeInputValue(editorState);
   }
 
-  changeValue(editorState) {
+  changeInputValue(editorState) {
     const value = draftToMarkdown(
       convertToRaw(editorState.getCurrentContent())
     );
     this.props.input.onChange(value);
   }
-  // handleMyContentChange(newValue, editorState) {
-  //   const { onChange, value } = this.props;
-  //
-  //   if (!newValue) {
-  //     editorState = EditorState.createEmpty();
-  //   } else if (value !== newValue) {
-  //     onChange(newValue);
-  //   }
-  //
-  //   this.setState({
-  //     editorState
-  //   });
-  // }
 
   render() {
     const { editorState } = this.state;
@@ -97,10 +80,10 @@ class ControlledEditor extends Component {
         wrapperClassName="textEditorForm"
         editorClassName="editorArea"
         {...options}
-        onEditorStateChange={this.onEditorStateChange}
+        onEditorStateChange={editorState => this.handleChange(editorState)}
       />
     );
   }
 }
 
-export default connect(state => console.log(state) || {})(ControlledEditor);
+export default ControlledEditor;

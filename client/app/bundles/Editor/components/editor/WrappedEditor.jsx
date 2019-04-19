@@ -25,7 +25,7 @@ const WrappedEditor = props => {
   } = props;
 
   const options = {
-    toolbarOnFocus: mobile,
+    // toolbaronfocus: mobile,
     toolbar: {
       options: mobile
         ? ["inline", "blockType", "fontSize"]
@@ -58,7 +58,6 @@ const WrappedEditor = props => {
 };
 
 WrappedEditor.propTypes = {
-  ...propTypes,
   mobile: PropTypes.bool
 };
 

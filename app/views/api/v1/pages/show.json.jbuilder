@@ -7,6 +7,7 @@ json.page do |json|
   end
 
   json.content markdown(@page.content)
+  json.editContent @page.content
 
   if @page.previous
     json.previousPage do |previous|

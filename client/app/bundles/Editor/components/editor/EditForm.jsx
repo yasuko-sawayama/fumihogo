@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { reduxForm, propTypes, SubmissionError } from "redux-form";
+import { connect } from "react-redux";
+import { compose } from "redux";
 
 import { postEntities } from "~/utils/requestManager";
+import { fetchProductPageRequest } from "~/actions";
 
 import { Mobile } from "~/shared/components/layouts/responsive.jsx";
 import ProductInfo from "./ProductInfo";
@@ -28,14 +31,21 @@ const EditForm = props => {
     submitting,
     handleSubmit,
     change,
+    fetchPageContent,
     match: {
       params: { productId, pageOrder }
     }
   } = props;
 
-  useEffect(() => {
+  const setInitialValues = (productId, pageOrder) => {
+    fetchPageContent(productId, pageOrder);
+    // IDとページ番号はサーバー応答を待たない（変更するかも？
     change("productId", productId);
     change("pageOrder", pageOrder);
+  };
+
+  useEffect(() => {
+    setInitialValues(productId, pageOrder);
   }, [productId, pageOrder]);
 
   return (
@@ -61,11 +71,22 @@ EditForm.propTypes = {
   ...propTypes
 };
 
-export default reduxForm({
-  form: "editor",
-  validate,
-  initialValues: {
-    productId: null,
-    pageOrder: null
-  }
-})(EditForm);
+const mapDispatchToProps = dispatch => ({
+  fetchPageContent: (productId, pageOrder) =>
+    dispatch(fetchProductPageRequest(productId, pageOrder))
+});
+
+export default compose(
+  reduxForm({
+    form: "edit",
+    validate,
+    initialValues: {
+      productId: null,
+      pageOrder: null
+    }
+  }),
+  connect(
+    null,
+    mapDispatchToProps
+  )
+)(EditForm);
