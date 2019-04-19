@@ -12,15 +12,15 @@ const StyledEditor = styled.div`
 
   .editorArea {
     padding: 10px;
+    height: 20em;
   }
 `;
 
 const WrappedEditor = props => {
   const {
-    input: { onChange, value },
-    disabled,
-
+    input,
     meta: { touched, error, warning },
+    disabled,
     mobile
   } = props;
 
@@ -28,7 +28,7 @@ const WrappedEditor = props => {
     toolbarOnFocus: mobile,
     toolbar: {
       options: mobile
-        ? ["inline"]
+        ? ["inline", "blockType", "fontSize"]
         : [
             "inline",
             "blockType",
@@ -48,12 +48,7 @@ const WrappedEditor = props => {
 
   return (
     <StyledEditor>
-      <ControlledEditor
-        disabled={disabled}
-        onChange={onChange}
-        value={value}
-        options={options}
-      />
+      <ControlledEditor disabled={disabled} input={input} options={options} />
 
       {touched && (error || warning) && (
         <span className="text-danger">{error || warning}</span>

@@ -27,59 +27,65 @@ const createState = value => {
 
 class ControlledEditor extends Component {
   static propTypes = {
-    value: PropTypes.string,
-    onChange: PropTypes.bool.isRequired
-  };
-
-  static defaultProps = {
-    value: ""
+    input: PropTypes.shape({
+      onChange: PropTypes.func.isRequired
+    }).isRequired
   };
 
   constructor(props) {
     super(props);
 
-    const { value } = props;
-
-    const editorState = createState(value);
+    const {
+      input: { value }
+    } = props;
 
     this.state = {
       editorState
     };
 
-    const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
+    this.onEditorStateChange = this.onEditorStateChange.bind(this);
+    this.changeValue = this.changeValue.bind(this);
 
-    this.props.onChange(draftToMarkdown(rawContent));
-    this.handleMyContentChange = this.handleMyContentChange.bind(this);
+    this.changeValue(editorState);
+
+    const editorState = createState(value);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { value } = nextProps;
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   const { value } = nextProps;
+  // }
 
   onEditorStateChange(editorState) {
-    const newValue = draftToMarkdown(
+    // const newValue = draftToMarkdown(
+    //   convertToRaw(editorState.getCurrentContent())
+    // );
+    // this.handleMyContentChange(newValue, editorState);
+
+    // 一旦markdownなしで実装
+
+    this.setState({ editorState });
+    this.changeValue(editorState);
+  }
+
+  changeValue(editorState) {
+    const value = draftToMarkdown(
       convertToRaw(editorState.getCurrentContent())
     );
-    this.handleMyContentChange(newValue, editorState);
+    this.props.input.onChange(value);
   }
-
-  handleChange(editorState) {
-    this.setState({ editorState });
-  }
-
-  handleMyContentChange(newValue, editorState) {
-    const { onChange, value } = this.props;
-
-    if (!newValue) {
-      editorState = EditorState.createEmpty();
-    } else if (value !== newValue) {
-      onChange(newValue);
-    }
-
-    this.setState({
-      editorState
-    });
-  }
+  // handleMyContentChange(newValue, editorState) {
+  //   const { onChange, value } = this.props;
+  //
+  //   if (!newValue) {
+  //     editorState = EditorState.createEmpty();
+  //   } else if (value !== newValue) {
+  //     onChange(newValue);
+  //   }
+  //
+  //   this.setState({
+  //     editorState
+  //   });
+  // }
 
   render() {
     const { editorState } = this.state;

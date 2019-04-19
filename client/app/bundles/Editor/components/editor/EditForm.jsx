@@ -41,7 +41,7 @@ const EditForm = props => {
   return (
     <form onSubmit={handleSubmit(submitEditorForm)}>
       <Mobile>
-        <FormHeader title="編集" />
+        <FormHeader title="作品の編集" />
       </Mobile>
       {error && <ErrorHeader error={error} />}
       <ProductInfo />
@@ -51,7 +51,7 @@ const EditForm = props => {
         className="button button-primary pull-right"
         disabled={pristine || submitting}
       >
-        登録
+        修正を反映
       </button>
     </form>
   );

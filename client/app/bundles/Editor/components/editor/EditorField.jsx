@@ -6,10 +6,20 @@ import WrappedEditor from "./WrappedEditor";
 const EditorField = () => (
   <div className="form-group">
     <Mobile>
-      <Field type="text" component={WrappedEditor} mobile={true} />
+      <Field
+        type="text"
+        component={WrappedEditor}
+        mobile={true}
+        name="content"
+      />
     </Mobile>
     <Default>
-      <Field type="text" component={WrappedEditor} default={true} />
+      <Field
+        type="text"
+        component={WrappedEditor}
+        default={true}
+        name="content"
+      />
     </Default>
   </div>
 );
