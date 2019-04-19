@@ -37,11 +37,24 @@
     text-align: center;
   }
 }
+
 form .page-header {
   margin-bottom: 20px;
+  position: absolute;
+  top: 25px;
+  left: 60px;
+
+  .page-header-inner {
+    padding: 5px;
+  }
+
   .page-header-content {
     p {
       color: $color-black;
     }
   }
+}
+
+.products form {
+  padding-top: 40px;
 }

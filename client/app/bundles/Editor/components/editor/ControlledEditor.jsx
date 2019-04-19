@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Editor } from "react-draft-wysiwyg";
 
 import {
@@ -27,50 +28,32 @@ const createState = value => {
 class ControlledEditor extends Component {
   static propTypes = {
     value: PropTypes.string,
-    onChange: PropTypes.bool.isRequired,
-    productId: PropTypes.number.isRequired,
-    pageOrder: PropTypes.number
+    onChange: PropTypes.bool.isRequired
   };
 
   static defaultProps = {
-    value: "",
-    pageOrder: 1
+    value: ""
   };
 
   constructor(props) {
     super(props);
 
-    const { value, productId, pageOrder } = props;
+    const { value } = props;
 
     const editorState = createState(value);
 
     this.state = {
-      editorState,
-      productId,
-      pageOrder
+      editorState
     };
 
     const rawContent = convertToRaw(this.state.editorState.getCurrentContent());
 
-    this.handleMyContentChange = this.handleMyContentChange.bind(this);
     this.props.onChange(draftToMarkdown(rawContent));
+    this.handleMyContentChange = this.handleMyContentChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    const { value, productId, pageOrder } = nextProps;
-
-    if (
-      productId !== this.state.productId ||
-      pageOrder !== this.state.pageOrder ||
-      (!this.state.editorState.getCurrentContent().hasText() && value)
-    ) {
-      // ページ移動していればStateを作り直す
-      this.setState({
-        editorState: createState(value),
-        productId,
-        pageOrder
-      });
-    }
+    const { value } = nextProps;
   }
 
   onEditorStateChange(editorState) {
@@ -101,24 +84,17 @@ class ControlledEditor extends Component {
   render() {
     const { editorState } = this.state;
     const { options } = this.props;
-    console.log(options);
+
     return (
       <Editor
         editorState={editorState}
         wrapperClassName="textEditorForm"
         editorClassName="editorArea"
-        toolbarOnFocus={this.state.pageEdit}
-        toolbar={{
-          options,
-          list: { inDropdown: true },
-          textAlign: { inDropdown: true },
-          link: { inDropdown: true },
-          history: { inDropdown: true }
-        }}
+        {...options}
         onEditorStateChange={this.onEditorStateChange}
       />
     );
   }
 }
 
-export default ControlledEditor;
+export default connect(state => console.log(state) || {})(ControlledEditor);
