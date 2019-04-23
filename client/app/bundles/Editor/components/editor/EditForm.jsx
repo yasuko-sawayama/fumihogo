@@ -4,8 +4,7 @@ import { reduxForm, propTypes, SubmissionError } from "redux-form";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
-import { postEntities } from "~/utils/requestManager";
-import { fetchProductPageRequest } from "~/actions";
+import { fetchProductPageRequest, updateProductPageRequest } from "~/actions";
 
 import { Mobile } from "~/shared/components/layouts/responsive.jsx";
 import ProductInfo from "./ProductInfo";
@@ -13,16 +12,6 @@ import EditorField from "./EditorField";
 import FormHeader from "./FormHeader";
 import ErrorHeader from "./ErrorHeader";
 import validate from "./validate";
-
-const submitEditorForm = props => {
-  return postEntities("/api/v1/products", props)
-    .then(res => console.log("create!") || console.log(res.data))
-    .catch(error => {
-      throw new SubmissionError({
-        _error: error.response.data
-      });
-    });
-};
 
 const EditForm = props => {
   const {
@@ -32,6 +21,7 @@ const EditForm = props => {
     handleSubmit,
     change,
     fetchPageContent,
+    submitChanges,
     match: {
       params: { productId, pageOrder }
     }
@@ -49,7 +39,7 @@ const EditForm = props => {
   }, [productId, pageOrder]);
 
   return (
-    <form onSubmit={handleSubmit(submitEditorForm)}>
+    <form onSubmit={handleSubmit(submitChanges)}>
       <Mobile>
         <FormHeader title="作品の編集" />
       </Mobile>
@@ -73,7 +63,8 @@ EditForm.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   fetchPageContent: (productId, pageOrder) =>
-    dispatch(fetchProductPageRequest(productId, pageOrder))
+    dispatch(fetchProductPageRequest(productId, pageOrder)),
+  submitChanges: values => dispatch(updateProductPageRequest(values))
 });
 
 export default compose(
@@ -82,7 +73,7 @@ export default compose(
     validate,
     initialValues: {
       productId: null,
-      pageOrder: null
+      pageOrder: 1
     }
   }),
   connect(

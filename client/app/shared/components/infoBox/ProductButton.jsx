@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-import { Color } from "~/shared/constants";
+import { Colors } from "~/shared/constants";
 
 const BookIcon = styled.i`
   font-size: 42px;
@@ -13,7 +13,7 @@ const BookIcon = styled.i`
   padding: 0.45em 0.5em;
 
   background-color: ${props =>
-    props.disabled ? Color.UNREADABLE : "transparent"};
+    props.disabled ? Colors.UNREADABLE : "transparent"};
 `;
 
 const CircleButton = styled(NavLink)`

@@ -16,7 +16,7 @@ function Editor() {
       <Responsive>
         <Route
           exact
-          path="/:productId/:path(edit|pages)/:pageOrder/:edit"
+          path="/:productId/:path(edit|pages)/:pageOrder?/:edit?"
           component={EditForm}
         />
         <Route exact path="/new" component={NewForm} />

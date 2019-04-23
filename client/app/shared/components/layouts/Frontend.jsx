@@ -15,13 +15,11 @@ const Frontend = ({ children }) => (
 
     <div className="main">
       <PageTitle />
-
       <div className="content">
         <div className="content-inner">
           <ErrorBoundary>{children}</ErrorBoundary>
         </div>
       </div>
-
       <Footer />
     </div>
 

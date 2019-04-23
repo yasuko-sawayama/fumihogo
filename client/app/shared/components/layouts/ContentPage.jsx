@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { CSSTransition } from "react-transition-group";
 import ErrorBoundary from "./ErrorBoundary";
+import MessageBox from "~/shared/components/messageBox";
 
 import Toolbar from "../frontend/Toolbar";
 
@@ -30,7 +31,10 @@ const ContentPage = ({ children }) => {
           role="presentation"
         >
           <div className="content">
-            <div className="content-inner">{children}</div>
+            <div className="content-inner">
+              <MessageBox />
+              {children}
+            </div>
           </div>
         </div>
       </ErrorBoundary>

@@ -6,5 +6,12 @@ export default {
   FETCH_PRODUCT_ERROR: "fetch_product_error",
   TOGGLE_PRODUCT_FAV: "toggle_product_fav",
   TOGGLE_PRODUCT_FAV_SUCCESS: "toggle_fav_success",
-  TOGGLE_PRODUCT_FAV_ERROR: "toggle_fav_error"
+  TOGGLE_PRODUCT_FAV_ERROR: "toggle_fav_error",
+  UPDATE_PRODUCT_PAGE_REQUEST: "update_product_page_request",
+  UPDATE_PRODUCT_PAGE_SUCCESS: "update_product_page_success",
+  UPDATE_PRODUCT_PAGE_ERROR: "update_product_page_error",
+  SUCCESS: "success",
+  FAILURE: "failure",
+  ERROR: "error",
+  ALERT: "alert"
 };
