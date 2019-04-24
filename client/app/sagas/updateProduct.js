@@ -16,7 +16,7 @@ function* updateProduct(action) {
   try {
     const { payload } = action;
     const product = yield call(updateProductPageEntity, payload);
-    console.log(product);
+
     yield put({
       type: Types.UPDATE_PRODUCT_PAGE_SUCCESS,
       payload: {
@@ -32,10 +32,11 @@ function* updateProduct(action) {
     yield put({
       type: Types.UPDATE_PRODUCT_PAGE_ERROR,
       payload: {
-        type: Types.ERROR
+        type: Types.ERROR,
+        message: `保存できませんでした。\nERROR: ${error}`
       }
     });
-    stopSubmit("edit", error);
+    yield put(stopSubmit("edit", error));
   }
 }
 
