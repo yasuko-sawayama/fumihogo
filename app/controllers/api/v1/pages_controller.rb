@@ -25,12 +25,11 @@ class Api::V1::PagesController < Api::V1::ApiController
   def update
     @page.assign_attributes(page_params)
 
-    # if @page.update(page_params)
-    #   render json: @page, status: :ok
-    # else
-    #   render json: @page.errors.full_messages, status: :unprocessable_entity
-    # end
-    render json: @page.errors.full_messages, status: :unprocessable_entity
+    if @page.update(page_params)
+      render json: @page, status: :ok
+    else
+      render json: @page.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   def destroy

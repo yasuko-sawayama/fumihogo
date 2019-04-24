@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
@@ -17,6 +17,7 @@ const MessageIcon = ({ type }) => {
 
 const MessageBox = ({ message }) => {
   const [show, setShow] = useState(true);
+  useEffect(() => setShow(true), [message]);
 
   return (
     message &&
