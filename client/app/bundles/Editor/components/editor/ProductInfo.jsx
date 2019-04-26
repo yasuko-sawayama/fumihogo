@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Field } from "redux-form";
 import InputField from "./InputField";
@@ -9,9 +9,12 @@ const InfoFields = styled.div`
   margin-top: 20px;
   margin-bottom: 10px;
 `;
+
 const ProductInfo = () => {
-  return (
-    <InfoFields>
+  const [open, setOpen] = useState(false);
+  const fields = () => (
+    <div>
+      <button onClick={() => setOpen(false)}>バツ</button>
       <Field name="title" type="text" component={InputField} label="タイトル" />
       <Field
         name="description"
@@ -19,6 +22,12 @@ const ProductInfo = () => {
         type="textarea"
         label="作品の説明"
       />
+    </div>
+  );
+
+  return (
+    <InfoFields>
+      {open ? fields() : <button onClick={setOpen}>作品の情報</button>}
     </InfoFields>
   );
 };

@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import { Default, Mobile } from "~/shared/components/layouts/responsive";
 import WrappedEditor from "./WrappedEditor";
 
-const EditorField = () => (
+const EditorField = ({ autoFocus }) => (
   <div className="form-group">
     <Mobile>
       <Field
@@ -11,6 +12,7 @@ const EditorField = () => (
         component={WrappedEditor}
         mobile={true}
         name="content"
+        autoFocus={autoFocus}
       />
     </Mobile>
     <Default>
@@ -19,6 +21,7 @@ const EditorField = () => (
         component={WrappedEditor}
         default={true}
         name="content"
+        autoFocus={autoFocus}
       />
     </Default>
   </div>

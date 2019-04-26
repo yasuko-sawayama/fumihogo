@@ -63,7 +63,7 @@ const EditForm = props => {
           {totalCharacterCount}字
         </div>
       </ContentInfo>
-      <EditorField />
+      <EditorField autoFocus />
       <button
         type="submit"
         className="button button-primary pull-right"

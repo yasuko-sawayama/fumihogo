@@ -30,7 +30,7 @@ const ProductInfo = ({
       name="pageTitle"
       type="text"
       component={InputField}
-      label="ページタイトル"
+      label="ページタイトル（省略可）"
     />
   </InfoFields>
 );
