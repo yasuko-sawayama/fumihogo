@@ -1,8 +1,6 @@
 json.id page.position
 json.pageTitle page.title
 
-p page.created_at.to_json
-
 json.info do |info|
   info.impressionCount page.impressionist_count
   info.createdDate page.created_at
@@ -35,9 +33,9 @@ else
 end
 
 json.product do |product|
-  json.extract! @product, :id, :title
+  json.extract! page.product, :id, :title
   product.about do |about|
-    about.pageCount @product.page_count
+    about.pageCount page.product.page_count
   end
 end
 
