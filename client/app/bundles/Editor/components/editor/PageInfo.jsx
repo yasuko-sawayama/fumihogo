@@ -12,30 +12,28 @@ const ProductInfo = ({
   impressionCount,
   createdDate,
   updatedDate
-}) => {
-  return (
-    <InfoFields>
-      <InfoList>
-        <dt>ページ数</dt>
-        <dd>
-          {pageOrder}ページ目/トータル{totalPageCount}ページ
-        </dd>
-        <dt>閲覧数</dt>
-        <dd>{impressionCount}</dd>
-        <dt>作成日</dt>
-        <dd>{createdDate.format("YYYY/MM/DD hh:mm")}</dd>
-        <dt>最終更新日</dt>
-        <dd>{updatedDate.format("YYYY/MM/DD hh:mm")}</dd>
-      </InfoList>
-      <Field
-        name="pageTitle"
-        type="text"
-        component={InputField}
-        label="ページタイトル"
-      />
-    </InfoFields>
-  );
-};
+}) => (
+  <InfoFields>
+    <InfoList>
+      <dt>ページ数</dt>
+      <dd>
+        {pageOrder}/{totalPageCount}ページ
+      </dd>
+      <dt>閲覧数</dt>
+      <dd>{impressionCount} Views</dd>
+      <dt>作成日</dt>
+      <dd>{createdDate.format("YYYY/MM/DD hh:mm")}</dd>
+      <dt>最終更新日</dt>
+      <dd>{updatedDate.format("YYYY/MM/DD hh:mm")}</dd>
+    </InfoList>
+    <Field
+      name="pageTitle"
+      type="text"
+      component={InputField}
+      label="ページタイトル"
+    />
+  </InfoFields>
+);
 
 const InfoFields = styled.div`
   margin-top: 10px;
@@ -77,8 +75,8 @@ const mapStateToProps = state => ({
   previousPage: state.productData.currentPage.previousPage,
   nextPage: state.productData.currentPage.nextPage,
   auth: state.productData.currentPage.auth.update,
-  createdDate: moment(state.productData.currentPage.createdDate),
-  updatedDate: moment(state.productData.currentPage.updatedDate)
+  createdDate: moment(state.productData.currentPage.info.createdDate),
+  updatedDate: moment(state.productData.currentPage.info.updatedDate)
 });
 
 export default connect(mapStateToProps)(ProductInfo);

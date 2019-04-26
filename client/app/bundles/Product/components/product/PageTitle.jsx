@@ -12,7 +12,7 @@ const PageTitle = ({
   pages
 }) => (
   <h4 className="page-title">
-    {pageTitle(pages, page_order)} /ページ{page_order}
+    {pageTitle(pages, page_order)} ページ {page_order}/{pages.length}
   </h4>
 );
 

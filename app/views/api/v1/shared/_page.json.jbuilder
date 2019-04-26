@@ -1,11 +1,14 @@
 json.id page.position
 json.pageTitle page.title
 
+p page.created_at.to_json
+
 json.info do |info|
   info.impressionCount page.impressionist_count
   info.createdDate page.created_at
   info.updatedDate page.updated_at
 end
+
 json.auth do |auth|
   auth.update policy(page).update?
 end

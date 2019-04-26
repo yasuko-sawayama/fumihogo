@@ -46,3 +46,4 @@ examples.txt
 coverage
 
 .direnv
+.DS_Store
