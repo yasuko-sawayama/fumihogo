@@ -13,5 +13,13 @@ json.currentUserData do
 end if current_user
 
 json.productData do
+  json.currentProduct do
+    @product ? json.partial!('api/v1/shared/product', product: @product) : nil
+  end
+
+  json.currentPage do
+    @page && @product ? json.partial!('api/v1/shared/page', page: @page) : nil
+  end
+
   json.partial! 'api/v1/shared/products', products: @products
 end

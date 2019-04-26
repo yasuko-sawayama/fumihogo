@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { propTypes } from "redux-form";
 
 import ControlledEditor from "./ControlledEditor";
 
@@ -12,7 +11,11 @@ const StyledEditor = styled.div`
 
   .editorArea {
     padding: 10px;
-    height: 20em;
+    height: ${props => (props.mobile ? "24em" : "45em")};
+    line-height: 1.6;
+    p {
+      margin: 0;
+    }
   }
 `;
 
@@ -47,8 +50,13 @@ const WrappedEditor = props => {
   };
 
   return (
-    <StyledEditor>
-      <ControlledEditor disabled={disabled} input={input} options={options} />
+    <StyledEditor mobile={mobile}>
+      <ControlledEditor
+        disabled={disabled}
+        input={input}
+        options={options}
+        mobile={mobile}
+      />
 
       {touched && (error || warning) && (
         <span className="text-danger">{error || warning}</span>
@@ -58,10 +66,14 @@ const WrappedEditor = props => {
 };
 
 WrappedEditor.propTypes = {
+  input: PropTypes.shape().isRequired,
+  meta: PropTypes.shape().isRequired,
+  disabled: PropTypes.bool,
   mobile: PropTypes.bool
 };
 
 WrappedEditor.defaultProps = {
+  disabled: false,
   mobile: false
 };
 

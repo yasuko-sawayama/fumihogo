@@ -13,19 +13,11 @@ const ProductInfo = () => {
   return (
     <InfoFields>
       <Field name="title" type="text" component={InputField} label="タイトル" />
-
       <Field
         name="description"
         component={InputField}
         type="textarea"
         label="作品の説明"
-      />
-      <h3>ページ情報</h3>
-      <Field
-        name="pageTitle"
-        type="text"
-        component={InputField}
-        label="ページタイトル"
       />
     </InfoFields>
   );

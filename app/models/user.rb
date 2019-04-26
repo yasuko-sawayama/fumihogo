@@ -59,7 +59,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :lockable, :omniauthable
+         :lockable, :omniauthable, :timeoutable
 
   friendly_id :nickname
 

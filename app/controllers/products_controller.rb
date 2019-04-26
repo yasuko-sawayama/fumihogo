@@ -57,5 +57,8 @@ class ProductsController < WithReactController
   def set_product
     @product = Product.find(params[:product_id] ||
                             params[:id])
+    if params[:product_id]
+      @page = @product.pages.find_by(position: params[:id])
+    end
   end
 end
