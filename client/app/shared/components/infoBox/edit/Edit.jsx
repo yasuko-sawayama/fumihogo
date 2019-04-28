@@ -11,7 +11,7 @@ const Edit = ({ match, auth, productId }) => {
 
     editorUrl = params.pageOrder
       ? `/products/${params.productId}/pages/${params.pageOrder}/edit`
-      : `/products/${params.productId}/edit`;
+      : `/products/${params.productId}/pages/1/edit`;
   } else {
     editorUrl = `/products/${productId}/edit`;
   }

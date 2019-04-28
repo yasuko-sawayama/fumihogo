@@ -11,7 +11,7 @@ const StyledEditor = styled.div`
 
   .editorArea {
     padding: 10px;
-    height: ${props => (props.mobile ? "24em" : "45em")};
+    height: ${props => (props.mobile ? "24em" : "35em")};
     line-height: 1.6;
     p {
       margin: 0;

@@ -10,11 +10,28 @@ const InfoFields = styled.div`
   margin-bottom: 10px;
 `;
 
+const InfoButton = styled.button`
+font-size: 18px !important;
+padding-bottom: 2px;
+border-bottom: solid 1px  rgba(0, 0, 0, 0.08);
+`;
+
+const CloseButton = styled.button`
+float: right;
+margin-top: -20px;
+margin-bottom: 20px;
+`;
+
 const ProductInfo = () => {
   const [open, setOpen] = useState(false);
   const fields = () => (
     <div>
-      <button onClick={() => setOpen(false)}>バツ</button>
+      <CloseButton onClick={() => setOpen(false)} className="button">
+        <i class="material-icons">
+          close
+        </i>
+      </CloseButton>
+      <h4>作品情報の編集</h4>
       <Field name="title" type="text" component={InputField} label="タイトル" />
       <Field
         name="description"
@@ -27,7 +44,12 @@ const ProductInfo = () => {
 
   return (
     <InfoFields>
-      {open ? fields() : <button onClick={setOpen}>作品の情報</button>}
+      {open ? fields() : (<InfoButton onClick={setOpen} className="button">
+        <i class="material-icons">
+          create
+        </i>
+        作品の情報　
+      </InfoButton>)}
     </InfoFields>
   );
 };

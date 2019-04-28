@@ -60,5 +60,7 @@ class ProductsController < WithReactController
     if params[:product_id]
       @page = @product.pages.find_by(position: params[:id])
     end
+
+    @product
   end
 end
