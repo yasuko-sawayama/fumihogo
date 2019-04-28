@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { CSSTransition } from "react-transition-group";
-import ErrorBoundary from "./ErrorBoundary";
-import MessageBox from "~/shared/components/messageBox";
 
+import MessageBox from "~/shared/components/messageBox";
+import ErrorBoundary from "./ErrorBoundary";
 import Toolbar from "../frontend/Toolbar";
 
 const ContentPage = ({ children }) => {
@@ -13,7 +13,7 @@ const ContentPage = ({ children }) => {
     <div className="page-inner">
       <ErrorBoundary>
         {!showMenu && (
-          <button id="menu-btn" onClick={() => setShowMenu(true)}>
+          <button id="menu-btn" onClick={() => setShowMenu(true)} type="button">
             <i className="md-icon">library_books</i>
           </button>
         )}

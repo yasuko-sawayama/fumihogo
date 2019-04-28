@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 // import Breadcrumbs from "../helpers/Breadcrumbs";
 import Shortcuts from "../ui/Shortcut";
 
-const titleName = ({ listType, author, title}) => {
+const titleName = ({ listType, author, title }) => {
   switch (listType) {
     case "author":
       return `${author.name || author.nickname}の作品一覧`;

@@ -13,15 +13,15 @@ import PageTitle from "../../../bundles/Product/components/product/PageTitle";
 import ProductNotFound from "../../../bundles/Product/components/product/ProductNotFound";
 
 const InfoBox = props => {
-  if (!props.product) {
-    return <ProductNotFound />;
-  }
-
   const {
     match: { path },
+    product,
     product: { id, title, description, info, author, auth, favorite }
   } = props;
 
+  if (!product) {
+    return <ProductNotFound />;
+  }
   const pageLink = () => {
     if (!auth.show) return <span className="disabled">({title})</span>;
     if (path.match(/products/)) {

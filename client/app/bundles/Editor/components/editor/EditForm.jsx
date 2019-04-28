@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { reduxForm, propTypes, formValueSelector } from "redux-form";
+import { reduxForm, formValueSelector } from "redux-form";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
@@ -21,7 +21,7 @@ const ContentInfo = styled.div`
   margin-bottom: 5px;
 `;
 
-const EditForm = props => {
+export const EditForm = props => {
   const {
     error,
     pristine,
@@ -76,7 +76,32 @@ const EditForm = props => {
 };
 
 EditForm.propTypes = {
-  ...propTypes
+  handleSubmit: PropTypes.func.isRequired,
+  error: PropTypes.shape(),
+  pristine: PropTypes.bool.isRequired,
+  submitting: PropTypes.bool.isRequired,
+  change: PropTypes.func.isRequired,
+  fetchPageContent: PropTypes.func.isRequired,
+  submitChanges: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      productId: PropTypes.number.isRequired,
+      pageOrder: PropTypes.number
+    })
+  }),
+  totalCharacterCount: PropTypes.number,
+  formContentLength: PropTypes.number
+};
+
+EditForm.defaultProps = {
+  error: null,
+  match: {
+    params: {
+      pageOrder: 1
+    }
+  },
+  totalCharacterCount: 0,
+  formContentLength: 0
 };
 
 const selector = formValueSelector("edit");

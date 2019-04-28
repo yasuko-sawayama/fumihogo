@@ -46,13 +46,15 @@ class Content extends Component {
   }
 
   render() {
-    if (this.props.loading) return <Loading />;
+    const {
+      loading,
+      page,
+      page: { content }
+    } = this.props;
 
-    return this.props.page ? (
-      <ContentReading content={this.props.page.content} />
-    ) : (
-      <ContentNotFound />
-    );
+    if (loading) return <Loading />;
+
+    return page ? <ContentReading content={content} /> : <ContentNotFound />;
   }
 }
 

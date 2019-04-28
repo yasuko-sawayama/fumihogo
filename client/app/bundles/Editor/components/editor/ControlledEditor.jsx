@@ -22,7 +22,8 @@ const createState = value => {
 class ControlledEditor extends Component {
   static propTypes = {
     input: PropTypes.shape({
-      onChange: PropTypes.func.isRequired
+      onChange: PropTypes.func.isRequired,
+      value: PropTypes.any.isRequired
     }).isRequired,
     options: PropTypes.shape()
   };
@@ -50,11 +51,15 @@ class ControlledEditor extends Component {
   componentWillReceiveProps(nextProps) {
     const {
       input: { value }
+    } = this.props;
+
+    const {
+      input: { value: nextValue }
     } = nextProps;
 
     // Contentを取ってきたらエディタに反映
-    if (this.props.input.value === "") {
-      this.setState({ editorState: createState(value) });
+    if (value === "") {
+      this.setState({ editorState: createState(nextValue) });
     }
   }
 
@@ -64,10 +69,15 @@ class ControlledEditor extends Component {
   }
 
   changeInputValue(editorState) {
+    const {
+      input: { onChange }
+    } = this.props;
+
     const value = draftToMarkdown(
       convertToRaw(editorState.getCurrentContent())
     );
-    this.props.input.onChange(value);
+
+    onChange(value);
   }
 
   render() {

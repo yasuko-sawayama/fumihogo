@@ -26,16 +26,26 @@ InnerContent.defaultProps = {
 };
 
 const RenderComponent = props => {
-  const currentPageId =
-    props.product && props.product.currentPage && props.product.currentPage.id;
+  const {
+    history,
+    product,
+    product: {
+      id: productId,
+      pages,
+      currentPage,
+      currentPage: { id: pageOrder }
+    }
+  } = props;
+
+  const currentPageId = product && currentPage && pageOrder;
 
   return (
     <Responsive>
       <InnerContent {...props} />
       <Paginate
-        history={props.history}
-        productId={props.product.id}
-        pages={props.product.pages}
+        history={history}
+        productId={productId}
+        pages={pages}
         currentPage={currentPageId}
       />
     </Responsive>

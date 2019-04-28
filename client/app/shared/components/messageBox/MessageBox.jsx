@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-
 import { Types, Colors } from "~/shared/constants";
-
-const MessageIcon = ({ type }) => {
-  switch (type) {
-    case Types.SUCCESS:
-      return <i className="material-icons">done_outline</i>;
-    case Types.ERROR:
-      return <i className="material-icons">report_problem</i>;
-    default:
-      return null;
-  }
-};
+import MessageIcon from "./MessageIcon";
 
 const MessageBox = ({ message }) => {
   const [show, setShow] = useState(true);

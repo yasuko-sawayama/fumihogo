@@ -52,7 +52,9 @@ PageListLink.propTypes = {
 };
 
 const ProductButton = props => {
-  if (props.pages) {
+  const { pages } = props;
+
+  if (pages) {
     return <PageListLink {...props} />;
   }
   return <ContentLink {...props} />;

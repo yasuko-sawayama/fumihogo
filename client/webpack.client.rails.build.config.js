@@ -5,12 +5,12 @@
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const merge = require("webpack-merge");
 const { env } = require("process");
-const config = require("./webpack.client.base.config");
 const { resolve } = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Webpacker specific
 const webpackConfigLoader = require("react-on-rails/webpackConfigLoader");
+const config = require("./webpack.client.base.config");
 
 const configPath = resolve("..", "config");
 const { output, settings } = webpackConfigLoader(configPath);

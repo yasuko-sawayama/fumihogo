@@ -8,6 +8,7 @@ import Sidebar from "../helpers/Sidebar";
 import Toolbar from "../helpers/Toolbar";
 
 export default function Backend(props) {
+  const { children } = props;
   return (
     <div className="page-inner">
       <Toolbar />
@@ -16,7 +17,7 @@ export default function Backend(props) {
       <div className="main">
         <PageTitle title="テスト用タイトル" />
 
-        <div className="content">{props.children}</div>
+        <div className="content">{children}</div>
 
         <Footer />
       </div>

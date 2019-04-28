@@ -16,9 +16,8 @@
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
 const { resolve } = require("path");
-const webpackConfig = require("./webpack.client.rails.hot.config");
-
 const webpackConfigLoader = require("react-on-rails/webpackConfigLoader");
+const webpackConfig = require("./webpack.client.rails.hot.config");
 
 const configPath = resolve("..", "config");
 const { output, settings } = webpackConfigLoader(configPath);

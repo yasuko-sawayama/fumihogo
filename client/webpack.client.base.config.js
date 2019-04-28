@@ -4,10 +4,8 @@
 const webpack = require("webpack");
 const ManifestPlugin = require("webpack-manifest-plugin");
 const { resolve, join } = require("path");
-
-const { assetLoaderRules } = require("./webpack.common.config");
-
 const webpackConfigLoader = require("react-on-rails/webpackConfigLoader");
+const { assetLoaderRules } = require("./webpack.common.config");
 
 const configPath = resolve("..", "config");
 const { output } = webpackConfigLoader(configPath);

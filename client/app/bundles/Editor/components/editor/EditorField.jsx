@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field } from "redux-form";
-import { Default, Mobile } from "~/shared/components/layouts/responsive";
+import { Default, Mobile } from "~/shared/components/layouts/responsive.jsx";
 import WrappedEditor from "./WrappedEditor";
 
 const EditorField = ({ autoFocus }) => (
@@ -26,5 +26,13 @@ const EditorField = ({ autoFocus }) => (
     </Default>
   </div>
 );
+
+EditorField.propTypes = {
+  autoFocus: PropTypes.bool
+};
+
+EditorField.defaultProps = {
+  autoFocus: true
+};
 
 export default EditorField;

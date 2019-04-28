@@ -8,7 +8,7 @@ const FavButton = ({ count, faved, handleClick }) => {
   return (
     <div className="favorite">
       <i className="md-icon">{current}</i>
-      <button onClick={handleClick}>
+      <button onClick={handleClick} type="button">
         <i className="md-icon">{toggle}</i>
       </button>
       <span>{count}</span>

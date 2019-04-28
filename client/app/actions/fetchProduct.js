@@ -1,3 +1,5 @@
+/* eslint import/prefer-default-export: off */
+
 import { Types } from "~/shared/constants";
 
 export const fetchProductPageRequest = (product_id, page) => ({

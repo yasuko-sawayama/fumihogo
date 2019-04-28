@@ -54,7 +54,7 @@ const PageList = ({ pages, match: { url }, history }) => (
               <td colSpan={2}>もくじ</td>
               <td className="close-button">
                 {" "}
-                <button onClick={() => history.goBack()}>
+                <button onClick={() => history.goBack()} type="button">
                   <i className="material-icons">clear</i>
                 </button>
               </td>
