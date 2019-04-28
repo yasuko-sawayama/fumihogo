@@ -1,10 +1,8 @@
 import React from "react";
 // import PropTypes from "prop-types";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
-import Responsive from "~/shared/components/layouts/responsive.jsx";
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import EditForm from "./editor/EditForm";
+import NewPageForm from "./editor/NewPageForm";
 import NewForm from "./editor/NewForm";
 
 function Editor() {
@@ -13,14 +11,19 @@ function Editor() {
   // TODO: 表示画面のページを引き継ぐ
   return (
     <Router basename="/products">
-      <Responsive>
+      <Switch>
+        <Route
+          exact
+          path="/:productId/pages/new"
+          render={() => <div>test</div>}
+        />
         <Route
           exact
           path="/:productId/:path(edit|pages)/:pageOrder?/:edit?"
           component={EditForm}
         />
         <Route exact path="/new" component={NewForm} />
-      </Responsive>
+      </Switch>
     </Router>
   );
 }

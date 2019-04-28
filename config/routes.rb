@@ -17,9 +17,10 @@ Rails.application.routes.draw do
       get ':any_action', action: :show
     end
 
-    resources :pages, except: :new, controller: 'products' do
+    resources :pages, controller: 'products' do
       member do
         get :edit
+        get :new, action: :edit
         get '(/*any_action)', action: :show # React Routerに委譲
       end
     end

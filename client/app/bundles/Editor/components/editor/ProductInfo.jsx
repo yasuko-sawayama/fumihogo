@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Field } from "redux-form";
 import InputField from "./InputField";
@@ -14,16 +15,18 @@ const InfoButton = styled.button`
   font-size: 18px !important;
   padding-bottom: 2px;
   border-bottom: solid 1px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
 `;
 
 const CloseButton = styled.button`
   float: right;
   margin-top: -20px;
   margin-bottom: 20px;
+  background-color: #fff;
 `;
 
-const ProductInfo = () => {
-  const [open, setOpen] = useState(false);
+const ProductInfo = ({ defaultOpen }) => {
+  const [open, setOpen] = useState(defaultOpen);
   const fields = () => (
     <div>
       <CloseButton onClick={() => setOpen(false)} className="button">
@@ -47,11 +50,19 @@ const ProductInfo = () => {
       ) : (
         <InfoButton onClick={setOpen} className="button">
           <i className="material-icons">create</i>
-          作品の情報
+          作品情報
         </InfoButton>
       )}
     </InfoFields>
   );
+};
+
+ProductInfo.propTypes = {
+  defaultOpen: PropTypes.bool
+};
+
+ProductInfo.defaultProps = {
+  defaultOpen: false
 };
 
 export default ProductInfo;

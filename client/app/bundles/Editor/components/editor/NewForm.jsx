@@ -15,7 +15,7 @@ const StyledForm = styled.form`
 `;
 
 const NewForm = ({ handleSubmit }) => {
-  return <StyledForm onSubmit={handleSubmit} />;
+  return <StyledForm onSubmit={handleSubmit}>aiueo</StyledForm>;
 };
 
 NewForm.propTypes = {
