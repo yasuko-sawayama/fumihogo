@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Editor } from "react-draft-wysiwyg";
-
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { draftToMarkdown, markdownToDraft } from "markdown-draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -86,12 +85,12 @@ class ControlledEditor extends Component {
 
     return (
       <Editor
-        editorState={editorState}
-        wrapperClassName="textEditorForm"
-        editorClassName="editorArea"
-        {...options}
-        onEditorStateChange={editorState => this.handleChange(editorState)}
-      />
+          editorState={editorState}
+          wrapperClassName="textEditorForm"
+          editorClassName="editorArea"
+          {...options}
+          onEditorStateChange={editorState => this.handleChange(editorState)}
+        />
     );
   }
 }

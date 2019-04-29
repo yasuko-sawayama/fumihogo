@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { reduxForm, formValueSelector } from "redux-form";
+import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
@@ -15,11 +14,6 @@ import FormHeader from "./FormHeader";
 import ErrorHeader from "./ErrorHeader";
 import validate from "./validate";
 
-const ContentInfo = styled.div`
-  text-align: right;
-  font-size: 14px;
-  margin-bottom: 5px;
-`;
 
 export const EditForm = props => {
   const {
@@ -32,9 +26,7 @@ export const EditForm = props => {
     submitChanges,
     match: {
       params: { productId, pageOrder }
-    },
-    totalCharacterCount,
-    formContentLength
+    }
   } = props;
 
   const setInitialValues = (productId, pageOrder) => {
@@ -56,13 +48,7 @@ export const EditForm = props => {
       {error && <ErrorHeader error={error} />}
       <ProductInfo />
       <PageInfo />
-      <ContentInfo>
-        <div>
-          <b>このページ：</b>
-          {formContentLength}字 / <b>作品全体：</b>
-          {totalCharacterCount}字
-        </div>
-      </ContentInfo>
+
       <EditorField autoFocus />
       <button
         type="submit"
@@ -104,15 +90,6 @@ EditForm.defaultProps = {
   formContentLength: 0
 };
 
-const selector = formValueSelector("edit");
-
-const mapStateToProps = state => ({
-  totalCharacterCount: state.productData.currentProduct.info.character_count,
-  formContentLength: selector(state, "content")
-    ? selector(state, "content").length
-    : 0
-});
-
 const mapDispatchToProps = dispatch => ({
   fetchPageContent: (productId, pageOrder) =>
     dispatch(fetchProductPageRequest(productId, pageOrder)),
@@ -129,7 +106,7 @@ export default compose(
     }
   }),
   connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
   )
 )(EditForm);

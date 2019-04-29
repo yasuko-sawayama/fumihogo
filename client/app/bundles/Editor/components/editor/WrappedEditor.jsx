@@ -1,8 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-
+import { connect } from "react-redux";
+import { formValueSelector  } from "redux-form";
 import ControlledEditor from "./ControlledEditor";
+
+const ContentInfo = styled.div`
+  text-align: right;
+  font-size: 14px;
+  margin-bottom: 10px;
+`;
 
 const StyledEditor = styled.div`
   border: solid 1px rgba(0, 0, 0, 0.08);
@@ -24,7 +31,9 @@ const WrappedEditor = props => {
     input,
     meta: { touched, error, warning },
     disabled,
-    mobile
+    mobile,
+    formContentLength,
+    totalCharacterCount
   } = props;
 
   const options = {
@@ -50,18 +59,27 @@ const WrappedEditor = props => {
   };
 
   return (
-    <StyledEditor mobile={mobile}>
-      <ControlledEditor
-        disabled={disabled}
-        input={input}
-        options={options}
-        mobile={mobile}
-      />
+    <div>
+      <ContentInfo>
+        <div>
+          <b>このページ：</b>
+          {formContentLength}字 / <b>作品全体：</b>
+          {totalCharacterCount}字
+        </div>
+      </ContentInfo>
+      <StyledEditor mobile={mobile}>
+        <ControlledEditor
+          disabled={disabled}
+          input={input}
+          options={options}
+          mobile={mobile}
+        />
 
-      {touched && (error || warning) && (
-        <span className="text-danger">{error || warning}</span>
-      )}
-    </StyledEditor>
+        {touched && (error || warning) && (
+          <span className="text-danger">{error || warning}</span>
+        )}
+      </StyledEditor>
+    </div>
   );
 };
 
@@ -69,7 +87,9 @@ WrappedEditor.propTypes = {
   input: PropTypes.shape().isRequired,
   meta: PropTypes.shape().isRequired,
   disabled: PropTypes.bool,
-  mobile: PropTypes.bool
+  mobile: PropTypes.bool,
+  formContentLength: PropTypes.number.isRequired,
+  totalCharacterCount: PropTypes.number.isRequired
 };
 
 WrappedEditor.defaultProps = {
@@ -77,4 +97,13 @@ WrappedEditor.defaultProps = {
   mobile: false
 };
 
-export default WrappedEditor;
+const selector = formValueSelector("edit");
+
+const mapStateToProps = state => ({
+  totalCharacterCount: state.productData.currentProduct.info.character_count,
+  formContentLength: selector(state, "content")
+    ? selector(state, "content").length
+    : 0
+});
+
+export default connect(mapStateToProps)(WrappedEditor);
