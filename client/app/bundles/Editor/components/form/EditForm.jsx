@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { reduxForm, formValueSelector } from "redux-form";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -10,16 +9,11 @@ import { fetchProductPageRequest, updateProductPageRequest } from "~/actions";
 import { Mobile } from "~/shared/components/layouts/responsive.jsx";
 import ProductInfo from "./ProductInfo";
 import PageInfo from "./PageInfo";
-import EditorField from "./EditorField";
-import FormHeader from "./FormHeader";
-import ErrorHeader from "./ErrorHeader";
+import ContentInfo from "./ContentInfo";
+import EditorField from "./editor/EditorField";
+import FormHeader from "./header/FormHeader";
+import ErrorHeader from "./header/ErrorHeader";
 import validate from "./validate";
-
-const ContentInfo = styled.div`
-  text-align: right;
-  font-size: 14px;
-  margin-bottom: 5px;
-`;
 
 export const EditForm = props => {
   const {
@@ -32,9 +26,7 @@ export const EditForm = props => {
     submitChanges,
     match: {
       params: { productId, pageOrder }
-    },
-    totalCharacterCount,
-    formContentLength
+    }
   } = props;
 
   const setInitialValues = (productId, pageOrder) => {
@@ -56,13 +48,7 @@ export const EditForm = props => {
       {error && <ErrorHeader error={error} />}
       <ProductInfo />
       <PageInfo />
-      <ContentInfo>
-        <div>
-          <b>このページ：</b>
-          {formContentLength}字 / <b>作品全体：</b>
-          {totalCharacterCount}字
-        </div>
-      </ContentInfo>
+      <ContentInfo />
       <EditorField autoFocus />
       <button
         type="submit"
@@ -88,9 +74,7 @@ EditForm.propTypes = {
       productId: PropTypes.number.isRequired,
       pageOrder: PropTypes.number
     })
-  }),
-  totalCharacterCount: PropTypes.number,
-  formContentLength: PropTypes.number
+  })
 };
 
 EditForm.defaultProps = {
@@ -99,19 +83,8 @@ EditForm.defaultProps = {
     params: {
       pageOrder: 1
     }
-  },
-  totalCharacterCount: 0,
-  formContentLength: 0
+  }
 };
-
-const selector = formValueSelector("edit");
-
-const mapStateToProps = state => ({
-  totalCharacterCount: state.productData.currentProduct.info.character_count,
-  formContentLength: selector(state, "content")
-    ? selector(state, "content").length
-    : 0
-});
 
 const mapDispatchToProps = dispatch => ({
   fetchPageContent: (productId, pageOrder) =>
@@ -129,7 +102,7 @@ export default compose(
     }
   }),
   connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
   )
 )(EditForm);

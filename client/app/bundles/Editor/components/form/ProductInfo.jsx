@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Field } from "redux-form";
-import InputField from "./InputField";
+import InputField from "./editor/InputField";
 
 const InfoFields = styled.div`
   border-bottom: solid 1px;
