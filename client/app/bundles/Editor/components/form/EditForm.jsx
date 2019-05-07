@@ -1,33 +1,25 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { reduxForm, formValueSelector } from "redux-form";
+import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
 import { fetchProductPageRequest, updateProductPageRequest } from "~/actions";
 
-import { Mobile } from "~/shared/components/layouts/responsive.jsx";
-import ProductInfo from "./ProductInfo";
-import PageInfo from "./PageInfo";
-import ContentInfo from "./ContentInfo";
-import EditorField from "./editor/EditorField";
-import FormHeader from "./header/FormHeader";
-import ErrorHeader from "./header/ErrorHeader";
+import PageInfo from "./editorForm/PageInfo";
 import validate from "./validate";
+import FormFrame from "./editorForm";
 
 export const EditForm = props => {
   const {
-    error,
-    pristine,
-    submitting,
-    handleSubmit,
     change,
     fetchPageContent,
-    submitChanges,
     match: {
       params: { productId, pageOrder }
     }
   } = props;
+
+  const backLink = `/products/${productId}/pages/${pageOrder}`;
 
   const setInitialValues = (productId, pageOrder) => {
     fetchPageContent(productId, pageOrder);
@@ -41,31 +33,13 @@ export const EditForm = props => {
   }, [productId, pageOrder]);
 
   return (
-    <form onSubmit={handleSubmit(submitChanges)}>
-      <Mobile>
-        <FormHeader title="作品の編集" />
-      </Mobile>
-      {error && <ErrorHeader error={error} />}
-      <ProductInfo />
+    <FormFrame {...props} buttonText="修正を反映" backLink={backLink}>
       <PageInfo />
-      <ContentInfo />
-      <EditorField autoFocus />
-      <button
-        type="submit"
-        className="button button-primary pull-right"
-        disabled={pristine || submitting}
-      >
-        修正を反映
-      </button>
-    </form>
+    </FormFrame>
   );
 };
 
 EditForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  error: PropTypes.shape(),
-  pristine: PropTypes.bool.isRequired,
-  submitting: PropTypes.bool.isRequired,
   change: PropTypes.func.isRequired,
   fetchPageContent: PropTypes.func.isRequired,
   submitChanges: PropTypes.func.isRequired,
@@ -78,7 +52,6 @@ EditForm.propTypes = {
 };
 
 EditForm.defaultProps = {
-  error: null,
   match: {
     params: {
       pageOrder: 1
@@ -95,11 +68,7 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   reduxForm({
     form: "edit",
-    validate,
-    initialValues: {
-      productId: null,
-      pageOrder: 1
-    }
+    validate
   }),
   connect(
     null,

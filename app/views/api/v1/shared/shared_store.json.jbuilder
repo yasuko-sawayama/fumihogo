@@ -17,11 +17,9 @@ json.productData do
     json.currentProduct do
       json.partial!('api/v1/shared/product', product: @product)
     end
-  end
 
-  if @page && @product
     json.currentPage do
-       json.partial!('api/v1/shared/page', page: @page)
+       json.partial!('api/v1/shared/page', page: @page || @product.pages.first)
     end
   end
 

@@ -17,6 +17,10 @@ const StyledEditor = styled.div`
       margin: 0;
     }
   }
+
+  .public-DraftStyleDefault-block > div {
+    margin: 0px !important;
+  }
 `;
 
 const WrappedEditor = props => {

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import moment from "moment";
 import { Field } from "redux-form";
 import { connect } from "react-redux";
-import InputField from "./editor/InputField";
+import InputField from "./InputField";
 
 const ProductInfo = ({
   totalPageCount,
