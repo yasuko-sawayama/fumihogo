@@ -8,7 +8,10 @@ const Product = () => (
     <Switch>
       <Route exact path="/products" component={ProductList} />
       <Route exact path="/users/:nickname" component={ProductList} />
-      <Route path="/products/:product_id" component={ProductReading} />
+      <Route
+        path="/products/:productId/:pages?/:pageOrder?"
+        component={ProductReading}
+      />
     </Switch>
   </Router>
 );

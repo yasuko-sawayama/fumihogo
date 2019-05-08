@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { EditForm } from "../EditForm";
+import { EditForm } from "../../../EditForm";
 
 const props = {
   handleSubmit: jest.fn(),

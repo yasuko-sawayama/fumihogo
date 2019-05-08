@@ -9,16 +9,18 @@ const updateProductPageEntity = payload =>
   updateEntities(
     `/api/v1/products/${payload.productId}/pages/${payload.pageOrder}`,
     updateValues(payload)
-  );
+  )
+    .then(results => console.log(results) || { product: results.data })
+    .catch(error => ({ error: error.response }));
 
 const updateValues = formValue => formValue;
 
 function* updateProduct(action) {
-  try {
-    const { payload } = action;
+  const { payload } = action;
 
-    const product = yield call(updateProductPageEntity, payload);
+  const { product, error } = yield call(updateProductPageEntity, payload);
 
+  if (product) {
     // TODO: ページデータを再取得する
     yield all([
       put({
@@ -32,7 +34,7 @@ function* updateProduct(action) {
       }),
       put(fetchProductPageRequest(payload.productId, payload.pageOrder))
     ]);
-  } catch (error) {
+  } else {
     /* eslint no-console: off */
     console.log(error);
     yield all([
@@ -41,7 +43,7 @@ function* updateProduct(action) {
         type: Types.UPDATE_PRODUCT_PAGE_ERROR,
         payload: {
           type: Types.ERROR,
-          message: `保存できませんでした。\nERROR: ${error}`
+          message: `保存できませんでした。\n ${error.data}`
         }
       })
     ]);

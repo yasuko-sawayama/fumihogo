@@ -6,28 +6,20 @@ import { compose } from "redux";
 
 import { fetchProductPageRequest, updateProductPageRequest } from "~/actions";
 
-import { Mobile } from "~/shared/components/layouts/responsive.jsx";
-import ProductInfo from "./ProductInfo";
-import PageInfo from "./PageInfo";
-import EditorField from "./EditorField";
-import FormHeader from "./FormHeader";
-import ErrorHeader from "./ErrorHeader";
+import PageInfo from "./editorForm/PageInfo";
 import validate from "./validate";
-
+import FormFrame from "./editorForm";
 
 export const EditForm = props => {
   const {
-    error,
-    pristine,
-    submitting,
-    handleSubmit,
     change,
     fetchPageContent,
-    submitChanges,
     match: {
       params: { productId, pageOrder }
     }
   } = props;
+
+  const backLink = `/products/${productId}/pages/${pageOrder}`;
 
   const setInitialValues = (productId, pageOrder) => {
     fetchPageContent(productId, pageOrder);
@@ -41,53 +33,30 @@ export const EditForm = props => {
   }, [productId, pageOrder]);
 
   return (
-    <form onSubmit={handleSubmit(submitChanges)}>
-      <Mobile>
-        <FormHeader title="作品の編集" />
-      </Mobile>
-      {error && <ErrorHeader error={error} />}
-      <ProductInfo />
+    <FormFrame {...props} buttonText="修正を反映" backLink={backLink}>
       <PageInfo />
-
-      <EditorField autoFocus />
-      <button
-        type="submit"
-        className="button button-primary pull-right"
-        disabled={pristine || submitting}
-      >
-        修正を反映
-      </button>
-    </form>
+    </FormFrame>
   );
 };
 
 EditForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  error: PropTypes.shape(),
-  pristine: PropTypes.bool.isRequired,
-  submitting: PropTypes.bool.isRequired,
   change: PropTypes.func.isRequired,
   fetchPageContent: PropTypes.func.isRequired,
   submitChanges: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      productId: PropTypes.number.isRequired,
-      pageOrder: PropTypes.number
+      productId: PropTypes.string.isRequired,
+      pageOrder: PropTypes.string
     })
-  }),
-  totalCharacterCount: PropTypes.number,
-  formContentLength: PropTypes.number
+  })
 };
 
 EditForm.defaultProps = {
-  error: null,
   match: {
     params: {
-      pageOrder: 1
+      pageOrder: "1"
     }
-  },
-  totalCharacterCount: 0,
-  formContentLength: 0
+  }
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -99,11 +68,7 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   reduxForm({
     form: "edit",
-    validate,
-    initialValues: {
-      productId: null,
-      pageOrder: 1
-    }
+    validate
   }),
   connect(
     null,

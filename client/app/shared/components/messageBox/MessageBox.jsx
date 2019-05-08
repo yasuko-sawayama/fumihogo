@@ -52,6 +52,7 @@ const Content = styled.span`
   white-space: pre-wrap;
   width: 75%;
   word-break: break-all;
+  margin-right: 3px;
 `;
 
 const Button = styled.button`

@@ -8,41 +8,44 @@ import ContentNotFound from "./ContentNotFound";
 
 class Content extends Component {
   static propTypes = {
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        page_order: PropTypes.number
-      }).isRequired
-    }).isRequired
+    product: PropTypes.shape({
+      id: PropTypes.number
+    }).isRequired,
+    pageOrder: PropTypes.string.isRequired,
+    fetchContent: PropTypes.func.isRequired,
+    page: PropTypes.shape(),
+    loading: PropTypes.bool.isRequired
+  };
+
+  static defaultProps = {
+    page: null
   };
 
   componentDidMount() {
     const {
       fetchContent,
-      match: {
-        params: { page_order }
-      },
+      pageOrder,
       product: { id }
     } = this.props;
 
-    fetchContent(id, page_order);
+    fetchContent(id, pageOrder);
   }
 
   componentDidUpdate(prevProps) {
     const {
       fetchContent,
-      match: {
-        params: { page_order }
-      },
+      pageOrder,
       product: { id }
     } = this.props;
 
-    if (
-      prevProps.match.params.page_order === page_order &&
-      prevProps.product.id === id
-    )
-      return;
+    const {
+      pageOrder: pastPageOrder,
+      product: { id: pastProductId }
+    } = prevProps;
 
-    fetchContent(id, page_order);
+    if (pastPageOrder === pageOrder && pastProductId === id) return;
+
+    fetchContent(id, pageOrder);
   }
 
   render() {
@@ -57,17 +60,6 @@ class Content extends Component {
     return page ? <ContentReading content={content} /> : <ContentNotFound />;
   }
 }
-
-Content.propTypes = {
-  fetchContent: PropTypes.func.isRequired,
-  product: PropTypes.shape().isRequired,
-  page: PropTypes.shape(),
-  loading: PropTypes.bool.isRequired
-};
-
-Content.defaultProps = {
-  page: null
-};
 
 const mapStateToProps = state => ({
   product: state.productData.currentProduct,

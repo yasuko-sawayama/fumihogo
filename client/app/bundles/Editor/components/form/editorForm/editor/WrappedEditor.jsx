@@ -15,6 +15,7 @@ const StyledEditor = styled.div`
   border: solid 1px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
   color: #455a64;
+  padding-bottom: 1em;
 
   .editorArea {
     padding: 10px;
@@ -22,6 +23,14 @@ const StyledEditor = styled.div`
     line-height: 1.6;
     p {
       margin: 0;
+    }
+  }
+
+  .public-DraftStyleDefault-block {
+    margin: 0px !important;
+
+    > div {
+      margin: 0px !important;
     }
   }
 `;
