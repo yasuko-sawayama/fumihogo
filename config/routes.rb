@@ -6,9 +6,11 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
+  # 作品表示
   resources :products, except: [:update, :create] do
     member do
       get :edit
+      get 'pages/new', action: :edit #  editorコンポーネントでpage追加
 
       # for authorization error info
       get :not_authorized
@@ -17,7 +19,12 @@ Rails.application.routes.draw do
       get ':any_action', action: :show
     end
 
-    resources :pages, controller: 'products'
+    resources :pages, excepts: :new, controller: 'products' do
+      member do
+        get :edit               #  editorコンポーネントを表示
+        get '(/*any_action)', action: :show # React Routerに委譲
+      end
+    end
   end
 
   # User
