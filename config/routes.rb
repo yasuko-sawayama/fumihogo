@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   }
 
   resources :products, except: [:update, :create] do
+    resources :pages, controller: :products, except: :new do
+      get :new, on: :collection, action: :edit
+    end
+
     member do
       get :edit
 
@@ -14,10 +18,8 @@ Rails.application.routes.draw do
       get :not_authorized
 
       # for react-router
-      get ':any_action', action: :show
+      get '(/*any_action)', action: :show
     end
-
-    resources :pages, controller: 'products'
   end
 
   # User
