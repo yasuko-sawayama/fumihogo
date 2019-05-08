@@ -36,8 +36,7 @@ const InputField = ({
           {...input}
           placeholder={placeholder}
           type={type}
-          className="form-control",
-        row={row}
+          className="form-control"
         />
       )}
       {type === "textarea" && (
@@ -46,6 +45,7 @@ const InputField = ({
           placeholder={placeholder}
           type={type}
           className="form-control"
+          row={row}
         />
       )}
       {touched &&
