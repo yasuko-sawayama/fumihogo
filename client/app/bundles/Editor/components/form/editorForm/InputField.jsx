@@ -25,7 +25,8 @@ const InputField = ({
   label,
   placeholder,
   type,
-  meta: { touched, error, warning }
+  meta: { touched, error, warning },
+  row
 }) => (
   <div className="form-group">
     <label htmlFor={input.name}>{label}</label>
@@ -35,7 +36,8 @@ const InputField = ({
           {...input}
           placeholder={placeholder}
           type={type}
-          className="form-control"
+          className="form-control",
+        row={row}
         />
       )}
       {type === "textarea" && (
@@ -58,13 +60,15 @@ InputField.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   type: PropTypes.string,
-  meta: PropTypes.shape()
+  meta: PropTypes.shape(),
+  row: PropTypes.number
 };
 
 InputField.defaultProps = {
   placeholder: null,
   type: "text",
-  meta: null
+  meta: null,
+  row: 3
 };
 
 export default InputField;

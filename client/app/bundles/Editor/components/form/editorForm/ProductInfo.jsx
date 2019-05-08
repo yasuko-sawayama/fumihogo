@@ -33,12 +33,18 @@ const ProductInfo = ({ defaultOpen }) => {
         <i className="material-icons">close</i>
       </CloseButton>
       <h4>作品情報の編集</h4>
-      <Field name="title" type="text" component={InputField} label="タイトル" />
+      <Field
+        name="title"
+        type="text"
+        component={InputField}
+        label="作品のタイトル"
+      />
       <Field
         name="description"
         component={InputField}
         type="textarea"
         label="作品の説明"
+        row={5}
       />
     </div>
   );
