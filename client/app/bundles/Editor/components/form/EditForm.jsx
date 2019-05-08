@@ -45,8 +45,8 @@ EditForm.propTypes = {
   submitChanges: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      productId: PropTypes.number.isRequired,
-      pageOrder: PropTypes.number
+      productId: PropTypes.string.isRequired,
+      pageOrder: PropTypes.string
     })
   })
 };
@@ -54,7 +54,7 @@ EditForm.propTypes = {
 EditForm.defaultProps = {
   match: {
     params: {
-      pageOrder: 1
+      pageOrder: "1"
     }
   }
 };
