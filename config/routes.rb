@@ -6,11 +6,8 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
+  # 作品表示
   resources :products, except: [:update, :create] do
-    resources :pages, controller: :products, except: :new do
-      get :new, on: :collection, action: :edit
-    end
-
     member do
       get :edit
 
@@ -19,6 +16,13 @@ Rails.application.routes.draw do
 
       # for react-router
       get '(/*any_action)', action: :show
+    end
+
+    resources :pages, excepts: :new, controller: 'products' do
+      member do
+        get :edit               #  editorコンポーネントを表示
+        get '(/*any_action)', action: :show # React Routerに委譲
+      end
     end
   end
 
