@@ -8,21 +8,18 @@ Rails.application.routes.draw do
 
   # 作品表示
   resources :products, except: [:update, :create] do
+    resources :pages, only: :edit, controller: 'products'
+
     member do
       get :edit
+
+      get 'pages/new', action: :edit
 
       # for authorization error info
       get :not_authorized
 
       # for react-router
       get '(/*any_action)', action: :show
-    end
-
-    resources :pages, excepts: :new, controller: 'products' do
-      member do
-        get :edit               #  editorコンポーネントを表示
-        get '(/*any_action)', action: :show # React Routerに委譲
-      end
     end
   end
 
