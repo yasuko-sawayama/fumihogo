@@ -11,8 +11,6 @@ Rails.application.routes.draw do
     resources :pages, only: :edit, controller: 'products'
 
     member do
-      get :edit
-
       get 'pages/new', action: :edit
 
       # for authorization error info

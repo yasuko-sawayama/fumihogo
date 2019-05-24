@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
-import { draftToMarkdown, markdownToDraft } from "markdown-draft-js";
+import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const createState = value => {
   if (!value) {
     return EditorState.createEmpty();
   }
+
   return EditorState.createWithContent(
-    convertFromRaw(
-      markdownToDraft(value, {
-        preserveNewlines: true
-      })
-    )
+    value
   );
 };
 
@@ -33,9 +29,12 @@ class ControlledEditor extends Component {
 
   constructor(props) {
     super(props);
+    console.log(props)
+
     const {
       input: { value }
     } = props;
+
 
     const editorState = createState(value);
 
@@ -72,10 +71,7 @@ class ControlledEditor extends Component {
       input: { onChange }
     } = this.props;
 
-    const value = draftToMarkdown(
-      convertToRaw(editorState.getCurrentContent())
-    );
-
+    const value = editorState.getCurrentContent()
     onChange(value);
   }
 
