@@ -18,6 +18,7 @@ json.productData do
       json.partial!('api/v1/shared/product', product: @product)
     end
 
+    p @product
     json.currentPage do
        json.partial!('api/v1/shared/page', page: @page || @product.pages.first)
     end

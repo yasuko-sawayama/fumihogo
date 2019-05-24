@@ -6,18 +6,21 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
+  # 作品表示
   resources :products, except: [:update, :create] do
+    resources :pages, only: :edit, controller: 'products'
+
     member do
       get :edit
+
+      get 'pages/new', action: :edit
 
       # for authorization error info
       get :not_authorized
 
       # for react-router
-      get ':any_action', action: :show
+      get '(/*any_action)', action: :show
     end
-
-    resources :pages, controller: 'products'
   end
 
   # User

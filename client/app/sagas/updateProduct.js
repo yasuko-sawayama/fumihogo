@@ -3,6 +3,7 @@ import { Types } from "~/shared/constants";
 import { stopSubmit } from "redux-form";
 
 import { updateEntities } from "~/utils/requestManager";
+
 import { fetchProductPageRequest } from "../actions";
 
 const updateProductPageEntity = payload =>
@@ -21,7 +22,6 @@ function* updateProduct(action) {
   const { product, error } = yield call(updateProductPageEntity, payload);
 
   if (product) {
-    // TODO: ページデータを再取得する
     yield all([
       put({
         type: Types.UPDATE_PRODUCT_PAGE_SUCCESS,
@@ -32,7 +32,12 @@ function* updateProduct(action) {
           message: "ページを更新しました。"
         }
       }),
-      put(fetchProductPageRequest(payload.productId, payload.pageOrder))
+      put(fetchProductPageRequest(payload.productId, payload.pageOrder)),
+      call(
+        (window.location.href = `/products/${payload.productId}/pages/${
+          payload.pageOrder
+        }`)
+      )
     ]);
   } else {
     /* eslint no-console: off */

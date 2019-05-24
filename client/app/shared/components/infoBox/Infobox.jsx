@@ -7,6 +7,7 @@ import InfoBoxContent from "./InfoBoxContent";
 import Author from "./Author";
 import { Favorite } from "./favorite";
 import { Edit } from "./edit";
+import New from "./new";
 import ProductButton from "./ProductButton";
 import PageList from "../../../bundles/Product/components/product/PageList";
 import PageTitle from "../../../bundles/Product/components/product/PageTitle";
@@ -76,8 +77,11 @@ const InfoBox = props => {
               <Route
                 exact
                 path="/products/"
-                render={() => <Edit auth={auth} productId={id} />}
+                render={() => <Edit productId={id} auth={auth} />}
               />
+            </li>
+            <li>
+              <New productId={id} auth={auth} />
             </li>
           </ul>
         </div>

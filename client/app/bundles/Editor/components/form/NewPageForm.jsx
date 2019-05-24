@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ProductInfo from "./editorForm/ProductInfo";
 import { reduxForm, Field } from "redux-form";
 import InputField from "./editorForm/InputField";
@@ -26,6 +27,14 @@ const NewPageForm = ({ error }) => {
       <EditorField autoFocus />
     </form>
   );
+};
+
+NewPageForm.propTypes = {
+  error: PropTypes.shape()
+};
+
+NewPageForm.defaultProps = {
+  error: null
 };
 
 export default reduxForm({ form: "newPage" })(NewPageForm);

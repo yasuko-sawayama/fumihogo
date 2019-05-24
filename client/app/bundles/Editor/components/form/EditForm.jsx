@@ -33,7 +33,7 @@ export const EditForm = props => {
   }, [productId, pageOrder]);
 
   return (
-    <FormFrame {...props} buttonText="修正を反映" backLink={backLink}>
+    <FormFrame {...props} buttonText="変更して作品に戻る" backLink={backLink}>
       <PageInfo />
     </FormFrame>
   );
