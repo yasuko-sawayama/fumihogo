@@ -68,14 +68,6 @@ const WrappedEditor = props => {
   };
 
   return (
-    <div>
-      <ContentInfo>
-        <div>
-          <b>このページ：</b>
-          {formContentLength}字 / <b>作品全体：</b>
-          {totalCharacterCount}字
-        </div>
-      </ContentInfo>
       <StyledEditor mobile={mobile}>
         <ControlledEditor
           disabled={disabled}
@@ -88,7 +80,6 @@ const WrappedEditor = props => {
           <span className="text-danger">{error || warning}</span>
         )}
       </StyledEditor>
-    </div>
   );
 };
 

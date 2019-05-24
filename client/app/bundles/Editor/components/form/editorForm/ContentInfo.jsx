@@ -35,7 +35,7 @@ const selector = formValueSelector("edit");
 const mapStateToProps = state => ({
   totalCharacterCount: state.productData.currentProduct.info.character_count,
   formContentLength: selector(state, "content")
-    ? selector(state, "content").length
+    ? selector(state, "content").getPlainText('').length
     : 0
 });
 
