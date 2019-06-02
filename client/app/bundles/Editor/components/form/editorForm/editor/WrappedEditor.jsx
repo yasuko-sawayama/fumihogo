@@ -1,15 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import { formValueSelector  } from "redux-form";
 import ControlledEditor from "./ControlledEditor";
-
-const ContentInfo = styled.div`
-  text-align: right;
-  font-size: 14px;
-  margin-bottom: 10px;
-`;
 
 const StyledEditor = styled.div`
   border: solid 1px rgba(0, 0, 0, 0.08);
@@ -27,10 +19,10 @@ const StyledEditor = styled.div`
   }
 
   .public-DraftStyleDefault-block {
-    margin: 0px !important;
+    margin: 0 !important;
 
     > div {
-      margin: 0px !important;
+      margin: 0 !important;
     }
   }
 `;
@@ -40,9 +32,7 @@ const WrappedEditor = props => {
     input,
     meta: { touched, error, warning },
     disabled,
-    mobile,
-    formContentLength,
-    totalCharacterCount
+    mobile
   } = props;
 
   const options = {
@@ -88,22 +78,10 @@ WrappedEditor.propTypes = {
   meta: PropTypes.shape().isRequired,
   disabled: PropTypes.bool,
   mobile: PropTypes.bool,
-  formContentLength: PropTypes.number.isRequired,
-  totalCharacterCount: PropTypes.number.isRequired
 };
 
 WrappedEditor.defaultProps = {
   disabled: false,
   mobile: false
 };
-
-const selector = formValueSelector("edit");
-
-const mapStateToProps = state => ({
-  totalCharacterCount: state.productData.currentProduct.info.character_count,
-  formContentLength: selector(state, "content")
-    ? selector(state, "content").length
-    : 0
-});
-
-export default connect(mapStateToProps)(WrappedEditor);
+export default WrappedEditor;

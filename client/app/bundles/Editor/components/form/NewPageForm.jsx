@@ -1,40 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import ProductInfo from "./editorForm/ProductInfo";
-import { reduxForm, Field } from "redux-form";
-import InputField from "./editorForm/InputField";
-import { Mobile } from "~/shared/components/layouts/responsive.jsx";
-import FormHeader from "./editorForm/header/FormHeader";
-import ContentInfo from "./editorForm/ContentInfo";
-import ErrorHeader from "./editorForm/header/ErrorHeader";
-import EditorField from "./editorForm/editor/EditorField";
 
-const NewPageForm = ({ error }) => {
+import { reduxForm } from "redux-form";
+import FormFrame from "./editorForm";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { createNewPageRequest } from "~/actions";
+
+const NewPageForm = props => {
+  const {
+    change,
+    match: {
+      params: { productId }
+    }
+  } = props;
+
+  const backLink = `/products/${productId}/`;
+
+  useEffect(() => { change("productId", productId) }, [productId])
+
   return (
-    <form>
-      <Mobile>
-        <FormHeader title="新しいページ" />
-      </Mobile>
-      {error && <ErrorHeader error={error} />}
-      <ProductInfo />
-      <Field
-        name="pageTitle"
-        type="text"
-        component={InputField}
-        label="新規ページタイトル（省略可）"
-      />
-      <ContentInfo />
-      <EditorField autoFocus />
-    </form>
+      <FormFrame {...props} buttonText="ページを追加する" backLink={backLink}/>
   );
 };
 
 NewPageForm.propTypes = {
-  error: PropTypes.shape()
+  change: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      productId: PropTypes.string.isRequired
+    })
+  }).isRequired
 };
 
-NewPageForm.defaultProps = {
-  error: null
-};
+const mapDispatchToProps = dispatch => ({
+  submitChanges: values => dispatch(createNewPageRequest(values))
+});
 
-export default reduxForm({ form: "newPage" })(NewPageForm);
+export default compose(
+  reduxForm({ form: "edit" }),
+  connect(
+    null,
+    mapDispatchToProps
+  )
+)(NewPageForm);

@@ -11,12 +11,12 @@ const updateProductPageEntity = payload =>
     `/api/v1/products/${payload.productId}/pages/${payload.pageOrder}`,
     updateValues(payload)
   )
-    .then(results => console.log(results) || { product: results.data })
+    .then(results => ({ product: results.data }))
     .catch(error => ({ error: error.response }));
 
 const updateValues = formValue => formValue;
 
-function* updateProduct(action) {
+function* updateProductPage(action) {
   const { payload } = action;
 
   const { product, error } = yield call(updateProductPageEntity, payload);
@@ -55,4 +55,4 @@ function* updateProduct(action) {
   }
 }
 
-export default updateProduct;
+export default updateProductPage;

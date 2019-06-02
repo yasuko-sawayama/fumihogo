@@ -3,7 +3,8 @@ import { takeLatest, all } from "redux-saga/effects";
 import { Types } from "~/shared/constants";
 import fetchPage from "./fetchPage";
 import fetchProduct from "./fetchProduct";
-import updateProduct from "./updateProduct";
+import updateProductPage from "./updateProductPage";
+import createProductPage from "./createProductPage"
 import toggleFavorite from "./toggleFavorite";
 
 function* productPageSaga() {
@@ -11,7 +12,11 @@ function* productPageSaga() {
 }
 
 function* updateProductPageSage() {
-  yield takeLatest(Types.UPDATE_PRODUCT_PAGE_REQUEST, updateProduct);
+  yield takeLatest(Types.UPDATE_PRODUCT_PAGE_REQUEST, updateProductPage);
+}
+
+function* createProductPageSaga() {
+  yield takeLatest(Types.CREATE_PRODUCT_PAGE_REQUEST, createProductPage)
 }
 
 function* productSaga() {
@@ -30,6 +35,7 @@ function* rootSaga() {
     productSaga(),
     productPageSaga(),
     updateProductPageSage(),
+    createProductPageSaga(),
     favoriteSava()
   ];
 

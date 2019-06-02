@@ -29,12 +29,10 @@ class ControlledEditor extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props)
 
     const {
       input: { value }
     } = props;
-
 
     const editorState = createState(value);
 
