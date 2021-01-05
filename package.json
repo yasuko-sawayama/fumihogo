@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "@rails/webpacker": "3.4",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.5.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-react": "^6.24.1",
