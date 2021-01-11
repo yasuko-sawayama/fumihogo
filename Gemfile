@@ -49,7 +49,7 @@ gem 'high_voltage', '~> 3.0.0'
 gem 'enumerize'
 
 # Markdown
-gem 'redcarpet', '~> 2.3.0'
+gem 'redcarpet', '~> 3.5.1'
 
 # character count up
 gem 'counter_culture'
